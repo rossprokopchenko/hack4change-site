@@ -1,0 +1,29 @@
+{
+  "title": "About Hack4Change",
+  "description": "A 3-day intensive collaborative coding event where teams will design, develop, and present working prototypes. This event will focus on addressing a critical challenge faced by the Greater Moncton Homelessness Steering Committee: coordinating resources across multiple locations to better serve our community.",
+
+  "event": {
+    "title": "Event Details",
+    "date": "Friday, March 13th (Evening) - Sunday, March 15th (Afternoon), 2026",
+    "location": "Venn Innovation - 770 St George Blvd, Moncton, NB E1E 2C6"
+  },
+  "team": {
+    "title": "The Hackathon Team",
+    "members": {
+      "Shannon McMackin": "CTM Leader",
+      "Artem Stromets": "CTM IT Leader",
+      "Ankit Malik": "Project Manager for Hackathon",
+      "Mo Kinlad": "Senior Hackathon Advisor",
+      "Deji Badejo": "Project Manager of Logistics",
+      "Ross Prokopchenko": "Tech Team",
+      "Gavanjeet Singh": "Tech Team",
+      "Folusho Ogundele": "Administration",
+      "Henrietta Antigha": "Communication",
+      "Daria Kirianova": "SM & Content"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "For inquiries, email us at contact@hack4change.ca"
+  }
+}
