@@ -5,6 +5,7 @@
 - [Hack4Change Site](#hack4change-site)
   - [Description](#description)
   - [Getting Started](#getting-started)
+  - [Features](#features)
 
 ## Description
 
