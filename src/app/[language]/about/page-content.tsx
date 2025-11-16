@@ -49,6 +49,7 @@ export default function About() {
             </Typography>
 
             <List>
+            // prettier-ignore
             {Object.entries(team).map(([name, role]) => (
                 <Box key={name}>
                 <ListItem disablePadding>
