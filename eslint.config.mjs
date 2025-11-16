@@ -1,6 +1,6 @@
 import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
-import prettierPlugin from "eslint-plugin-prettier";
+// import prettierPlugin from "eslint-plugin-prettier";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
@@ -17,20 +17,10 @@ const eslintConfig = [
 
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
-    plugins: {
-      prettier: prettierPlugin,
-    },
+    // plugins: {
+    //   prettier: prettierPlugin,
+    // },
     rules: {
-      "prettier/prettier": [
-        "error",
-        {
-          tabWidth: 2,
-          semi: true,
-          endOfLine: "auto",
-          singleQuote: false,
-          trailingComma: "es5",
-        },
-      ],
       "@typescript-eslint/ban-types": "off",
       "@typescript-eslint/no-namespace": "off",
       "array-callback-return": "error",
