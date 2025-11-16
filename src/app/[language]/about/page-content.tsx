@@ -49,26 +49,30 @@ export default function About() {
             </Typography>
 
             <List>
-            // prettier-ignore
-            {Object.entries(team).map(([name, role]) => (
+            {Object.entries(team).map(
+              ([
+                name,
+                role
+              ]) => (
                 <Box key={name}>
-                <ListItem disablePadding>
+                  <ListItem disablePadding>
                     <ListItemText
-                    primary={
+                      primary={
                         <Typography variant="body1" fontWeight="bold">
-                        {name}
+                          {name}
                         </Typography>
-                    }
-                    secondary={
+                      }
+                      secondary={
                         <Typography variant="body2" color="text.secondary">
-                        {role}
+                          {role}
                         </Typography>
-                    }
+                      }
                     />
-                </ListItem>
-                <Divider />
+                  </ListItem>
+                  <Divider />
                 </Box>
-            ))}
+              )
+            )}
             </List>
         </Box>
 
