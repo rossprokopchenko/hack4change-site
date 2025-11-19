@@ -475,11 +475,11 @@ function FormChangePasswordWrapper() {
 
 function EditProfile() {
   return (
-    <>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
       <FormBasicInfo />
       <FormChangeEmailWrapper />
       <FormChangePasswordWrapper />
-    </>
+    </Box>
   );
 }
 

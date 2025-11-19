@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import SignIn from "./page-content";
 import { getServerTranslation } from "@/services/i18n";

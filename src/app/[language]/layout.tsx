@@ -1,4 +1,6 @@
 import ResponsiveAppBar from "@/components/app-bar";
+import Footer from "@/components/footer";
+import Box from "@mui/material/Box";
 import AuthProvider from "@/services/auth/auth-provider";
 import "../globals.css";
 import "@fontsource/roboto/300.css";
@@ -65,8 +67,22 @@ export default async function RootLayout(props: {
                   <GoogleAuthProvider>
                     <FacebookAuthProvider>
                       <LeavePageProvider>
-                        <ResponsiveAppBar />
-                        {children}
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            minHeight: "100vh",
+                          }}
+                        >
+                          <ResponsiveAppBar />
+                          <Box
+                            component="main"
+                            sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}
+                          >
+                            {children}
+                          </Box>
+                          <Footer />
+                        </Box>
                         <ToastContainer
                           position="bottom-left"
                           hideProgressBar

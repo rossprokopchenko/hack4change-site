@@ -1,0 +1,61 @@
+{
+  "title": "Créer un utilisateur",
+  "actions": {
+    "submit": "Enregistrer",
+    "cancel": "Annuler"
+  },
+  "inputs": {
+    "email": {
+      "label": "Courriel",
+      "validation": {
+        "invalid": "Le courriel est invalide",
+        "required": "Le courriel est requis",
+        "server": {
+          "emailAlreadyExists": "Le courriel existe déjà"
+        }
+      }
+    },
+    "firstName": {
+      "label": "Prénom",
+      "validation": {
+        "required": "Le prénom est requis"
+      }
+    },
+    "lastName": {
+      "label": "Nom",
+      "validation": {
+        "required": "Le nom est requis"
+      }
+    },
+    "role": {
+      "label": "Rôle",
+      "validation": {
+        "required": "Le rôle est requis"
+      },
+      "options": {
+        "1": "Admin",
+        "2": "Utilisateur"
+      }
+    },
+    "password": {
+      "label": "Mot de passe",
+      "validation": {
+        "required": "Le mot de passe est requis",
+        "min": "Le mot de passe doit contenir au moins 6 caractères"
+      }
+    },
+    "passwordConfirmation": {
+      "label": "Confirmation du mot de passe",
+      "validation": {
+        "required": "La confirmation du mot de passe est requise",
+        "match": "La confirmation du mot de passe doit correspondre au mot de passe"
+      }
+    },
+    "<system>": "Do not remove this property"
+  },
+  "alerts": {
+    "user": {
+      "success": "Le profil de l'utilisateur a été créé avec succès"
+    }
+  }
+}

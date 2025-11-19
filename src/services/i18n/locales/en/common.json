@@ -2,6 +2,8 @@
   "app-name": "Hack4Change",
   "loading": "Loading ...",
   "navigation": {
+    "title": "Navigation",
+
     "home": "Home",
     "about": "About",
     "contact": "Contact",
@@ -10,6 +12,21 @@
     "profile": "Profile",
     "users": "Users",
     "logout": "Logout"
+  },
+  "legal": {
+    "title": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "rights": "All rights reserved"
+  },
+  "socialMedia": {
+    "title": "Follow Us",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn"
+  },
+  "language": {
+    "title": "Language"
   },
   "formInputs": {
     "avatarInput": {

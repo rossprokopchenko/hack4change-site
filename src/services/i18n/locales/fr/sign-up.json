@@ -1,0 +1,49 @@
+{
+  "title": "S'inscrire",
+  "actions": {
+    "submit": "S'inscrire",
+    "accountAlreadyExists": "Vous avez déjà un compte ?"
+  },
+  "inputs": {
+    "firstName": {
+      "label": "Prénom",
+      "validation": {
+        "required": "Le prénom est requis"
+      }
+    },
+    "lastName": {
+      "label": "Nom",
+      "validation": {
+        "required": "Le nom est requis"
+      }
+    },
+    "email": {
+      "label": "Courriel",
+      "validation": {
+        "required": "Le courriel est requis",
+        "invalid": "Le courriel n'est pas valide",
+        "server": {
+          "emailAlreadyExists": "Le courriel existe déjà"
+        }
+      }
+    },
+    "password": {
+      "label": "Mot de passe",
+      "validation": {
+        "required": "Le mot de passe est requis",
+        "min": "Le mot de passe doit contenir au moins 6 caractères",
+        "server": {
+          "incorrectPassword": "Le mot de passe n'est pas valide"
+        }
+      }
+    },
+    "policy": {
+      "label": "Politique de confidentialité",
+      "agreement": "J'ai lu et j'accepte ",
+      "validation": {
+        "required": "Le consentement à la politique de confidentialité est requis"
+      }
+    }
+  },
+  "or": "OU"
+}

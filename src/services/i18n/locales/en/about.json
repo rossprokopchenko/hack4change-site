@@ -10,8 +10,6 @@
   "team": {
     "title": "The Hackathon Team",
     "members": {
-      "Shannon McMackin": "CTM Leader",
-      "Artem Stromets": "CTM IT Leader",
       "Ankit Malik": "Project Manager for Hackathon",
       "Mo Kinlad": "Senior Hackathon Advisor",
       "Deji Badejo": "Project Manager of Logistics",
@@ -19,11 +17,40 @@
       "Gavanjeet Singh": "Tech Team",
       "Folusho Ogundele": "Administration",
       "Henrietta Antigha": "Communication",
-      "Daria Kirianova": "SM & Content"
+      "Daria Kirianova": "SM & Content",
+      "Shannon McMackin": "Civic Tech Moncton Leader",
+      "Artem Stromets": "Civic Tech Moncton IT Leader"
     }
   },
-  "contact": {
-    "title": "Contact",
-    "email": "For inquiries, email us at contact@hack4change.ca"
+
+  "partners": {
+    "title": "Partners",
+    "description": "We are grateful for the support of our partners who make Hack4Change possible."
+  },
+
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "Who can participate in Hack4Change?",
+        "answer": "Hack4Change is open to anyone interested in civic technology and social innovation. Whether you're a developer, designer, project manager, or someone passionate about community impact, you're welcome to join!"
+      },
+      {
+        "question": "Do I need to have a team to participate?",
+        "answer": "No! You can register as an individual and we'll help you find a team during the event. Alternatively, you can form a team beforehand with friends or colleagues."
+      },
+      {
+        "question": "What should I bring to the hackathon?",
+        "answer": "Bring your laptop, charger, and any other devices you'll need. We'll provide WiFi, workspace, and meals throughout the event. Don't forget your enthusiasm and creativity!"
+      },
+      {
+        "question": "Will there be prizes?",
+        "answer": "Yes! We'll have prizes for winning teams, as well as special category awards. Details will be announced closer to the event date."
+      },
+      {
+        "question": "What if I've never been to a hackathon before?",
+        "answer": "That's perfectly fine! Hack4Change welcomes first-time participants. We'll have mentors available throughout the event to help guide you and answer questions."
+      }
+    ]
   }
 }

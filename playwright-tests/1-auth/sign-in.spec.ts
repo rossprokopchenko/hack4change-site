@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
-import { apiCreateNewUser } from "../helpers/api-requests.js";
+import { apiCreateNewUser, deleteUserByEmail } from "../helpers/api-requests.js";
 
 test.describe("Sign In", () => {
   let email: string;
@@ -48,6 +48,9 @@ test.describe("Sign In", () => {
     await page.getByTestId("sign-in-submit").click();
 
     await expect(page.getByTestId("password-error")).toBeVisible();
+  });
+  test.afterEach(async () => {
+    await deleteUserByEmail(email);
   });
 });
 

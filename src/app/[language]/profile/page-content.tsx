@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Link from "@/components/link";
@@ -19,8 +20,9 @@ function Profile() {
   const { user } = useAuth();
   const { t } = useTranslation("profile");
   return (
-    <Container maxWidth="sm">
-      <Grid container spacing={3} wrap="nowrap" pt={3}>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', pt: 3 }}>
+      <Container maxWidth="sm">
+        <Grid container spacing={3} wrap="nowrap" pt={3}>
         <Grid size="auto">
           <StyledAvatar
             alt={user?.firstName + " " + user?.lastName}
@@ -51,6 +53,7 @@ function Profile() {
         </Grid>
       </Grid>
     </Container>
+    </Box>
   );
 }
 

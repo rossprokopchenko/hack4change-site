@@ -1,182 +1,168 @@
 "use client";
+import { useState } from "react";
 import Button from "@mui/material/Button";
-import LinkItem from "@mui/material/Link";
-import withPageRequiredGuest from "@/services/auth/with-page-required-guest";
-import { useForm, FormProvider, useFormState } from "react-hook-form";
-import { useAuthLoginService } from "@/services/api/services/auth";
-import useAuthActions from "@/services/auth/use-auth-actions";
-import useAuthTokens from "@/services/auth/use-auth-tokens";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import FormTextInput from "@/components/form/text-input/form-text-input";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import Link from "@/components/link";
+import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import HTTP_CODES_ENUM from "@/services/api/types/http-codes";
+import MuiLink from "@mui/material/Link";
+import Link from "@/components/link";
+import Alert from "@mui/material/Alert";
+import { signIn } from "@/services/supabase/auth";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslation } from "@/services/i18n/client";
-import SocialAuth from "@/services/social-auth/social-auth";
-import Divider from "@mui/material/Divider";
-import Chip from "@mui/material/Chip";
-import { isGoogleAuthEnabled } from "@/services/social-auth/google/google-config";
-import { isFacebookAuthEnabled } from "@/services/social-auth/facebook/facebook-config";
-import { IS_SIGN_UP_ENABLED } from "@/services/auth/config";
 
-type SignInFormData = {
-  email: string;
-  password: string;
-};
-
-const useValidationSchema = () => {
+export default function SignInSupabase() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { t } = useTranslation("sign-in");
-
-  return yup.object().shape({
-    email: yup
-      .string()
-      .email(t("sign-in:inputs.email.validation.invalid"))
-      .required(t("sign-in:inputs.email.validation.required")),
-    password: yup
-      .string()
-      .min(6, t("sign-in:inputs.password.validation.min"))
-      .required(t("sign-in:inputs.password.validation.required")),
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
   });
-};
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const registered = searchParams.get("registered");
 
-function FormActions() {
-  const { t } = useTranslation("sign-in");
-  const { isSubmitting } = useFormState();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-  return (
-    <Button
-      variant="contained"
-      color="primary"
-      type="submit"
-      disabled={isSubmitting}
-      data-testid="sign-in-submit"
-    >
-      {t("sign-in:actions.submit")}
-    </Button>
-  );
-}
-
-function Form() {
-  const { setUser } = useAuthActions();
-  const { setTokensInfo } = useAuthTokens();
-  const fetchAuthLogin = useAuthLoginService();
-  const { t } = useTranslation("sign-in");
-  const validationSchema = useValidationSchema();
-
-  const methods = useForm<SignInFormData>({
-    resolver: yupResolver(validationSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-
-  const { handleSubmit, setError } = methods;
-
-  const onSubmit = handleSubmit(async (formData) => {
-    const { data, status } = await fetchAuthLogin(formData);
-
-    if (status === HTTP_CODES_ENUM.UNPROCESSABLE_ENTITY) {
-      (Object.keys(data.errors) as Array<keyof SignInFormData>).forEach(
-        (key) => {
-          setError(key, {
-            type: "manual",
-            message: t(
-              `sign-in:inputs.${key}.validation.server.${data.errors[key]}`
-            ),
-          });
-        }
-      );
-
-      return;
-    }
-
-    if (status === HTTP_CODES_ENUM.OK) {
-      setTokensInfo({
-        token: data.token,
-        refreshToken: data.refreshToken,
-        tokenExpires: data.tokenExpires,
+    try {
+      await signIn({
+        email: formData.email,
+        password: formData.password,
       });
-      setUser(data.user);
+
+      // Redirect to home page
+      router.push("/");
+      router.refresh();
+    } catch (err: any) {
+      // Handle specific Supabase auth errors
+      let errorMessage = t("sign-in:errors.genericError");
+      
+      if (err.message) {
+        // Supabase returns specific error messages we can check
+        if (err.message.includes("Invalid login credentials") || 
+            err.message.includes("invalid") ||
+            err.message.includes("Invalid")) {
+          errorMessage = t("sign-in:errors.invalidCredentials");
+        } else if (err.message.includes("User not found") || 
+                   err.message.includes("not found")) {
+          errorMessage = t("sign-in:errors.accountNotFound");
+        } else if (err.message.includes("Email not confirmed")) {
+          errorMessage = "Please verify your email address before signing in. Check your inbox for the verification link.";
+        }
+      }
+      
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
     }
-  });
+  };
 
   return (
-    <FormProvider {...methods}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        pt: { xs: 8, md: 12 },
+        pb: 4,
+      }}
+    >
       <Container maxWidth="xs">
-        <form onSubmit={onSubmit}>
-          <Grid container spacing={2} mb={2}>
-            <Grid size={{ xs: 12 }} mt={3}>
-              <Typography variant="h6">{t("sign-in:title")}</Typography>
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <FormTextInput<SignInFormData>
-                name="email"
-                label={t("sign-in:inputs.email.label")}
-                type="email"
-                testId="email"
-                autoFocus
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              <FormTextInput<SignInFormData>
-                name="password"
-                label={t("sign-in:inputs.password.label")}
-                type="password"
-                testId="password"
-              />
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <LinkItem
-                component={Link}
-                href="/forgot-password"
-                data-testid="forgot-password"
-              >
-                {t("sign-in:actions.forgotPassword")}
-              </LinkItem>
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              <FormActions />
-
-              {IS_SIGN_UP_ENABLED && (
-                <Box ml={1} component="span">
-                  <Button
-                    variant="contained"
-                    color="inherit"
-                    LinkComponent={Link}
-                    href="/sign-up"
-                    data-testid="create-account"
-                  >
-                    {t("sign-in:actions.createAccount")}
-                  </Button>
-                </Box>
-              )}
-            </Grid>
-
-            {[isGoogleAuthEnabled, isFacebookAuthEnabled].some(Boolean) && (
-              <Grid size={{ xs: 12 }}>
-                <Divider sx={{ mb: 2 }}>
-                  <Chip label={t("sign-in:or")} />
-                </Divider>
-
-                <SocialAuth />
-              </Grid>
-            )}
+        <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12 }}>
+            <Typography variant="h4" component="h1" gutterBottom textAlign="center">
+              {t("sign-in:title")}
+            </Typography>
           </Grid>
-        </form>
-      </Container>
-    </FormProvider>
+
+          {registered && (
+            <Grid size={{ xs: 12 }}>
+              <Alert severity="success">
+                Account created successfully! Please check your email to verify your account, then sign in.
+              </Alert>
+            </Grid>
+          )}
+
+          {error && (
+            <Grid size={{ xs: 12 }}>
+              <Alert severity="error">{error}</Alert>
+            </Grid>
+          )}
+
+          <Grid size={{ xs: 12 }}>
+            <TextField
+              fullWidth
+              required
+              type="email"
+              label={t("sign-in:inputs.email.label")}
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              autoFocus
+              data-testid="email"
+            />
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            <TextField
+              fullWidth
+              required
+              type="password"
+              label={t("sign-in:inputs.password.label")}
+              value={formData.password}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
+              data-testid="password"
+            />
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              disabled={loading}
+              size="large"
+              data-testid="sign-in-submit"
+            >
+              {loading ? "Signing In..." : t("sign-in:actions.submit")}
+            </Button>
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            <Box sx={{ textAlign: "center", mt: 1 }}>
+              <Link href="/forgot-password">
+                <MuiLink component="span" variant="body2" data-testid="forgot-password">
+                  {t("sign-in:actions.forgotPassword")}
+                </MuiLink>
+              </Link>
+            </Box>
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            <Box sx={{ textAlign: "center", mt: 2 }}>
+              <Typography variant="body2">
+                {t("sign-in:actions.noAccount")} {" "}
+                <Link href="/sign-up">
+                  <MuiLink component="span" data-testid="create-account">{t("sign-in:actions.createAccount")}</MuiLink>
+                </Link>
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </form>
+    </Container>
+    </Box>
   );
 }
-
-function SignIn() {
-  return <Form />;
-}
-
-export default withPageRequiredGuest(SignIn);

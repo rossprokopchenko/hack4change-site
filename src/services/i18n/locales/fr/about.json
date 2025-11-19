@@ -1,0 +1,53 @@
+{
+  "title": "À propos de Hack4Change",
+  "description": "Un événement de codage collaboratif intensif de 3 jours où les équipes concevront, développeront et présenteront des prototypes fonctionnels. Cet événement se concentrera sur la résolution d'un défi critique auquel est confrontée la vie civique.",
+  "event": {
+    "title": "Détails de l'événement",
+    "date": "Vendredi 13 mars (soir) - Dimanche 15 mars (après-midi), 2026",
+    "location": "Venn Innovation - 770 St George Blvd, Moncton, NB E1E 2C6"
+  },
+  "team": {
+    "title": "L'équipe du Hackathon",
+    "members": {
+      "Ankit Malik": "Chef de projet pour le Hackathon",
+      "Mo Kinlad": "Conseiller principal du Hackathon",
+      "Deji Badejo": "Chef de projet logistique",
+      "Ross Prokopchenko": "Équipe technique",
+      "Gavanjeet Singh": "Équipe technique",
+      "Folusho Ogundele": "Administration",
+      "Henrietta Antigha": "Communication",
+      "Daria Kirianova": "RS et contenu",
+      "Shannon McMackin": "Responsable Civic Tech Moncton",
+      "Artem Stromets": "Responsable informatique Civic Tech Moncton"
+    }
+  },
+  "partners": {
+    "title": "Partenaires",
+    "description": "Nous sommes reconnaissants du soutien de nos partenaires qui rendent Hack4Change possible."
+  },
+  "faq": {
+    "title": "Foire aux questions",
+    "questions": [
+      {
+        "question": "Qui peut participer à Hack4Change ?",
+        "answer": "Hack4Change est ouvert à toute personne intéressée par la technologie civique et l'innovation sociale. Que vous soyez développeur, designer, chef de projet ou simplement passionné par l'impact communautaire, vous êtes le bienvenu !"
+      },
+      {
+        "question": "Dois-je avoir une équipe pour participer ?",
+        "answer": "Non ! Vous pouvez vous inscrire individuellement et nous vous aiderons à trouver une équipe pendant l'événement. Alternativement, vous pouvez former une équipe à l'avance avec des amis ou des collègues."
+      },
+      {
+        "question": "Que dois-je apporter au hackathon ?",
+        "answer": "Apportez votre ordinateur portable, votre chargeur et tout autre appareil dont vous aurez besoin. Nous fournirons le WiFi, l'espace de travail et les repas tout au long de l'événement. N'oubliez pas votre enthousiasme et votre créativité !"
+      },
+      {
+        "question": "Y aura-t-il des prix ?",
+        "answer": "Oui ! Nous aurons des prix pour les équipes gagnantes, ainsi que des prix de catégories spéciales. Les détails seront annoncés à l'approche de la date de l'événement."
+      },
+      {
+        "question": "Et si je n'ai jamais participé à un hackathon auparavant ?",
+        "answer": "C'est tout à fait normal ! Hack4Change accueille les participants pour la première fois. Nous aurons des mentors disponibles tout au long de l'événement pour vous guider et répondre à vos questions."
+      }
+    ]
+  }
+}

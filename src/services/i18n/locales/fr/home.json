@@ -1,0 +1,16 @@
+{
+  "title": "Hack4Change",
+  "description": "Rejoignez-nous pour un événement de trois jours consacré à la résolution des plus grands défis du monde réel au Canada atlantique grâce à des solutions technologiques innovantes.",
+  "countdown": {
+    "days": "jours",
+    "hours": "heures",
+    "minutes": "minutes",
+    "seconds": "secondes",
+    "day": "jour",
+    "hour": "heure",
+    "minute": "minute",
+    "second": "seconde",
+    "completed": "L'événement a commencé !",
+    "and": "et"
+  }
+}

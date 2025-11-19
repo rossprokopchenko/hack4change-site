@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
-import { apiCreateNewUser } from "../helpers/api-requests.js";
+import { apiCreateNewUser, deleteUserByEmail } from "../helpers/api-requests.js";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/sign-up");
@@ -63,6 +63,8 @@ test.describe("Sign Up", () => {
       .check();
     await page.getByTestId("sign-up-submit").click();
     await expect(page.getByTestId("email-error")).toBeVisible();
+
+    await deleteUserByEmail(email);
   });
 
   test("should show validation errors for required fields", async ({

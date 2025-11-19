@@ -45,21 +45,23 @@ export default function ConfirmEmail() {
   }, [fetchConfirmEmail, router, enqueueSnackbar, t]);
 
   return (
-    <Container maxWidth="sm">
-      <Grid container>
-        <Grid size={{ xs: 12 }}>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              p: 2,
-            }}
-          >
-            <CircularProgress />
-          </Box>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', pt: { xs: 8, md: 12 } }}>
+      <Container maxWidth="sm">
+        <Grid container>
+          <Grid size={{ xs: 12 }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                p: 2,
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </Box>
   );
 }

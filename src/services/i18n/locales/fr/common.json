@@ -1,0 +1,59 @@
+{
+  "app-name": "Hack4Change",
+  "loading": "Chargement ...",
+  "navigation": {
+    "title": "Navigation",
+    
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "profile": "Profil",
+    "users": "Utilisateurs",
+    "logout": "Se déconnecter"
+  },
+  "legal": {
+    "title": "Légal",
+    "privacyPolicy": "Politique de confidentialité",
+    "rights": "Tous droits réservés"
+  },
+  "socialMedia": {
+    "title": "Suivez-nous",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn"
+  },
+  "language": {
+    "title": "Langue"
+  },
+  "formInputs": {
+    "avatarInput": {
+      "dropzoneText": "Déposez l'image ici ...",
+      "dragAndDrop": "Ou glissez-déposez une image ici",
+      "selectFile": "Sélectionner une image"
+    },
+    "multipleImageInput": {
+      "dropzoneText": "Déposez l'image ici ...",
+      "dragAndDrop": "Ou glissez-déposez des images ici",
+      "selectFile": "Sélectionner une image"
+    },
+    "singleImageInput": {
+      "dropzoneText": "Déposez l'image ici ...",
+      "dragAndDrop": "Ou glissez-déposez des images ici",
+      "selectFile": "Sélectionner une image"
+    }
+  },
+  "leavePage": {
+    "title": "Quitter cette page ?",
+    "message": "Les modifications que vous avez apportées ne seront peut-être pas enregistrées",
+    "stay": "Rester sur la page",
+    "leave": "Quitter la page"
+  },
+  "auth": {
+    "facebook": {
+      "action": "Se connecter avec Facebook"
+    }
+  }
+}

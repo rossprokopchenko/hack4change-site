@@ -14,63 +14,73 @@ import {
   AuthTokensContext,
   TokensInfo,
 } from "./auth-context";
-import useFetch from "@/services/api/use-fetch";
-import { AUTH_LOGOUT_URL, AUTH_ME_URL } from "@/services/api/config";
-import HTTP_CODES_ENUM from "../api/types/http-codes";
-import {
-  getTokensInfo,
-  setTokensInfo as setTokensInfoToStorage,
-} from "./auth-tokens-info";
+import { supabase } from "@/lib/supabase/client";
+import { getCurrentProfile, signOut } from "@/services/supabase/auth";
 
 function AuthProvider(props: PropsWithChildren) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const fetchBase = useFetch();
 
+  // Legacy token setter - kept for compatibility but mostly unused with Supabase
   const setTokensInfo = useCallback((tokensInfo: TokensInfo) => {
-    setTokensInfoToStorage(tokensInfo);
-
-    if (!tokensInfo) {
-      setUser(null);
-    }
+    // Supabase handles tokens internally
   }, []);
 
   const logOut = useCallback(async () => {
-    const tokens = getTokensInfo();
+    await signOut();
+    setUser(null);
+  }, []);
 
-    if (tokens?.token) {
-      await fetchBase(AUTH_LOGOUT_URL, {
-        method: "POST",
-      });
-    }
-    setTokensInfo(null);
-  }, [setTokensInfo, fetchBase]);
-
-  const loadData = useCallback(async () => {
-    const tokens = getTokensInfo();
-
+  const loadUser = useCallback(async () => {
     try {
-      if (tokens?.token) {
-        const response = await fetchBase(AUTH_ME_URL, {
-          method: "GET",
-        });
-
-        if (response.status === HTTP_CODES_ENUM.UNAUTHORIZED) {
-          logOut();
-          return;
-        }
-
-        const data = await response.json();
-        setUser(data);
+      const profile = await getCurrentProfile();
+      if (profile) {
+        // Map Supabase profile to User type
+        const mappedUser: User = {
+          id: profile.id,
+          email: profile.email,
+          firstName: profile.first_name || "",
+          lastName: profile.last_name || "",
+          photo: profile.avatar_url ? { id: "", path: profile.avatar_url } : undefined,
+          role: {
+            id: 2, // RoleEnum.USER
+            name: "User",
+          },
+          provider: undefined, // Set if needed based on auth provider
+          socialId: undefined,
+        };
+        setUser(mappedUser); 
+      } else {
+        setUser(null);
       }
+    } catch (error) {
+      console.error("Error loading user profile:", error);
+      setUser(null);
     } finally {
       setIsLoaded(true);
     }
-  }, [fetchBase, logOut]);
+  }, []);
 
   useEffect(() => {
-    loadData();
-  }, [loadData]);
+    // Initial load
+    loadUser();
+
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        loadUser();
+      } else if (event === 'SIGNED_OUT') {
+        setUser(null);
+        setIsLoaded(true);
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [loadUser]);
 
   const contextValue = useMemo(
     () => ({

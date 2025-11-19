@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
-import { apiCreateNewUser } from "../helpers/api-requests.js";
+import { apiCreateNewUser, deleteUserByEmail } from "../helpers/api-requests.js";
 import { getLatestEmail } from "../helpers/email.js";
 
 test.describe("Forgot Password page with form", () => {
@@ -70,6 +70,10 @@ test.describe("Change password", () => {
     await expect(
       page.locator(".Toastify > .Toastify__toast-container")
     ).toBeVisible();
+  });
+
+  test.afterEach(async () => {
+    await deleteUserByEmail(email);
   });
 
   test("should send a password reset email and navigate to reset password page", async ({

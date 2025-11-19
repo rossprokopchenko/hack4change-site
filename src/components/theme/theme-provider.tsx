@@ -14,7 +14,28 @@ function ThemeProvider(props: PropsWithChildren) {
         cssVariables: {
           colorSchemeSelector: "class",
         },
-        colorSchemes: { light: true, dark: true },
+        colorSchemes: {
+          light: {
+            palette: {
+              primary: {
+                main: "#6189f5ff",
+              },
+              grey: {
+                200: "#f5f5f5",
+              },
+            },
+          },
+          dark: {
+            palette: {
+              primary: {
+                main: "#338cffff",
+              },
+              grey: {
+                200: "#424242",
+              },
+            },
+          },
+        },
       }),
     []
   );

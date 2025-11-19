@@ -1,0 +1,38 @@
+{
+  "title": "Se connecter",
+  "actions": {
+    "submit": "Se connecter",
+    "createAccount": "Créer un compte",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "N'avez pas de compte ?"
+  },
+  "inputs": {
+    "email": {
+      "label": "Courriel",
+      "validation": {
+        "required": "Le courriel est requis",
+        "invalid": "Le courriel n'est pas valide",
+        "server": {
+          "emailNotExists": "Le courriel n'existe pas",
+          "notFound": "Le courriel n'existe pas"
+        }
+      }
+    },
+    "password": {
+      "label": "Mot de passe",
+      "validation": {
+        "required": "Le mot de passe est requis",
+        "min": "Le mot de passe doit contenir au moins 6 caractères",
+        "server": {
+          "incorrectPassword": "Le mot de passe n'est pas valide"
+        }
+      }
+    }
+  },
+  "errors": {
+    "invalidCredentials": "Courriel ou mot de passe invalide. Veuillez vérifier vos identifiants et réessayer.",
+    "accountNotFound": "Aucun compte trouvé avec cette adresse courriel.",
+    "genericError": "Une erreur s'est produite lors de la connexion. Veuillez réessayer."
+  },
+  "or": "OU"
+}

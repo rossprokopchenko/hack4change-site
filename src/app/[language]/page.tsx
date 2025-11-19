@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import MuiLink from "@mui/material/Link";
 import { Trans } from "react-i18next/TransWithoutContext";
+import HeroMotion from "@/components/hero-motion";
 
 type Props = {
   params: Promise<{ language: string }>;
@@ -34,28 +35,11 @@ export default async function Home(props: Props) {
         sx={{ height: "90vh", justifyContent: "space-between" }}
       >
         <Grid size="grow">
-          <Typography variant="h3" data-testid="home-title" gutterBottom>
-            {t("title")}
-          </Typography>
-          <Typography>
-            <Trans
-              i18nKey={`description`}
-              t={t}
-              components={[
-                <MuiLink
-                  key="1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://github.com/brocoders/extensive-react-boilerplate/blob/main/docs/README.md"
-                >
-                  {}
-                </MuiLink>,
-              ]}
-            />
-          </Typography>
-        </Grid>
-        <Grid sx={{ mx: "auto" }}>
-          <MuiLink href="/privacy-policy">Privacy Policy</MuiLink>
+          
+        <HeroMotion subtitle={t("description")}>
+          {t("title")}
+        </HeroMotion>
+
         </Grid>
       </Grid>
     </Container>

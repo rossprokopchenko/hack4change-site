@@ -1,5 +1,6 @@
 "use client";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import withPageRequiredGuest from "@/services/auth/with-page-required-guest";
 import { useForm, FormProvider, useFormState } from "react-hook-form";
 import { useAuthResetPasswordService } from "@/services/api/services/auth";
@@ -146,38 +147,40 @@ function Form() {
   });
 
   return (
-    <FormProvider {...methods}>
-      <Container maxWidth="xs">
-        <form onSubmit={onSubmit}>
-          <Grid container spacing={2} mb={2}>
-            <Grid size={{ xs: 12 }} mt={3}>
-              <Typography variant="h6">{t("password-change:title")}</Typography>
-            </Grid>
-            <ExpiresAlert />
-            <Grid size={{ xs: 12 }}>
-              <FormTextInput<PasswordChangeFormData>
-                name="password"
-                label={t("password-change:inputs.password.label")}
-                type="password"
-                testId="password"
-              />
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <FormTextInput<PasswordChangeFormData>
-                name="passwordConfirmation"
-                label={t("password-change:inputs.passwordConfirmation.label")}
-                type="password"
-                testId="password-confirmation"
-              />
-            </Grid>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', pt: { xs: 8, md: 12 } }}>
+      <FormProvider {...methods}>
+        <Container maxWidth="xs">
+          <form onSubmit={onSubmit}>
+            <Grid container spacing={2} mb={2}>
+              <Grid size={{ xs: 12 }} mt={3}>
+                <Typography variant="h6">{t("password-change:title")}</Typography>
+              </Grid>
+              <ExpiresAlert />
+              <Grid size={{ xs: 12 }}>
+                <FormTextInput<PasswordChangeFormData>
+                  name="password"
+                  label={t("password-change:inputs.password.label")}
+                  type="password"
+                  testId="password"
+                />
+              </Grid>
+              <Grid size={{ xs: 12 }}>
+                <FormTextInput<PasswordChangeFormData>
+                  name="passwordConfirmation"
+                  label={t("password-change:inputs.passwordConfirmation.label")}
+                  type="password"
+                  testId="password-confirmation"
+                />
+              </Grid>
 
-            <Grid size={{ xs: 12 }}>
-              <FormActions />
+              <Grid size={{ xs: 12 }}>
+                <FormActions />
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </Container>
-    </FormProvider>
+          </form>
+        </Container>
+      </FormProvider>
+    </Box>
   );
 }
 

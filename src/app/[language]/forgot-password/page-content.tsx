@@ -1,8 +1,8 @@
 "use client";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import withPageRequiredGuest from "@/services/auth/with-page-required-guest";
 import { useForm, FormProvider, useFormState } from "react-hook-form";
-import { useAuthForgotPasswordService } from "@/services/api/services/auth";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -10,7 +10,6 @@ import FormTextInput from "@/components/form/text-input/form-text-input";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSnackbar } from "@/hooks/use-snackbar";
-import HTTP_CODES_ENUM from "@/services/api/types/http-codes";
 import { useTranslation } from "@/services/i18n/client";
 
 type ForgotPasswordFormData = {
@@ -47,7 +46,6 @@ function FormActions() {
 
 function Form() {
   const { enqueueSnackbar } = useSnackbar();
-  const fetchAuthForgotPassword = useAuthForgotPasswordService();
   const { t } = useTranslation("forgot-password");
   const validationSchema = useValidationSchema();
 
@@ -61,54 +59,52 @@ function Form() {
   const { handleSubmit, setError } = methods;
 
   const onSubmit = handleSubmit(async (formData) => {
-    const { data, status } = await fetchAuthForgotPassword(formData);
-
-    if (status === HTTP_CODES_ENUM.UNPROCESSABLE_ENTITY) {
-      (Object.keys(data.errors) as Array<keyof ForgotPasswordFormData>).forEach(
-        (key) => {
-          setError(key, {
-            type: "manual",
-            message: t(
-              `forgot-password:inputs.${key}.validation.server.${data.errors[key]}`
-            ),
-          });
-        }
-      );
-
-      return;
-    }
-
-    if (status === HTTP_CODES_ENUM.NO_CONTENT) {
+    try {
+      // Import resetPassword from Supabase auth
+      const { resetPassword } = await import("@/services/supabase/auth");
+      
+      await resetPassword(formData.email);
+      
       enqueueSnackbar(t("forgot-password:alerts.success"), {
         variant: "success",
+      });
+    } catch (err: any) {
+      // Handle errors from Supabase
+      const errorMessage = err.message || t("forgot-password:alerts.error");
+      
+      setError("email", {
+        type: "manual",
+        message: errorMessage,
       });
     }
   });
 
   return (
-    <FormProvider {...methods}>
-      <Container maxWidth="xs">
-        <form onSubmit={onSubmit}>
-          <Grid container spacing={2} mb={2}>
-            <Grid size={{ xs: 12 }} mt={3}>
-              <Typography variant="h6">{t("forgot-password:title")}</Typography>
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <FormTextInput<ForgotPasswordFormData>
-                name="email"
-                label={t("forgot-password:inputs.email.label")}
-                type="email"
-                testId="email"
-              />
-            </Grid>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', pt: { xs: 8, md: 12 } }}>
+      <FormProvider {...methods}>
+        <Container maxWidth="xs">
+          <form onSubmit={onSubmit}>
+            <Grid container spacing={2} mb={2}>
+              <Grid size={{ xs: 12 }} mt={3}>
+                <Typography variant="h6">{t("forgot-password:title")}</Typography>
+              </Grid>
+              <Grid size={{ xs: 12 }}>
+                <FormTextInput<ForgotPasswordFormData>
+                  name="email"
+                  label={t("forgot-password:inputs.email.label")}
+                  type="email"
+                  testId="email"
+                />
+              </Grid>
 
-            <Grid size={{ xs: 12 }}>
-              <FormActions />
+              <Grid size={{ xs: 12 }}>
+                <FormActions />
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </Container>
-    </FormProvider>
+          </form>
+        </Container>
+      </FormProvider>
+    </Box>
   );
 }
 
