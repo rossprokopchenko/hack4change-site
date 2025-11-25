@@ -1,9 +1,54 @@
 {
-    "title": "Contact",
-    "description": "If you are interested in attending this event as a participant or have any questions, please reach out to us at <emailLink>contact@hack4change.ca</emailLink>",
+  "title": "Contact Hack4Change",
+  
+  "participants": {
+    "title": "Participants",
+    "intro": "Ready to join Moncton's inaugural civic tech hackathon?",
+    "registration": "Registration opens soon! Sign up for our mailing list to be notified when registration goes live and receive event updates:",
+    "emailSignup": "Email Signup Form",
+    "questions": "Questions about participating?",
+    "email": "Email: contact@hack4change.ca",
+    "faqLink": "Check our FAQ page for answers to common questions."
+  },
 
-    "sponsors": {
-        "title": "Sponsors",
-        "description": "We are grateful for the support of our sponsors who make Hack4Change possible. If you are interested in sponsoring the event, please reach out to us at <emailLink>contact@hack4change.ca</emailLink>"
-    }
+  "sponsors": {
+    "title": "Sponsors",
+    "intro": "Interested in sponsoring Hack4Change?",
+    "description": "Your sponsorship supports civic innovation and connects you with emerging tech talent while addressing critical community challenges.",
+    "prospectus": "Download our sponsorship prospectus:",
+    "prospectusLink": "Link to PDF",
+    "discuss": "Let's discuss your partnership:",
+    "email": "Email: contact@hack4change.ca",
+    "meeting": "We're happy to meet in person or by video call to discuss sponsorship opportunities and create custom packages."
+  },
+
+  "media": {
+    "title": "Media Inquiries",
+    "intro": "Press, interviews, or media partnerships:",
+    "email": "Email: contact@hack4change.ca",
+    "info": "We're happy to provide additional information, arrange interviews with organizers, or discuss media partnerships."
+  },
+
+  "general": {
+    "title": "General Questions",
+    "intro": "For any other questions about Hack4Change:",
+    "email": "Email: contact@hack4change.ca",
+    "response": "We typically respond within 24-48 hours."
+  },
+
+  "stayConnected": {
+    "title": "Stay Connected",
+    "intro": "Join our mailing list to receive event updates:",
+    "emailSignup": "Email signup form",
+    "description": "Never miss important announcements about registration, sponsors, prizes, or event details.",
+    "email": "Email us: contact@hack4change.ca"
+  },
+
+  "eventLocation": {
+    "title": "Event Location",
+    "name": "Venn Innovation",
+    "address": "770 St George Blvd\nMoncton, NB E1E 2C6",
+    "map": "Embedded Google Map",
+    "note": "Parking and accessibility information will be provided to registered participants."
+  }
 }

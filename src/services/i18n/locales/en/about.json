@@ -1,56 +1,169 @@
 {
   "title": "About Hack4Change",
-  "description": "A 3-day intensive collaborative coding event where teams will design, develop, and present working prototypes. This event will focus on addressing a critical challenge faced by civic life.",
+  
+  "opening": "Hack4Change is Moncton's inaugural civic tech hackathon, organized by Civic Tech Moncton in partnership with the Greater Moncton Homelessness Steering Committee. This three-day intensive event brings together developers, designers, students, and community advocates to build technology solutions that create lasting community impact.",
+
+  "whatMakesDifferent": {
+    "title": "What Makes This Different",
+    "subtitle": "Most hackathons end with abandoned prototypes. Not this one.",
+    "description": "The winning solution will be fully developed and deployed through a committed partnership between Civic Tech Moncton volunteers, the winning team, and the Greater Moncton Homelessness Steering Committee (GMHSC).",
+    "benefits": [
+      "Be developed into a production-ready application",
+      "Be deployed to GMHSC member organizations across Southeast New Brunswick",
+      "Serve real people experiencing homelessness",
+      "Make measurable, lasting impact on community service delivery"
+    ],
+    "closing": "This isn't just a competition. It's the beginning of a real project."
+  },
+
+  "challenge": {
+    "title": "The Challenge",
+    "partner": "Partner: Greater Moncton Homelessness Steering Committee (GMHSC)",
+    "description": "GMHSC coordinates multiple service locations across Southeast New Brunswick serving individuals experiencing homelessness. Currently, these organizations lack efficient tools for real-time resource sharing and coordination across locations.",
+    "mission": "Your Mission: Design and prototype innovative technology solutions that enable community organizations to:",
+    "objectives": [
+      "Coordinate resources across multiple locations",
+      "Share information in real-time",
+      "Respond more effectively to community needs"
+    ],
+    "reveal": "The Reveal: Specific challenge requirements, technical constraints, and success criteria will be revealed Friday, March 13th at 6:00 PM during the opening ceremony. This ensures all teams start with equal information and preparation time.",
+    "transparency": "Transparency Note: While participants receive the detailed challenge Friday evening, we share more context with sponsors to help them understand the community impact of their investment. Sponsors know WHY this matters; participants discover HOW to solve it."
+  },
+
+  "whyMatters": {
+    "title": "Why This Matters",
+    "description": "Greater Moncton faces a visible homelessness crisis disproportionately severe compared to major Canadian cities. As of August 2024, 511 individuals are experiencing chronic homelessness in our community.\n\nGMHSC works tirelessly to coordinate services, but lacks the technology infrastructure to maximize their impact. Every improvement in coordination means faster, more effective support for vulnerable community members.\n\nYour solution will have measurable impact on real lives."
+  },
 
   "event": {
     "title": "Event Details",
-    "date": "Friday, March 13th (Evening) - Sunday, March 15th (Afternoon), 2026",
-    "location": "Venn Innovation - 770 St George Blvd, Moncton, NB E1E 2C6"
-  },
-  "team": {
-    "title": "The Hackathon Team",
-    "members": {
-      "Ankit Malik": "Project Manager for Hackathon",
-      "Mo Kinlad": "Senior Hackathon Advisor",
-      "Deji Badejo": "Project Manager of Logistics",
-      "Ross Prokopchenko": "Tech Team",
-      "Gavanjeet Singh": "Tech Team",
-      "Folusho Ogundele": "Administration",
-      "Henrietta Antigha": "Communication",
-      "Daria Kirianova": "SM & Content",
-      "Shannon McMackin": "Civic Tech Moncton Leader",
-      "Artem Stromets": "Civic Tech Moncton IT Leader"
+    "when": {
+      "title": "Date",
+      "description": "March 13-15, 2026"
+    },
+    "where": {
+      "title": "Location",
+      "description": "Venn Innovation, 770 St George Blvd, Moncton, NB E1E 2C6"
+    },
+    "who": {
+      "title": "Participants",
+      "description": "20-40 participants (1-4 per team)"
+    },
+    "schedule": {
+      "title": "Schedule Overview",
+      "friday": {
+        "title": "Friday, March 13 (Evening)",
+        "items": [
+          "Early evening: Registration & Networking",
+          "Challenge Reveal & Opening Ceremony with sponsor introductions",
+          "Team formation and hacking begins"
+        ]
+      },
+      "saturday": {
+        "title": "Saturday, March 14 (All Day)",
+        "items": [
+          "Full-day hacking with mentor support",
+          "Optional sponsor-led workshops",
+          "Meals provided throughout the day"
+        ]
+      },
+      "sunday": {
+        "title": "Sunday, March 15 (Afternoon)",
+        "items": [
+          "Morning: Final development sprint",
+          "Early afternoon: Project submissions and team presentations to judges",
+          "Late afternoon: Awards ceremony and closing remarks"
+        ]
+      },
+      "note": "*Detailed schedule will be provided to registered participants closer to the event date.*"
     }
   },
 
-  "partners": {
-    "title": "Partners",
-    "description": "We are grateful for the support of our partners who make Hack4Change possible."
+  "whoShould": {
+    "title": "Who Should Participate",
+    "intro": "You're a great fit if you are:",
+    "profiles": [
+      "Software Developer",
+      "UI/UX Designer",
+      "Student in IT",
+      "Data Analyst", 
+      "Database Specialist",
+      "Systems Architect",
+      "Project Manager",
+      "Anyone passionate about using technology to solve social challenges"
+    ],"note": "No experience with homelessness services required! GMHSC representatives and mentors will provide domain expertise."
   },
 
-  "faq": {
-    "title": "Frequently Asked Questions",
-    "questions": [
+  "prizes": {
+    "title": "Prizes & Recognition",
+    "prizePool": "A prize pool of at least $5,000 will be awarded to winning teams, with exact amounts to be announced as sponsorship is finalized.",
+    "beyond": "Beyond cash prizes, winning teams receive:",
+    "benefits": [
+      "Partnership with Civic Tech Moncton to develop the full solution",
+      "Recognition as the solution is deployed to community organizations",
+      "Portfolio-worthy project with real-world impact",
+      "Ongoing attribution in all communications about the deployed solution"
+    ],
+    "note": "Prize categories and judging criteria will be announced with the challenge reveal on Friday evening."
+  },
+
+  "partners": {
+    "title": "About Our Partners",
+    "gmhsc": {
+      "title": "Challenge Partner: Greater Moncton Homelessness Steering Committee",
+      "description": "The Greater Moncton Homelessness Steering Committee (GMHSC) is a multi-stakeholder network of professionals from community organizations and all levels of government, working collaboratively to prevent and reduce homelessness by increasing access to safe, adequate, and supportive housing.\n\nUsing a data-informed systems approach, GMHSC drives lasting change through education, advocacy, and targeted support, ensuring affordable housing and essential services are available to those in need.",
+      "link": "Learn more: monctonhomelessness.org"
+    },
+    "venn": {
+      "title": "Venue Partner: Venn Innovation",
+      "description": "[Brief description of Venn - to be added once confirmed]"
+    },
+    "civicTech": {
+      "title": "About Civic Tech Moncton",
+      "description": "Launched in September 2024, Civic Tech Moncton is a volunteer-driven initiative that harnesses technology and collaboration to solve real-world challenges in Greater Moncton. We meet weekly at Venn Innovation, bringing together developers, designers, students, professionals, and community advocates.",
+      "mission": "Our Mission: To empower community members to use technology as a force for positive change, making Greater Moncton a more connected, innovative, and inclusive place to live.",
+      "milestone": "This hackathon represents our first major public event and a milestone in establishing Moncton as a hub for civic technology in Atlantic Canada.",
+      "link": "Learn more: civictechmoncton.org"
+    }
+  },
+
+  "team": {
+    "title": "Organizing Team",
+    "intro": "Hack4Change is organized by passionate leaders from Civic Tech Moncton with expertise in technology, project management, and community engagement:",
+    "core": [
       {
-        "question": "Who can participate in Hack4Change?",
-        "answer": "Hack4Change is open to anyone interested in civic technology and social innovation. Whether you're a developer, designer, project manager, or someone passionate about community impact, you're welcome to join!"
+        "name": "Ankit Malik",
+        "role": "Project Manager"
       },
       {
-        "question": "Do I need to have a team to participate?",
-        "answer": "No! You can register as an individual and we'll help you find a team during the event. Alternatively, you can form a team beforehand with friends or colleagues."
+        "name": "Mo Kinlad",
+        "role": "Senior Hackathon Advisor"
       },
       {
-        "question": "What should I bring to the hackathon?",
-        "answer": "Bring your laptop, charger, and any other devices you'll need. We'll provide WiFi, workspace, and meals throughout the event. Don't forget your enthusiasm and creativity!"
+        "name": "Folusho Ogundele",
+        "role": "Administration"
       },
       {
-        "question": "Will there be prizes?",
-        "answer": "Yes! We'll have prizes for winning teams, as well as special category awards. Details will be announced closer to the event date."
+        "name": "Henrietta Antigha",
+        "role": "Communication"
       },
       {
-        "question": "What if I've never been to a hackathon before?",
-        "answer": "That's perfectly fine! Hack4Change welcomes first-time participants. We'll have mentors available throughout the event to help guide you and answer questions."
+        "name": "Daria Kirianova",
+        "role": "Social Media & Content"
+      },
+      {
+        "name": "Artem Stromets",
+        "role": "Civic Tech Moncton IT Leader"
+      },
+      {
+        "name": "Shannon McMackin",
+        "role": "Civic Tech Moncton Leader"
       }
     ]
+  },
+
+  "accessibility": {
+    "title": "Accessibility",
+    "description": "Venn Innovation is an accessible venue. If you require specific accommodations such as dietary restrictions, mobility assistance, or any other needs - please indicate this during registration or contact us at contact@hack4change.ca. We're committed to ensuring everyone can participate fully."
   }
 }

@@ -1,53 +1,160 @@
 {
   "title": "À propos de Hack4Change",
-  "description": "Un événement de codage collaboratif intensif de 3 jours où les équipes concevront, développeront et présenteront des prototypes fonctionnels. Cet événement se concentrera sur la résolution d'un défi critique auquel est confrontée la vie civique.",
+  
+  "opening": "Hack4Change est le premier hackathon de technologie civique de Moncton, organisé par Civic Tech Moncton en partenariat avec le Comité directeur sur l'itinérance du Grand Moncton. Cet événement intensif de trois jours rassemble développeurs, concepteurs, étudiants et défenseurs communautaires pour créer des solutions technologiques ayant un impact communautaire durable.",
+
+  "whatMakesDifferent": {
+    "title": "⚡ Ce qui rend ceci différent",
+    "subtitle": "La plupart des hackathons se terminent avec des prototypes abandonnés. Pas celui-ci.",
+    "description": "La solution gagnante sera entièrement développée et déployée grâce à un partenariat engagé entre les bénévoles de Civic Tech Moncton, l'équipe gagnante et le Comité directeur sur l'itinérance du Grand Moncton (GMHSC).",
+    "benefits": [
+      "Être développée en une application prête pour la production",
+      "Être déployée aux organisations membres du GMHSC à travers le sud-est du Nouveau-Brunswick",
+      "Servir de vraies personnes vivant l'itinérance",
+      "Avoir un impact mesurable et durable sur la prestation de services communautaires"
+    ],
+    "closing": "Ce n'est pas seulement une compétition. C'est le début d'un vrai projet."
+  },
+
+  "challenge": {
+    "title": "Le défi",
+    "partner": "Partenaire : Comité directeur sur l'itinérance du Grand Moncton (GMHSC)",
+    "description": "Le GMHSC coordonne plusieurs points de service à travers le sud-est du Nouveau-Brunswick servant les personnes vivant l'itinérance. Actuellement, ces organisations manquent d'outils efficaces pour le partage de ressources en temps réel et la coordination entre les emplacements.",
+    "mission": "Votre mission : Concevoir et prototyper des solutions technologiques innovantes permettant aux organisations communautaires de :",
+    "objectives": [
+      "Coordonner les ressources à travers plusieurs emplacements",
+      "Partager l'information en temps réel",
+      "Répondre plus efficacement aux besoins de la communauté"
+    ],
+    "reveal": "La révélation : Les exigences spécifiques du défi, les contraintes techniques et les critères de réussite seront révélés le vendredi 13 mars à 18h00 lors de la cérémonie d'ouverture. Cela garantit que toutes les équipes commencent avec les mêmes informations et le même temps de préparation.",
+    "transparency": "Note de transparence : Tandis que les participants reçoivent le défi détaillé vendredi soir, nous partageons plus de contexte avec les commanditaires pour les aider à comprendre l'impact communautaire de leur investissement. Les commanditaires savent POURQUOI c'est important ; les participants découvrent COMMENT le résoudre."
+  },
+
+  "whyMatters": {
+    "title": "Pourquoi c'est important",
+    "description": "Le Grand Moncton fait face à une crise d'itinérance visible, disproportionnellement grave comparée aux grandes villes canadiennes. En août 2024, 511 personnes vivaient l'itinérance chronique dans notre communauté.\n\nLe GMHSC travaille sans relâche pour coordonner les services, mais manque d'infrastructure technologique pour maximiser son impact. Chaque amélioration de la coordination signifie un soutien plus rapide et plus efficace pour les membres vulnérables de la communauté.\n\nVotre solution aura un impact mesurable sur de vraies vies."
+  },
+
   "event": {
     "title": "Détails de l'événement",
-    "date": "Vendredi 13 mars (soir) - Dimanche 15 mars (après-midi), 2026",
-    "location": "Venn Innovation - 770 St George Blvd, Moncton, NB E1E 2C6"
-  },
-  "team": {
-    "title": "L'équipe du Hackathon",
-    "members": {
-      "Ankit Malik": "Chef de projet pour le Hackathon",
-      "Mo Kinlad": "Conseiller principal du Hackathon",
-      "Deji Badejo": "Chef de projet logistique",
-      "Ross Prokopchenko": "Équipe technique",
-      "Gavanjeet Singh": "Équipe technique",
-      "Folusho Ogundele": "Administration",
-      "Henrietta Antigha": "Communication",
-      "Daria Kirianova": "RS et contenu",
-      "Shannon McMackin": "Responsable Civic Tech Moncton",
-      "Artem Stromets": "Responsable informatique Civic Tech Moncton"
+    "when": "Quand : 13-15 mars 2026",
+    "where": "Où :\nVenn Innovation\n770 St George Blvd, Moncton, NB E1E 2C6",
+    "who": "Qui : 20-40 participants répartis en environ 10 équipes (1-4 membres par équipe)",
+    "schedule": {
+      "title": "Aperçu de l'horaire",
+      "friday": {
+        "title": "Vendredi 13 mars (Soir)",
+        "items": [
+          "Début de soirée : Inscription et réseautage",
+          "Révélation du défi et cérémonie d'ouverture avec présentations des commanditaires",
+          "Formation des équipes et début du hackathon"
+        ]
+      },
+      "saturday": {
+        "title": "Samedi 14 mars (Toute la journée)",
+        "items": [
+          "Hackathon toute la journée avec soutien de mentors",
+          "Ateliers optionnels dirigés par les commanditaires",
+          "Repas fournis tout au long de la journée"
+        ]
+      },
+      "sunday": {
+        "title": "Dimanche 15 mars (Après-midi)",
+        "items": [
+          "Matin : Sprint de développement final",
+          "Début d'après-midi : Soumissions de projets et présentations d'équipes aux juges",
+          "Fin d'après-midi : Cérémonie de remise des prix et remarques de clôture"
+        ]
+      },
+      "note": "*L'horaire détaillé sera fourni aux participants inscrits plus près de la date de l'événement.*"
     }
   },
-  "partners": {
-    "title": "Partenaires",
-    "description": "Nous sommes reconnaissants du soutien de nos partenaires qui rendent Hack4Change possible."
+
+  "whoShould": {
+    "title": "Qui devrait participer",
+    "intro": "Vous êtes un bon candidat si vous êtes :",
+    "profiles": [
+      "Un développeur de logiciels ou programmeur (tout niveau de compétence)",
+      "Un concepteur UX/UI ou concepteur de produits",
+      "Un étudiant universitaire ou collégial dans un programme technologique",
+      "Un analyste de données, spécialiste de bases de données ou architecte de systèmes",
+      "Un chef de projet ou quelqu'un qui aime organiser des projets complexes",
+      "Toute personne passionnée par l'utilisation de la technologie pour résoudre des défis sociaux"
+    ],
+    "teamStructure": "Structure d'équipe :\n• Équipes de 1-4 participants\n• Équipes pré-formées encouragées mais participants solo bienvenus\n• Environ 10 équipes attendues",
+    "note": "Aucune expérience des services d'itinérance n'est requise ! Les représentants du GMHSC et les mentors fourniront l'expertise du domaine."
   },
-  "faq": {
-    "title": "Foire aux questions",
-    "questions": [
+
+  "prizes": {
+    "title": "Prix et reconnaissance",
+    "prizePool": "Une cagnotte de prix d'au moins 5 000 $ sera décernée aux équipes gagnantes, les montants exacts étant annoncés au fur et à mesure que le parrainage est finalisé.",
+    "beyond": "Au-delà des prix en argent, les équipes gagnantes reçoivent :",
+    "benefits": [
+      "Partenariat avec Civic Tech Moncton pour développer la solution complète",
+      "Reconnaissance lors du déploiement de la solution aux organisations communautaires",
+      "Projet digne d'un portfolio avec impact concret",
+      "Attribution continue dans toutes les communications concernant la solution déployée"
+    ],
+    "note": "Les catégories de prix et les critères de jugement seront annoncés avec la révélation du défi vendredi soir."
+  },
+
+  "partners": {
+    "title": "À propos de nos partenaires",
+    "gmhsc": {
+      "title": "Partenaire du défi : Comité directeur sur l'itinérance du Grand Moncton",
+      "description": "Le Comité directeur sur l'itinérance du Grand Moncton (GMHSC) est un réseau multi-parties prenantes de professionnels d'organisations communautaires et de tous les niveaux de gouvernement, travaillant en collaboration pour prévenir et réduire l'itinérance en augmentant l'accès à un logement sûr, adéquat et de soutien.\n\nUtilisant une approche systémique fondée sur les données, le GMHSC génère un changement durable grâce à l'éducation, la défense des droits et le soutien ciblé, garantissant que le logement abordable et les services essentiels sont disponibles pour ceux qui en ont besoin.",
+      "link": "En savoir plus : monctonhomelessness.org"
+    },
+    "venn": {
+      "title": "Partenaire de lieu : Venn Innovation",
+      "description": "[Brève description de Venn - à ajouter une fois confirmée]"
+    },
+    "civicTech": {
+      "title": "À propos de Civic Tech Moncton",
+      "description": "Lancé en septembre 2024, Civic Tech Moncton est une initiative bénévole qui exploite la technologie et la collaboration pour résoudre les défis du monde réel dans le Grand Moncton. Nous nous réunissons chaque semaine à Venn Innovation, rassemblant développeurs, concepteurs, étudiants, professionnels et défenseurs communautaires.",
+      "mission": "Notre mission : Donner aux membres de la communauté les moyens d'utiliser la technologie comme force de changement positif, faisant du Grand Moncton un endroit plus connecté, innovant et inclusif où vivre.",
+      "milestone": "Ce hackathon représente notre premier événement public majeur et une étape importante dans l'établissement de Moncton comme centre de technologie civique dans le Canada atlantique.",
+      "link": "En savoir plus : civictechmoncton.org"
+    }
+  },
+
+  "team": {
+    "title": "Équipe organisatrice",
+    "intro": "Hack4Change est organisé par des leaders passionnés de Civic Tech Moncton avec une expertise en technologie, gestion de projet et engagement communautaire :",
+    "core": [
       {
-        "question": "Qui peut participer à Hack4Change ?",
-        "answer": "Hack4Change est ouvert à toute personne intéressée par la technologie civique et l'innovation sociale. Que vous soyez développeur, designer, chef de projet ou simplement passionné par l'impact communautaire, vous êtes le bienvenu !"
+        "name": "Ankit Malik",
+        "role": "Chef de projet"
       },
       {
-        "question": "Dois-je avoir une équipe pour participer ?",
-        "answer": "Non ! Vous pouvez vous inscrire individuellement et nous vous aiderons à trouver une équipe pendant l'événement. Alternativement, vous pouvez former une équipe à l'avance avec des amis ou des collègues."
+        "name": "Mo Kinlad",
+        "role": "Conseiller principal du hackathon"
       },
       {
-        "question": "Que dois-je apporter au hackathon ?",
-        "answer": "Apportez votre ordinateur portable, votre chargeur et tout autre appareil dont vous aurez besoin. Nous fournirons le WiFi, l'espace de travail et les repas tout au long de l'événement. N'oubliez pas votre enthousiasme et votre créativité !"
+        "name": "Folusho Ogundele",
+        "role": "Administration"
       },
       {
-        "question": "Y aura-t-il des prix ?",
-        "answer": "Oui ! Nous aurons des prix pour les équipes gagnantes, ainsi que des prix de catégories spéciales. Les détails seront annoncés à l'approche de la date de l'événement."
+        "name": "Henrietta Antigha",
+        "role": "Communication"
       },
       {
-        "question": "Et si je n'ai jamais participé à un hackathon auparavant ?",
-        "answer": "C'est tout à fait normal ! Hack4Change accueille les participants pour la première fois. Nous aurons des mentors disponibles tout au long de l'événement pour vous guider et répondre à vos questions."
+        "name": "Daria Kirianova",
+        "role": "Médias sociaux et contenu"
+      },
+      {
+        "name": "Artem Stromets",
+        "role": "Chef TI de Civic Tech Moncton"
+      },
+      {
+        "name": "Shannon McMackin",
+        "role": "Chef de Civic Tech Moncton"
       }
     ]
+  },
+
+  "accessibility": {
+    "title": "Accessibilité",
+    "description": "Venn Innovation est un lieu accessible. Si vous avez besoin d'accommodements spécifiques—incluant des restrictions alimentaires, de l'aide à la mobilité ou tout autre besoin—veuillez l'indiquer lors de l'inscription ou nous contacter à contact@hack4change.ca. Nous nous engageons à garantir que tout le monde puisse participer pleinement."
   }
 }

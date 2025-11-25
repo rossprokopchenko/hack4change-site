@@ -1,0 +1,162 @@
+{
+  "title": "Frequently Asked Questions",
+  
+  "categories": {
+    "registration": {
+      "title": "Registration & Participation",
+      "questions": [
+        {
+          "q": "Do I need to have a team to register?",
+          "a": "Teams of 1-4 people are encouraged. While we expect most participants to register as pre-formed teams, solo participants are welcome and we'll facilitate connections during the Friday evening kickoff. However, we recommend forming your team before the event if possible to maximize your working time."
+        },
+        {
+          "q": "Is there a registration fee?",
+          "a": "No, Hack4Change is completely free for all participants. Meals and refreshments are provided throughout the weekend."
+        },
+        {
+          "q": "What skill level do I need?",
+          "a": "All levels are welcome! Whether you're a seasoned professional or a student just starting out, you'll find ways to contribute. We'll have mentors available to support teams throughout the event."
+        },
+        {
+          "q": "Do I need to be a developer?",
+          "a": "No! We need designers, project managers, data analysts, and anyone passionate about problem-solving. The best solutions come from diverse teams with varied perspectives."
+        },
+        {
+          "q": "Do I need to be 18+ to participate?",
+          "a": "Participants under 18 are welcome but must have parental/guardian consent. Minors should plan to be accompanied by a parent/guardian or be part of a team with adult supervision. Contact us at contact@hack4change.ca for the consent form."
+        },
+        {
+          "q": "Do I need to be from Moncton?",
+          "a": "No! We welcome participants from across Atlantic Canada and beyond. However, this is an in-person event—virtual participation is not available."
+        }
+      ]
+    },
+    "challenge": {
+      "title": "About the Challenge",
+      "questions": [
+        {
+          "q": "What exactly is the challenge?",
+          "a": "The challenge involves developing technology solutions for resource coordination across GMHSC's network of service locations. Specific requirements, technical constraints, and success criteria will be revealed Friday, March 13th at 6:00 PM to ensure all teams start with equal information."
+        },
+        {
+          "q": "Why don't you tell us the challenge details now?",
+          "a": "We want to ensure fair competition. If we released details early, teams who heard about the hackathon months ago would have an unfair advantage over teams who register closer to the event. Everyone starts together Friday evening."
+        },
+        {
+          "q": "Can sponsors see the full challenge before we do?",
+          "a": "Sponsors receive context about the community impact and partnership opportunity, but not the specific technical requirements. They understand WHY this matters; participants discover HOW to solve it starting Friday evening."
+        },
+        {
+          "q": "Do I need experience with homelessness services?",
+          "a": "No! GMHSC representatives and mentors will provide domain expertise and answer questions throughout the event. Your job is to bring technical skills and creative problem-solving."
+        },
+        {
+          "q": "What technologies can we use?",
+          "a": "Any technologies you choose! Web applications, mobile apps, APIs, data visualization tools, cloud platforms—whatever you think best solves the challenge. There are no technology restrictions."
+        }
+      ]
+    },
+    "deployment": {
+      "title": "The \"It Actually Gets Built\" Part",
+      "questions": [
+        {
+          "q": "Will the winning solution really be built and deployed?",
+          "a": "Yes. This is our core differentiator. The winning team will partner with Civic Tech Moncton volunteers and GMHSC over the following months to:\n• Refine the prototype based on user feedback\n• Develop a production-ready application\n• Test with GMHSC member organizations\n• Deploy for actual use across Southeast New Brunswick\n\nThis is a real commitment from both Civic Tech Moncton and GMHSC."
+        },
+        {
+          "q": "How long does the development process take after the hackathon?",
+          "a": "Typically 3-6 months, depending on the solution's complexity. The winning team determines their level of ongoing involvement, but Civic Tech Moncton volunteers will ensure the project reaches deployment regardless."
+        },
+        {
+          "q": "What if I can't commit to the post-hackathon development?",
+          "a": "That's fine! You can be involved as much or as little as you want. Many winning team members stay involved; others hand off their work to Civic Tech Moncton volunteers. The key is that the solution WILL be completed and deployed."
+        },
+        {
+          "q": "Who owns the code we write?",
+          "a": "All code developed during Hack4Change will be open-source under the MIT License. This means:\n• Your code is freely available to GMHSC and other communities facing similar challenges\n• The winning team retains attribution as the original creators\n• Anyone can use, modify, and deploy the solution\n• Other Civic Tech communities across Canada can adopt and adapt your work\n• You maintain the right to showcase it in your portfolio\n\nBy participating, teams agree to the MIT License for their Hack4Change submissions. This aligns with Civic Tech's mission of creating public good technology."
+        },
+        {
+          "q": "Can we use our solution in our portfolio?",
+          "a": "Absolutely! We encourage all participants to showcase their work. The winning team receives additional recognition as the solution is deployed and can reference its real-world impact."
+        }
+      ]
+    },
+    "logistics": {
+      "title": "Logistics & Event Details",
+      "questions": [
+        {
+          "q": "What should I bring?",
+          "a": "Bring your laptop, chargers, any devices or tools you'll need to work, and your enthusiasm! We'll provide workspace, WiFi, food, drinks, and good company."
+        },
+        {
+          "q": "Where can I park?",
+          "a": "Parking information will be provided to registered participants prior to the event."
+        },
+        {
+          "q": "Can I leave and come back?",
+          "a": "Yes! While we encourage continuous participation for the best team experience and momentum, you're free to come and go as needed."
+        },
+        {
+          "q": "Will there be food?",
+          "a": "Yes! Meals and snacks will be provided throughout the weekend. Specific meal times will be included in the detailed schedule sent to registered participants. If you have dietary restrictions, please indicate this during registration."
+        },
+        {
+          "q": "Are there accommodations for out-of-town participants?",
+          "a": "While we don't provide accommodations, we're happy to suggest nearby hotels. Contact us at contact@hack4change.ca for recommendations."
+        },
+        {
+          "q": "Is the venue accessible?",
+          "a": "Yes, Venn Innovation is an accessible venue. If you require specific accommodations, please indicate this during registration or contact us at contact@hack4change.ca."
+        }
+      ]
+    },
+    "judging": {
+      "title": "Judging, Prizes & Recognition",
+      "questions": [
+        {
+          "q": "Who will judge the projects?",
+          "a": "Projects will be judged by a panel including GMHSC representatives, technology industry professionals, and community stakeholders. Specific judges will be announced closer to the event."
+        },
+        {
+          "q": "What are the judging criteria?",
+          "a": "Judging criteria will be announced with the challenge reveal on Friday evening and will align with GMHSC's priorities. Expect evaluation based on community impact, technical execution, user experience, feasibility, and presentation quality."
+        },
+        {
+          "q": "How much are the prizes?",
+          "a": "The prize pool is at least $5,000, with exact amounts to be announced as sponsorship is finalized. This ensures we deliver meaningful prizes while maintaining fiscal responsibility. Prize amounts will be confirmed before the event begins."
+        },
+        {
+          "q": "What prizes are being awarded?",
+          "a": "Prize categories will be announced during the opening ceremony. Expect recognition for overall solution quality, innovation, user experience, and other criteria aligned with the challenge."
+        },
+        {
+          "q": "Is this winner-take-all or are there multiple prizes?",
+          "a": "Multiple prizes will be awarded across different categories. Even if you don't win first place, there are opportunities for recognition and prizes."
+        }
+      ]
+    },
+    "mentorship": {
+      "title": "Mentorship & Support",
+      "questions": [
+        {
+          "q": "Will there be mentors available?",
+          "a": "Yes! Industry professionals, experienced developers, and GMHSC representatives will be available throughout the weekend to provide technical guidance, domain expertise, and strategic advice."
+        },
+        {
+          "q": "Will sponsors be there?",
+          "a": "Yes, many sponsors will have representatives on-site to mentor teams, host workshops, and connect with participants. This is a great networking opportunity."
+        },
+        {
+          "q": "What if we get stuck on something technical?",
+          "a": "Mentors will be available to help! We'll have expertise in various technology stacks, design, and project management. If you're really stuck, we'll help you find solutions or pivot your approach."
+        }
+      ]
+    }
+  },
+
+  "stillQuestions": {
+    "title": "Still have questions?",
+    "contact": "Contact us at contact@hack4change.ca",
+    "response": "We typically respond within 24-48 hours."
+  }
+}

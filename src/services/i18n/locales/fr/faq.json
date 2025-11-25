@@ -1,0 +1,162 @@
+{
+  "title": "Foire aux questions",
+  
+  "categories": {
+    "registration": {
+      "title": "Inscription et participation",
+      "questions": [
+        {
+          "q": "Dois-je avoir une équipe pour m'inscrire ?",
+          "a": "Les équipes de 1 à 4 personnes sont encouragées. Bien que nous nous attendions à ce que la plupart des participants s'inscrivent en équipes pré-formées, les participants solo sont les bienvenus et nous faciliterons les connexions lors du lancement vendredi soir. Cependant, nous recommandons de former votre équipe avant l'événement si possible pour maximiser votre temps de travail."
+        },
+        {
+          "q": "Y a-t-il des frais d'inscription ?",
+          "a": "Non, Hack4Change est entièrement gratuit pour tous les participants. Les repas et les rafraîchissements sont fournis tout au long du week-end."
+        },
+        {
+          "q": "Quel niveau de compétence ai-je besoin ?",
+          "a": "Tous les niveaux sont les bienvenus ! Que vous soyez un professionnel chevronné ou un étudiant qui débute, vous trouverez des façons de contribuer. Nous aurons des mentors disponibles pour soutenir les équipes tout au long de l'événement."
+        },
+        {
+          "q": "Dois-je être développeur ?",
+          "a": "Non ! Nous avons besoin de concepteurs, de chefs de projet, d'analystes de données et de toute personne passionnée par la résolution de problèmes. Les meilleures solutions proviennent d'équipes diversifiées avec des perspectives variées."
+        },
+        {
+          "q": "Dois-je avoir 18 ans et plus pour participer ?",
+          "a": "Les participants de moins de 18 ans sont les bienvenus mais doivent avoir le consentement parental/tuteur. Les mineurs devraient prévoir d'être accompagnés par un parent/tuteur ou faire partie d'une équipe avec supervision adulte. Contactez-nous à contact@hack4change.ca pour le formulaire de consentement."
+        },
+        {
+          "q": "Dois-je être de Moncton ?",
+          "a": "Non ! Nous accueillons les participants de partout au Canada atlantique et au-delà. Cependant, il s'agit d'un événement en personne—la participation virtuelle n'est pas disponible."
+        }
+      ]
+    },
+    "challenge": {
+      "title": "À propos du défi",
+      "questions": [
+        {
+          "q": "Quel est exactement le défi ?",
+          "a": "Le défi consiste à développer des solutions technologiques pour la coordination des ressources à travers le réseau de points de service du GMHSC. Les exigences spécifiques, les contraintes techniques et les critères de réussite seront révélés le vendredi 13 mars à 18h00 pour garantir que toutes les équipes commencent avec les mêmes informations."
+        },
+        {
+          "q": "Pourquoi ne nous dites-vous pas les détails du défi maintenant ?",
+          "a": "Nous voulons garantir une compétition équitable. Si nous publiions les détails tôt, les équipes qui ont entendu parler du hackathon il y a des mois auraient un avantage injuste sur les équipes qui s'inscrivent plus près de l'événement. Tout le monde commence ensemble vendredi soir."
+        },
+        {
+          "q": "Les commanditaires peuvent-ils voir le défi complet avant nous ?",
+          "a": "Les commanditaires reçoivent du contexte sur l'impact communautaire et l'opportunité de partenariat, mais pas les exigences techniques spécifiques. Ils comprennent POURQUOI c'est important ; les participants découvrent COMMENT le résoudre à partir de vendredi soir."
+        },
+        {
+          "q": "Ai-je besoin d'expérience avec les services d'itinérance ?",
+          "a": "Non ! Les représentants du GMHSC et les mentors fourniront l'expertise du domaine et répondront aux questions tout au long de l'événement. Votre travail est d'apporter des compétences techniques et une résolution créative de problèmes."
+        },
+        {
+          "q": "Quelles technologies pouvons-nous utiliser ?",
+          "a": "Toutes les technologies que vous choisissez ! Applications web, applications mobiles, APIs, outils de visualisation de données, plateformes cloud—tout ce que vous pensez résoudre le mieux le défi. Il n'y a aucune restriction technologique."
+        }
+      ]
+    },
+    "deployment": {
+      "title": "La partie \"Ça sera vraiment construit\"",
+      "questions": [
+        {
+          "q": "La solution gagnante sera-t-elle vraiment construite et déployée ?",
+          "a": "Oui. C'est notre différenciateur principal. L'équipe gagnante s'associera avec les bénévoles de Civic Tech Moncton et le GMHSC au cours des mois suivants pour :\n• Affiner le prototype basé sur les retours des utilisateurs\n• Développer une application prête pour la production\n• Tester avec les organisations membres du GMHSC\n• Déployer pour une utilisation réelle à travers le sud-est du Nouveau-Brunswick\n\nC'est un engagement réel de la part de Civic Tech Moncton et du GMHSC."
+        },
+        {
+          "q": "Combien de temps prend le processus de développement après le hackathon ?",
+          "a": "Typiquement 3-6 mois, selon la complexité de la solution. L'équipe gagnante détermine son niveau d'implication continue, mais les bénévoles de Civic Tech Moncton garantiront que le projet atteigne le déploiement quoi qu'il arrive."
+        },
+        {
+          "q": "Et si je ne peux pas m'engager au développement post-hackathon ?",
+          "a": "Ce n'est pas grave ! Vous pouvez être impliqué autant ou aussi peu que vous le souhaitez. De nombreux membres d'équipes gagnantes restent impliqués ; d'autres transmettent leur travail aux bénévoles de Civic Tech Moncton. L'essentiel est que la solution SERA complétée et déployée."
+        },
+        {
+          "q": "Qui possède le code que nous écrivons ?",
+          "a": "Tout le code développé pendant Hack4Change sera open-source sous licence MIT. Cela signifie :\n• Votre code est librement disponible pour le GMHSC et d'autres communautés faisant face à des défis similaires\n• L'équipe gagnante conserve l'attribution en tant que créateurs originaux\n• N'importe qui peut utiliser, modifier et déployer la solution\n• D'autres communautés Civic Tech à travers le Canada peuvent adopter et adapter votre travail\n• Vous maintenez le droit de le présenter dans votre portfolio\n\nEn participant, les équipes acceptent la licence MIT pour leurs soumissions Hack4Change. Cela s'aligne avec la mission de Civic Tech de créer une technologie de bien public."
+        },
+        {
+          "q": "Pouvons-nous utiliser notre solution dans notre portfolio ?",
+          "a": "Absolument ! Nous encourageons tous les participants à présenter leur travail. L'équipe gagnante reçoit une reconnaissance supplémentaire lors du déploiement de la solution et peut référencer son impact dans le monde réel."
+        }
+      ]
+    },
+    "logistics": {
+      "title": "Logistique et détails de l'événement",
+      "questions": [
+        {
+          "q": "Que dois-je apporter ?",
+          "a": "Apportez votre ordinateur portable, vos chargeurs, tous les appareils ou outils dont vous aurez besoin pour travailler, et votre enthousiasme ! Nous fournirons l'espace de travail, le WiFi, la nourriture, les boissons et la bonne compagnie."
+        },
+        {
+          "q": "Où puis-je me garer ?",
+          "a": "Les informations de stationnement seront fournies aux participants inscrits avant l'événement."
+        },
+        {
+          "q": "Puis-je partir et revenir ?",
+          "a": "Oui ! Bien que nous encouragions la participation continue pour la meilleure expérience d'équipe et l'élan, vous êtes libre d'aller et venir au besoin."
+        },
+        {
+          "q": "Y aura-t-il de la nourriture ?",
+          "a": "Oui ! Les repas et les collations seront fournis tout au long du week-end. Les heures de repas spécifiques seront incluses dans l'horaire détaillé envoyé aux participants inscrits. Si vous avez des restrictions alimentaires, veuillez l'indiquer lors de l'inscription."
+        },
+        {
+          "q": "Y a-t-il des hébergements pour les participants venant de l'extérieur ?",
+          "a": "Bien que nous ne fournissions pas d'hébergement, nous sommes heureux de suggérer des hôtels à proximité. Contactez-nous à contact@hack4change.ca pour des recommandations."
+        },
+        {
+          "q": "Le lieu est-il accessible ?",
+          "a": "Oui, Venn Innovation est un lieu accessible. Si vous avez besoin d'accommodements spécifiques, veuillez l'indiquer lors de l'inscription ou nous contacter à contact@hack4change.ca."
+        }
+      ]
+    },
+    "judging": {
+      "title": "Jugement, prix et reconnaissance",
+      "questions": [
+        {
+          "q": "Qui jugera les projets ?",
+          "a": "Les projets seront jugés par un panel incluant des représentants du GMHSC, des professionnels de l'industrie technologique et des parties prenantes communautaires. Les juges spécifiques seront annoncés plus près de l'événement."
+        },
+        {
+          "q": "Quels sont les critères de jugement ?",
+          "a": "Les critères de jugement seront annoncés avec la révélation du défi vendredi soir et s'aligneront avec les priorités du GMHSC. Attendez-vous à une évaluation basée sur l'impact communautaire, l'exécution technique, l'expérience utilisateur, la faisabilité et la qualité de la présentation."
+        },
+        {
+          "q": "Combien sont les prix ?",
+          "a": "La cagnotte de prix est d'au moins 5 000 $, les montants exacts étant annoncés au fur et à mesure que le parrainage est finalisé. Cela garantit que nous offrons des prix significatifs tout en maintenant la responsabilité fiscale. Les montants des prix seront confirmés avant le début de l'événement."
+        },
+        {
+          "q": "Quels prix sont décernés ?",
+          "a": "Les catégories de prix seront annoncées lors de la cérémonie d'ouverture. Attendez-vous à une reconnaissance pour la qualité globale de la solution, l'innovation, l'expérience utilisateur et d'autres critères alignés avec le défi."
+        },
+        {
+          "q": "Est-ce que le gagnant remporte tout ou y a-t-il plusieurs prix ?",
+          "a": "Plusieurs prix seront décernés dans différentes catégories. Même si vous ne gagnez pas la première place, il y a des opportunités de reconnaissance et de prix."
+        }
+      ]
+    },
+    "mentorship": {
+      "title": "Mentorat et soutien",
+      "questions": [
+        {
+          "q": "Y aura-t-il des mentors disponibles ?",
+          "a": "Oui ! Des professionnels de l'industrie, des développeurs expérimentés et des représentants du GMHSC seront disponibles tout au long du week-end pour fournir des conseils techniques, une expertise du domaine et des conseils stratégiques."
+        },
+        {
+          "q": "Les commanditaires seront-ils là ?",
+          "a": "Oui, de nombreux commanditaires auront des représentants sur place pour encadrer les équipes, animer des ateliers et se connecter avec les participants. C'est une excellente opportunité de réseautage."
+        },
+        {
+          "q": "Que faire si nous sommes bloqués sur quelque chose de technique ?",
+          "a": "Les mentors seront disponibles pour aider ! Nous aurons une expertise dans diverses piles technologiques, la conception et la gestion de projet. Si vous êtes vraiment bloqués, nous vous aiderons à trouver des solutions ou à pivoter votre approche."
+        }
+      ]
+    }
+  },
+
+  "stillQuestions": {
+    "title": "Vous avez encore des questions ?",
+    "contact": "Contactez-nous à contact@hack4change.ca",
+    "response": "Nous répondons généralement dans les 24-48 heures."
+  }
+}

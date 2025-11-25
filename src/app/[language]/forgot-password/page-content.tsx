@@ -68,9 +68,9 @@ function Form() {
       enqueueSnackbar(t("forgot-password:alerts.success"), {
         variant: "success",
       });
-    } catch (err: any) {
+    } catch (err) {
       // Handle errors from Supabase
-      const errorMessage = err.message || t("forgot-password:alerts.error");
+      const errorMessage = err instanceof Error ? err.message : t("forgot-password:alerts.error");
       
       setError("email", {
         type: "manual",

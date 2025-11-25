@@ -110,6 +110,18 @@ function ResponsiveAppBar() {
                 </Typography>
               </MenuItem>
 
+              <MenuItem onClick={handleCloseNavMenu} component={Link} href="/faq">
+                <Typography textAlign="center">
+                  {t("common:navigation.faq")}
+                </Typography>
+              </MenuItem>
+
+              <MenuItem onClick={handleCloseNavMenu} component={Link} href="/sponsors">
+                <Typography textAlign="center">
+                  {t("common:navigation.sponsors")}
+                </Typography>
+              </MenuItem>
+
               <MenuItem onClick={handleCloseNavMenu} component={Link} href="/contact">
                 <Typography textAlign="center">
                   {t("common:navigation.contact")}
@@ -193,6 +205,24 @@ function ResponsiveAppBar() {
               href="/about"
             >
               {t("common:navigation.about")}
+            </Button>
+
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+              component={Link}
+              href="/faq"
+            >
+              {t("common:navigation.faq")}
+            </Button>
+
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+              component={Link}
+              href="/sponsors"
+            >
+              {t("common:navigation.sponsors")}
             </Button>
 
             <Button

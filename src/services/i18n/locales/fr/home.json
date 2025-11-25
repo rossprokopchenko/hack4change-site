@@ -1,16 +1,53 @@
 {
-  "title": "Hack4Change",
-  "description": "Rejoignez-nous pour un événement de trois jours consacré à la résolution des plus grands défis du monde réel au Canada atlantique grâce à des solutions technologiques innovantes.",
+  "title": "HACK4CHANGE",
+  "subtitle": "Le premier hackathon de technologie civique de Moncton",
+  "tagline": "Créez une technologie qui sera réellement déployée",
+  "dateLocation": "13-15 mars 2026 | Venn Innovation, Moncton, N.-B.",
+  
+  "subheadline": "Rejoignez développeurs, concepteurs et résolveurs de problèmes pour un hackathon de trois jours abordant un défi réel du Comité directeur sur l'itinérance du Grand Moncton. Contrairement aux hackathons typiques où les projets meurent après le week-end, la solution gagnante sera entièrement développée et déployée pour servir les organisations communautaires du sud-est du Nouveau-Brunswick.",
+
+  "valueProps": {
+    "realWorldImpact": {
+      "icon": "🎯",
+      "title": "IMPACT CONCRET",
+      "description": "Collaborez avec le Comité directeur sur l'itinérance du Grand Moncton pour résoudre un véritable défi de coordination des ressources. Votre solution répond à une crise touchant plus de 511 personnes dans notre communauté."
+    },
+    "codeGoesLive": {
+      "icon": "🚀",
+      "title": "VOTRE CODE SERA DÉPLOYÉ",
+      "description": "L'équipe gagnante s'associe à Civic Tech Moncton pour développer et déployer entièrement votre solution. Ce n'est pas une compétition qui se termine dimanche—c'est le début d'un vrai projet au service d'organisations réelles."
+    },
+    "prizesRecognition": {
+      "icon": "🏆",
+      "title": "PRIX + RECONNAISSANCE",
+      "description": "Compétitionnez pour des prix en argent d'au moins 5 000 $ plus la fierté de voir votre travail avoir un impact communautaire mesurable. Les gagnants seront reconnus dans toutes les communications continues concernant la solution déployée."
+    }
+  },
+
+  "cta": {
+    "registerInterest": "INSCRIVEZ VOTRE INTÉRÊT",
+    "sponsorshipOpportunities": "OPPORTUNITÉS DE COMMANDITE",
+    "learnMore": "EN SAVOIR PLUS"
+  },
+
+  "quickFacts": {
+    "dates": "13-15 mars 2026",
+    "location": "Venn Innovation, Moncton",
+    "participants": "20-40 participants | 10 équipes",
+    "prizePool": "Prix : Au moins 5 000 $"
+  },
+
   "countdown": {
     "days": "jours",
     "hours": "heures",
     "minutes": "minutes",
     "seconds": "secondes",
+    
     "day": "jour",
     "hour": "heure",
     "minute": "minute",
     "second": "seconde",
-    "completed": "L'événement a commencé !",
+    "completed": "L'événement a commencé!",
     "and": "et"
   }
 }

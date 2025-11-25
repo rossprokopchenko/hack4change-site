@@ -4,17 +4,15 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import MuiLink from "@mui/material/Link";
-import NextLink from "@/components/link";
+import Link from "@/components/link";
 import { useTranslation } from "@/services/i18n/client";
 import IconButton from "@mui/material/IconButton";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import NextLink from "next/link";
 
 import { usePathname } from "next/navigation";
 import useLanguage from "@/services/i18n/use-language";
 import { languages } from "@/services/i18n/config";
-import { default as NextLinkOriginal } from "next/link";
 
 export default function Footer() {
   const { t } = useTranslation("common");
@@ -87,13 +85,19 @@ export default function Footer() {
               <Typography variant="subtitle2" fontWeight={600} gutterBottom>
                 {t("common:navigation.title")}
               </Typography>
-              <MuiLink component={NextLink} href="/" underline="hover" color="text.secondary">
+              <MuiLink component={Link} href="/" underline="hover" color="text.secondary">
                 {t("common:navigation.home")}
               </MuiLink>
-              <MuiLink component={NextLink} href="/about" underline="hover" color="text.secondary">
+              <MuiLink component={Link} href="/about" underline="hover" color="text.secondary">
                 {t("common:navigation.about")}
               </MuiLink>
-              <MuiLink component={NextLink} href="/contact" underline="hover" color="text.secondary">
+              <MuiLink component={Link} href="/faq" underline="hover" color="text.secondary">
+                {t("common:navigation.faq")}
+              </MuiLink>
+              <MuiLink component={Link} href="/sponsors" underline="hover" color="text.secondary">
+                {t("common:navigation.sponsors")}
+              </MuiLink>
+              <MuiLink component={Link} href="/contact" underline="hover" color="text.secondary">
                 {t("common:navigation.contact")}
               </MuiLink>
             </Box>
@@ -103,22 +107,27 @@ export default function Footer() {
                 {t("common:legal.title")}
               </Typography>
               <MuiLink
-                component={NextLink}
+                component={Link}
                 href="/privacy-policy"
                 underline="hover"
                 color="text.secondary"
               >
                 {t("common:legal.privacyPolicy")}
               </MuiLink>
-              {/* <MuiLink component={NextLink} href="/terms" underline="hover" color="text.secondary">
-                Terms of Service
-              </MuiLink> */}
+              <MuiLink
+                component={Link}
+                href="/code-of-conduct"
+                underline="hover"
+                color="text.secondary"
+              >
+                {t("common:legal.codeOfConduct")}
+              </MuiLink>
             </Box>
           </Box>
 
-          {/* Social Media Icons & Language */}
+          {/* Social Media Icons (todo: add) & Language */}
           <Box sx={{ textAlign: { xs: "center", md: "right" } }}>
-            <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+            {/* <Typography variant="subtitle2" fontWeight={600} gutterBottom>
               {t("common:socialMedia.title")}
             </Typography>
             <Box sx={{ display: "flex", gap: 1, justifyContent: { xs: "center", md: "flex-end" }, mb: 3 }}>
@@ -131,7 +140,7 @@ export default function Footer() {
               >
                 <LinkedInIcon />
               </IconButton>
-            </Box>
+            </Box> */}
 
             <Typography variant="subtitle2" fontWeight={600} gutterBottom>
               {t("common:language.title")}
@@ -140,7 +149,7 @@ export default function Footer() {
               {languages.map((lang) => (
                 <MuiLink
                   key={lang}
-                  component={NextLinkOriginal}
+                  component={NextLink}
                   href={getLanguageLink(lang)}
                   underline="none"
                   sx={{

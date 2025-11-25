@@ -1,0 +1,94 @@
+{
+  "title": "Code de conduite",
+  "intro": "Hack4Change s'engage à offrir une expérience accueillante, inclusive et sans harcèlement pour tous, indépendamment du genre, de l'identité et de l'expression de genre, de l'âge, de l'orientation sexuelle, du handicap, de l'apparence physique, de la taille corporelle, de la race, de l'ethnicité, de la religion (ou absence de celle-ci) ou des choix technologiques.",
+  
+  "standards": {
+    "title": "Nos normes",
+    "intro": "Nous attendons de tous les participants, commanditaires, mentors, juges, bénévoles et organisateurs qu'ils :",
+    "items": [
+      "Soient respectueux et attentionnés dans leurs paroles et actions",
+      "Communiquent de manière professionnelle et constructive",
+      "Soient collaboratifs et solidaires envers les autres participants",
+      "Respectent les points de vue et les expériences différents",
+      "Acceptent avec grâce les critiques constructives",
+      "Se concentrent sur ce qui est le mieux pour la communauté",
+      "Fassent preuve d'empathie envers les autres membres de la communauté"
+    ]
+  },
+
+  "unacceptable": {
+    "title": "Comportements inacceptables",
+    "intro": "Les comportements suivants sont inacceptables à Hack4Change :",
+    "items": [
+      "Harcèlement, intimidation ou discrimination sous quelque forme que ce soit",
+      "Commentaires offensants liés au genre, à l'orientation sexuelle, au handicap, à l'apparence physique, à la race, à l'ethnicité ou à la religion",
+      "Contact physique inapproprié ou attention sexuelle non sollicitée",
+      "Intimidation délibérée, harcèlement ou suivi",
+      "Perturbation continue des présentations, ateliers ou autres activités de l'événement",
+      "Publication d'informations privées d'autrui sans consentement",
+      "Plaidoyer ou encouragement de l'un des comportements ci-dessus"
+    ]
+  },
+
+  "scope": {
+    "title": "Portée",
+    "intro": "Ce Code de conduite s'applique à :",
+    "items": [
+      "Tous les espaces de l'événement Hack4Change (physiques et numériques)",
+      "Communications officielles de l'événement (e-mail, plateformes de chat)",
+      "Événements sociaux associés à Hack4Change",
+      "Représentation de Hack4Change dans les espaces publics"
+    ]
+  },
+
+  "reporting": {
+    "title": "Signalement",
+    "intro": "Si vous subissez ou êtes témoin d'un comportement inacceptable :",
+    "steps": [
+      {
+        "title": "Préoccupations immédiates en matière de sécurité :",
+        "description": "Si vous ne vous sentez pas en sécurité, contactez la sécurité du lieu ou composez le 911"
+      },
+      {
+        "title": "Violations du Code de conduite :",
+        "description": "Signalez à tout organisateur de Hack4Change en personne, ou envoyez un e-mail à contact@hack4change.ca avec \"Code de conduite\" dans l'objet"
+      }
+    ],
+    "confidentiality": "Tous les rapports seront traités avec discrétion et confidentialité. Nous protégerons l'identité des rapporteurs sauf si la loi l'exige.",
+    "whatToInclude": {
+      "title": "Que inclure dans votre rapport :",
+      "items": [
+        "Vos coordonnées (pour le suivi)",
+        "Noms des personnes impliquées",
+        "Description de l'incident, y compris la date/heure/lieu",
+        "Si l'incident est en cours",
+        "Tout contexte supplémentaire ou témoins"
+      ]
+    }
+  },
+
+  "enforcement": {
+    "title": "Application",
+    "intro": "Les organisateurs examineront tous les rapports et détermineront l'action appropriée, qui peut inclure :",
+    "actions": [
+      "Avertir le contrevenant",
+      "Exiger que le contrevenant évite le rapporteur",
+      "Expulsion de l'événement sans remboursement (le cas échéant)",
+      "Interdiction des futurs événements de Civic Tech Moncton",
+      "Contacter la sécurité du lieu ou les forces de l'ordre locales"
+    ],
+    "priority": "Notre priorité est la sécurité et le confort de tous les participants. Nous prendrons tous les rapports au sérieux et répondrons rapidement."
+  },
+
+  "attribution": {
+    "title": "Attribution",
+    "text": "Ce Code de conduite est adapté des codes utilisés par les communautés de technologie civique à travers l'Amérique du Nord, y compris Code for Canada et Civic Tech Toronto, qui sont basés sur le Conference Code of Conduct."
+  },
+
+  "questions": {
+    "title": "Des questions ?",
+    "text": "Si vous avez des questions sur ce Code de conduite, contactez-nous à contact@hack4change.ca."
+  },
+
+  "agreement": "En participant à Hack4Change, vous acceptez de respecter ce Code de conduite."
+}

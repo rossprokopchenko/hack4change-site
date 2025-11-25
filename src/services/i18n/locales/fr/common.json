@@ -6,6 +6,8 @@
     
     "home": "Accueil",
     "about": "À propos",
+    "faq": "FAQ",
+    "sponsors": "Commanditaires",
     "contact": "Contact",
     "signIn": "Se connecter",
     "signUp": "S'inscrire",
@@ -16,7 +18,11 @@
   "legal": {
     "title": "Légal",
     "privacyPolicy": "Politique de confidentialité",
+    "codeOfConduct": "Code de conduite",
     "rights": "Tous droits réservés"
+  },
+  "contact": {
+    "email": "contact@hack4change.ca"
   },
   "socialMedia": {
     "title": "Suivez-nous",
