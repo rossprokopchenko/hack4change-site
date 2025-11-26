@@ -26,7 +26,7 @@
       "Share information in real-time",
       "Respond more effectively to community needs"
     ],
-    "reveal": "The Reveal: Specific challenge requirements, technical constraints, and success criteria will be revealed Friday, March 13th at 6:00 PM during the opening ceremony. This ensures all teams start with equal information and preparation time.",
+    "reveal": "The Reveal: Specific challenge requirements, technical constraints, and success criteria will be revealed Friday, March 13th at 6 PM. This ensures all teams start with equal information and preparation time.",
     "transparency": "Transparency Note: While participants receive the detailed challenge Friday evening, we share more context with sponsors to help them understand the community impact of their investment. Sponsors know WHY this matters; participants discover HOW to solve it."
   },
 
@@ -160,6 +160,14 @@
         "role": "Civic Tech Moncton Leader"
       }
     ]
+  },
+
+  "eventLocation": {
+    "title": "Event Location",
+    "name": "Venn Innovation",
+    "address": "770 St George Blvd\nMoncton, NB E1E 2C6",
+    "map": "Embedded Google Map",
+    "note": "Parking and accessibility information will be provided to registered participants."
   },
 
   "accessibility": {

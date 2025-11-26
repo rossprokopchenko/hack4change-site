@@ -4,7 +4,7 @@
   "opening": "Hack4Change est le premier hackathon de technologie civique de Moncton, organisé par Civic Tech Moncton en partenariat avec le Comité directeur sur l'itinérance du Grand Moncton. Cet événement intensif de trois jours rassemble développeurs, concepteurs, étudiants et défenseurs communautaires pour créer des solutions technologiques ayant un impact communautaire durable.",
 
   "whatMakesDifferent": {
-    "title": "⚡ Ce qui rend ceci différent",
+    "title": "Ce qui rend ceci différent",
     "subtitle": "La plupart des hackathons se terminent avec des prototypes abandonnés. Pas celui-ci.",
     "description": "La solution gagnante sera entièrement développée et déployée grâce à un partenariat engagé entre les bénévoles de Civic Tech Moncton, l'équipe gagnante et le Comité directeur sur l'itinérance du Grand Moncton (GMHSC).",
     "benefits": [
@@ -151,6 +151,14 @@
         "role": "Chef de Civic Tech Moncton"
       }
     ]
+  },
+
+  "eventLocation": {
+    "title": "Lieu de l'événement",
+    "name": "Venn Innovation",
+    "address": "770 St George Blvd\nMoncton, NB E1E 2C6",
+    "map": "Carte Google intégrée",
+    "note": "Les informations sur le stationnement et l'accessibilité seront fournies aux participants inscrits."
   },
 
   "accessibility": {

@@ -23,8 +23,10 @@ export default function Sponsors() {
         {t("subtitle")}
       </Typography>
 
+      <Divider />
+
       {/* Why Sponsor */}
-      <Box sx={{ mb: 8 }}>
+      <Box sx={{ my: 8 }}>
         <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
           {t("whySponsor.title")}
         </Typography>
@@ -76,7 +78,7 @@ export default function Sponsors() {
         </Typography>
         <Box component="ul" sx={{ pl: 3, mt: 2 }}>
           {(t("differentiator.benefits", { returnObjects: true }) as string[]).map((item, index) => (
-            <Typography component="li" key={index} sx={{ mb: 1 }}>✓ {item}</Typography>
+            <Typography component="li" key={index} sx={{ mb: 1 }}>{item}</Typography>
           ))}
         </Box>
         <Typography variant="body1" sx={{ mt: 2, fontWeight: "medium" }}>
@@ -84,8 +86,10 @@ export default function Sponsors() {
         </Typography>
       </Box>
 
+      <Divider />
+
       {/* Sponsorship Tiers */}
-      <Typography variant="h4" gutterBottom sx={{ mb: 4 }}>
+      <Typography variant="h4" gutterBottom sx={{ mt: 6,mb: 4 }}>
         {t("tiers.title")}
       </Typography>
 
@@ -95,7 +99,7 @@ export default function Sponsors() {
             <Typography variant="h5" gutterBottom fontWeight="bold">
               {t(`tiers.levels.${tier}.tier`)} — {t(`tiers.levels.${tier}.price`)}
             </Typography>
-            {t(`tiers.levels.${tier}.limit`) && (
+            {t(`tiers.levels.${tier}.limit`, { defaultValue: '' }) && (
               <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
                 *{t(`tiers.levels.${tier}.limit`)}*
               </Typography>
@@ -103,7 +107,7 @@ export default function Sponsors() {
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2, fontStyle: "italic" }}>
               {t(`tiers.levels.${tier}.idealFor`)}
             </Typography>
-            {t(`tiers.levels.${tier}.note`) && (
+            {t(`tiers.levels.${tier}.note`, { defaultValue: '' }) && (
               <Typography variant="subtitle2" sx={{ mb: 1 }}>{t(`tiers.levels.${tier}.note`)}</Typography>
             )}
             <Box component="ul" sx={{ pl: 3 }}>

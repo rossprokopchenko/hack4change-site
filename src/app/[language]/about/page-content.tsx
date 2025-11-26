@@ -11,6 +11,13 @@ import Alert from "@mui/material/Alert";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import { useTranslation } from "@/services/i18n/client";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PeopleIcon from "@mui/icons-material/People";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import MuiLink from "@mui/material/Link";
+import VennInnovationEmbed from "@/components/venn-innovation-embed";
 
 export default function About() {
   const { t } = useTranslation("about");
@@ -120,7 +127,10 @@ export default function About() {
               <Grid item xs={12} md={4}>
                 <Card variant="outlined" sx={{ height: '100%' }}>
                   <CardContent>
-                    <Typography variant="h6" gutterBottom color="primary">{t("event.when.title")}</Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                      <CalendarTodayIcon color="primary" />
+                      <Typography variant="h6" color="primary">{t("event.when.title")}</Typography>
+                    </Box>
                     <Typography variant="body1">{t("event.when.description")}</Typography>
                   </CardContent>
                 </Card>
@@ -128,7 +138,10 @@ export default function About() {
               <Grid item xs={12} md={4}>
                 <Card variant="outlined" sx={{ height: '100%' }}>
                   <CardContent>
-                    <Typography variant="h6" gutterBottom color="primary">{t("event.where.title")}</Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                      <LocationOnIcon color="primary" />
+                      <Typography variant="h6" color="primary">{t("event.where.title")}</Typography>
+                    </Box>
                     <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>{t("event.where.description")}</Typography>
                   </CardContent>
                 </Card>
@@ -136,7 +149,10 @@ export default function About() {
               <Grid item xs={12} md={4}>
                 <Card variant="outlined" sx={{ height: '100%' }}>
                   <CardContent>
-                    <Typography variant="h6" gutterBottom color="primary">{t("event.who.title")}</Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                      <PeopleIcon color="primary" />
+                      <Typography variant="h6" color="primary">{t("event.who.title")}</Typography>
+                    </Box>
                     <Typography variant="body1">{t("event.who.description")}</Typography>
                   </CardContent>
                 </Card>
@@ -149,9 +165,12 @@ export default function About() {
             <Stack spacing={3}>
               {['friday', 'saturday', 'sunday'].map((day) => (
                 <Box key={day}>
-                  <Typography variant="h6" fontWeight="bold" color="primary" gutterBottom>
-                    {t(`event.schedule.${day}.title`)}
-                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                    <EventNoteIcon color="primary" />
+                    <Typography variant="h6" fontWeight="bold" color="primary">
+                      {t(`event.schedule.${day}.title`)}
+                    </Typography>
+                  </Box>
                   <Box component="ul" sx={{ pl: 2, mt: 0 }}>
                     {(t(`event.schedule.${day}.items`, { returnObjects: true }) as string[]).map((item, i) => (
                       <Typography component="li" key={i} variant="body1" sx={{ mb: 0.5 }}>
@@ -165,6 +184,11 @@ export default function About() {
                 {t("event.schedule.note")}
               </Typography>
             </Stack>
+
+            {/* Event Location */}
+            <Box sx={{ bgcolor: "background.paper", mt: 4, borderRadius: 4 }}>
+                <VennInnovationEmbed />
+            </Box>
           </Box>
 
           <Divider />
@@ -234,9 +258,9 @@ export default function About() {
                 <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
                   {t("partners.gmhsc.description")}
                 </Typography>
-                <Typography variant="body2" color="primary">
+                <MuiLink href="https://www.monctonhomelessness.org/" target="_blank">
                   {t("partners.gmhsc.link")}
-                </Typography>
+                </MuiLink>
               </Box>
               
               <Box>
@@ -252,9 +276,9 @@ export default function About() {
                 <Typography variant="body1" paragraph>
                   {t("partners.civicTech.milestone")}
                 </Typography>
-                <Typography variant="body2" color="primary">
+                <MuiLink href="https://civictechmoncton.org/" target="_blank">
                   {t("partners.civicTech.link")}
-                </Typography>
+                </MuiLink>
               </Box>
 
               <Box>

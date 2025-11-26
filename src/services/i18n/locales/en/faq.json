@@ -23,11 +23,11 @@
         },
         {
           "q": "Do I need to be 18+ to participate?",
-          "a": "Participants under 18 are welcome but must have parental/guardian consent. Minors should plan to be accompanied by a parent/guardian or be part of a team with adult supervision. Contact us at contact@hack4change.ca for the consent form."
+          "a": "Yes, this Hackathon is an 18+ event."
         },
         {
           "q": "Do I need to be from Moncton?",
-          "a": "No! We welcome participants from across Atlantic Canada and beyond. However, this is an in-person event—virtual participation is not available."
+          "a": "No! We welcome participants from across Atlantic Canada and beyond. However, this is an in-person event, virtual participation is not available."
         }
       ]
     },
@@ -52,7 +52,7 @@
         },
         {
           "q": "What technologies can we use?",
-          "a": "Any technologies you choose! Web applications, mobile apps, APIs, data visualization tools, cloud platforms—whatever you think best solves the challenge. There are no technology restrictions."
+          "a": "Any technologies you choose! Web applications, mobile apps, APIs, data visualization tools, cloud platforms, whatever you think best solves the challenge. There are no technology restrictions."
         }
       ]
     },

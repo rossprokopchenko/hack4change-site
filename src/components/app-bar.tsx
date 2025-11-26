@@ -21,6 +21,9 @@ import { RoleEnum } from "@/services/api/types/role";
 import Divider from "@mui/material/Divider";
 import ThemeSwitchButton from "@/components/switch-theme-button";
 import { IS_SIGN_UP_ENABLED } from "@/services/auth/config";
+import PersonIcon from "@mui/icons-material/Person";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
 function ResponsiveAppBar() {
   const { t } = useTranslation("common");
@@ -188,10 +191,10 @@ function ResponsiveAppBar() {
           >
             {t("common:app-name")}
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 0 }}>
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ color: "white", px: 2, py: 2 }}
               component={Link}
               href="/"
             >
@@ -200,7 +203,7 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ color: "white", px: 2, py: 2 }}
               component={Link}
               href="/about"
             >
@@ -209,16 +212,7 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
-              component={Link}
-              href="/faq"
-            >
-              {t("common:navigation.faq")}
-            </Button>
-
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ color: "white", px: 2, py: 2 }}
               component={Link}
               href="/sponsors"
             >
@@ -227,26 +221,32 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ color: "white", px: 2, py: 2 }}
               component={Link}
               href="/contact"
             >
               {t("common:navigation.contact")}
             </Button>
 
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ color: "white", px: 2, py: 2 }}
+              component={Link}
+              href="/faq"
+            >
+              {t("common:navigation.faq")}
+            </Button>
+
             {!!user?.role &&
               [RoleEnum.ADMIN].includes(Number(user?.role?.id)) && (
-                <>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "block" }}
-                    component={Link}
-                    href="/admin-panel/users"
-                  >
-                    {t("common:navigation.users")}
-                  </Button>
-                  {/* desktop-menu-items */}
-                </>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ color: "white", px: 2, py: 2 }}
+                  component={Link}
+                  href="/admin-panel/users"
+                >
+                  {t("common:navigation.users")}
+                </Button>
               )}
           </Box>
 
@@ -291,6 +291,11 @@ function ResponsiveAppBar() {
                   }}
                   open={Boolean(anchorElementUser)}
                   onClose={handleCloseUserMenu}
+                  PaperProps={{
+                    sx: {
+                      minWidth: 250,
+                    },
+                  }}
                 >
                   <MenuItem
                     onClick={handleCloseUserMenu}
@@ -298,7 +303,10 @@ function ResponsiveAppBar() {
                     href="/profile"
                     data-testid="user-profile"
                   >
-                    <Typography textAlign="center">
+                    <ListItemIcon>
+                      <PersonIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography>
                       {t("common:navigation.profile")}
                     </Typography>
                   </MenuItem>
@@ -309,7 +317,10 @@ function ResponsiveAppBar() {
                     }}
                     data-testid="logout-menu-item"
                   >
-                    <Typography textAlign="center">
+                    <ListItemIcon>
+                      <LogoutIcon fontSize="small" />
+                    </ListItemIcon>
+                    <Typography>
                       {t("common:navigation.logout")}
                     </Typography>
                   </MenuItem>

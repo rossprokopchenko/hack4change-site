@@ -42,13 +42,5 @@
     "emailSignup": "Formulaire d'inscription par courriel",
     "description": "Ne manquez jamais les annonces importantes concernant l'inscription, les commanditaires, les prix ou les détails de l'événement.",
     "email": "Écrivez-nous : contact@hack4change.ca"
-  },
-
-  "eventLocation": {
-    "title": "Lieu de l'événement",
-    "name": "Venn Innovation",
-    "address": "770 St George Blvd\nMoncton, NB E1E 2C6",
-    "map": "Carte Google intégrée",
-    "note": "Les informations sur le stationnement et l'accessibilité seront fournies aux participants inscrits."
   }
 }

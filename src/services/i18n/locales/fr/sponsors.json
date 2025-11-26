@@ -1,0 +1,207 @@
+{
+  "title": "Commanditer Hack4Change",
+  "subtitle": "Devenez un commanditaire fondateur du premier hackathon civic tech de Moncton. Votre soutien permet une expérience exceptionnelle aux participants tout en s’attaquant à des enjeux communautaires essentiels.",
+  
+  "whySponsor": {
+    "title": "Pourquoi commanditer Hack4Change?",
+    "techCompanies": {
+      "title": "Pour les entreprises technologiques :",
+      "benefits": [
+        {
+          "title": "Pipeline de talents et recrutement",
+          "items": [
+            "Accès direct à des développeurs, des designers et des résolveurs de problèmes en action",
+            "Collecte de CV et d’informations de contact des participants (avec consentement)",
+            "Envoi de mentors qui peuvent évaluer les talents tout en soutenant les équipes",
+            "Réalisation d’entretiens informels et création de liens avec des professionnels émergents"
+          ]
+        },
+        {
+          "title": "Mobilisation de la communauté technique",
+          "items": [
+            "Votre équipe mentorera et évaluera des solutions de pointe",
+            "Organisation d’ateliers mettant en valeur vos technologies ou méthodologies",
+            "Démonstration d’un leadership éclairé en technologie civique",
+            "Connexion avec la communauté technologique en pleine croissance de Moncton"
+          ]
+        },
+        {
+          "title": "Marque employeur",
+          "items": [
+            "Montrer votre engagement envers l’impact communautaire et l’innovation sociale",
+            "Attirer des talents motivés par le sens et le travail porteur de valeur",
+            "Se démarquer sur un marché du talent compétitif"
+          ]
+        }
+      ]
+    },
+    "corporate": {
+      "title": "Pour les commanditaires corporatifs et financiers :",
+      "benefits": [
+        {
+          "title": "Impact communautaire mesurable",
+          "items": [
+            "Soutenir directement des solutions technologiques s’attaquant à l’itinérance",
+            "Votre contribution finance une solution qui sera réellement construite et déployée",
+            "Pas seulement un prototype de fin de semaine, une infrastructure communautaire durable"
+          ]
+        },
+        {
+          "title": "Responsabilité sociale d’entreprise",
+          "items": [
+            "Parfait pour les initiatives RSE axées sur le logement, la pauvreté ou l’innovation",
+            "Impact concret et vérifiable que vous pouvez rapporter aux parties prenantes",
+            "Partenariat avec des organisations communautaires reconnues (GMHSC, Civic Tech Moncton)"
+          ]
+        },
+        {
+          "title": "Visibilité et reconnaissance de la marque",
+          "items": [
+            "Couverture médiatique locale et régionale anticipée",
+            "Reconnaissance lors de l’événement avec 20 à 40 participants, mentors, juges et invités",
+            "Mention dans toutes les communications continues au sujet de la solution déployée",
+            "Placement du logo sur le site web, les médias sociaux et les matériels de l’événement"
+          ]
+        }
+      ]
+    },
+    "local": {
+      "title": "Pour les entreprises locales :",
+      "description": "Les niveaux Bronze (2 000 $) et Soutien communautaire (500 $) conviennent à tous les budgets. Montrez à Moncton que vous vous souciez de résoudre de vrais défis communautaires. Connectez-vous à la communauté tech locale et aux jeunes professionnels. Participez à quelque chose d’historique : le premier hackathon civic tech de Moncton."
+    }
+  },
+
+  "differentiator": {
+    "title": "Le différenciateur Hack4Change",
+    "subtitle": "Contrairement aux hackathons typiques, votre commandite ne finance pas un prototype de fin de semaine qui sera abandonné.",
+    "benefits": [
+      "Une solution qui SERA entièrement développée",
+      "Déploiement auprès d’organisations réelles desservant plus de 500 personnes",
+      "Impact communautaire mesurable et durable",
+      "Code open source profitant aux communautés au-delà de Moncton"
+    ],
+    "closing": "Votre marque sera associée à une véritable infrastructure communautaire durable, pas seulement à un événement de fin de semaine."
+  },
+
+  "tiers": {
+    "title": "Possibilités de commandite",
+    "levels": {
+      "title": {
+        "tier": "COMMANDITAIRE TITRE",
+        "price": "15 000 $",
+        "limit": "Maximum de 1 à 2 commanditaires",
+        "idealFor": "Idéal pour : grandes entreprises, banques, compagnies d’assurance, sociétés d’État provinciales",
+        "benefits": [
+          "Droits de dénomination de l’événement : « Hack4Change : Hackathon Civic Tech Moncton présenté par [Votre entreprise] »",
+          "Allocution de 5 minutes lors des cérémonies d’ouverture et de clôture",
+          "Kiosque exclusif en positionnement privilégié sur le site",
+          "Remise des prix à l’équipe gagnante sur scène",
+          "Envoi de 3+ mentors et experts techniques",
+          "Logo sur TOUS les supports avec une visibilité de premier plan",
+          "Collaboration post-événement pour des récits de réussite à utiliser dans vos matériaux marketing",
+          "Droit de premier refus pour la commandite titre lors de l’événement 2027"
+        ],
+        "note": "Tous les avantages du Partenaire Or PLUS :"
+      },
+      "gold": {
+        "tier": "PARTENAIRE OR",
+        "price": "10 000 $",
+        "idealFor": "Idéal pour : grandes entreprises régionales, grandes firmes technologiques, institutions financières",
+        "benefits": [
+          "Placement de logo de premier plan (taille plus grande, position supérieure sur tous les supports)",
+          "Allocution de 3 à 5 minutes lors de la cérémonie d’ouverture",
+          "Envoi de 2 mentors pour soutenir les participants pendant l’événement",
+          "Organisation d’un atelier sur mesure (30 à 45 minutes)",
+          "Envoi de juges pour évaluer les présentations finales de projets",
+          "Mise en évidence dans les communiqués de presse et les démarches médiatiques"
+        ],
+        "note": "Tous les avantages du Partenaire Argent PLUS :"
+      },
+      "silver": {
+        "tier": "PARTENAIRE ARGENT",
+        "price": "5 000 $",
+        "idealFor": "Idéal pour : entreprises de taille moyenne, firmes technologiques régionales",
+        "benefits": [
+          "Logo sur tous les matériels de l’événement (programmes, signalisation, présentations)",
+          "Allocution de 1 à 2 minutes lors de la cérémonie d’ouverture",
+          "Envoi de 1 mentor pour soutenir les participants pendant l’événement",
+          "Espace kiosque/table sur le site pour le recrutement et la promotion",
+          "Accès aux informations de contact et aux CV des participants (avec consentement)"
+        ],
+        "note": "Tous les avantages du Partenaire Bronze PLUS :"
+      },
+      "bronze": {
+        "tier": "PARTENAIRE BRONZE",
+        "price": "2 000 $",
+        "idealFor": "Idéal pour : entreprises TI locales, petites entreprises, organisations communautaires",
+        "benefits": [
+          "Logo sur le site web de l’événement",
+          "Reconnaissance sur les médias sociaux (plusieurs publications sur les plateformes)",
+          "Remerciements lors des cérémonies d’ouverture et de clôture",
+          "Invitation à la réception de réseautage",
+          "Logo dans les supports numériques de l’événement"
+        ]
+      },
+      "community": {
+        "tier": "SOUTIEN COMMUNAUTAIRE",
+        "price": "500 $",
+        "idealFor": "Parfait pour : startups, petites entreprises, travailleurs autonomes qui souhaitent soutenir l’innovation civique",
+        "benefits": [
+          "Logo sur le site web de l’événement",
+          "Reconnaissance sur les médias sociaux",
+          "Reconnaissance en tant que Soutien communautaire lors de l’événement",
+          "Certificat d’appréciation"
+        ]
+      }
+    }
+  },
+
+  "additional": {
+    "title": "Possibilités de commandite supplémentaires",
+    "meal": {
+      "title": "Commandite des repas",
+      "price": "Tarification variable",
+      "description": "Commanditez des repas précis durant la fin de semaine avec une reconnaissance bien en vue : « Déjeuner du samedi propulsé par [Votre entreprise] » ou « Dîner du dimanche présenté par [Votre entreprise] »"
+    },
+    "swag": {
+      "title": "Commandite des articles promotionnels",
+      "price": "Tarification variable",
+      "description": "Fournissez des articles de marque (t-shirts, bouteilles d’eau, cahiers, autocollants) distribués à tous les participants et bénévoles. Votre logo aux côtés de la marque Civic Tech Moncton sur des articles de qualité que les participants utiliseront réellement."
+    },
+    "custom": {
+      "title": "Forfaits sur mesure disponibles",
+      "description": "Vous avez des objectifs précis ou une façon unique de contribuer? Nous sommes ravis de créer des forfaits de commandite sur mesure. Contactez-nous à contact@hack4change.ca."
+    }
+  },
+
+  "nextSteps": {
+    "title": "Prochaines étapes",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Téléchargez notre prospectus de commandite",
+        "description": "Détails complets sur tous les niveaux de commandite, les avantages et les possibilités de partenariat",
+        "action": "Télécharger le PDF"
+      },
+      {
+        "number": "2",
+        "title": "Planifiez une conversation",
+        "description": "Discutons de la façon dont votre organisation peut participer à cet événement inaugural.",
+        "contact": "Courriel : contact@hack4change.ca"
+      },
+      {
+        "number": "3",
+        "title": "Confirmez votre commandite",
+        "description": "Nous fournirons une entente de commandite officielle précisant les avantages et les livrables. Dès la signature, nous commencerons immédiatement à promouvoir votre participation."
+      }
+    ]
+  },
+
+  "currentSponsors": {
+    "title": "Nos commanditaires",
+    "description": "Nous sommes reconnaissants envers les commanditaires qui rendent Hack4Change possible. Les logos et la reconnaissance des commanditaires seront affichés ici au fur et à mesure que les partenariats sont confirmés.",
+    "challengePartner": "Partenaire du défi :",
+    "venuePartner": "Partenaire du lieu :",
+    "interested": "Intéressé à devenir commanditaire? Contactez-nous à contact@hack4change.ca"
+  }
+}

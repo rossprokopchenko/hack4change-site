@@ -43,7 +43,7 @@
           "items": [
             "Directly support technology solutions addressing homelessness",
             "Your contribution funds a solution that will actually be built and deployed",
-            "Not just a weekend prototype—lasting community infrastructure"
+            "Not just a weekend prototype, lasting community infrastructure"
           ]
         },
         {
@@ -67,12 +67,12 @@
     },
     "local": {
       "title": "For Local Businesses:",
-      "description": "Bronze ($2,000) and Community Supporter ($500) tiers fit any budget. Show Moncton you care about solving real community challenges. Connect with local tech community and young professionals. Be part of something historic—Moncton's first civic tech hackathon."
+      "description": "Bronze ($2,000) and Community Supporter ($500) tiers fit any budget. Show Moncton you care about solving real community challenges. Connect with local tech community and young professionals. Be part of something historic, Moncton's first civic tech hackathon."
     }
   },
 
   "differentiator": {
-    "title": "⚡ The Hack4Change Differentiator",
+    "title": "The Hack4Change Differentiator",
     "subtitle": "Unlike typical hackathons, your sponsorship doesn't fund a weekend prototype that gets abandoned.",
     "benefits": [
       "A solution that WILL be fully developed",
@@ -80,7 +80,7 @@
       "Measurable, lasting community impact",
       "Open-source code benefiting communities beyond Moncton"
     ],
-    "closing": "Your brand gets associated with actual, lasting community infrastructure—not just a weekend event."
+    "closing": "Your brand gets associated with actual, lasting community infrastructure, not just a weekend event."
   },
 
   "tiers": {

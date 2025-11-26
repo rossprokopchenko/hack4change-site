@@ -74,5 +74,59 @@
     "profile": {
       "success": "Profile has been updated successfully"
     }
+  },
+  "rsvp": {
+    "title": "Event RSVP",
+    "currentStatus": "Current Status",
+    "description": "Let us know if you're planning to attend Hack4Change",
+    "changeStatus": "Change Status",
+    "updating": "Updating...",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "declined": "Declined",
+      "waitlist": "Waitlist"
+    }
+  },
+  "team": {
+    "loading": "Loading team information...",
+    "yourTeam": "Your Team",
+    "yourRole": "Your Role",
+    "members": "Team Members",
+    "leaveTeam": "Leave Team",
+    "findOrCreate": "Team Management",
+    "searchTitle": "Search for a Team",
+    "createTitle": "Create a New Team",
+    "createDescription": "Can't find a team? Create your own and invite others to join!",
+    "createButton": "Create Team",
+    "role": {
+      "leader": "Team Leader",
+      "member": "Member"
+    },
+    "search": {
+      "label": "Search teams",
+      "placeholder": "Type team name...",
+      "members": "members",
+      "join": "Join",
+      "noResults": "No teams found",
+      "startTyping": "Start typing to search for teams"
+    },
+    "createDialog": {
+      "title": "Create New Team",
+      "nameLabel": "Team Name",
+      "nameError": "This team name is already taken",
+      "descriptionLabel": "Team Description (optional)",
+      "maxMembersLabel": "Maximum Members",
+      "cancel": "Cancel",
+      "create": "Create Team",
+      "creating": "Creating..."
+    },
+    "leaveDialog": {
+      "title": "Leave Team",
+      "message": "Are you sure you want to leave this team? You can join another team afterwards.",
+      "cancel": "Cancel",
+      "leave": "Leave Team",
+      "leaving": "Leaving..."
+    }
   }
 }

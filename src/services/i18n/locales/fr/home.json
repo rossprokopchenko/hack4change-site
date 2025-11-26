@@ -8,17 +8,14 @@
 
   "valueProps": {
     "realWorldImpact": {
-      "icon": "🎯",
       "title": "IMPACT CONCRET",
       "description": "Collaborez avec le Comité directeur sur l'itinérance du Grand Moncton pour résoudre un véritable défi de coordination des ressources. Votre solution répond à une crise touchant plus de 511 personnes dans notre communauté."
     },
     "codeGoesLive": {
-      "icon": "🚀",
       "title": "VOTRE CODE SERA DÉPLOYÉ",
       "description": "L'équipe gagnante s'associe à Civic Tech Moncton pour développer et déployer entièrement votre solution. Ce n'est pas une compétition qui se termine dimanche—c'est le début d'un vrai projet au service d'organisations réelles."
     },
     "prizesRecognition": {
-      "icon": "🏆",
       "title": "PRIX + RECONNAISSANCE",
       "description": "Compétitionnez pour des prix en argent d'au moins 5 000 $ plus la fierté de voir votre travail avoir un impact communautaire mesurable. Les gagnants seront reconnus dans toutes les communications continues concernant la solution déployée."
     }

@@ -10,6 +10,13 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import HeroMotion from "@/components/hero-motion";
 import Link from "@/components/link";
+import PublicIcon from "@mui/icons-material/Public";
+import CodeIcon from "@mui/icons-material/Code";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PeopleIcon from "@mui/icons-material/People";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 export default function Home() {
   const { t } = useTranslation("home");
@@ -17,23 +24,13 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <Container maxWidth="lg" sx={{ py: 16 }}>
-        <HeroMotion subtitle={t("subtitle")}>
+      <Container maxWidth="lg" sx={{ py: 8 }}>
+        <HeroMotion 
+          subtitle={t("subtitle")}
+          subheadline={t("subheadline")}
+        >
           {t("title")}
         </HeroMotion>
-        
-        <Typography 
-          variant="h6" 
-          sx={{ 
-            mt: 4, 
-            textAlign: "center",
-            maxWidth: "900px",
-            mx: "auto",
-            lineHeight: 1.6
-          }}
-        >
-          {t("subheadline")}
-        </Typography>
       </Container>
 
       {/* Value Proposition Cards */}
@@ -52,12 +49,12 @@ export default function Home() {
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
-                  <Typography variant="h3" sx={{ mb: 2 }}>
-                    {t("valueProps.realWorldImpact.icon")}
-                  </Typography>
-                  <Typography variant="h6" fontWeight="bold" gutterBottom>
-                    {t("valueProps.realWorldImpact.title")}
-                  </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                    <PublicIcon sx={{ fontSize: 40, color: "primary.main" }} />
+                    <Typography variant="h6" fontWeight="bold">
+                      {t("valueProps.realWorldImpact.title")}
+                    </Typography>
+                  </Box>
                   <Typography variant="body1" color="text.secondary">
                     {t("valueProps.realWorldImpact.description")}
                   </Typography>
@@ -77,12 +74,12 @@ export default function Home() {
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
-                  <Typography variant="h3" sx={{ mb: 2 }}>
-                    {t("valueProps.codeGoesLive.icon")}
-                  </Typography>
-                  <Typography variant="h6" fontWeight="bold" gutterBottom>
-                    {t("valueProps.codeGoesLive.title")}
-                  </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                    <CodeIcon sx={{ fontSize: 40, color: "primary.main" }} />
+                    <Typography variant="h6" fontWeight="bold">
+                      {t("valueProps.codeGoesLive.title")}
+                    </Typography>
+                  </Box>
                   <Typography variant="body1" color="text.secondary">
                     {t("valueProps.codeGoesLive.description")}
                   </Typography>
@@ -102,12 +99,12 @@ export default function Home() {
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
-                  <Typography variant="h3" sx={{ mb: 2 }}>
-                    {t("valueProps.prizesRecognition.icon")}
-                  </Typography>
-                  <Typography variant="h6" fontWeight="bold" gutterBottom>
-                    {t("valueProps.prizesRecognition.title")}
-                  </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                    <EmojiEventsIcon sx={{ fontSize: 40, color: "primary.main" }} />
+                    <Typography variant="h6" fontWeight="bold">
+                      {t("valueProps.prizesRecognition.title")}
+                    </Typography>
+                  </Box>
                   <Typography variant="body1" color="text.secondary">
                     {t("valueProps.prizesRecognition.description")}
                   </Typography>
@@ -160,7 +157,7 @@ export default function Home() {
           <Grid container spacing={3}>
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
-                <Typography variant="h4" sx={{ mb: 1 }}>📅</Typography>
+                <CalendarTodayIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
                 <Typography variant="body2" color="text.secondary">
                   {t("quickFacts.dates")}
                 </Typography>
@@ -168,7 +165,7 @@ export default function Home() {
             </Grid>
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
-                <Typography variant="h4" sx={{ mb: 1 }}>📍</Typography>
+                <LocationOnIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
                 <Typography variant="body2" color="text.secondary">
                   {t("quickFacts.location")}
                 </Typography>
@@ -176,7 +173,7 @@ export default function Home() {
             </Grid>
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
-                <Typography variant="h4" sx={{ mb: 1 }}>👥</Typography>
+                <PeopleIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
                 <Typography variant="body2" color="text.secondary">
                   {t("quickFacts.participants")}
                 </Typography>
@@ -184,7 +181,7 @@ export default function Home() {
             </Grid>
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
-                <Typography variant="h4" sx={{ mb: 1 }}>💰</Typography>
+                <AttachMoneyIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
                 <Typography variant="body2" color="text.secondary">
                   {t("quickFacts.prizePool")}
                 </Typography>

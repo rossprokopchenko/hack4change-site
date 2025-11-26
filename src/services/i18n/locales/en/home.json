@@ -8,17 +8,14 @@
 
   "valueProps": {
     "realWorldImpact": {
-      "icon": "🎯",
       "title": "REAL-WORLD IMPACT",
       "description": "Partner with the Greater Moncton Homelessness Steering Committee to solve an actual resource coordination challenge. Your solution addresses a crisis affecting 511+ individuals in our community."
     },
     "codeGoesLive": {
-      "icon": "🚀",
       "title": "YOUR CODE GOES LIVE",
-      "description": "The winning team partners with Civic Tech Moncton to fully develop and deploy your solution. This isn't a competition that ends Sunday—it's the start of a real project serving real organizations."
+      "description": "The winning team partners with Civic Tech Moncton to fully develop and deploy your solution. This isn't a competition that ends Sunday, it's the start of a real project serving real organizations."
     },
     "prizesRecognition": {
-      "icon": "🏆",
       "title": "PRIZES + RECOGNITION",
       "description": "Compete for cash prizes of at least $5,000 plus the pride of seeing your work make measurable community impact. Winners recognized in all ongoing communications about the deployed solution."
     }
