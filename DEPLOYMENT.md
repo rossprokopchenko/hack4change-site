@@ -8,35 +8,7 @@ This guide explains how to deploy the Hack4Change site to a production VPS using
 -   SSH access to the VPS.
 -   A domain name pointing to your VPS IP address (optional but recommended).
 
-## 1. Install Docker on VPS
-
-Connect to your VPS via SSH and run the following commands to install Docker and Docker Compose:
-
-```bash
-# Update package index
-sudo apt-get update
-
-# Install prerequisites
-sudo apt-get install -y ca-certificates curl gnupg
-
-# Add Docker's official GPG key
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
-# Set up the repository
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# Install Docker Engine
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Verify installation
-sudo docker run hello-world
-```
+## 1. Install Docker
 
 ## 2. Deploy the Application
 

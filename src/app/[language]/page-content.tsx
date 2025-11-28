@@ -22,7 +22,7 @@ export default function Home() {
   const { t } = useTranslation("home");
 
   return (
-    <>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', pt: 8, pb: 16 }}>
       {/* Hero Section */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
         <HeroMotion 
@@ -150,8 +150,7 @@ export default function Home() {
 
       {/* Quick Facts */}
       <Box sx={(theme) => ({ 
-        pt: 8,
-        pb: 16
+        pt: 8
       })}>
         <Container maxWidth="lg">
           <Grid container spacing={3}>
@@ -190,6 +189,6 @@ export default function Home() {
           </Grid>
         </Container>
       </Box>
-    </>
+    </Box>
   );
 }

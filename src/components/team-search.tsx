@@ -22,11 +22,16 @@ export default function TeamSearch() {
     }
   };
 
+  // Show "No teams found" when there's a search but no results
+  const options = teams && teams.length === 0 && searchQuery.length > 0 
+    ? [{ id: 'no-results', name: 'No teams found', description: null, max_members: 0, team_members: [] }] 
+    : teams || [];
+
   return (
     <Box>
       <Autocomplete
         freeSolo
-        options={teams || []}
+        options={options}
         getOptionLabel={(option) =>
           typeof option === "string" ? option : option.name
         }
@@ -50,44 +55,67 @@ export default function TeamSearch() {
             }}
           />
         )}
-        renderOption={(props, option: any) => (
-          <Box
-            component="li"
-            {...props}
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <Box sx={{ flexGrow: 1 }}>
-              <Typography variant="body1" fontWeight="bold">
-                {option.name}
-              </Typography>
-              {option.description && (
+        renderOption={(props, option: any) => {
+          // Special handling for "No teams found" entry
+          if (option.id === 'no-results') {
+            return (
+              <Box
+                component="li"
+                {...props}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                  py: 2,
+                }}
+              >
                 <Typography variant="body2" color="text.secondary">
-                  {option.description}
+                  No teams found
                 </Typography>
-              )}
-              <Typography variant="caption" color="text.secondary">
-                {option.team_members?.[0]?.count || 0}/{option.max_members}{" "}
-                {t("team.search.members")}
-              </Typography>
-            </Box>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleJoinTeam(option.id);
+              </Box>
+            );
+          }
+
+          return (
+            <Box
+              component="li"
+              {...props}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
               }}
-              disabled={joinTeam.isPending}
             >
-              {t("team.search.join")}
-            </Button>
-          </Box>
-        )}
+              <Box sx={{ flexGrow: 1 }}>
+                <Typography variant="body1" fontWeight="bold">
+                  {option.name}
+                </Typography>
+                {option.description && (
+                  <Typography variant="body2" color="text.secondary">
+                    {option.description}
+                  </Typography>
+                )}
+                <Typography variant="caption" color="text.secondary">
+                  {option.team_members?.[0]?.count || 0}/{option.max_members}{" "}
+                  {t("team.search.members")}
+                </Typography>
+              </Box>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleJoinTeam(option.id);
+                }}
+                disabled={joinTeam.isPending}
+              >
+                {t("team.search.join")}
+              </Button>
+            </Box>
+          );
+        }}
         noOptionsText={
           searchQuery.length > 0
             ? t("team.search.noResults")

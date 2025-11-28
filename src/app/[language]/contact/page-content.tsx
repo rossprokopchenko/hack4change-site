@@ -14,7 +14,7 @@ export default function Contact() {
   const { t } = useTranslation("contact");
 
   return (
-    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', py: 8 }}>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', pt: 8, pb: 16 }}>
       <Container maxWidth="lg">
         <Stack spacing={8}>
           
@@ -32,27 +32,16 @@ export default function Contact() {
             <Typography variant="h4" gutterBottom fontWeight="bold">
               {t("participants.title")}
             </Typography>
-            <Typography variant="body1" paragraph>
-              {t("participants.intro")}
-            </Typography>
-            <Typography variant="body1" paragraph>
-              {t("participants.registration")}
-            </Typography>
-            <Box sx={{ bgcolor: "background.paper", p: 3, borderRadius: 2, my: 3, borderLeft: 4, borderColor: 'primary.main' }}>
-              <Typography variant="body2" color="text.secondary" textAlign="center">
-                [{t("participants.emailSignup")}]
-              </Typography>
-            </Box>
-            <Typography variant="subtitle2" gutterBottom sx={{ mt: 3 }}>
+            <Typography variant="body1" gutterBottom sx={{ mt: 3 }}>
               {t("participants.questions")}
-            </Typography>
-            <Typography variant="body2">
-              <MuiLink href="mailto:contact@hack4change.ca">
-                {t("participants.email")}
-              </MuiLink>
             </Typography>
             <Typography variant="body2" sx={{ mt: 1 }}>
               {t("participants.faqLink")} <Link href="/faq"><MuiLink component="span">FAQ page</MuiLink></Link>
+            </Typography>
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              <MuiLink href="mailto:contact@hack4change.ca">
+                {t("participants.email")}
+              </MuiLink>
             </Typography>
           </Box>
 
@@ -69,12 +58,12 @@ export default function Contact() {
             <Typography variant="body1" paragraph>
               {t("sponsors.description")}
             </Typography>
-            <Typography variant="subtitle2" gutterBottom sx={{ mt: 3 }}>
+            {/* <Typography variant="subtitle2" gutterBottom sx={{ mt: 3 }}>
               {t("sponsors.prospectus")}
             </Typography>
             <Typography variant="body2" paragraph>
               [{t("sponsors.prospectusLink")}]
-            </Typography>
+            </Typography> */}
             <Typography variant="subtitle2" gutterBottom>
               {t("sponsors.discuss")}
             </Typography>
@@ -127,11 +116,11 @@ export default function Contact() {
               {t("general.response")}
             </Typography>
           </Box>
-
-          <Divider />
+{/* 
+          <Divider /> */}
 
           {/* Stay Connected */}
-          <Box textAlign="center">
+          {/* <Box textAlign="center">
             <Typography variant="h4" gutterBottom fontWeight="bold">
               {t("stayConnected.title")}
             </Typography>
@@ -151,10 +140,7 @@ export default function Contact() {
                 {t("stayConnected.email")}
               </MuiLink>
             </Typography>
-          </Box>
-
-          
-
+          </Box> */}
         </Stack>
       </Container>
     </Box>

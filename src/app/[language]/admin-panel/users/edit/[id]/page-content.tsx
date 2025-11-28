@@ -326,12 +326,13 @@ function FormChangePasswordUser() {
       <Container maxWidth="xs">
         <form onSubmit={onSubmit}>
           <Grid container spacing={2} mb={3} mt={3}>
+            {/*
             <Grid size={{ xs: 12 }}>
               <Typography variant="h6">
                 {t("admin-panel-users-edit:title2")}
               </Typography>
             </Grid>
-
+            
             <Grid size={{ xs: 12 }}>
               <FormTextInput<ChangeUserPasswordFormData>
                 name="password"
@@ -340,7 +341,7 @@ function FormChangePasswordUser() {
               />
             </Grid>
 
-            <Grid size={{ xs: 12 }}>
+             <Grid size={{ xs: 12 }}>
               <FormTextInput<ChangeUserPasswordFormData>
                 name="passwordConfirmation"
                 label={t(
@@ -362,7 +363,7 @@ function FormChangePasswordUser() {
                   {t("admin-panel-users-edit:actions.cancel")}
                 </Button>
               </Box>
-            </Grid>
+            </Grid> */}
           </Grid>
         </form>
       </Container>

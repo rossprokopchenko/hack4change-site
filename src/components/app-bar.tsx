@@ -239,21 +239,26 @@ function ResponsiveAppBar() {
 
             {!!user?.role &&
               [RoleEnum.ADMIN].includes(Number(user?.role?.id)) && (
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ color: "white", px: 2, py: 2 }}
-                  component={Link}
-                  href="/admin-panel/users"
-                >
-                  {t("common:navigation.users")}
-                </Button>
+                <>
+                  <Divider orientation="vertical" flexItem sx={{ my: 1, mx: 2, bgcolor: 'rgba(255, 255, 255, 0.15)' }} />
+                  <Box>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ color: "white", px: 2, py: 2 }}
+                      component={Link}
+                      href="/admin-panel/users"
+                    >
+                      {t("common:navigation.users")}
+                    </Button>
+                  </Box>
+                </>
               )}
           </Box>
 
           <Box
             sx={{
               display: "flex",
-              mr: 1,
+              mr: 2,
             }}
           >
             <ThemeSwitchButton />
@@ -263,10 +268,11 @@ function ResponsiveAppBar() {
             <CircularProgress color="inherit" />
           ) : user ? (
             <>
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Profile menu">
+              <Box sx={{ flexGrow: 0, display: "flex", gap: 1, alignItems: "center" }}>
+                <Tooltip title="Profile">
                   <IconButton
-                    onClick={handleOpenUserMenu}
+                    component={Link}
+                    href="/profile"
                     sx={{ p: 0 }}
                     data-testid="profile-menu-item"
                   >
@@ -276,55 +282,15 @@ function ResponsiveAppBar() {
                     />
                   </IconButton>
                 </Tooltip>
-                <Menu
-                  sx={{ mt: 5.5 }}
-                  id="menu-appbar"
-                  anchorEl={anchorElementUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElementUser)}
-                  onClose={handleCloseUserMenu}
-                  PaperProps={{
-                    sx: {
-                      minWidth: 250,
-                    },
-                  }}
-                >
-                  <MenuItem
-                    onClick={handleCloseUserMenu}
-                    component={Link}
-                    href="/profile"
-                    data-testid="user-profile"
-                  >
-                    <ListItemIcon>
-                      <PersonIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography>
-                      {t("common:navigation.profile")}
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      logOut();
-                      handleCloseUserMenu();
-                    }}
+                <Tooltip title="Logout" sx={{ ml: 2 }}>
+                  <IconButton
+                    onClick={logOut}
+                    color="inherit"
                     data-testid="logout-menu-item"
                   >
-                    <ListItemIcon>
-                      <LogoutIcon fontSize="small" />
-                    </ListItemIcon>
-                    <Typography>
-                      {t("common:navigation.logout")}
-                    </Typography>
-                  </MenuItem>
-                </Menu>
+                    <LogoutIcon />
+                  </IconButton>
+                </Tooltip>
               </Box>
             </>
           ) : (

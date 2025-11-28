@@ -179,18 +179,12 @@
     "steps": [
       {
         "number": "1",
-        "title": "Téléchargez notre prospectus de commandite",
-        "description": "Détails complets sur tous les niveaux de commandite, les avantages et les possibilités de partenariat",
-        "action": "Télécharger le PDF"
-      },
-      {
-        "number": "2",
         "title": "Planifiez une conversation",
         "description": "Discutons de la façon dont votre organisation peut participer à cet événement inaugural.",
         "contact": "Courriel : contact@hack4change.ca"
       },
       {
-        "number": "3",
+        "number": "2",
         "title": "Confirmez votre commandite",
         "description": "Nous fournirons une entente de commandite officielle précisant les avantages et les livrables. Dès la signature, nous commencerons immédiatement à promouvoir votre participation."
       }

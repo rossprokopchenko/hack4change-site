@@ -31,6 +31,7 @@ import { useUserTeam, useLeaveTeam } from "@/services/teams/use-teams";
 import { useUpdateRSVP, type RSVPStatus } from "@/services/profile/use-rsvp";
 import CreateTeamDialog from "@/components/create-team-dialog";
 import TeamSearch from "@/components/team-search";
+import { Stack, ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
   width: theme.spacing(20),
@@ -43,25 +44,10 @@ const getRSVPColor = (status: string) => {
       return "success";
     case "declined":
       return "error";
-    case "waitlist":
-      return "warning";
+    case "pending":
+      return "default";
     default:
       return "default";
-  }
-};
-
-const getNextRSVPStatus = (current: string): RSVPStatus => {
-  switch (current) {
-    case "pending":
-      return "confirmed";
-    case "confirmed":
-      return "declined";
-    case "declined":
-      return "pending";
-    case "waitlist":
-      return "confirmed";
-    default:
-      return "pending";
   }
 };
 
@@ -77,9 +63,13 @@ function Profile() {
 
   const currentRSVP = (user as any)?.rsvpStatus || "pending";
 
-  const handleRSVPToggle = () => {
-    const nextStatus = getNextRSVPStatus(currentRSVP);
-    updateRSVP.mutate(nextStatus);
+  const handleRSVPChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newStatus: RSVPStatus | null
+  ) => {
+    if (newStatus !== null) {
+      updateRSVP.mutate(newStatus);
+    }
   };
 
   const handleLeaveTeam = async () => {
@@ -92,26 +82,27 @@ function Profile() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", py: 8 }}>
+    <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", pt: 8, pb: 16 }}>
+      
       <Container maxWidth="md">
-        {/* Profile Header */}
-        <Grid container spacing={3} wrap="nowrap" pt={3}>
-          <Grid size="auto">
-            <StyledAvatar
-              alt={user?.firstName + " " + user?.lastName}
-              data-testid="user-icon"
-              src={user?.photo?.path}
-            />
-          </Grid>
-          <Grid size="grow">
-            <Typography variant="h3" gutterBottom data-testid="user-name">
-              {user?.firstName} {user?.lastName}
-            </Typography>
-            <Typography variant="h5" gutterBottom data-testid="user-email">
-              {user?.email}
-            </Typography>
-            <Grid container>
-              <Grid>
+        <Stack spacing={8}>
+          {/* Profile Header */}
+          <Grid container spacing={3} wrap="nowrap">
+            <Grid size="auto">
+              <StyledAvatar
+                alt={user?.firstName + " " + user?.lastName}
+                data-testid="user-icon"
+                src={user?.photo?.path}
+              />
+            </Grid>
+            <Grid size="grow" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+              <Typography variant="h3" gutterBottom data-testid="user-name" sx={{ textAlign: 'right' }}>
+                {user?.firstName} {user?.lastName}
+              </Typography>
+              <Typography variant="h5" gutterBottom data-testid="user-email" sx={{ textAlign: 'right' }}>
+                {user?.email}
+              </Typography>
+              <Box>
                 <Button
                   variant="contained"
                   color="primary"
@@ -122,187 +113,206 @@ function Profile() {
                 >
                   {t("profile:actions.edit")}
                 </Button>
-              </Grid>
+              </Box>
             </Grid>
           </Grid>
-        </Grid>
 
-        <Divider sx={{ my: 4 }} />
+          <Divider />
 
-        {/* RSVP Status Section */}
-        <Card sx={{ mb: 3 }}>
-          <CardContent>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-              <EventAvailableIcon color="primary" />
-              <Typography variant="h5" fontWeight="bold">
-                {t("rsvp.title")}
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Box>
-                <Typography variant="body1" gutterBottom>
-                  {t("rsvp.currentStatus")}:{" "}
-                  <Chip
-                    label={t(`rsvp.status.${currentRSVP}`)}
-                    color={getRSVPColor(currentRSVP) as any}
-                    size="small"
-                  />
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {t("rsvp.description")}
-                </Typography>
-              </Box>
-              <Button
-                variant="outlined"
-                onClick={handleRSVPToggle}
-                disabled={updateRSVP.isPending}
-              >
-                {updateRSVP.isPending
-                  ? t("rsvp.updating")
-                  : t("rsvp.changeStatus")}
-              </Button>
-            </Box>
-          </CardContent>
-        </Card>
-
-        {/* Team Section */}
-        {teamLoading ? (
-          <Card>
-            <CardContent>
-              <Typography>{t("team.loading")}</Typography>
-            </CardContent>
-          </Card>
-        ) : userTeam ? (
-          // Current Team Display
+          {/* RSVP Status Section */}
           <Card>
             <CardContent>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                <GroupsIcon color="primary" />
+                <EventAvailableIcon color="primary" />
                 <Typography variant="h5" fontWeight="bold">
-                  {t("team.yourTeam")}
+                  {t("rsvp.title")}
                 </Typography>
               </Box>
-              <Typography variant="h6" gutterBottom>
-                {userTeam.name}
-              </Typography>
-              {userTeam.description && (
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {userTeam.description}
-                </Typography>
-              )}
-              <Typography variant="body2" gutterBottom>
-                {t("team.yourRole")}:{" "}
-                <Chip
-                  label={t(`team.role.${userTeam.userRole}`)}
-                  size="small"
-                  color={userTeam.userRole === "leader" ? "primary" : "default"}
-                />
-              </Typography>
-              <Typography variant="subtitle2" sx={{ mt: 2, mb: 1 }}>
-                {t("team.members")} ({userTeam.team_members?.length || 0}/
-                {userTeam.max_members}):
-              </Typography>
-              <List dense>
-                {userTeam.team_members?.map((member: any) => (
-                  <ListItem key={member.id}>
-                    <ListItemText
-                      primary={`${member.profiles.first_name || ""} ${member.profiles.last_name || ""}`.trim() || member.profiles.email}
-                      secondary={t(`team.role.${member.role}`)}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-              <Button
-                variant="outlined"
-                color="error"
-                onClick={() => setLeaveTeamDialogOpen(true)}
-                sx={{ mt: 2 }}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                }}
               >
-                {t("team.leaveTeam")}
-              </Button>
+                {/* <Box>
+                  <Typography variant="body1" gutterBottom>
+                    {t("rsvp.currentStatus")}:{" "}
+                    <Chip
+                      label={t(`rsvp.status.${currentRSVP}`)}
+                      color={getRSVPColor(currentRSVP) as any}
+                      size="small"
+                    />
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {t("rsvp.description")}
+                  </Typography>
+                </Box> */}
+                <Box>
+                  <ToggleButtonGroup
+                    value={currentRSVP}
+                    exclusive
+                    onChange={handleRSVPChange}
+                    disabled={updateRSVP.isPending}
+                    fullWidth
+                    sx={{
+                      '& .MuiToggleButton-root': {
+                        py: 1.5,
+                      },
+                      '& .MuiToggleButton-root.Mui-selected': {
+                        fontWeight: 'bold',
+                      },
+                    }}
+                  >
+                    <ToggleButton value="pending" color="standard">
+                      Pending
+                    </ToggleButton>
+                    <ToggleButton value="confirmed" color="success">
+                      Confirmed
+                    </ToggleButton>
+                    <ToggleButton value="declined" color="error">
+                      Declined
+                    </ToggleButton>
+                  </ToggleButtonGroup>
+                </Box>
+              </Box>
             </CardContent>
           </Card>
-        ) : (
-          // Team Search & Create
-          <Card>
-            <CardContent>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
-                <GroupsIcon color="primary" />
-                <Typography variant="h5" fontWeight="bold">
-                  {t("team.findOrCreate")}
-                </Typography>
-              </Box>
 
-              {/* Search Teams */}
-              <Box sx={{ mb: 3 }}>
+          {/* Team Section */}
+          {teamLoading ? (
+            <Card>
+              <CardContent>
+                <Typography>{t("team.loading")}</Typography>
+              </CardContent>
+            </Card>
+          ) : userTeam ? (
+            // Current Team Display
+            <Card>
+              <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                  <SearchIcon fontSize="small" />
-                  <Typography variant="h6">{t("team.searchTitle")}</Typography>
+                  <GroupsIcon color="primary" />
+                  <Typography variant="h5" fontWeight="bold">
+                    {t("team.yourTeam")}
+                  </Typography>
                 </Box>
-                <TeamSearch />
-              </Box>
-
-              <Divider sx={{ my: 3 }} />
-
-              {/* Create Team */}
-              <Box>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                  <AddIcon fontSize="small" />
-                  <Typography variant="h6">{t("team.createTitle")}</Typography>
-                </Box>
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {t("team.createDescription")}
+                <Typography variant="h6" gutterBottom>
+                  {userTeam.name}
                 </Typography>
+                {userTeam.description && (
+                  <Typography variant="body2" color="text.secondary" paragraph>
+                    {userTeam.description}
+                  </Typography>
+                )}
+                <Typography variant="body2" gutterBottom>
+                  {t("team.yourRole")}:{" "}
+                  <Chip
+                    label={t(`team.role.${userTeam.userRole}`)}
+                    size="small"
+                    color={userTeam.userRole === "leader" ? "primary" : "default"}
+                  />
+                </Typography>
+                <Typography variant="subtitle2" sx={{ mt: 2, mb: 1 }}>
+                  {t("team.members")} ({userTeam.team_members?.length || 0}/
+                  {userTeam.max_members}):
+                </Typography>
+                <List dense>
+                  {userTeam.team_members?.map((member: any) => (
+                    <ListItem key={member.id}>
+                      <ListItemText
+                        primary={`${member.profiles.first_name || ""} ${member.profiles.last_name || ""}`.trim() || member.profiles.email}
+                        secondary={t(`team.role.${member.role}`)}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
                 <Button
-                  variant="contained"
-                  startIcon={<AddIcon />}
-                  onClick={() => setCreateTeamOpen(true)}
+                  variant="outlined"
+                  color="error"
+                  onClick={() => setLeaveTeamDialogOpen(true)}
+                  sx={{ mt: 2 }}
                 >
-                  {t("team.createButton")}
+                  {t("team.leaveTeam")}
                 </Button>
-              </Box>
-            </CardContent>
-          </Card>
-        )}
-      </Container>
+              </CardContent>
+            </Card>
+          ) : (
+            // Team Search & Create
+            <Card>
+              <CardContent>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
+                  <GroupsIcon color="primary" />
+                  <Typography variant="h5" fontWeight="bold">
+                    {t("team.findOrCreate")}
+                  </Typography>
+                </Box>
 
-      {/* Create Team Dialog */}
-      <CreateTeamDialog
-        open={createTeamOpen}
-        onClose={() => setCreateTeamOpen(false)}
-      />
+                {/* Search Teams */}
+                <Box sx={{ mb: 3 }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+                    <SearchIcon fontSize="small" />
+                    <Typography variant="h6">{t("team.searchTitle")}</Typography>
+                  </Box>
+                  <TeamSearch />
+                </Box>
 
-      {/* Leave Team Confirmation Dialog */}
-      <Dialog
-        open={leaveTeamDialogOpen}
-        onClose={() => setLeaveTeamDialogOpen(false)}
-      >
-        <DialogTitle>{t("team.leaveDialog.title")}</DialogTitle>
-        <DialogContent>
-          <DialogContentText>{t("team.leaveDialog.message")}</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setLeaveTeamDialogOpen(false)}>
-            {t("team.leaveDialog.cancel")}
-          </Button>
-          <Button
-            onClick={handleLeaveTeam}
-            color="error"
-            variant="contained"
-            disabled={leaveTeam.isPending}
-          >
-            {leaveTeam.isPending
-              ? t("team.leaveDialog.leaving")
-              : t("team.leaveDialog.leave")}
-          </Button>
-        </DialogActions>
-      </Dialog>
+                <Divider sx={{ my: 3 }} />
+
+                {/* Create Team */}
+                <Box>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+                    <AddIcon fontSize="small" />
+                    <Typography variant="h6">{t("team.createTitle")}</Typography>
+                  </Box>
+                  <Typography variant="body2" color="text.secondary" paragraph>
+                    {t("team.createDescription")}
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    startIcon={<AddIcon />}
+                    onClick={() => setCreateTeamOpen(true)}
+                  >
+                    {t("team.createButton")}
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          )}
+      </Stack>
+
+    </Container>
+
+        {/* Create Team Dialog */}
+        <CreateTeamDialog
+          open={createTeamOpen}
+          onClose={() => setCreateTeamOpen(false)}
+        />
+
+        {/* Leave Team Confirmation Dialog */}
+        <Dialog
+          open={leaveTeamDialogOpen}
+          onClose={() => setLeaveTeamDialogOpen(false)}
+        >
+          <DialogTitle>{t("team.leaveDialog.title")}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>{t("team.leaveDialog.message")}</DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setLeaveTeamDialogOpen(false)}>
+              {t("team.leaveDialog.cancel")}
+            </Button>
+            <Button
+              onClick={handleLeaveTeam}
+              color="error"
+              variant="contained"
+              disabled={leaveTeam.isPending}
+            >
+              {leaveTeam.isPending
+                ? t("team.leaveDialog.leaving")
+                : t("team.leaveDialog.leave")}
+            </Button>
+          </DialogActions>
+        </Dialog>
     </Box>
   );
 }

@@ -179,18 +179,12 @@
     "steps": [
       {
         "number": "1",
-        "title": "Download Our Sponsorship Prospectus",
-        "description": "Comprehensive details on all sponsorship tiers, benefits, and partnership opportunities",
-        "action": "Download PDF"
-      },
-      {
-        "number": "2",
         "title": "Schedule a Conversation",
         "description": "Let's discuss how your organization can be part of this inaugural event.",
         "contact": "Email: contact@hack4change.ca"
       },
       {
-        "number": "3",
+        "number": "2",
         "title": "Confirm Your Sponsorship",
         "description": "We'll provide a formal sponsorship agreement outlining benefits and deliverables. Upon signing, we'll begin promoting your involvement immediately."
       }

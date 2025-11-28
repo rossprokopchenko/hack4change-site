@@ -23,7 +23,7 @@ export default function About() {
   const { t } = useTranslation("about");
 
   return (
-    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', py: 8 }}>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', pt: 8, pb: 16 }}>
       <Container maxWidth="lg">
         <Stack spacing={8}>
           
@@ -281,14 +281,14 @@ export default function About() {
                 </MuiLink>
               </Box>
 
-              <Box>
+              {/* <Box>
                 <Typography variant="h5" gutterBottom fontWeight="bold">
                   {t("partners.venn.title")}
                 </Typography>
                 <Typography variant="body1">
                   {t("partners.venn.description")}
                 </Typography>
-              </Box>
+              </Box> */}
             </Stack>
           </Box>
 

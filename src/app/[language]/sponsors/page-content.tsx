@@ -15,7 +15,7 @@ export default function Sponsors() {
   const tiers = ["title", "gold", "silver", "bronze", "community"];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth="lg" sx={{ pt: 8, pb: 16 }}>
       <Typography variant="h3" component="h1" gutterBottom textAlign="center">
         {t("title")}
       </Typography>
@@ -191,9 +191,9 @@ export default function Sponsors() {
         <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 3 }}>
           {t("currentSponsors.description")}
         </Typography>
-        <Typography variant="subtitle2" textAlign="center" sx={{ mt: 3 }}>
+        {/* <Typography variant="subtitle2" textAlign="center" sx={{ mt: 3 }}>
           {t("currentSponsors.interested")}
-        </Typography>
+        </Typography> */}
       </Box>
     </Container>
   );
