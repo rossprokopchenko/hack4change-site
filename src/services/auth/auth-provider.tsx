@@ -43,11 +43,12 @@ function AuthProvider(props: PropsWithChildren) {
           lastName: profile.last_name || "",
           photo: profile.avatar_url ? { id: "", path: profile.avatar_url } : undefined,
           role: {
-            id: 2, // RoleEnum.USER
-            name: "User",
+            id: (profile as any).role === 'admin' ? 1 : 2, // Map 'admin' to RoleEnum.ADMIN (1), 'user' to RoleEnum.USER (2)
+            name: (profile as any).role === 'admin' ? 'Admin' : 'User',
           },
-          provider: undefined, // Set if needed based on auth provider
+          provider: undefined,
           socialId: undefined,
+          rsvpStatus: (profile as any).rsvp_status,
         };
         setUser(mappedUser); 
       } else {

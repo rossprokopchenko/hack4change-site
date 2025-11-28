@@ -12,6 +12,9 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   last_name TEXT,
   avatar_url TEXT,
   
+  -- Role for admin access control
+  role TEXT DEFAULT 'user' CHECK (role IN ('admin', 'user')),
+  
   -- Hackathon-specific fields
   dietary_restrictions TEXT,
   tshirt_size TEXT CHECK (tshirt_size IN ('XS', 'S', 'M', 'L', 'XL', 'XXL')),

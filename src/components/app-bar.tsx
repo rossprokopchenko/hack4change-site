@@ -21,6 +21,9 @@ import { RoleEnum } from "@/services/api/types/role";
 import Divider from "@mui/material/Divider";
 import ThemeSwitchButton from "@/components/switch-theme-button";
 import { IS_SIGN_UP_ENABLED } from "@/services/auth/config";
+import PersonIcon from "@mui/icons-material/Person";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
 function ResponsiveAppBar() {
   const { t } = useTranslation("common");
@@ -110,6 +113,18 @@ function ResponsiveAppBar() {
                 </Typography>
               </MenuItem>
 
+              <MenuItem onClick={handleCloseNavMenu} component={Link} href="/faq">
+                <Typography textAlign="center">
+                  {t("common:navigation.faq")}
+                </Typography>
+              </MenuItem>
+
+              <MenuItem onClick={handleCloseNavMenu} component={Link} href="/sponsors">
+                <Typography textAlign="center">
+                  {t("common:navigation.sponsors")}
+                </Typography>
+              </MenuItem>
+
               <MenuItem onClick={handleCloseNavMenu} component={Link} href="/contact">
                 <Typography textAlign="center">
                   {t("common:navigation.contact")}
@@ -176,10 +191,10 @@ function ResponsiveAppBar() {
           >
             {t("common:app-name")}
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 0 }}>
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ color: "white", px: 2, py: 2 }}
               component={Link}
               href="/"
             >
@@ -188,7 +203,7 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ color: "white", px: 2, py: 2 }}
               component={Link}
               href="/about"
             >
@@ -197,25 +212,45 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              sx={{ color: "white", px: 2, py: 2 }}
+              component={Link}
+              href="/sponsors"
+            >
+              {t("common:navigation.sponsors")}
+            </Button>
+
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ color: "white", px: 2, py: 2 }}
               component={Link}
               href="/contact"
             >
               {t("common:navigation.contact")}
             </Button>
 
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ color: "white", px: 2, py: 2 }}
+              component={Link}
+              href="/faq"
+            >
+              {t("common:navigation.faq")}
+            </Button>
+
             {!!user?.role &&
               [RoleEnum.ADMIN].includes(Number(user?.role?.id)) && (
                 <>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: "white", display: "block" }}
-                    component={Link}
-                    href="/admin-panel/users"
-                  >
-                    {t("common:navigation.users")}
-                  </Button>
-                  {/* desktop-menu-items */}
+                  <Divider orientation="vertical" flexItem sx={{ my: 1, mx: 2, bgcolor: 'rgba(255, 255, 255, 0.15)' }} />
+                  <Box>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ color: "white", px: 2, py: 2 }}
+                      component={Link}
+                      href="/admin-panel/users"
+                    >
+                      {t("common:navigation.users")}
+                    </Button>
+                  </Box>
                 </>
               )}
           </Box>
@@ -223,7 +258,7 @@ function ResponsiveAppBar() {
           <Box
             sx={{
               display: "flex",
-              mr: 1,
+              mr: 2,
             }}
           >
             <ThemeSwitchButton />
@@ -233,10 +268,11 @@ function ResponsiveAppBar() {
             <CircularProgress color="inherit" />
           ) : user ? (
             <>
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Profile menu">
+              <Box sx={{ flexGrow: 0, display: "flex", gap: 1, alignItems: "center" }}>
+                <Tooltip title="Profile">
                   <IconButton
-                    onClick={handleOpenUserMenu}
+                    component={Link}
+                    href="/profile"
                     sx={{ p: 0 }}
                     data-testid="profile-menu-item"
                   >
@@ -246,44 +282,15 @@ function ResponsiveAppBar() {
                     />
                   </IconButton>
                 </Tooltip>
-                <Menu
-                  sx={{ mt: 5.5 }}
-                  id="menu-appbar"
-                  anchorEl={anchorElementUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElementUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <MenuItem
-                    onClick={handleCloseUserMenu}
-                    component={Link}
-                    href="/profile"
-                    data-testid="user-profile"
-                  >
-                    <Typography textAlign="center">
-                      {t("common:navigation.profile")}
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      logOut();
-                      handleCloseUserMenu();
-                    }}
+                <Tooltip title="Logout" sx={{ ml: 2 }}>
+                  <IconButton
+                    onClick={logOut}
+                    color="inherit"
                     data-testid="logout-menu-item"
                   >
-                    <Typography textAlign="center">
-                      {t("common:navigation.logout")}
-                    </Typography>
-                  </MenuItem>
-                </Menu>
+                    <LogoutIcon />
+                  </IconButton>
+                </Tooltip>
               </Box>
             </>
           ) : (

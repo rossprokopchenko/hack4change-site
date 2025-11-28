@@ -1,0 +1,201 @@
+{
+  "title": "Sponsor Hack4Change",
+  "subtitle": "Become a founding sponsor of Moncton's inaugural civic tech hackathon. Your support enables exceptional participant experiences while addressing critical community challenges.",
+  
+  "whySponsor": {
+    "title": "Why Sponsor Hack4Change?",
+    "techCompanies": {
+      "title": "For Technology Companies:",
+      "benefits": [
+        {
+          "title": "Talent Pipeline & Recruitment",
+          "items": [
+            "Direct access to skilled developers, designers, and problem-solvers in action",
+            "Collect resumes and contact information from participants (with consent)",
+            "Send mentors who can evaluate talent while supporting teams",
+            "Conduct informal interviews and build relationships with emerging professionals"
+          ]
+        },
+        {
+          "title": "Technical Community Engagement",
+          "items": [
+            "Your team mentors and evaluates cutting-edge solutions",
+            "Host workshops showcasing your technology or methodologies",
+            "Demonstrate thought leadership in civic technology",
+            "Connect with Moncton's growing tech community"
+          ]
+        },
+        {
+          "title": "Employer Branding",
+          "items": [
+            "Show commitment to community impact and social innovation",
+            "Attract purpose-driven talent who value meaningful work",
+            "Stand out in a competitive talent market"
+          ]
+        }
+      ]
+    },
+    "corporate": {
+      "title": "For Corporate & Financial Sponsors:",
+      "benefits": [
+        {
+          "title": "Measurable Community Impact",
+          "items": [
+            "Directly support technology solutions addressing homelessness",
+            "Your contribution funds a solution that will actually be built and deployed",
+            "Not just a weekend prototype, lasting community infrastructure"
+          ]
+        },
+        {
+          "title": "Corporate Social Responsibility",
+          "items": [
+            "Perfect fit for CSR initiatives focused on housing, poverty, or innovation",
+            "Concrete, verifiable impact you can report to stakeholders",
+            "Partnership with respected community organizations (GMHSC, Civic Tech Moncton)"
+          ]
+        },
+        {
+          "title": "Brand Visibility & Recognition",
+          "items": [
+            "Anticipated local and regional media coverage",
+            "Recognition at event with 20-40 participants, mentors, judges, and guests",
+            "Named in all ongoing communications about the deployed solution",
+            "Logo placement across website, social media, and event materials"
+          ]
+        }
+      ]
+    },
+    "local": {
+      "title": "For Local Businesses:",
+      "description": "Bronze ($2,000) and Community Supporter ($500) tiers fit any budget. Show Moncton you care about solving real community challenges. Connect with local tech community and young professionals. Be part of something historic, Moncton's first civic tech hackathon."
+    }
+  },
+
+  "differentiator": {
+    "title": "The Hack4Change Differentiator",
+    "subtitle": "Unlike typical hackathons, your sponsorship doesn't fund a weekend prototype that gets abandoned.",
+    "benefits": [
+      "A solution that WILL be fully developed",
+      "Deployment to real organizations serving 500+ individuals",
+      "Measurable, lasting community impact",
+      "Open-source code benefiting communities beyond Moncton"
+    ],
+    "closing": "Your brand gets associated with actual, lasting community infrastructure, not just a weekend event."
+  },
+
+  "tiers": {
+    "title": "Sponsorship Opportunities",
+    "levels": {
+      "title": {
+        "tier": "TITLE SPONSOR",
+        "price": "$15,000",
+        "limit": "Maximum 1-2 sponsors",
+        "idealFor": "Ideal for: Major corporations, banks, insurance companies, provincial Crown corporations",
+        "benefits": [
+          "Event Naming Rights: \"Hack4Change: Civic Tech Moncton Hackathon presented by [Your Company]\"",
+          "5-minute keynote speaking opportunity at both opening and closing ceremonies",
+          "Exclusive booth with premier positioning at venue",
+          "Present winning team prizes on stage",
+          "Send 3+ mentors and technical experts",
+          "Logo on ALL materials with top-tier prominence",
+          "Post-event success story collaboration for your marketing materials",
+          "First right of refusal for Title Sponsor at 2027 event"
+        ],
+        "note": "All Gold Partner Benefits PLUS:"
+      },
+      "gold": {
+        "tier": "GOLD PARTNER",
+        "price": "$10,000",
+        "idealFor": "Ideal for: Major regional companies, large technology firms, financial institutions",
+        "benefits": [
+          "Premier logo placement (larger size, top positioning on all materials)",
+          "3-5 minute keynote speaking opportunity at opening ceremony",
+          "Send 2 mentors to support participants throughout the event",
+          "Host a custom workshop session (30-45 minutes)",
+          "Send judges to evaluate final project presentations",
+          "Featured prominently in press releases and media outreach"
+        ],
+        "note": "All Silver Partner Benefits PLUS:"
+      },
+      "silver": {
+        "tier": "SILVER PARTNER",
+        "price": "$5,000",
+        "idealFor": "Ideal for: Mid-size companies, regional technology firms",
+        "benefits": [
+          "Logo on all event materials (programs, signage, presentations)",
+          "1-2 minute speaking opportunity at opening ceremony",
+          "Send 1 mentor to support participants during event",
+          "Booth/table space at venue for recruitment and promotion",
+          "Access to participant contact information and resumes (with consent)"
+        ],
+        "note": "All Bronze Partner Benefits PLUS:"
+      },
+      "bronze": {
+        "tier": "BRONZE PARTNER",
+        "price": "$2,000",
+        "idealFor": "Ideal for: Local IT companies, small businesses, community organizations",
+        "benefits": [
+          "Logo on event website",
+          "Social media recognition (multiple posts across platforms)",
+          "Thank you mention at opening and closing ceremonies",
+          "Invitation to networking reception",
+          "Logo in digital event materials"
+        ]
+      },
+      "community": {
+        "tier": "COMMUNITY SUPPORTER",
+        "price": "$500",
+        "idealFor": "Perfect for: Startups, small businesses, sole proprietors who want to support civic innovation",
+        "benefits": [
+          "Logo on event website",
+          "Social media recognition",
+          "Recognition as Community Supporter at event",
+          "Certificate of appreciation"
+        ]
+      }
+    }
+  },
+
+  "additional": {
+    "title": "Additional Sponsorship Opportunities",
+    "meal": {
+      "title": "Meal Sponsorship",
+      "price": "Pricing Varies",
+      "description": "Sponsor specific meals throughout the weekend with prominent recognition: \"Saturday Breakfast powered by [Your Company]\" or \"Sunday Lunch presented by [Your Company]\""
+    },
+    "swag": {
+      "title": "Swag Sponsorship",
+      "price": "Pricing Varies",
+      "description": "Provide branded items (t-shirts, water bottles, notebooks, stickers) distributed to all participants and volunteers. Your logo alongside Civic Tech Moncton branding on quality items participants will actually use."
+    },
+    "custom": {
+      "title": "Custom Packages Available",
+      "description": "Have specific goals or a unique way you'd like to support? We're happy to create custom sponsorship packages. Contact us at contact@hack4change.ca."
+    }
+  },
+
+  "nextSteps": {
+    "title": "Next Steps",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Schedule a Conversation",
+        "description": "Let's discuss how your organization can be part of this inaugural event.",
+        "contact": "Email: contact@hack4change.ca"
+      },
+      {
+        "number": "2",
+        "title": "Confirm Your Sponsorship",
+        "description": "We'll provide a formal sponsorship agreement outlining benefits and deliverables. Upon signing, we'll begin promoting your involvement immediately."
+      }
+    ]
+  },
+
+  "currentSponsors": {
+    "title": "Our Sponsors",
+    "description": "We're grateful to our sponsors who make Hack4Change possible. Sponsor logos and recognition will be displayed here as partnerships are confirmed.",
+    "challengePartner": "Challenge Partner:",
+    "venuePartner": "Venue Partner:",
+    "interested": "Interested in becoming a sponsor? Contact us at contact@hack4change.ca"
+  }
+}

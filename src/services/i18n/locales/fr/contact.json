@@ -1,8 +1,46 @@
 {
-    "title": "Contact",
-    "description": "Si vous souhaitez participer à cet événement ou si vous avez des questions, veuillez nous contacter à <emailLink>contact@hack4change.ca</emailLink>",
-    "sponsors": {
-        "title": "Commanditaires",
-        "description": "Nous sommes reconnaissants du soutien de nos commanditaires qui rendent Hack4Change possible. Si vous souhaitez parrainer l'événement, veuillez nous contacter à <emailLink>contact@hack4change.ca</emailLink>"
-    }
+  "title": "Contacter Hack4Change",
+  
+  "participants": {
+    "title": "Participants",
+    "intro": "Prêt à rejoindre le premier hackathon de technologie civique de Moncton?",
+    "registration": "L'inscription ouvre bientôt ! Inscrivez-vous à notre liste de diffusion pour être informé lors de l'ouverture des inscriptions et recevoir les mises à jour de l'événement :",
+    "emailSignup": "Formulaire d'inscription par courriel",
+    "questions": "Des questions sur la participation ?",
+    "email": "Courriel : contact@hack4change.ca",
+    "faqLink": "Consultez notre page FAQ pour les réponses aux questions courantes."
+  },
+
+  "sponsors": {
+    "title": "Commanditaires",
+    "intro": "Intéressé à commanditer Hack4Change ?",
+    "description": "Votre commandite soutient l'innovation civique et vous connecte avec des talents technologiques émergents tout en relevant des défis communautaires critiques.",
+    "prospectus": "Téléchargez notre prospectus de commandite :",
+    "prospectusLink": "Lien vers le PDF",
+    "discuss": "Discutons de votre partenariat :",
+    "email": "Courriel : contact@hack4change.ca",
+    "meeting": "Nous serons heureux de nous rencontrer en personne ou par vidéoconférence pour discuter des opportunités de commandite et créer des forfaits personnalisés."
+  },
+
+  "media": {
+    "title": "Demandes des médias",
+    "intro": "Presse, entrevues ou partenariats médiatiques :",
+    "email": "Courriel : contact@hack4change.ca",
+    "info": "Nous serons heureux de fournir des informations supplémentaires, d'organiser des entrevues avec les organisateurs ou de discuter de partenariats médiatiques."
+  },
+
+  "general": {
+    "title": "Questions générales",
+    "intro": "Pour toute autre question concernant Hack4Change :",
+    "email": "Courriel : contact@hack4change.ca",
+    "response": "Nous répondons généralement dans les 24-48 heures."
+  },
+
+  "stayConnected": {
+    "title": "Restez connecté",
+    "intro": "Rejoignez notre liste de diffusion pour recevoir les mises à jour de l'événement :",
+    "emailSignup": "Formulaire d'inscription par courriel",
+    "description": "Ne manquez jamais les annonces importantes concernant l'inscription, les commanditaires, les prix ou les détails de l'événement.",
+    "email": "Écrivez-nous : contact@hack4change.ca"
+  }
 }

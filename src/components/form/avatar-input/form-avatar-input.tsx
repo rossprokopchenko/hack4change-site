@@ -1,4 +1,4 @@
-import { useFileUploadService } from "@/services/api/services/files";
+import { useSupabaseFileUploadService } from "@/services/supabase/files";
 import { FileEntity } from "@/services/api/types/file-entity";
 import HTTP_CODES_ENUM from "@/services/api/types/http-codes";
 import Avatar from "@mui/material/Avatar";
@@ -72,12 +72,12 @@ function AvatarInput(props: AvatarInputProps) {
   const { onChange } = props;
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
-  const fetchFileUpload = useFileUploadService();
+  const fetchFileUpload = useSupabaseFileUploadService();
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       setIsLoading(true);
       const { status, data } = await fetchFileUpload(acceptedFiles[0]);
-      if (status === HTTP_CODES_ENUM.CREATED) {
+      if (status === HTTP_CODES_ENUM.CREATED && data) {
         onChange(data.file);
       }
       setIsLoading(false);

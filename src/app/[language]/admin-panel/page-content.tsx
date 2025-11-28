@@ -12,9 +12,9 @@ function AdminPanel() {
   const { t } = useTranslation("admin-panel-home");
 
   return (
-    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', pt: 3 }}>
+    <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
       <Container maxWidth="md">
-        <Grid container spacing={3} wrap="nowrap" pt={3}>
+        <Grid container spacing={3} wrap="nowrap">
           <Grid>
             <Typography variant="h3" gutterBottom>
               {t("title")}

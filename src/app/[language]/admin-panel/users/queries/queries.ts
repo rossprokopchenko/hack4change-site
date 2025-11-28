@@ -1,4 +1,4 @@
-import { useGetUsersService } from "@/services/api/services/users";
+import { useGetSupabaseUsersService } from "@/services/supabase/users";
 import HTTP_CODES_ENUM from "@/services/api/types/http-codes";
 import { createQueryKeys } from "@/services/react-query/query-key-factory";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -28,7 +28,7 @@ export const useGetUsersQuery = ({
   filter?: UserFilterType | undefined;
   sort?: UserSortType | undefined;
 } = {}) => {
-  const fetch = useGetUsersService();
+  const fetch = useGetSupabaseUsersService();
 
   const query = useInfiniteQuery({
     queryKey: usersQueryKeys.list().sub.by({ sort, filter }).key,

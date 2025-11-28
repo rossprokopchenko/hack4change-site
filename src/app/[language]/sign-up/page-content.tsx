@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 import MuiLink from "@mui/material/Link";
 import Link from "@/components/link";
 import Alert from "@mui/material/Alert";
-import MenuItem from "@mui/material/MenuItem";
 import { signUp } from "@/services/supabase/auth";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "@/services/i18n/client";
@@ -48,8 +47,8 @@ export default function SignUpSupabase() {
 
       // Redirect to sign-in page with success message
       router.push("/sign-in?registered=true");
-    } catch (err: any) {
-      setError(err.message || "An error occurred during sign up");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred during sign up");
     } finally {
       setLoading(false);
     }

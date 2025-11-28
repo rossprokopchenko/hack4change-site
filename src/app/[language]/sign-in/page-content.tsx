@@ -39,11 +39,11 @@ export default function SignInSupabase() {
       // Redirect to home page
       router.push("/");
       router.refresh();
-    } catch (err: any) {
+    } catch (err) {
       // Handle specific Supabase auth errors
       let errorMessage = t("sign-in:errors.genericError");
       
-      if (err.message) {
+      if (err instanceof Error && err.message) {
         // Supabase returns specific error messages we can check
         if (err.message.includes("Invalid login credentials") || 
             err.message.includes("invalid") ||

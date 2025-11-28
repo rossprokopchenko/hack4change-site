@@ -1,6 +1,38 @@
 {
-  "title": "Hack4Change",
-  "description": "Join us for a three-day event dedicated to solving Atlantic Canada's greatest real-world challenges through innovative technology solutions.",
+  "title": "HACK4CHANGE",
+  "subtitle": "Moncton's Inaugural Civic Tech Hackathon",
+  "tagline": "Build Technology That Actually Gets Deployed",
+  "dateLocation": "March 13-15, 2026 | Venn Innovation, Moncton, NB",
+  
+  "subheadline": "Join developers, designers, and problem-solvers for a three-day hackathon addressing a real challenge from the Greater Moncton Homelessness Steering Committee. Unlike typical hackathons where projects die after the weekend, the winning solution will be fully developed and deployed to serve community organizations across Southeast New Brunswick.",
+
+  "valueProps": {
+    "realWorldImpact": {
+      "title": "REAL-WORLD IMPACT",
+      "description": "Partner with the Greater Moncton Homelessness Steering Committee to solve an actual resource coordination challenge. Your solution addresses a crisis affecting 511+ individuals in our community."
+    },
+    "codeGoesLive": {
+      "title": "YOUR CODE GOES LIVE",
+      "description": "The winning team partners with Civic Tech Moncton to fully develop and deploy your solution. This isn't a competition that ends Sunday, it's the start of a real project serving real organizations."
+    },
+    "prizesRecognition": {
+      "title": "PRIZES + RECOGNITION",
+      "description": "Compete for cash prizes of at least $5,000 plus the pride of seeing your work make measurable community impact. Winners recognized in all ongoing communications about the deployed solution."
+    }
+  },
+
+  "cta": {
+    "registerInterest": "REGISTER YOUR INTEREST",
+    "sponsorshipOpportunities": "SPONSORSHIP OPPORTUNITIES",
+    "learnMore": "LEARN MORE"
+  },
+
+  "quickFacts": {
+    "dates": "March 13-15, 2026",
+    "location": "Venn Innovation, Moncton",
+    "participants": "20-40 participants | 10 teams",
+    "prizePool": "Prize pool: At least $5,000"
+  },
 
   "countdown": {
     "days": "days",

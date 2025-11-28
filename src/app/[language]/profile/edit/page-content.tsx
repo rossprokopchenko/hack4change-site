@@ -1,7 +1,7 @@
 "use client";
 import Button from "@mui/material/Button";
 import { useForm, FormProvider, useFormState } from "react-hook-form";
-import { useAuthPatchMeService } from "@/services/api/services/auth";
+import { useSupabaseAuthPatchMeService } from "@/services/supabase/auth-update";
 import useAuthActions from "@/services/auth/use-auth-actions";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -20,7 +20,7 @@ import useLeavePage from "@/services/leave-page/use-leave-page";
 import Box from "@mui/material/Box";
 import HTTP_CODES_ENUM from "@/services/api/types/http-codes";
 import { useTranslation } from "@/services/i18n/client";
-import { UserProviderEnum } from "@/services/api/types/user";
+import { UserProviderEnum, User } from "@/services/api/types/user";
 
 type EditProfileBasicInfoFormData = {
   firstName: string;
@@ -154,7 +154,7 @@ function ChangePasswordFormActions() {
 function FormBasicInfo() {
   const { setUser } = useAuthActions();
   const { user } = useAuth();
-  const fetchAuthPatchMe = useAuthPatchMeService();
+  const fetchAuthPatchMe = useSupabaseAuthPatchMeService();
   const { t } = useTranslation("profile");
   const validationSchema = useValidationBasicInfoSchema();
   const { enqueueSnackbar } = useSnackbar();
@@ -174,13 +174,14 @@ function FormBasicInfo() {
     const { data, status } = await fetchAuthPatchMe(formData);
 
     if (status === HTTP_CODES_ENUM.UNPROCESSABLE_ENTITY) {
+      const errors = (data as any).errors;
       (
-        Object.keys(data.errors) as Array<keyof EditProfileBasicInfoFormData>
+        Object.keys(errors) as Array<keyof EditProfileBasicInfoFormData>
       ).forEach((key) => {
         setError(key, {
           type: "manual",
           message: t(
-            `profile:inputs.${key}.validation.server.${data.errors[key]}`
+            `profile:inputs.${key}.validation.server.${errors[key]}`
           ),
         });
       });
@@ -188,8 +189,8 @@ function FormBasicInfo() {
       return;
     }
 
-    if (status === HTTP_CODES_ENUM.OK) {
-      setUser(data);
+    if (status === HTTP_CODES_ENUM.OK && data) {
+      setUser(data as User);
 
       enqueueSnackbar(t("profile:alerts.profile.success"), {
         variant: "success",
@@ -258,7 +259,7 @@ function FormBasicInfo() {
 }
 
 function FormChangeEmail() {
-  const fetchAuthPatchMe = useAuthPatchMeService();
+  const fetchAuthPatchMe = useSupabaseAuthPatchMeService();
   const { enqueueSnackbar } = useSnackbar();
   const { t } = useTranslation("profile");
   const validationSchema = useValidationChangeEmailSchema();
@@ -280,13 +281,14 @@ function FormChangeEmail() {
     });
 
     if (status === HTTP_CODES_ENUM.UNPROCESSABLE_ENTITY) {
+      const errors = (data as any).errors;
       (
-        Object.keys(data.errors) as Array<keyof EditProfileChangeEmailFormData>
+        Object.keys(errors) as Array<keyof EditProfileChangeEmailFormData>
       ).forEach((key) => {
         setError(key, {
           type: "manual",
           message: t(
-            `profile:inputs.${key}.validation.server.${data.errors[key]}`
+            `profile:inputs.${key}.validation.server.${errors[key]}`
           ),
         });
       });
@@ -355,7 +357,7 @@ function FormChangeEmail() {
 }
 
 function FormChangePassword() {
-  const fetchAuthPatchMe = useAuthPatchMeService();
+  const fetchAuthPatchMe = useSupabaseAuthPatchMeService();
   const { t } = useTranslation("profile");
   const validationSchema = useValidationChangePasswordSchema();
   const { enqueueSnackbar } = useSnackbar();
@@ -378,15 +380,16 @@ function FormChangePassword() {
     });
 
     if (status === HTTP_CODES_ENUM.UNPROCESSABLE_ENTITY) {
+      const errors = (data as any).errors;
       (
-        Object.keys(data.errors) as Array<
+        Object.keys(errors) as Array<
           keyof EditProfileChangePasswordFormData
         >
       ).forEach((key) => {
         setError(key, {
           type: "manual",
           message: t(
-            `profile:inputs.${key}.validation.server.${data.errors[key]}`
+            `profile:inputs.${key}.validation.server.${errors[key]}`
           ),
         });
       });

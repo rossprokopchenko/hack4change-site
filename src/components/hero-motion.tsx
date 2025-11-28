@@ -8,9 +8,11 @@ import { useTranslation } from "@/services/i18n/client";
 export default function HeroMotion({
   children,
   subtitle,
+  subheadline,
 }: {
   children: React.ReactNode;
   subtitle?: React.ReactNode;
+  subheadline?: React.ReactNode;
 }) {
 
   const { t } = useTranslation("home");
@@ -52,7 +54,7 @@ const eventDate = new Date("2026-03-13T17:00:00");
   
 
   return (
-    <div className="relative w-full h-[60vh] rounded-2xl overflow-hidden bg-black text-white flex flex-col justify-center items-center">
+    <div className="relative w-full min-h-[80vh] rounded-2xl overflow-hidden bg-black text-white flex flex-col justify-center items-center px-4 py-12">
 
       {/* Background gradient */}
       <motion.div
@@ -68,49 +70,56 @@ const eventDate = new Date("2026-03-13T17:00:00");
         }}
       />
 
-      {/* Title */}
-      <motion.h1
-        className="z-20 text-5xl md:text-6xl font-bold tracking-tight text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600"
-        initial={{ opacity: 0, y: 25 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.1, ease: "easeOut" }}
-        style={{
-          textShadow: "0 0 12px rgba(0,255,255,0.5), 0 0 24px rgba(0,140,255,0.4)",
-        }}
-      >
-        {children}
-      </motion.h1>
-
-      {/* Subtitle */}
-      {subtitle && (
-        <motion.p
-          className="z-20 mt-4 text-lg text-cyan-100/80 text-center max-w-xl"
-          initial={{ opacity: 0, y: 15 }}
+      {/* Main content container - centered */}
+      <div className="z-20 flex flex-col items-center justify-center flex-1 max-w-5xl mx-auto text-center">
+        
+        {/* Title - Main Focus (Future Logo) */}
+        <motion.h1
+          className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 mb-6"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.3, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{
+            textShadow: "0 0 20px rgba(0,255,255,0.6), 0 0 40px rgba(0,140,255,0.5)",
+          }}
         >
-          {subtitle}
-        </motion.p>
-      )}
+          {children}
+        </motion.h1>
 
-      {/* Countdown using react-countdown */}
-        <motion.div
-        className="z-20 mt-6"
+        {/* Subtitle */}
+        {subtitle && (
+          <motion.p
+            className="text-xl md:text-2xl text-cyan-100/90 mb-4 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3, ease: "easeOut", delay: 0.2 }}
+          >
+            {subtitle}
+          </motion.p>
+        )}
+
+        {/* Subheadline */}
+        {subheadline && (
+          <motion.p
+            className="text-base md:text-lg text-cyan-100/70 max-w-3xl leading-relaxed"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4, ease: "easeOut", delay: 0.4 }}
+          >
+            {subheadline}
+          </motion.p>
+        )}
+      </div>
+
+      {/* Countdown at bottom */}
+      <motion.div
+        className="z-20 mt-auto"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
-        >
+      >
         <Countdown date={eventDate} renderer={countdownRenderer} />
-        </motion.div>
-
-
-      {/* Divider */}
-      <motion.div
-        className="z-20 mt-6 w-32 h-[2px] bg-cyan-400/40 shadow-[0_0_8px_#00ffff]"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-      />
+      </motion.div>
     </div>
   );
 }
