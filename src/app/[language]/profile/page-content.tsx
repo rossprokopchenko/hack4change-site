@@ -165,13 +165,13 @@ function Profile() {
                     }}
                   >
                     <ToggleButton value="pending" color="standard">
-                      Pending
+                      {t("rsvp.status.pending")}
                     </ToggleButton>
                     <ToggleButton value="confirmed" color="success">
-                      Confirmed
+                      {t("rsvp.status.confirmed")}
                     </ToggleButton>
                     <ToggleButton value="declined" color="error">
-                      Declined
+                      {t("rsvp.status.declined")}
                     </ToggleButton>
                   </ToggleButtonGroup>
                 </Box>
