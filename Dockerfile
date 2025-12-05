@@ -1,4 +1,21 @@
 # =====================
+# Build stage
+# =====================
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install dependencies first (better caching)
+COPY package*.json ./
+RUN npm ci
+
+# Copy source files
+COPY . .
+
+# Build the Next.js app
+RUN npm run build
+
+# =====================
 # Production image
 # =====================
 FROM node:20-alpine AS runner
