@@ -1,14 +1,13 @@
-version: '3.9'
-
 services:
   web:
     build:
       context: .
       dockerfile: Dockerfile
+      target: runner   # ensures Compose builds the final stage, references builder correctly
     container_name: hack4change-site
     restart: always
     expose:
-      - "3000"
+      - "3000"  # internal port only
     env_file:
       - .env.local
     environment:
