@@ -23,7 +23,7 @@ services:
       - /tmp
       - /app/.next/cache
     healthcheck:
-      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3000', (r) => process.exit(r.statusCode === 200 ? 0 : 1))\""]
+      test: ["CMD-SHELL", "pgrep -f next-server || exit 1"]
       interval: 30s
       timeout: 3s
       retries: 3
