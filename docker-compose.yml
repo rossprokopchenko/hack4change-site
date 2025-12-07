@@ -30,7 +30,7 @@ services:
       start_period: 40s
 
   nginx:
-    image: nginx:1.27-alpine
+    image: nginx:1.27.3-alpine
     container_name: hack4change-nginx
     restart: always
     ports:
@@ -40,3 +40,24 @@ services:
     depends_on:
       web:
         condition: service_healthy
+    # Security hardening
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETGID
+      - SETUID
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost/health || exit 1"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
