@@ -7,7 +7,8 @@ WORKDIR /app
 
 # Install dependencies first (better caching)
 COPY package*.json ./
-RUN npm install
+# Use --legacy-peer-deps to handle Storybook peer dependency (dev-only, not used in production)
+RUN npm install --legacy-peer-deps
 
 # Copy source files
 COPY . .
