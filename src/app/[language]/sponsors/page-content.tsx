@@ -242,7 +242,7 @@ export default function Sponsors() {
           {/* GMHSC Logo */}
           <Box 
             component="img"
-            src={mode === "dark" 
+            src={(mode || "light") === "dark" 
               ? "/Logos/gmhsc_dark.png"
               : "/Logos/gmhsc_light.png"
             }
@@ -257,7 +257,7 @@ export default function Sponsors() {
           {/* UnitedWay Logo - Placeholder for when image is added */}
           <Box 
             component="img"
-            src={mode === "dark" 
+            src={(mode || "light") === "dark" 
               ? "/Logos/UnitedWay_dark.png"
               : "/Logos/UnitedWay_light.png"
             }
