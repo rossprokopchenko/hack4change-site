@@ -11,7 +11,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const { t } = await getServerTranslation(params.language, "about");
 
   return {
-    title: t("title"),
+    title: `H4C - ${t("title")}`,
   };
 }
 

@@ -1,9 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Countdown from "react-countdown";
 import { useTranslation } from "@/services/i18n/client";
+
+import { useTheme, useColorScheme } from "@mui/material/styles";
+import Image from "next/image";
 
 export default function HeroMotion({
   children,
@@ -14,10 +17,20 @@ export default function HeroMotion({
   subtitle?: React.ReactNode;
   subheadline?: React.ReactNode;
 }) {
-
   const { t } = useTranslation("home");
+  const theme = useTheme();
+  const { mode } = useColorScheme();
 
-const eventDate = new Date("2026-03-13T17:00:00");
+  const logoSrc = mode === "dark"
+    ? "/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton.svg"
+    : "/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton_Primary Log_Light.svg";
+
+  const [isTextHovered, setIsTextHovered] = useState(false);
+
+  // Get secondary color for glow effect
+  const glowColor = "#c8da2c";
+
+  const eventDate = new Date("2026-03-13T17:00:00");
 
   // Renderer for Countdown display
   const countdownRenderer = ({ days, hours, minutes, seconds, completed }: any) => {
@@ -63,36 +76,54 @@ const eventDate = new Date("2026-03-13T17:00:00");
         transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
         style={{
           background:
-            "linear-gradient(120deg, #001f3f 0%, #004f8c 40%, #00a9ff 100%)",
-          backgroundSize: "300% 300%",
+            "linear-gradient(120deg, #001f3f 0%, #004f8c 40%, #00a9ff 80%)",
+          backgroundSize: "100% 100%",
           opacity: 0.55,
           filter: "blur(2px)",
         }}
       />
 
       {/* Main content container - centered */}
-      <div className="z-20 flex flex-col items-center justify-center flex-1 max-w-5xl mx-auto text-center">
+      <div className="z-20 flex flex-col items-center justify-center flex-1 w-full">
         
-        {/* Title - Main Focus (Future Logo) */}
-        <motion.h1
-          className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 mb-6"
+        {/* Title - Main Focus (Logo) */}
+        <motion.div
+          className="flex justify-center items-center w-full"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          style={{
-            textShadow: "0 0 20px rgba(0,255,255,0.6), 0 0 40px rgba(0,140,255,0.5)",
-          }}
         >
-          {children}
-        </motion.h1>
+          <Image
+            src={logoSrc}
+            alt="Hack4Change"
+            width={800}
+            height={300}
+            priority
+            onMouseEnter={() => setIsTextHovered(true)}
+            onMouseLeave={() => setIsTextHovered(false)}
+            style={{ 
+              width: "100%", 
+              height: "auto", 
+              maxWidth: "800px",
+              filter: isTextHovered ? `drop-shadow(0 0 30px ${glowColor}) drop-shadow(0 0 60px ${glowColor})` : "none",
+              transition: "filter 0.3s ease",
+              cursor: "pointer"
+            }}
+          />
+        </motion.div>
 
         {/* Subtitle */}
         {subtitle && (
           <motion.p
-            className="text-xl md:text-2xl text-cyan-100/90 mb-4 max-w-2xl"
+            className="mt-8 mb-4 max-w-2xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3, ease: "easeOut", delay: 0.2 }}
+            style={{ 
+              color: "var(--mui-palette-text-main)",
+              fontSize: "clamp(1.5rem, 5vw, 1.875rem)",
+              fontWeight: 700,
+            }}
           >
             {subtitle}
           </motion.p>
@@ -101,10 +132,11 @@ const eventDate = new Date("2026-03-13T17:00:00");
         {/* Subheadline */}
         {subheadline && (
           <motion.p
-            className="text-base md:text-lg text-cyan-100/70 max-w-3xl leading-relaxed"
+            className="text-base md:text-lg max-w-3xl leading-relaxed mx-auto text-center"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, ease: "easeOut", delay: 0.4 }}
+            style={{ color: "var(--mui-palette-text-main)" }}
           >
             {subheadline}
           </motion.p>
@@ -117,6 +149,8 @@ const eventDate = new Date("2026-03-13T17:00:00");
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+        style={{ fontSize: "1.2rem", color: "var(--mui-palette-text-main)" }}
+        
       >
         <Countdown date={eventDate} renderer={countdownRenderer} />
       </motion.div>

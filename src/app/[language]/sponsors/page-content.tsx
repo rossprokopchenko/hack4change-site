@@ -8,11 +8,40 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Divider from "@mui/material/Divider";
 import MuiLink from "@mui/material/Link";
+import { useColorScheme } from "@mui/material/styles";
 
 export default function Sponsors() {
   const { t } = useTranslation("sponsors");
+  const { mode } = useColorScheme();
 
   const tiers = ["title", "gold", "silver", "bronze", "community"];
+
+  // Color mapping for sponsor tiers
+  const getTierColor = (tier: string) => {
+    const colors: Record<string, string> = {
+      title: "#FFD700",     // Gold
+      gold: "#FFD700",      // Gold
+      silver: "#C0C0C0",    // Silver
+      bronze: "#CD7F32",    // Bronze
+      community: "primary.main", // Theme primary color
+    };
+    return colors[tier] || "text.primary";
+  };
+
+  // Special styling for title sponsor
+  const getTierStyle = (tier: string) => {
+    if (tier === "title") {
+      return {
+        background: "linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        textShadow: "0 0 20px rgba(255, 215, 0, 0.3)",
+        filter: "drop-shadow(0 0 8px rgba(255, 215, 0, 0.4))",
+      };
+    }
+    return { color: getTierColor(tier) };
+  };
 
   return (
     <Container maxWidth="lg" sx={{ pt: 8, pb: 16 }}>
@@ -40,7 +69,7 @@ export default function Sponsors() {
             <Typography variant="h6" gutterBottom>{benefit.title}</Typography>
             <Box component="ul" sx={{ pl: 3 }}>
               {benefit.items.map((item, i) => (
-                <Typography component="li" key={i} sx={{ mb: 0.5 }}>{item}</Typography>
+                <Typography component="li" key={i} sx={{ mb: 0.5 }} variant="body1">{item}</Typography>
               ))}
             </Box>
           </Box>
@@ -55,7 +84,7 @@ export default function Sponsors() {
             <Typography variant="h6" gutterBottom>{benefit.title}</Typography>
             <Box component="ul" sx={{ pl: 3 }}>
               {benefit.items.map((item, i) => (
-                <Typography component="li" key={i} sx={{ mb: 0.5 }}>{item}</Typography>
+                <Typography component="li" key={i} sx={{ mb: 0.5 }} variant="body1">{item}</Typography>
               ))}
             </Box>
           </Box>
@@ -78,7 +107,7 @@ export default function Sponsors() {
         </Typography>
         <Box component="ul" sx={{ pl: 3, mt: 2 }}>
           {(t("differentiator.benefits", { returnObjects: true }) as string[]).map((item, index) => (
-            <Typography component="li" key={index} sx={{ mb: 1 }}>{item}</Typography>
+            <Typography component="li" key={index} sx={{ mb: 1 }} variant="body1">{item}</Typography>
           ))}
         </Box>
         <Typography variant="body1" sx={{ mt: 2, fontWeight: "medium" }}>
@@ -96,7 +125,12 @@ export default function Sponsors() {
       {tiers.map((tier) => (
         <Card key={tier} sx={{ mb: 3 }}>
           <CardContent sx={{ p: 4 }}>
-            <Typography variant="h5" gutterBottom fontWeight="bold">
+            <Typography 
+              variant="h4" 
+              gutterBottom 
+              fontWeight="bold"
+              sx={getTierStyle(tier)}
+            >
               {t(`tiers.levels.${tier}.tier`)} — {t(`tiers.levels.${tier}.price`)}
             </Typography>
             {t(`tiers.levels.${tier}.limit`, { defaultValue: '' }) && (
@@ -112,7 +146,7 @@ export default function Sponsors() {
             )}
             <Box component="ul" sx={{ pl: 3 }}>
               {(t(`tiers.levels.${tier}.benefits`, { returnObjects: true }) as string[]).map((benefit, index) => (
-                <Typography component="li" key={index} sx={{ mb: 0.5 }}>
+                <Typography component="li" key={index} sx={{ mb: 0.5 }} variant="body1">
                   {benefit}
                 </Typography>
               ))}
@@ -120,6 +154,7 @@ export default function Sponsors() {
           </CardContent>
         </Card>
       ))}
+
 
       {/* Additional Opportunities */}
       <Box sx={{ mt: 8, mb: 6 }}>
@@ -174,7 +209,7 @@ export default function Sponsors() {
                 </Typography>
                 {step.contact && (
                   <Typography variant="body2" sx={{ mt: 1 }}>
-                    <MuiLink href="mailto:contact@hack4change.ca">{step.contact}</MuiLink>
+                    <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>{step.contact}</MuiLink>
                   </Typography>
                 )}
               </CardContent>
@@ -191,6 +226,50 @@ export default function Sponsors() {
         <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 3 }}>
           {t("currentSponsors.description")}
         </Typography>
+        
+        {/* Sponsor Logos */}
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: 16,
+          alignItems: 'center',
+          justifyContent: 'center',
+          mt: 8 
+        }}>
+          
+          
+          {/* GMHSC Logo */}
+          <Box 
+            component="img"
+            src={mode === "dark" 
+              ? "/Logos/gmhsc_dark.png"
+              : "/Logos/gmhsc_light.png"
+            }
+            alt="Greater Moncton Homelessness Steering Committee"
+            sx={{
+              maxWidth: '350px',
+              width: '100%',
+              height: 'auto',
+            }}
+          />
+          
+          {/* UnitedWay Logo - Placeholder for when image is added */}
+          <Box 
+            component="img"
+            src={mode === "dark" 
+              ? "/Logos/UnitedWay_dark.png"
+              : "/Logos/UnitedWay_light.png"
+            }
+            alt="United Way"
+            sx={{
+              maxWidth: '300px',
+              width: '100%',
+              height: 'auto',
+            }}
+          />
+        </Box>
+        
         {/* <Typography variant="subtitle2" textAlign="center" sx={{ mt: 3 }}>
           {t("currentSponsors.interested")}
         </Typography> */}

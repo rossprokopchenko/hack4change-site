@@ -61,8 +61,8 @@ export default function SignUpSupabase() {
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        pt: { xs: 8, md: 12 },
-        pb: 4,
+        pt: { xs: 8, md: 16 },
+        pb: { xs: 8, md: 16},
       }}
     >
       <Container maxWidth="sm">
@@ -146,7 +146,7 @@ export default function SignUpSupabase() {
               />
               <Typography variant="body2">
                 I agree to the{" "}
-                <MuiLink href="/privacy-policy" target="_blank">
+                <MuiLink href="/privacy-policy" target="_blank" sx={{ color: "primary.main", fontWeight: "bold" }}>
                   Privacy Policy
                 </MuiLink>
               </Typography>
@@ -172,7 +172,7 @@ export default function SignUpSupabase() {
               <Typography variant="body2">
                 Already have an account?{" "}
                 <Link href="/sign-in">
-                  <MuiLink component="span">Sign In</MuiLink>
+                  <MuiLink component="span"  sx={{ color: "primary.main", fontWeight: "bold" }}>Sign In</MuiLink>
                 </Link>
               </Typography>
             </Box>

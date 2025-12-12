@@ -70,22 +70,22 @@ export default function SignInSupabase() {
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        pt: { xs: 8, md: 12 },
-        pb: 4,
+        pt: { xs: 8, md: 16 },
+        pb: { xs: 8, md: 16 },
       }}
     >
       <Container maxWidth="xs">
         <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12 }}>
-            <Typography variant="h4" component="h1" gutterBottom textAlign="center">
+            <Typography variant="h4" component="h1" gutterBottom textAlign="center" sx={{color: "text.primary"}}>
               {t("sign-in:title")}
             </Typography>
           </Grid>
 
           {registered && (
             <Grid size={{ xs: 12 }}>
-              <Alert severity="success">
+              <Alert severity="success" sx={{color: "success.main"}}>
                 Account created successfully! Please check your email to verify your account, then sign in.
               </Alert>
             </Grid>
@@ -93,7 +93,7 @@ export default function SignInSupabase() {
 
           {error && (
             <Grid size={{ xs: 12 }}>
-              <Alert severity="error">{error}</Alert>
+              <Alert severity="error" sx={{color: "error.main"}}>{error}</Alert>
             </Grid>
           )}
 
@@ -109,6 +109,7 @@ export default function SignInSupabase() {
               }
               autoFocus
               data-testid="email"
+              sx={{borderColor: "secondary.main", color: "secondary.main"}}
             />
           </Grid>
 
@@ -130,7 +131,7 @@ export default function SignInSupabase() {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
+              sx={{bgcolor: "primary.main"}}
               fullWidth
               disabled={loading}
               size="large"
@@ -141,9 +142,9 @@ export default function SignInSupabase() {
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Box sx={{ textAlign: "center", mt: 1 }}>
+            <Box sx={{ textAlign: "center", mt: 1}}>
               <Link href="/forgot-password">
-                <MuiLink component="span" variant="body2" data-testid="forgot-password">
+                <MuiLink component="span" variant="body2" data-testid="forgot-password" sx={{color: "primary.main", fontWeight: "bold"}}>
                   {t("sign-in:actions.forgotPassword")}
                 </MuiLink>
               </Link>
@@ -151,11 +152,11 @@ export default function SignInSupabase() {
           </Grid>
 
           <Grid size={{ xs: 12 }}>
-            <Box sx={{ textAlign: "center", mt: 2 }}>
-              <Typography variant="body2">
+            <Box sx={{ textAlign: "center", mt: 1}}>
+              <Typography variant="body2" sx={{color: "text.primary"}}>
                 {t("sign-in:actions.noAccount")} {" "}
                 <Link href="/sign-up">
-                  <MuiLink component="span" data-testid="create-account">{t("sign-in:actions.createAccount")}</MuiLink>
+                  <MuiLink component="span" data-testid="create-account" sx={{color: "primary.main", fontWeight: "bold"}}>{t("sign-in:actions.createAccount")}</MuiLink>
                 </Link>
               </Typography>
             </Box>

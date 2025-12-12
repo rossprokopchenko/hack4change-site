@@ -85,9 +85,12 @@
     "text": "Ce Code de conduite est adapté des codes utilisés par les communautés de technologie civique à travers l'Amérique du Nord, y compris Code for Canada et Civic Tech Toronto, qui sont basés sur le Conference Code of Conduct."
   },
 
-  "questions": {
-    "title": "Des questions ?",
-    "text": "Si vous avez des questions sur ce Code de conduite, contactez-nous à contact@hack4change.ca."
+  "contactInfo": {
+    "title": "Nous contacter",
+    "content": "Des questions sur cette politique de confidentialité ou vos informations personnelles ?",
+    "email": "Courriel : contact@hack4change.ca",
+    "organization": "Civic Tech Moncton",
+    "address": "Venn Innovation, 770 St George Blvd, Moncton, NB E1E 2C6"
   },
 
   "agreement": "En participant à Hack4Change, vous acceptez de respecter ce Code de conduite."

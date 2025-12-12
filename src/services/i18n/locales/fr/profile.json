@@ -74,5 +74,59 @@
     "profile": {
       "success": "Le profil a été mis à jour avec succès"
     }
+  },
+  "rsvp": {
+    "title": "RSVP de l'événement",
+    "currentStatus": "Statut actuel",
+    "description": "Faites-nous savoir si vous prévoyez assister à Hack4Change",
+    "changeStatus": "Changer le statut",
+    "updating": "Mise à jour...",
+    "status": {
+      "pending": "En attente",
+      "confirmed": "Confirmé",
+      "declined": "Refusé",
+      "waitlist": "Liste d'attente"
+    }
+  },
+  "team": {
+    "loading": "Chargement des informations de l'équipe...",
+    "yourTeam": "Votre équipe",
+    "yourRole": "Votre rôle",
+    "members": "Membres de l'équipe",
+    "leaveTeam": "Quitter l'équipe",
+    "findOrCreate": "Gestion d'équipe",
+    "searchTitle": "Rechercher une équipe",
+    "createTitle": "Créer une nouvelle équipe",
+    "createDescription": "Vous ne trouvez pas d'équipe ? Créez la vôtre et invitez d'autres personnes à vous rejoindre !",
+    "createButton": "Créer une équipe",
+    "role": {
+      "leader": "Chef d'équipe",
+      "member": "Membre"
+    },
+    "search": {
+      "label": "Rechercher des équipes",
+      "placeholder": "Tapez le nom de l'équipe...",
+      "members": "membres",
+      "join": "Rejoindre",
+      "noResults": "Aucune équipe trouvée",
+      "startTyping": "Commencez à taper pour rechercher des équipes"
+    },
+    "createDialog": {
+      "title": "Créer une nouvelle équipe",
+      "nameLabel": "Nom de l'équipe",
+      "nameError": "Ce nom d'équipe est déjà pris",
+      "descriptionLabel": "Description de l'équipe (optionnel)",
+      "maxMembersLabel": "Nombre maximum de membres",
+      "cancel": "Annuler",
+      "create": "Créer l'équipe",
+      "creating": "Création..."
+    },
+    "leaveDialog": {
+      "title": "Quitter l'équipe",
+      "message": "Êtes-vous sûr de vouloir quitter cette équipe ? Vous pourrez rejoindre une autre équipe par la suite.",
+      "cancel": "Annuler",
+      "leave": "Quitter l'équipe",
+      "leaving": "En cours..."
+    }
   }
 }

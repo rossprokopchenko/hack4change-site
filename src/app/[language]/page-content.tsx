@@ -17,14 +17,16 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PeopleIcon from "@mui/icons-material/People";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import useAuth from "@/services/auth/use-auth";
 
 export default function Home() {
   const { t } = useTranslation("home");
+  const { user } = useAuth();
 
   return (
     <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', pt: 8, pb: 16 }}>
       {/* Hero Section */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth="md">
         <HeroMotion 
           subtitle={t("subtitle")}
           subheadline={t("subheadline")}
@@ -41,17 +43,18 @@ export default function Home() {
               <Card 
                 sx={{ 
                   height: "100%",
+                  borderRadius: 4,
                   transition: "transform 0.2s",
                   "&:hover": {
                     transform: "translateY(-4px)",
-                    boxShadow: 4
+                    boxShadow: 8
                   }
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
                     <PublicIcon sx={{ fontSize: 40, color: "primary.main" }} />
-                    <Typography variant="h6" fontWeight="bold">
+                    <Typography variant="h6" fontWeight="bold" color="text.primary">
                       {t("valueProps.realWorldImpact.title")}
                     </Typography>
                   </Box>
@@ -66,17 +69,18 @@ export default function Home() {
               <Card 
                 sx={{ 
                   height: "100%",
+                  borderRadius: 4,
                   transition: "transform 0.2s",
                   "&:hover": {
                     transform: "translateY(-4px)",
-                    boxShadow: 4
+                    boxShadow: 8
                   }
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
                     <CodeIcon sx={{ fontSize: 40, color: "primary.main" }} />
-                    <Typography variant="h6" fontWeight="bold">
+                    <Typography variant="h6" fontWeight="bold" color="text.primary">
                       {t("valueProps.codeGoesLive.title")}
                     </Typography>
                   </Box>
@@ -91,17 +95,18 @@ export default function Home() {
               <Card 
                 sx={{ 
                   height: "100%",
+                  borderRadius: 4,
                   transition: "transform 0.2s",
                   "&:hover": {
                     transform: "translateY(-4px)",
-                    boxShadow: 4
+                    boxShadow: 8
                   }
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
                   <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
                     <EmojiEventsIcon sx={{ fontSize: 40, color: "primary.main" }} />
-                    <Typography variant="h6" fontWeight="bold">
+                    <Typography variant="h6" fontWeight="bold" color="text.primary">
                       {t("valueProps.prizesRecognition.title")}
                     </Typography>
                   </Box>
@@ -122,17 +127,18 @@ export default function Home() {
             variant="contained" 
             size="large"
             component={Link}
-            href="/contact"
-            sx={{ px: 4, py: 1.5 }}
+            href={user ? "/profile" : "/sign-up"}
+            sx={{ px: 4, py: 1.5, bgcolor: "primary.main", color: "primary.contrastText" }}
+            
           >
-            {t("cta.registerInterest")}
+            {user ? "I'M IN!" : t("cta.registerInterest")}
           </Button>
           <Button 
             variant="outlined" 
             size="large"
             component={Link}
             href="/sponsors"
-            sx={{ px: 4, py: 1.5 }}
+            sx={{ px: 4, py: 1.5, borderColor: "primary.main", color: "text.secondary" }}
           >
             {t("cta.sponsorshipOpportunities")}
           </Button>
@@ -141,7 +147,7 @@ export default function Home() {
             size="large"
             component={Link}
             href="/about"
-            sx={{ px: 4, py: 1.5 }}
+            sx={{ px: 4, py: 1.5, borderColor: "primary.main", color: "text.secondary" }}
           >
             {t("cta.learnMore")}
           </Button>
@@ -157,7 +163,7 @@ export default function Home() {
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
                 <CalendarTodayIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.primary">
                   {t("quickFacts.dates")}
                 </Typography>
               </Box>
@@ -165,7 +171,7 @@ export default function Home() {
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
                 <LocationOnIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.primary">
                   {t("quickFacts.location")}
                 </Typography>
               </Box>
@@ -173,7 +179,7 @@ export default function Home() {
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
                 <PeopleIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.primary">
                   {t("quickFacts.participants")}
                 </Typography>
               </Box>
@@ -181,7 +187,7 @@ export default function Home() {
             <Grid size={{ xs: 6, md: 3 }}>
               <Box sx={{ textAlign: "center" }}>
                 <AttachMoneyIcon sx={{ fontSize: 48, mb: 1, color: "primary.main" }} />
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.primary">
                   {t("quickFacts.prizePool")}
                 </Typography>
               </Box>

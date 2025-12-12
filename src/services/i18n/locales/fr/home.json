@@ -17,7 +17,7 @@
     },
     "prizesRecognition": {
       "title": "PRIX + RECONNAISSANCE",
-      "description": "Compétitionnez pour des prix en argent d'au moins 5 000 $ plus la fierté de voir votre travail avoir un impact communautaire mesurable. Les gagnants seront reconnus dans toutes les communications continues concernant la solution déployée."
+      "description": "Compétitionnez pour des prix en argent de [TBD] plus la fierté de voir votre travail avoir un impact communautaire mesurable. Les gagnants seront reconnus dans toutes les communications continues concernant la solution déployée."
     }
   },
 
@@ -31,7 +31,7 @@
     "dates": "13-15 mars 2026",
     "location": "Venn Innovation, Moncton",
     "participants": "20-40 participants | 10 équipes",
-    "prizePool": "Prix : Au moins 5 000 $"
+    "prizePool": "Cagnotte de prix : [TBD]"
   },
 
   "countdown": {
