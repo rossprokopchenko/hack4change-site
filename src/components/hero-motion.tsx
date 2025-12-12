@@ -21,8 +21,7 @@ export default function HeroMotion({
   const theme = useTheme();
   const { mode } = useColorScheme();
 
-  // Fallback to light mode during SSR when mode is undefined
-  const logoSrc = (mode || "light") === "dark"
+  const logoSrc = mode === "dark"
     ? "/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton.svg"
     : "/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton_Primary Log_Light.svg";
 
@@ -95,11 +94,30 @@ export default function HeroMotion({
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <Image
-            src={logoSrc}
+            src="/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton_Primary Log_Light.svg"
             alt="Hack4Change"
             width={800}
             height={300}
             priority
+            className="logo-light"
+            onMouseEnter={() => setIsTextHovered(true)}
+            onMouseLeave={() => setIsTextHovered(false)}
+            style={{ 
+              width: "100%", 
+              height: "auto", 
+              maxWidth: "800px",
+              filter: isTextHovered ? `drop-shadow(0 0 30px ${glowColor}) drop-shadow(0 0 60px ${glowColor})` : "none",
+              transition: "filter 0.3s ease",
+              cursor: "pointer"
+            }}
+          />
+          <Image
+            src="/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton.svg"
+            alt="Hack4Change"
+            width={800}
+            height={300}
+            priority
+            className="logo-dark"
             onMouseEnter={() => setIsTextHovered(true)}
             onMouseLeave={() => setIsTextHovered(false)}
             style={{ 

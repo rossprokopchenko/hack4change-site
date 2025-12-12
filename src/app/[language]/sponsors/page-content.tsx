@@ -242,30 +242,48 @@ export default function Sponsors() {
           {/* GMHSC Logo */}
           <Box 
             component="img"
-            src={(mode || "light") === "dark" 
-              ? "/Logos/gmhsc_dark.png"
-              : "/Logos/gmhsc_light.png"
-            }
+            src="/Logos/gmhsc_light.png"
             alt="Greater Moncton Homelessness Steering Committee"
+            className="logo-light"
             sx={{
               maxWidth: '350px',
               width: '100%',
-              height: 'auto',
+              height: 'auto'
+            }}
+          />
+          <Box 
+            component="img"
+            src="/Logos/gmhsc_dark.png"
+            alt="Greater Moncton Homelessness Steering Committee"
+            className="logo-dark"
+            sx={{
+              maxWidth: '350px',
+              width: '100%',
+              height: 'auto'
             }}
           />
           
-          {/* UnitedWay Logo - Placeholder for when image is added */}
+          {/* UnitedWay Logo */}
           <Box 
             component="img"
-            src={(mode || "light") === "dark" 
-              ? "/Logos/UnitedWay_dark.png"
-              : "/Logos/UnitedWay_light.png"
-            }
+            src="/Logos/UnitedWay_light.png"
             alt="United Way"
+            className="logo-light"
             sx={{
               maxWidth: '300px',
               width: '100%',
-              height: 'auto',
+              height: 'auto'
+            }}
+          />
+          <Box 
+            component="img"
+            src="/Logos/UnitedWay_dark.png"
+            alt="United Way"
+            className="logo-dark"
+            sx={{
+              maxWidth: '300px',
+              width: '100%',
+              height: 'auto'
             }}
           />
         </Box>

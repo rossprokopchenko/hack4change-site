@@ -68,14 +68,19 @@ export default function Footer() {
           }}>
             <Box sx={{ }}>
               <Image
-                src={
-                  (colorScheme || "light") === "dark" 
-                  ? "/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Dark Pink-17.svg"
-                  : "/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Blue.svg"
-                }
+                src="/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Blue.svg"
                 alt="Hack4Change"
                 width={120}
                 height={50}
+                className="logo-light"
+                style={{ width: "auto", height: "50px" }}
+              />
+              <Image
+                src="/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Dark Pink-17.svg"
+                alt="Hack4Change"
+                width={120}
+                height={50}
+                className="logo-dark"
                 style={{ width: "auto", height: "50px" }}
               />
             </Box>

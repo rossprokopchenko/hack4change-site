@@ -89,3 +89,56 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* Theme-based logo visibility - CSS only solution for hydration issues */
+/* Default: hide dark logos, show light logos */
+.logo-light {
+  display: block !important;
+}
+.logo-dark {
+  display: none !important;
+}
+
+/* When dark class is applied (MUI theme system) */
+.dark .logo-light,
+html.dark .logo-light,
+body.dark .logo-light {
+  display: none !important;
+}
+.dark .logo-dark,
+html.dark .logo-dark,
+body.dark .logo-dark {
+  display: block !important;
+}
+
+/* When data attribute is used */
+[data-mui-color-scheme="dark"] .logo-light {
+  display: none !important;
+}
+[data-mui-color-scheme="dark"] .logo-dark {
+  display: block !important;
+}
+
+/* Fallback for initial load using system preference */
+@media (prefers-color-scheme: dark) {
+  .logo-light:not(.force-show) {
+    display: none !important;
+  }
+  .logo-dark:not(.force-hide) {
+    display: block !important;
+  }
+  
+  /* Override when light class is explicitly set */
+  .light .logo-light,
+  html.light .logo-light,
+  body.light .logo-light,
+  [data-mui-color-scheme="light"] .logo-light {
+    display: block !important;
+  }
+  .light .logo-dark,
+  html.light .logo-dark,
+  body.light .logo-dark,
+  [data-mui-color-scheme="light"] .logo-dark {
+    display: none !important;
+  }
+}

@@ -55,8 +55,8 @@ function ResponsiveAppBar() {
     setAnchorElementUser(null);
   };
 
-  // Determine which logo to use based on theme (fallback to light for SSR)
-  const logoSrc = (mode || "light") === "light" 
+  // Determine which logo to use based on theme
+  const logoSrc = mode === "light" 
     ? "/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Light Black.svg"
     : "/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Dark White-20.svg";
 
@@ -119,10 +119,20 @@ function ResponsiveAppBar() {
             }}
           >
             <Image
-              src={logoSrc}
+              src="/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Light Black.svg"
               alt="Hack4Change"
               width={120}
               height={60}
+              className="logo-light"
+              style={{ objectFit: "contain" }}
+              priority
+            />
+            <Image
+              src="/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Dark White-20.svg"
+              alt="Hack4Change"
+              width={120}
+              height={60}
+              className="logo-dark"
               style={{ objectFit: "contain" }}
               priority
             />
@@ -228,10 +238,20 @@ function ResponsiveAppBar() {
             }}
           >
             <Image
-              src={logoSrc}
+              src="/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Light Black.svg"
               alt="Hack4Change"
               width={140}
               height={50}
+              className="logo-light"
+              style={{ objectFit: "contain" }}
+              priority
+            />
+            <Image
+              src="/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Dark White-20.svg"
+              alt="Hack4Change"
+              width={140}
+              height={50}
+              className="logo-dark"
               style={{ objectFit: "contain" }}
               priority
             />
