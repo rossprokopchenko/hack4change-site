@@ -153,7 +153,7 @@ export default function CodeOfConduct() {
           {t("contactInfo.content")}
         </Typography>
         <Typography variant="body2">
-          <MuiLink href="mailto:contact@hack4change.ca">
+          <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>
             {t("contactInfo.email")}
           </MuiLink>
         </Typography>

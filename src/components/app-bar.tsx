@@ -19,16 +19,21 @@ import { useTranslation } from "@/services/i18n/client";
 import Link from "@/components/link";
 import { RoleEnum } from "@/services/api/types/role";
 import Divider from "@mui/material/Divider";
-import ThemeSwitchButton from "@/components/switch-theme-button";
 import { IS_SIGN_UP_ENABLED } from "@/services/auth/config";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import { useColorScheme, useTheme } from "@mui/material/styles";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 function ResponsiveAppBar() {
   const { t } = useTranslation("common");
   const { user, isLoaded } = useAuth();
   const { logOut } = useAuthActions();
+  const { mode } = useColorScheme();
+  const theme = useTheme();
+  const pathname = usePathname();
   const [anchorElementNav, setAnchorElementNav] = useState<null | HTMLElement>(
     null
   );
@@ -50,27 +55,78 @@ function ResponsiveAppBar() {
     setAnchorElementUser(null);
   };
 
+  // Determine which logo to use based on theme
+  const logoSrc = mode === "light" 
+    ? "/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Light Black.svg"
+    : "/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Dark White-20.svg";
+
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar position="static" color="primary" sx={{ height: "64px", position: "relative", overflow: "hidden" }}>
+      {/* Left Decoration */}
+      {/* <Box
+        component="img"
+        src={mode === "light" 
+          ? "/Backgrounds/1x2/Photo_Overlay_1x2-08-2.png"
+          : "/Backgrounds/1x2/Photo_Overlay_1x2-98-2.png"}
+        alt=""
+        sx={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          height: "100%",
+          width: "auto",
+          maxWidth: "20%",
+          objectFit: "cover",
+          zIndex: 0,
+          pointerEvents: "none",
+          display: { xs: "none", md: "block" },
+          opacity: 0.8
+        }}
+      /> */}
+      
+      {/* Right Decoration */}
+      {/* <Box
+        component="img"
+        src={mode === "light" 
+          ? "/Backgrounds/1x2/Photo_Overlay_1x2-22-2.png"
+          : "/Backgrounds/1x2/Photo_Overlay_1x2-99-2.png"}
+        alt=""
+        sx={{
+          position: "absolute",
+          right: 0,
+          top: 0,
+          height: "100%",
+          width: "auto",
+          maxWidth: "20%",
+          objectFit: "cover",
+          zIndex: 0,
+          pointerEvents: "none",
+          display: { xs: "none", md: "block" },
+          opacity: 0.8
+        }}
+      /> */}
+
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 1, px: {xs: 2, md: 16} }}>
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
+          <Box
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 4,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
+              alignItems: "center",
               textDecoration: "none",
             }}
           >
-            {t("common:app-name")}
-          </Typography>
+            <Image
+              src={logoSrc}
+              alt="Hack4Change"
+              width={120}
+              height={60}
+              style={{ objectFit: "contain" }}
+              priority
+            />
+          </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -101,11 +157,11 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu} component={Link} href="/">
+              {/* <MenuItem onClick={handleCloseNavMenu} component={Link} href="/">
                 <Typography textAlign="center">
                   {t("common:navigation.home")}
                 </Typography>
-              </MenuItem>
+              </MenuItem> */}
 
               <MenuItem onClick={handleCloseNavMenu} component={Link} href="/about">
                 <Typography textAlign="center">
@@ -145,9 +201,8 @@ function ResponsiveAppBar() {
                   </MenuItem>,
                   // mobile-menu-items
                 ]}
-              {isLoaded &&
-                !user && [
-                  <Divider key="divider" />,
+              {/*{isLoaded &&
+                !user &&
                   <MenuItem
                     key="sign-in"
                     onClick={handleCloseNavMenu}
@@ -157,53 +212,50 @@ function ResponsiveAppBar() {
                     <Typography textAlign="center">
                       {t("common:navigation.signIn")}
                     </Typography>
-                  </MenuItem>,
-                  IS_SIGN_UP_ENABLED ? (
-                    <MenuItem
-                      key="sign-up"
-                      onClick={handleCloseNavMenu}
-                      component={Link}
-                      href="/sign-up"
-                    >
-                      <Typography textAlign="center">
-                        {t("common:navigation.signUp")}
-                      </Typography>
-                    </MenuItem>
-                  ) : null,
-                ]}
+                  </MenuItem>
+                  */}
             </Menu>
           </Box>
-          <Typography
-            variant="h5"
-            noWrap
+          <Box
             component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
+              alignItems: "center",
               textDecoration: "none",
             }}
           >
-            {t("common:app-name")}
-          </Typography>
+            <Image
+              src={logoSrc}
+              alt="Hack4Change"
+              width={140}
+              height={50}
+              style={{ objectFit: "contain" }}
+              priority
+            />
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 0 }}>
-            <Button
+            {/* <Button
               onClick={handleCloseNavMenu}
-              sx={{ color: "white", px: 2, py: 2 }}
+              sx={{ color: "primary.contrastText", px: 2, py: 2 }}
               component={Link}
               href="/"
             >
               {t("common:navigation.home")}
-            </Button>
+            </Button> */}
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ color: "white", px: 2, py: 2 }}
+              sx={{ 
+                color: "primary.contrastText", 
+                px: 2, 
+                py: 2,
+                "&:hover": {
+                  bgcolor: "rgba(255, 255, 255, 0.1)",
+                }
+              }}
               component={Link}
               href="/about"
             >
@@ -212,7 +264,14 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ color: "white", px: 2, py: 2 }}
+              sx={{ 
+                color: "primary.contrastText", 
+                px: 2, 
+                py: 2,
+                "&:hover": {
+                  bgcolor: "rgba(255, 255, 255, 0.1)",
+                }
+              }}
               component={Link}
               href="/sponsors"
             >
@@ -221,7 +280,14 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ color: "white", px: 2, py: 2 }}
+              sx={{ 
+                color: "primary.contrastText", 
+                px: 2, 
+                py: 2,
+                "&:hover": {
+                  bgcolor: "rgba(255, 255, 255, 0.1)",
+                }
+              }}
               component={Link}
               href="/contact"
             >
@@ -230,7 +296,14 @@ function ResponsiveAppBar() {
 
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ color: "white", px: 2, py: 2 }}
+              sx={{ 
+                color: "primary.contrastText", 
+                px: 2, 
+                py: 2,
+                "&:hover": {
+                  bgcolor: "rgba(255, 255, 255, 0.1)",
+                }
+              }}
               component={Link}
               href="/faq"
             >
@@ -240,11 +313,18 @@ function ResponsiveAppBar() {
             {!!user?.role &&
               [RoleEnum.ADMIN].includes(Number(user?.role?.id)) && (
                 <>
-                  <Divider orientation="vertical" flexItem sx={{ my: 1, mx: 2, bgcolor: 'rgba(255, 255, 255, 0.15)' }} />
+                  <Divider orientation="vertical" flexItem sx={{ my: 1, mx: 2, bgcolor: "primary.contrastText" }} />
                   <Box>
                     <Button
                       onClick={handleCloseNavMenu}
-                      sx={{ color: "white", px: 2, py: 2 }}
+                      sx={{ 
+                        color: "primary.contrastText", 
+                        px: 2, 
+                        py: 2,
+                        "&:hover": {
+                          bgcolor: "rgba(255, 255, 255, 0.1)",
+                        }
+                      }}
                       component={Link}
                       href="/admin-panel/users"
                     >
@@ -253,15 +333,6 @@ function ResponsiveAppBar() {
                   </Box>
                 </>
               )}
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              mr: 2,
-            }}
-          >
-            <ThemeSwitchButton />
           </Box>
 
           {!isLoaded ? (
@@ -273,7 +344,7 @@ function ResponsiveAppBar() {
                   <IconButton
                     component={Link}
                     href="/profile"
-                    sx={{ p: 0 }}
+                    sx={{ p: 0, color: "primary.light" }}
                     data-testid="profile-menu-item"
                   >
                     <Avatar
@@ -285,7 +356,7 @@ function ResponsiveAppBar() {
                 <Tooltip title="Logout" sx={{ ml: 2 }}>
                   <IconButton
                     onClick={logOut}
-                    color="inherit"
+                    sx={{ color: "primary.contrastText" }}
                     data-testid="logout-menu-item"
                   >
                     <LogoutIcon />
@@ -295,22 +366,14 @@ function ResponsiveAppBar() {
             </>
           ) : (
             <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-                component={Link}
-                href="/sign-in"
-              >
-                {t("common:navigation.signIn")}
-              </Button>
-              {IS_SIGN_UP_ENABLED && (
+              {!pathname?.includes("/sign-in") && (
                 <Button
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{ my: 2, color: "primary.contrastText", display: "block" }}
                   component={Link}
-                  href="/sign-up"
+                  href="/sign-in"
                 >
-                  {t("common:navigation.signUp")}
+                  {t("common:navigation.signIn")}
                 </Button>
               )}
             </Box>

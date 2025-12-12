@@ -37,9 +37,18 @@
 
   "event": {
     "title": "Détails de l'événement",
-    "when": "Quand : 13-15 mars 2026",
-    "where": "Où :\nVenn Innovation\n770 St George Blvd, Moncton, NB E1E 2C6",
-    "who": "Qui : 20-40 participants répartis en environ 10 équipes (1-4 membres par équipe)",
+    "when": {
+      "title": "Date",
+      "description": "13-15 mars 2026"
+    },
+    "where": {
+      "title": "Lieu",
+      "description": "Venn Innovation, 770 St George Blvd, Moncton, NB E1E 2C6"
+    },
+    "who": {
+      "title": "Participants",
+      "description": "20-40 participants (1-4 par équipe)"
+    },
     "schedule": {
       "title": "Aperçu de l'horaire",
       "friday": {
@@ -81,13 +90,12 @@
       "Un chef de projet ou quelqu'un qui aime organiser des projets complexes",
       "Toute personne passionnée par l'utilisation de la technologie pour résoudre des défis sociaux"
     ],
-    "teamStructure": "Structure d'équipe :\n• Équipes de 1-4 participants\n• Équipes pré-formées encouragées mais participants solo bienvenus\n• Environ 10 équipes attendues",
     "note": "Aucune expérience des services d'itinérance n'est requise ! Les représentants du GMHSC et les mentors fourniront l'expertise du domaine."
   },
 
   "prizes": {
     "title": "Prix et reconnaissance",
-    "prizePool": "Une cagnotte de prix d'au moins 5 000 $ sera décernée aux équipes gagnantes, les montants exacts étant annoncés au fur et à mesure que le parrainage est finalisé.",
+    "prizePool": "Une cagnotte de prix sera décernée aux équipes gagnantes, les montants exacts étant annoncés au fur et à mesure que le parrainage est finalisé.",
     "beyond": "Au-delà des prix en argent, les équipes gagnantes reçoivent :",
     "benefits": [
       "Partenariat avec Civic Tech Moncton pour développer la solution complète",

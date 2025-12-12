@@ -36,10 +36,10 @@ export default function Contact() {
               {t("participants.questions")}
             </Typography>
             <Typography variant="body2" sx={{ mt: 1 }}>
-              {t("participants.faqLink")} <Link href="/faq"><MuiLink component="span">FAQ page</MuiLink></Link>
+              {t("participants.faqLink")} <Link href="/faq"><MuiLink component="span" sx={{ fontWeight: "bold" }}>FAQ page</MuiLink></Link>
             </Typography>
             <Typography variant="body2" sx={{ mt: 1 }}>
-              <MuiLink href="mailto:contact@hack4change.ca">
+              <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>
                 {t("participants.email")}
               </MuiLink>
             </Typography>
@@ -68,7 +68,7 @@ export default function Contact() {
               {t("sponsors.discuss")}
             </Typography>
             <Typography variant="body2">
-              <MuiLink href="mailto:contact@hack4change.ca">
+              <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>
                 {t("sponsors.email")}
               </MuiLink>
             </Typography>
@@ -88,7 +88,7 @@ export default function Contact() {
               {t("media.intro")}
             </Typography>
             <Typography variant="body2">
-              <MuiLink href="mailto:contact@hack4change.ca">
+              <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>
                 {t("media.email")}
               </MuiLink>
             </Typography>
@@ -108,7 +108,7 @@ export default function Contact() {
               {t("general.intro")}
             </Typography>
             <Typography variant="body2">
-              <MuiLink href="mailto:contact@hack4change.ca">
+              <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>
                 {t("general.email")}
               </MuiLink>
             </Typography>
@@ -136,7 +136,7 @@ export default function Contact() {
               {t("stayConnected.description")}
             </Typography>
             <Typography variant="body2" sx={{ mt: 2 }}>
-              <MuiLink href="mailto:contact@hack4change.ca">
+              <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>
                 {t("stayConnected.email")}
               </MuiLink>
             </Typography>

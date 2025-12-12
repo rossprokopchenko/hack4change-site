@@ -12,7 +12,7 @@ const ThemeSwitchButton = () => {
       onClick={() => {
         setMode(colorScheme === "light" ? "dark" : "light");
       }}
-      color="inherit"
+      sx={{ color: "secondary.contrastText", pr: 0 }}
     >
       {colorScheme === "dark" ? (
         <Brightness7Icon sx={{ width: 35, height: 35 }} />

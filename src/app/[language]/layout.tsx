@@ -1,5 +1,6 @@
 import ResponsiveAppBar from "@/components/app-bar";
 import Footer from "@/components/footer";
+import ScrollToTop from "@/components/scroll-to-top";
 import Box from "@mui/material/Box";
 import AuthProvider from "@/services/auth/auth-provider";
 import "../globals.css";
@@ -82,6 +83,7 @@ export default async function RootLayout(props: {
                             {children}
                           </Box>
                           <Footer />
+                          <ScrollToTop />
                         </Box>
                         <ToastContainer
                           position="bottom-left"

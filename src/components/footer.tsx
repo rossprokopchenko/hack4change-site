@@ -9,16 +9,20 @@ import { useTranslation } from "@/services/i18n/client";
 import IconButton from "@mui/material/IconButton";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import NextLink from "next/link";
+import Image from "next/image";
+import { useColorScheme } from "@mui/material/styles";
 
 import { usePathname } from "next/navigation";
 import useLanguage from "@/services/i18n/use-language";
 import { languages } from "@/services/i18n/config";
+import ThemeSwitchButton from "@/components/switch-theme-button";
 
 export default function Footer() {
   const { t } = useTranslation("common");
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
   const language = useLanguage();
+  const { mode: colorScheme } = useColorScheme();
 
   const getLanguageLink = (lang: string) => {
     if (!pathname) return `/${lang}`;
@@ -55,19 +59,27 @@ export default function Footer() {
           }}
         >
           {/* Brand Section */}
-          <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                mb: 1,
-              }}
-            >
-              {t("common:app-name")}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
+          <Box sx={{ 
+            textAlign: { xs: "center", md: "left" },
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            gap: 0
+          }}>
+            <Box sx={{ }}>
+              <Image
+                src={
+                  colorScheme === "dark" 
+                  ? "/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Dark Pink-17.svg"
+                  : "/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Blue.svg"
+                }
+                alt="Hack4Change"
+                width={120}
+                height={50}
+                style={{ width: "auto", height: "50px" }}
+              />
+            </Box>
+            <Typography variant="body2" color="text.secondary" sx={{ ml: 1}}>
               © {currentYear} {t("common:legal.rights")}
             </Typography>
           </Box>
@@ -82,7 +94,7 @@ export default function Footer() {
             }}
           >
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+              <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: "primary.main", fontWeight: "bold" }}>
                 {t("common:navigation.title")}
               </Typography>
               <MuiLink component={Link} href="/" underline="hover" color="text.secondary">
@@ -103,7 +115,7 @@ export default function Footer() {
             </Box>
 
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-              <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+              <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: "primary.main", fontWeight: "bold" }}>
                 {t("common:legal.title")}
               </Typography>
               <MuiLink
@@ -142,10 +154,10 @@ export default function Footer() {
               </IconButton>
             </Box> */}
 
-            <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+            <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: "primary.main", fontWeight: "bold"  }}>
               {t("common:language.title")}
             </Typography>
-            <Box sx={{ display: "flex", gap: 2, justifyContent: { xs: "center", md: "flex-end" } }}>
+            <Box sx={{ display: "flex", gap: 2, justifyContent: { xs: "center", md: "flex-end" }, alignItems: "center", mb: 2 }}>
               {languages.map((lang) => (
                 <MuiLink
                   key={lang}
@@ -164,6 +176,12 @@ export default function Footer() {
                   {lang.toUpperCase()}
                 </MuiLink>
               ))}
+            </Box>
+            <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: "primary.main", fontWeight: "bold" }}>
+              {t("common:theme.title")}
+            </Typography>
+            <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+              <ThemeSwitchButton />
             </Box>
           </Box>
         </Box>

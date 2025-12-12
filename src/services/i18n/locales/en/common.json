@@ -34,6 +34,9 @@
   "language": {
     "title": "Language"
   },
+  "theme": {
+    "title": "Theme"
+  },
   "formInputs": {
     "avatarInput": {
       "dropzoneText": "Drop the image here ...",

@@ -1,6 +1,6 @@
 {
   "title": "HACK4CHANGE",
-  "subtitle": "Moncton's Inaugural Civic Tech Hackathon",
+  "subtitle": "Civic Tech Moncton's Inaugural Hackathon",
   "tagline": "Build Technology That Actually Gets Deployed",
   "dateLocation": "March 13-15, 2026 | Venn Innovation, Moncton, NB",
   
@@ -17,7 +17,7 @@
     },
     "prizesRecognition": {
       "title": "PRIZES + RECOGNITION",
-      "description": "Compete for cash prizes of at least $5,000 plus the pride of seeing your work make measurable community impact. Winners recognized in all ongoing communications about the deployed solution."
+      "description": "Compete for cash prizes of [TBD] plus the pride of seeing your work make measurable community impact. Winners recognized in all ongoing communications about the deployed solution."
     }
   },
 
@@ -31,7 +31,7 @@
     "dates": "March 13-15, 2026",
     "location": "Venn Innovation, Moncton",
     "participants": "20-40 participants | 10 teams",
-    "prizePool": "Prize pool: At least $5,000"
+    "prizePool": "Prize pool: [TBD]"
   },
 
   "countdown": {

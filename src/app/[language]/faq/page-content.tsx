@@ -82,7 +82,7 @@ export default function FAQ() {
             {t("stillQuestions.title")}
           </Typography>
           <Typography variant="body1" sx={{ mb: 1 }}>
-            <MuiLink href="mailto:contact@hack4change.ca">
+            <MuiLink href="mailto:contact@hack4change.ca" sx={{ fontWeight: "bold" }}>
               {t("stillQuestions.contact")}
             </MuiLink>
           </Typography>
