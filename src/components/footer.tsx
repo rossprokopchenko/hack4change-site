@@ -69,7 +69,7 @@ export default function Footer() {
             <Box sx={{ }}>
               <Image
                 src={
-                  colorScheme === "dark" 
+                  (colorScheme || "light") === "dark" 
                   ? "/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Dark Pink-17.svg"
                   : "/Logos/Hack4Change Logo SVG/Primary Small Logo/Final Logo Moncton_Primary Small Logo_Blue.svg"
                 }

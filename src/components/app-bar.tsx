@@ -55,8 +55,8 @@ function ResponsiveAppBar() {
     setAnchorElementUser(null);
   };
 
-  // Determine which logo to use based on theme
-  const logoSrc = mode === "light" 
+  // Determine which logo to use based on theme (fallback to light for SSR)
+  const logoSrc = (mode || "light") === "light" 
     ? "/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Light Black.svg"
     : "/Logos/Hack4Change Logo SVG/H4C Logo/Final Logo Moncton_H4C Logo_Dark White-20.svg";
 

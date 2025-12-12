@@ -21,7 +21,8 @@ export default function HeroMotion({
   const theme = useTheme();
   const { mode } = useColorScheme();
 
-  const logoSrc = mode === "dark"
+  // Fallback to light mode during SSR when mode is undefined
+  const logoSrc = (mode || "light") === "dark"
     ? "/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton.svg"
     : "/Logos/Hack4Change Logo SVG/Primary Full Logo/Final Logo Moncton_Primary Log_Light.svg";
 
