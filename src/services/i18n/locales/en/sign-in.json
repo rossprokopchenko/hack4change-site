@@ -34,5 +34,9 @@
     "accountNotFound": "No account found with this email address.",
     "genericError": "An error occurred during sign in. Please try again."
   },
-  "or": "OR"
+  "or": "OR",
+  "oauth": {
+    "google": "Sign in with Google",
+    "github": "Sign in with GitHub"
+  }
 }

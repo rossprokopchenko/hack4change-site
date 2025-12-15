@@ -169,3 +169,24 @@ export async function updatePassword(newPassword: string) {
     throw error;
   }
 }
+
+/**
+ * Sign in with OAuth provider (Google, GitHub)
+ */
+export async function signInWithOAuth(provider: 'google' | 'github') {
+  // Get the current language from localStorage (set by the app)
+  const storedLanguage = typeof window !== 'undefined' 
+    ? localStorage.getItem('i18nextLng') || 'en'
+    : 'en';
+
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: {
+      redirectTo: `${window.location.origin}/${storedLanguage}`,
+    },
+  });
+
+  if (error) {
+    throw error;
+  }
+}

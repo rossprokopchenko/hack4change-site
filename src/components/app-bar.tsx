@@ -271,7 +271,8 @@ function ResponsiveAppBar() {
               sx={{ 
                 color: "primary.contrastText", 
                 px: 2, 
-                py: 2,
+                py: 1.5,
+                my: 0.5,
                 "&:hover": {
                   bgcolor: "rgba(255, 255, 255, 0.1)",
                 }
@@ -287,7 +288,8 @@ function ResponsiveAppBar() {
               sx={{ 
                 color: "primary.contrastText", 
                 px: 2, 
-                py: 2,
+                py: 1.5,
+                my: 0.5,
                 "&:hover": {
                   bgcolor: "rgba(255, 255, 255, 0.1)",
                 }
@@ -303,7 +305,8 @@ function ResponsiveAppBar() {
               sx={{ 
                 color: "primary.contrastText", 
                 px: 2, 
-                py: 2,
+                py: 1.5,
+                my: 0.5,
                 "&:hover": {
                   bgcolor: "rgba(255, 255, 255, 0.1)",
                 }
@@ -319,7 +322,8 @@ function ResponsiveAppBar() {
               sx={{ 
                 color: "primary.contrastText", 
                 px: 2, 
-                py: 2,
+                py: 1.5,
+                my: 0.5,
                 "&:hover": {
                   bgcolor: "rgba(255, 255, 255, 0.1)",
                 }
@@ -340,7 +344,8 @@ function ResponsiveAppBar() {
                       sx={{ 
                         color: "primary.contrastText", 
                         px: 2, 
-                        py: 2,
+                        py: 1.5,
+                        my: 0.5,
                         "&:hover": {
                           bgcolor: "rgba(255, 255, 255, 0.1)",
                         }
@@ -389,7 +394,15 @@ function ResponsiveAppBar() {
               {!pathname?.includes("/sign-in") && (
                 <Button
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "primary.contrastText", display: "block" }}
+                  sx={{ 
+                    color: "primary.contrastText", 
+                    px: 2, 
+                    py: 1.5,
+                    my: 0.5,
+                    "&:hover": {
+                      bgcolor: "rgba(255, 255, 255, 0.1)",
+                    }
+                  }}
                   component={Link}
                   href="/sign-in"
                 >

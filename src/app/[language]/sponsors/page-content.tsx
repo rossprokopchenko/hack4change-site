@@ -240,52 +240,96 @@ export default function Sponsors() {
           
           
           {/* GMHSC Logo */}
-          <Box 
-            component="img"
-            src="/Logos/gmhsc_light.png"
-            alt="Greater Moncton Homelessness Steering Committee"
-            className="logo-light"
-            sx={{
-              maxWidth: '350px',
-              width: '100%',
-              height: 'auto'
-            }}
-          />
-          <Box 
-            component="img"
-            src="/Logos/gmhsc_dark.png"
-            alt="Greater Moncton Homelessness Steering Committee"
-            className="logo-dark"
-            sx={{
-              maxWidth: '350px',
-              width: '100%',
-              height: 'auto'
-            }}
-          />
+          <MuiLink href="https://www.monctonhomelessness.org/" target="_blank" rel="noopener noreferrer">
+            <Box 
+              component="img"
+              src="/Logos/gmhsc_light.png"
+              alt="Greater Moncton Homelessness Steering Committee"
+              className="logo-light"
+              sx={{
+                maxWidth: '350px',
+                width: '100%',
+                height: 'auto'
+              }}
+            />
+            <Box 
+              component="img"
+              src="/Logos/gmhsc_dark.png"
+              alt="Greater Moncton Homelessness Steering Committee"
+              className="logo-dark"
+              sx={{
+                maxWidth: '350px',
+                width: '100%',
+                height: 'auto'
+              }}
+            />
+          </MuiLink>
           
           {/* UnitedWay Logo */}
-          <Box 
-            component="img"
-            src="/Logos/UnitedWay_light.png"
-            alt="United Way"
-            className="logo-light"
-            sx={{
-              maxWidth: '300px',
-              width: '100%',
-              height: 'auto'
-            }}
-          />
-          <Box 
-            component="img"
-            src="/Logos/UnitedWay_dark.png"
-            alt="United Way"
-            className="logo-dark"
-            sx={{
-              maxWidth: '300px',
-              width: '100%',
-              height: 'auto'
-            }}
-          />
+          <MuiLink href="https://gmsenbunitedway.ca/" target="_blank" rel="noopener noreferrer">
+            <Box 
+              component="img"
+              src="/Logos/UnitedWay_light.png"
+              alt="United Way"
+              className="logo-light"
+              sx={{
+                maxWidth: '300px',
+                width: '100%',
+                height: 'auto'
+              }}
+            />
+            <Box 
+              component="img"
+              src="/Logos/UnitedWay_dark.png"
+              alt="United Way"
+              className="logo-dark"
+              sx={{
+                maxWidth: '300px',
+                width: '100%',
+                height: 'auto'
+              }}
+            />
+          </MuiLink>
+        </Box>
+
+        {/* Partners Section */}
+        <Typography variant="h4" gutterBottom textAlign="center" sx={{ mt: 16 }}>
+          {t("currentSponsors.partners")}
+        </Typography>
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: 8,
+          alignItems: 'center',
+          justifyContent: 'center',
+          mt: 4 
+        }}>
+          {/* CivicTechMoncton Logo */}
+          <MuiLink href="https://civictechmoncton.org/" target="_blank" rel="noopener noreferrer">
+            <Box 
+              component="img"
+              src="/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_4.svg"
+              alt="Civic Tech Moncton"
+              className="logo-light"
+              sx={{
+                maxWidth: '300px',
+                width: '100%',
+                height: 'auto'
+              }}
+            />
+            <Box 
+              component="img"
+              src="/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_5.svg"
+              alt="Civic Tech Moncton"
+              className="logo-dark"
+              sx={{
+                maxWidth: '300px',
+                width: '100%',
+                height: 'auto'
+              }}
+            />
+          </MuiLink>
         </Box>
         
         {/* <Typography variant="subtitle2" textAlign="center" sx={{ mt: 3 }}>

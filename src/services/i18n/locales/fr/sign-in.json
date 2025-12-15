@@ -34,5 +34,9 @@
     "accountNotFound": "Aucun compte trouvé avec cette adresse courriel.",
     "genericError": "Une erreur s'est produite lors de la connexion. Veuillez réessayer."
   },
-  "or": "OU"
+  "or": "OU",
+  "oauth": {
+    "google": "Se connecter avec Google",
+    "github": "Se connecter avec GitHub"
+  }
 }
