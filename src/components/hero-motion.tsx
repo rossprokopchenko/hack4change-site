@@ -131,22 +131,58 @@ export default function HeroMotion({
           />
         </motion.div>
 
-        {/* Subtitle */}
-        {subtitle && (
-          <motion.p
-            className="mt-8 mb-4 max-w-2xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.3, ease: "easeOut", delay: 0.2 }}
-            style={{ 
-              color: "var(--mui-palette-text-main)",
-              fontSize: "clamp(1.5rem, 5vw, 1.875rem)",
-              fontWeight: 700,
-            }}
+        {/* Subtitle with CTM Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.3, ease: "easeOut", delay: 0.2 }}
+        >
+          {subtitle && (                                           
+            <span
+              style={{ 
+                color: "var(--mui-palette-text-main)",
+                fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
+                fontWeight: 600,
+              }}
+            >
+              {subtitle}
+            </span>
+          )}
+          <a
+            href="https://civictechmoncton.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center"
+            style={{ lineHeight: 0, marginLeft: "6px", position: "relative", top: "-3px" }}
           >
-            {subtitle}
-          </motion.p>
-        )}
+            <Image
+              src="/Logos/CTM SVG/Logo With Sign/CTM_Logotype_horizontal_4.svg"
+              alt="Civic Tech Moncton"
+              width={200}
+              height={50}
+              className="logo-light"
+              style={{ 
+                height: "clamp(28px, 5vw, 36px)", 
+                width: "auto",
+                cursor: "pointer",
+                verticalAlign: "middle"
+              }}
+            />
+            <Image
+              src="/Logos/CTM SVG/Logo With Sign/CTM_Logotype_horizontal_5.svg"
+              alt="Civic Tech Moncton"
+              width={200}
+              height={50}
+              className="logo-dark"
+              style={{ 
+                height: "clamp(28px, 5vw, 36px)", 
+                width: "auto",
+                cursor: "pointer",
+                verticalAlign: "middle"
+              }}
+            />
+          </a>
+        </motion.div>
 
         {/* Subheadline */}
         {subheadline && (

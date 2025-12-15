@@ -93,7 +93,7 @@
 /* Theme-based logo visibility - CSS only solution for hydration issues */
 /* Default: hide dark logos, show light logos */
 .logo-light {
-  display: block !important;
+  display: inline-block !important;
 }
 .logo-dark {
   display: none !important;
@@ -108,7 +108,7 @@ body.dark .logo-light {
 .dark .logo-dark,
 html.dark .logo-dark,
 body.dark .logo-dark {
-  display: block !important;
+  display: inline-block !important;
 }
 
 /* When data attribute is used */
@@ -116,7 +116,7 @@ body.dark .logo-dark {
   display: none !important;
 }
 [data-mui-color-scheme="dark"] .logo-dark {
-  display: block !important;
+  display: inline-block !important;
 }
 
 /* Fallback for initial load using system preference */
@@ -125,7 +125,7 @@ body.dark .logo-dark {
     display: none !important;
   }
   .logo-dark:not(.force-hide) {
-    display: block !important;
+    display: inline-block !important;
   }
   
   /* Override when light class is explicitly set */
@@ -133,7 +133,7 @@ body.dark .logo-dark {
   html.light .logo-light,
   body.light .logo-light,
   [data-mui-color-scheme="light"] .logo-light {
-    display: block !important;
+    display: inline-block !important;
   }
   .light .logo-dark,
   html.light .logo-dark,
@@ -142,3 +142,4 @@ body.dark .logo-dark {
     display: none !important;
   }
 }
+

@@ -292,7 +292,7 @@ export default function Sponsors() {
           </MuiLink>
         </Box>
 
-        {/* Partners Section */}
+        {/* Partners Section - Commented out for now
         <Typography variant="h4" gutterBottom textAlign="center" sx={{ mt: 16 }}>
           {t("currentSponsors.partners")}
         </Typography>
@@ -305,7 +305,6 @@ export default function Sponsors() {
           justifyContent: 'center',
           mt: 4 
         }}>
-          {/* CivicTechMoncton Logo */}
           <MuiLink href="https://civictechmoncton.org/" target="_blank" rel="noopener noreferrer">
             <Box 
               component="img"
@@ -331,6 +330,7 @@ export default function Sponsors() {
             />
           </MuiLink>
         </Box>
+        */}
         
         {/* <Typography variant="subtitle2" textAlign="center" sx={{ mt: 3 }}>
           {t("currentSponsors.interested")}
