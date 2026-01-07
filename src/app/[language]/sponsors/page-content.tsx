@@ -48,8 +48,11 @@ export default function Sponsors() {
       <Typography variant="h3" component="h1" gutterBottom textAlign="center">
         {t("title")}
       </Typography>
-      <Typography variant="h6" textAlign="center" color="text.secondary" sx={{ mb: 6, maxWidth: "800px", mx: "auto" }}>
+      <Typography variant="h6" textAlign="center" color="text.secondary" sx={{ mb: 4, maxWidth: "800px", mx: "auto" }}>
         {t("subtitle")}
+      </Typography>
+      <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 6, maxWidth: "800px", mx: "auto", fontStyle: "italic" }}>
+        {t("unitedWayNote")}
       </Typography>
 
       <Divider />
@@ -217,6 +220,33 @@ export default function Sponsors() {
           ))}
         </Box>
       </Box>
+
+      {/* Our Partners Section */}
+      <Box sx={{ my: 8 }}>
+        <Typography variant="h4" gutterBottom textAlign="center">
+          {t("partners.title")}
+        </Typography>
+        <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 4, maxWidth: "800px", mx: "auto" }}>
+          {t("partners.intro")}
+        </Typography>
+        
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+          {["unitedWay", "gmhsc", "venn", "civicTech"].map((partner) => (
+            <Card key={partner} variant="outlined">
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  {t(`partners.${partner}.title`)}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {t(`partners.${partner}.description`)}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
+      </Box>
+
+      <Divider sx={{ my: 4 }} />
 
       {/* Current Sponsors */}
       <Box sx={{ bgcolor: "background.paper", p: 4, borderRadius: 2 }}>

@@ -1,5 +1,10 @@
 {
   "app-name": "Hack4Change",
+  "title": "Hack4Change 2026 | Build Technology That Gets Deployed",
+  "seo": {
+    "description": "Join Hack4Change 2026 - A three-day hackathon in Moncton, NB addressing homelessness through technology. Build solutions that actually get deployed. March 13-15, 2026 at Venn Innovation.",
+    "keywords": "hackathon, Moncton, technology, homelessness, civic tech, 2026, New Brunswick, coding competition"
+  },
   "loading": "Loading ...",
   "navigation": {
     "title": "Navigation",

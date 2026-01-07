@@ -1,5 +1,10 @@
 {
   "app-name": "Hack4Change",
+  "title": "Hack4Change 2026 | Créez des technologies qui seront déployées",
+  "seo": {
+    "description": "Participez à Hack4Change 2026 - Un hackathon de trois jours à Moncton, NB, abordant l'itinérance grâce à la technologie. Créez des solutions qui seront réellement déployées. 13-15 mars 2026 à Venn Innovation.",
+    "keywords": "hackathon, Moncton, technologie, itinérance, civic tech, 2026, Nouveau-Brunswick, compétition de programmation"
+  },
   "loading": "Chargement ...",
   "navigation": {
     "title": "Navigation",

@@ -1,7 +1,7 @@
 {
   "title": "About Hack4Change",
   
-  "opening": "Hack4Change is Moncton's inaugural civic tech hackathon, organized by Civic Tech Moncton in partnership with the Greater Moncton Homelessness Steering Committee. This three-day intensive event brings together developers, designers, students, and community advocates to build technology solutions that create lasting community impact.",
+  "opening": "Hack4Change is Moncton's inaugural civic tech hackathon, organized by Civic Tech Moncton in partnership with United Way and the Greater Moncton Homelessness Steering Committee. This three-day intensive event brings together developers, designers, students, and community advocates to build technology solutions that create lasting community impact.",
 
   "whatMakesDifferent": {
     "title": "What Makes This Different",
@@ -47,7 +47,7 @@
     },
     "who": {
       "title": "Participants",
-      "description": "20-40 participants (1-4 per team)"
+      "description": "Up to 50 participants (1-4 per team)"
     },
     "schedule": {
       "title": "Schedule Overview",
@@ -96,7 +96,7 @@
 
   "prizes": {
     "title": "Prizes & Recognition",
-    "prizePool": "A prize pool will be awarded to winning teams, with exact amounts to be announced as sponsorship is finalized.",
+    "prizePool": "A prize pool will be awarded to winning teams and managed by United Way as fiscal sponsor, with exact amounts to be announced as sponsorship is finalized.",
     "beyond": "Beyond cash prizes, winning teams receive:",
     "benefits": [
       "Partnership with Civic Tech Moncton to develop the full solution",
@@ -109,17 +109,21 @@
 
   "partners": {
     "title": "About Our Partners",
+    "unitedWay": {
+      "title": "Fiscal Partner: United Way",
+      "description": "United Way serves as our fiscal sponsor, managing all prize money collection and distribution. As a registered charitable organization, United Way brings institutional credibility and ensures professional financial stewardship for this inaugural event, giving sponsors confidence in transparent fund management."
+    },
     "gmhsc": {
       "title": "Challenge Partner: Greater Moncton Homelessness Steering Committee",
       "description": "The Greater Moncton Homelessness Steering Committee (GMHSC) is a multi-stakeholder network of professionals from community organizations and all levels of government, working collaboratively to prevent and reduce homelessness by increasing access to safe, adequate, and supportive housing.\n\nUsing a data-informed systems approach, GMHSC drives lasting change through education, advocacy, and targeted support, ensuring affordable housing and essential services are available to those in need.",
       "link": "Learn more: monctonhomelessness.org"
     },
     "venn": {
-      "title": "Venue Partner: Venn Innovation",
-      "description": "[Brief description of Venn - to be added once confirmed]"
+      "title": "Venue Sponsor: Venn Innovation",
+      "description": "Venn Innovation provides our event venue and serves as the community hub where Civic Tech Moncton meets weekly. Their support makes this event possible by providing accessible, professional event space in downtown Moncton."
     },
     "civicTech": {
-      "title": "About Civic Tech Moncton",
+      "title": "Organizing Team: Civic Tech Moncton",
       "description": "Launched in September 2024, Civic Tech Moncton is a volunteer-driven initiative that harnesses technology and collaboration to solve real-world challenges in Greater Moncton. We meet weekly at Venn Innovation, bringing together developers, designers, students, professionals, and community advocates.",
       "mission": "Our Mission: To empower community members to use technology as a force for positive change, making Greater Moncton a more connected, innovative, and inclusive place to live.",
       "milestone": "This hackathon represents our first major public event and a milestone in establishing Moncton as a hub for civic technology in Atlantic Canada.",

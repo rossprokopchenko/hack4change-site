@@ -142,46 +142,8 @@ export default function Footer() {
             </Box>
           </Box>
 
-          {/* Social Media Icons (todo: add) & Language */}
+          {/* Theme Switcher */}
           <Box sx={{ textAlign: { xs: "center", md: "right" } }}>
-            {/* <Typography variant="subtitle2" fontWeight={600} gutterBottom>
-              {t("common:socialMedia.title")}
-            </Typography>
-            <Box sx={{ display: "flex", gap: 1, justifyContent: { xs: "center", md: "flex-end" }, mb: 3 }}>
-              <IconButton
-                aria-label="LinkedIn"
-                color="inherit"
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon />
-              </IconButton>
-            </Box> */}
-
-            <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: "primary.main", fontWeight: "bold"  }}>
-              {t("common:language.title")}
-            </Typography>
-            <Box sx={{ display: "flex", gap: 2, justifyContent: { xs: "center", md: "flex-end" }, alignItems: "center", mb: 2 }}>
-              {languages.map((lang) => (
-                <MuiLink
-                  key={lang}
-                  component={NextLink}
-                  href={getLanguageLink(lang)}
-                  underline="none"
-                  sx={{
-                    fontWeight: language === lang ? 700 : 400,
-                    color: language === lang ? "primary.main" : "text.secondary",
-                    cursor: "pointer",
-                    "&:hover": {
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  {lang.toUpperCase()}
-                </MuiLink>
-              ))}
-            </Box>
             <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: "primary.main", fontWeight: "bold" }}>
               {t("common:theme.title")}
             </Typography>

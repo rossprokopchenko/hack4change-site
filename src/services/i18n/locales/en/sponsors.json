@@ -1,6 +1,7 @@
 {
   "title": "Sponsor Hack4Change",
   "subtitle": "Become a founding sponsor of Moncton's inaugural civic tech hackathon. Your support enables exceptional participant experiences while addressing critical community challenges.",
+  "unitedWayNote": "Hack4Change is organized in partnership with United Way, who serves as our fiscal sponsor managing all prize money and sponsor contributions. This ensures professional fund management and transparent financial stewardship, giving sponsors confidence their investment is handled by a registered charitable organization with established processes.",
   
   "whySponsor": {
     "title": "Why Sponsor Hack4Change?",
@@ -191,12 +192,32 @@
     ]
   },
 
+  "partners": {
+    "title": "Our Partners",
+    "intro": "Hack4Change brings together established organizations to ensure credibility, impact, and professional execution:",
+    "unitedWay": {
+      "title": "United Way — Fiscal Sponsor",
+      "description": "Manages all sponsor contributions and prize distribution, ensuring transparent financial stewardship through their established processes as a registered charitable organization."
+    },
+    "gmhsc": {
+      "title": "Greater Moncton Homelessness Steering Committee — Challenge Partner",
+      "description": "Defines the community challenge and will implement the winning solution across their member organizations serving 511+ individuals experiencing homelessness in Greater Moncton."
+    },
+    "venn": {
+      "title": "Venn Innovation — Venue Sponsor",
+      "description": "Provides event space and serves as the community hub where Civic Tech Moncton meets weekly."
+    },
+    "civicTech": {
+      "title": "Civic Tech Moncton — Organizing Team",
+      "description": "Volunteer-driven organization coordinating the event and leading post-hackathon solution development."
+    }
+  },
+
   "currentSponsors": {
     "title": "Our Sponsors",
-    "description": "We're grateful to our sponsors who make Hack4Change possible. Sponsor logos and recognition will be displayed here as partnerships are confirmed.",
-    "challengePartner": "Challenge Partner:",
-    "venuePartner": "Venue Partner:",
-    "partners": "Our Partners",
-    "interested": "Interested in becoming a sponsor? Contact us at contact@hack4change.ca"
+    "description": "Sponsor logos and recognition will be displayed here as partnerships are confirmed.",
+    "cta": "Ready to become a founding sponsor?",
+    "contact": "Email: contact@hack4change.ca",
+    "meetingNote": "We're happy to meet in person or by video call to discuss sponsorship opportunities."
   }
 }

@@ -1,7 +1,8 @@
 {
   "title": "Commanditer Hack4Change",
   "subtitle": "Devenez un commanditaire fondateur du premier hackathon civic tech de Moncton. Votre soutien permet une expérience exceptionnelle aux participants tout en s’attaquant à des enjeux communautaires essentiels.",
-  
+  "unitedWayNote": "Hack4Change est organisé en partenariat avec Centraide, qui agit comme notre parrain fiscal gérant tous les prix et les contributions des commanditaires. Cela assure une gestion professionnelle des fonds et une intendance financière transparente, donnant aux commanditaires confiance que leur investissement est géré par un organisme de bienfaisance enregistré avec des processus établis.",
+
   "whySponsor": {
     "title": "Pourquoi commanditer Hack4Change?",
     "techCompanies": {
@@ -191,12 +192,32 @@
     ]
   },
 
+  "partners": {
+    "title": "Nos partenaires",
+    "intro": "Hack4Change rassemble des organisations établies pour assurer crédibilité, impact et exécution professionnelle :",
+    "unitedWay": {
+      "title": "Centraide — Parrain fiscal",
+      "description": "Gère toutes les contributions des commanditaires et la distribution des prix, assurant une intendance financière transparente grâce à leurs processus établis en tant qu'organisme de bienfaisance enregistré."
+    },
+    "gmhsc": {
+      "title": "Comité directeur sur l'itinérance du Grand Moncton — Partenaire du défi",
+      "description": "Définit le défi communautaire et mettra en œuvre la solution gagnante à travers ses organisations membres desservant plus de 511 personnes en situation d'itinérance dans le Grand Moncton."
+    },
+    "venn": {
+      "title": "Venn Innovation — Commanditaire du lieu",
+      "description": "Fournit l'espace événementiel et sert de carrefour communautaire où Civic Tech Moncton se réunit chaque semaine."
+    },
+    "civicTech": {
+      "title": "Civic Tech Moncton — Équipe organisatrice",
+      "description": "Organisation bénévole coordonnant l'événement et dirigeant le développement de la solution post-hackathon."
+    }
+  },
+
   "currentSponsors": {
     "title": "Nos commanditaires",
-    "description": "Nous sommes reconnaissants envers les commanditaires qui rendent Hack4Change possible. Les logos et la reconnaissance des commanditaires seront affichés ici au fur et à mesure que les partenariats sont confirmés.",
-    "challengePartner": "Partenaire du défi :",
-    "venuePartner": "Partenaire du lieu :",
-    "partners": "Nos partenaires",
-    "interested": "Intéressé à devenir commanditaire? Contactez-nous à contact@hack4change.ca"
+    "description": "Les logos et la reconnaissance des commanditaires seront affichés ici au fur et à mesure que les partenariats sont confirmés.",
+    "cta": "Prêt à devenir un commanditaire fondateur?",
+    "contact": "Courriel : contact@hack4change.ca",
+    "meetingNote": "Nous sommes heureux de nous rencontrer en personne ou par appel vidéo pour discuter des opportunités de commandite."
   }
 }

@@ -86,6 +86,88 @@ export default function HeroMotion({
       {/* Main content container - centered */}
       <div className="z-20 flex flex-col items-center justify-center flex-1 w-full">
         
+        {/* Partner Logos at top-right */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: "3.5rem",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            width: "100%",
+            marginBottom: "2rem",
+            paddingRight: "1rem",
+          }}
+        >
+          {/* United Way Logo */}
+          <a
+            href="https://gmsenbunitedway.ca/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/Logos/UnitedWay_light.png"
+              alt="United Way"
+              width={180}
+              height={60}
+              className="logo-light"
+              style={{ 
+                height: "clamp(60px, 10vw, 100px)", 
+                width: "auto",
+                cursor: "pointer",
+              }}
+            />
+            <Image
+              src="/Logos/UnitedWay_dark.png"
+              alt="United Way"
+              width={180}
+              height={60}
+              className="logo-dark"
+              style={{ 
+                height: "clamp(60px, 10vw, 100px)", 
+                width: "auto",
+                cursor: "pointer",
+              }}
+            />
+          </a>
+
+          {/* GMHSC Logo */}
+          <a
+            href="https://www.monctonhomelessness.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/Logos/gmhsc_light.png"
+              alt="Greater Moncton Homelessness Steering Committee"
+              width={220}
+              height={60}
+              className="logo-light"
+              style={{ 
+                height: "clamp(60px, 10vw, 100px)", 
+                width: "auto",
+                cursor: "pointer",
+              }}
+            />
+            <Image
+              src="/Logos/gmhsc_dark.png"
+              alt="Greater Moncton Homelessness Steering Committee"
+              width={220}
+              height={60}
+              className="logo-dark"
+              style={{ 
+                height: "clamp(60px, 10vw, 100px)", 
+                width: "auto",
+                cursor: "pointer",
+              }}
+            />
+          </a>
+        </motion.div>
+
         {/* Title - Main Focus (Logo) */}
         <motion.div
           className="flex justify-center items-center w-full"

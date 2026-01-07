@@ -26,6 +26,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import { useColorScheme, useTheme } from "@mui/material/styles";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import NextLink from "next/link";
+import useLanguage from "@/services/i18n/use-language";
+import { languages } from "@/services/i18n/config";
+import MuiLink from "@mui/material/Link";
 
 function ResponsiveAppBar() {
   const { t } = useTranslation("common");
@@ -34,11 +38,20 @@ function ResponsiveAppBar() {
   const { mode } = useColorScheme();
   const theme = useTheme();
   const pathname = usePathname();
+  const language = useLanguage();
   const [anchorElementNav, setAnchorElementNav] = useState<null | HTMLElement>(
     null
   );
   const [anchorElementUser, setAnchorElementUser] =
     useState<null | HTMLElement>(null);
+
+  // Helper function to switch language while staying on same page
+  const getLanguageLink = (lang: string) => {
+    if (!pathname) return `/${lang}`;
+    const segments = pathname.split("/");
+    segments[1] = lang;
+    return segments.join("/");
+  };
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElementNav(event.currentTarget);
@@ -364,7 +377,34 @@ function ResponsiveAppBar() {
             <CircularProgress color="inherit" />
           ) : user ? (
             <>
-              <Box sx={{ flexGrow: 0, display: "flex", gap: 1, alignItems: "center" }}>
+              <Box sx={{ flexGrow: 0, display: "flex", gap: 2, alignItems: "center" }}>
+                {/* Language Switcher for logged-in users */}
+                <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5, alignItems: "center" }}>
+                  {languages.map((lang, index) => (
+                    <Box key={lang} sx={{ display: "flex", alignItems: "center" }}>
+                      <MuiLink
+                        component={NextLink}
+                        href={getLanguageLink(lang)}
+                        underline="none"
+                        sx={{
+                          fontWeight: language === lang ? 700 : 400,
+                          color: language === lang ? "primary.contrastText" : "rgba(255, 255, 255, 0.7)",
+                          cursor: "pointer",
+                          fontSize: "0.875rem",
+                          "&:hover": {
+                            color: "primary.contrastText",
+                          },
+                        }}
+                      >
+                        {lang.toUpperCase()}
+                      </MuiLink>
+                      {index < languages.length - 1 && (
+                        <Divider orientation="vertical" flexItem sx={{ mx: 0.5, bgcolor: "rgba(255, 255, 255, 0.3)", height: "16px", alignSelf: "center" }} />
+                      )}
+                    </Box>
+                  ))}
+                </Box>
+
                 <Tooltip title="Profile">
                   <IconButton
                     component={Link}
@@ -390,7 +430,35 @@ function ResponsiveAppBar() {
               </Box>
             </>
           ) : (
-            <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
+            <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" }, alignItems: "center", gap: 1 }}>
+              {/* Language Switcher */}
+              <Box sx={{ display: "flex", gap: 0.5, alignItems: "center", mr: 1 }}>
+                {languages.map((lang, index) => (
+                  <Box key={lang} sx={{ display: "flex", alignItems: "center" }}>
+                    <MuiLink
+                      component={NextLink}
+                      href={getLanguageLink(lang)}
+                      underline="none"
+                      sx={{
+                        fontWeight: language === lang ? 700 : 400,
+                        color: language === lang ? "primary.contrastText" : "rgba(255, 255, 255, 0.7)",
+                        cursor: "pointer",
+                        fontSize: "0.875rem",
+                        "&:hover": {
+                          color: "primary.contrastText",
+                        },
+                      }}
+                    >
+                      {lang.toUpperCase()}
+                    </MuiLink>
+                    {index < languages.length - 1 && (
+                      <Divider orientation="vertical" flexItem sx={{ mx: 0.5, bgcolor: "rgba(255, 255, 255, 0.3)", height: "16px", alignSelf: "center" }} />
+                    )}
+                  </Box>
+                ))}
+              </Box>
+
+              {/* Sign In Button */}
               {!pathname?.includes("/sign-in") && (
                 <Button
                   onClick={handleCloseNavMenu}

@@ -1,7 +1,7 @@
 {
   "title": "À propos de Hack4Change",
   
-  "opening": "Hack4Change est le premier hackathon de technologie civique de Moncton, organisé par Civic Tech Moncton en partenariat avec le Comité directeur sur l'itinérance du Grand Moncton. Cet événement intensif de trois jours rassemble développeurs, concepteurs, étudiants et défenseurs communautaires pour créer des solutions technologiques ayant un impact communautaire durable.",
+  "opening": "Hack4Change est le premier hackathon de technologie civique de Moncton, organisé par Civic Tech Moncton en partenariat avec Centraide et le Comité directeur sur l'itinérance du Grand Moncton. Cet événement intensif de trois jours rassemble développeurs, concepteurs, étudiants et défenseurs communautaires pour créer des solutions technologiques ayant un impact communautaire durable.",
 
   "whatMakesDifferent": {
     "title": "Ce qui rend ceci différent",
@@ -47,7 +47,7 @@
     },
     "who": {
       "title": "Participants",
-      "description": "20-40 participants (1-4 par équipe)"
+      "description": "Jusqu'à 50 participants (1-4 par équipe)"
     },
     "schedule": {
       "title": "Aperçu de l'horaire",
@@ -95,7 +95,7 @@
 
   "prizes": {
     "title": "Prix et reconnaissance",
-    "prizePool": "Une cagnotte de prix sera décernée aux équipes gagnantes, les montants exacts étant annoncés au fur et à mesure que le parrainage est finalisé.",
+    "prizePool": "Une cagnotte de prix sera décernée aux équipes gagnantes et gérée par Centraide en tant que parrain fiscal, les montants exacts étant annoncés au fur et à mesure que le parrainage est finalisé.",
     "beyond": "Au-delà des prix en argent, les équipes gagnantes reçoivent :",
     "benefits": [
       "Partenariat avec Civic Tech Moncton pour développer la solution complète",
@@ -108,17 +108,21 @@
 
   "partners": {
     "title": "À propos de nos partenaires",
+    "unitedWay": {
+      "title": "Partenaire fiscal : Centraide",
+      "description": "Centraide agit comme notre parrain fiscal, gérant toute la collecte et la distribution des prix. En tant qu'organisme de bienfaisance enregistré, Centraide apporte une crédibilité institutionnelle et assure une intendance financière professionnelle pour cet événement inaugural, donnant aux commanditaires confiance en une gestion transparente des fonds."
+    },
     "gmhsc": {
       "title": "Partenaire du défi : Comité directeur sur l'itinérance du Grand Moncton",
       "description": "Le Comité directeur sur l'itinérance du Grand Moncton (GMHSC) est un réseau multi-parties prenantes de professionnels d'organisations communautaires et de tous les niveaux de gouvernement, travaillant en collaboration pour prévenir et réduire l'itinérance en augmentant l'accès à un logement sûr, adéquat et de soutien.\n\nUtilisant une approche systémique fondée sur les données, le GMHSC génère un changement durable grâce à l'éducation, la défense des droits et le soutien ciblé, garantissant que le logement abordable et les services essentiels sont disponibles pour ceux qui en ont besoin.",
       "link": "En savoir plus : monctonhomelessness.org"
     },
     "venn": {
-      "title": "Partenaire de lieu : Venn Innovation",
-      "description": "[Brève description de Venn - à ajouter une fois confirmée]"
+      "title": "Commanditaire du lieu : Venn Innovation",
+      "description": "Venn Innovation fournit notre lieu d'événement et sert de carrefour communautaire où Civic Tech Moncton se réunit chaque semaine. Leur soutien rend cet événement possible en fournissant un espace événementiel accessible et professionnel au centre-ville de Moncton."
     },
     "civicTech": {
-      "title": "À propos de Civic Tech Moncton",
+      "title": "Équipe organisatrice : Civic Tech Moncton",
       "description": "Lancé en septembre 2024, Civic Tech Moncton est une initiative bénévole qui exploite la technologie et la collaboration pour résoudre les défis du monde réel dans le Grand Moncton. Nous nous réunissons chaque semaine à Venn Innovation, rassemblant développeurs, concepteurs, étudiants, professionnels et défenseurs communautaires.",
       "mission": "Notre mission : Donner aux membres de la communauté les moyens d'utiliser la technologie comme force de changement positif, faisant du Grand Moncton un endroit plus connecté, innovant et inclusif où vivre.",
       "milestone": "Ce hackathon représente notre premier événement public majeur et une étape importante dans l'établissement de Moncton comme centre de technologie civique dans le Canada atlantique.",
