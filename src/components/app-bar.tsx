@@ -28,6 +28,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import NextLink from "next/link";
 import useLanguage from "@/services/i18n/use-language";
+import useStoreLanguageActions from "@/services/i18n/use-store-language-actions";
 import { languages } from "@/services/i18n/config";
 import MuiLink from "@mui/material/Link";
 
@@ -39,18 +40,17 @@ function ResponsiveAppBar() {
   const theme = useTheme();
   const pathname = usePathname();
   const language = useLanguage();
+  const { setLanguage } = useStoreLanguageActions();
   const [anchorElementNav, setAnchorElementNav] = useState<null | HTMLElement>(
     null
   );
   const [anchorElementUser, setAnchorElementUser] =
     useState<null | HTMLElement>(null);
 
-  // Helper function to switch language while staying on same page
-  const getLanguageLink = (lang: string) => {
-    if (!pathname) return `/${lang}`;
-    const segments = pathname.split("/");
-    segments[1] = lang;
-    return segments.join("/");
+  // Handle language switch - update cookie and refresh page to apply new language
+  const handleLanguageSwitch = (lang: string) => {
+    setLanguage(lang); // Save to cookie
+    window.location.reload(); // Refresh to apply new language from server
   };
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -379,27 +379,30 @@ function ResponsiveAppBar() {
             <>
               <Box sx={{ flexGrow: 0, display: "flex", gap: 2, alignItems: "center" }}>
                 {/* Language Switcher for logged-in users */}
-                <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5, alignItems: "center" }}>
+                <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
                   {languages.map((lang, index) => (
                     <Box key={lang} sx={{ display: "flex", alignItems: "center" }}>
-                      <MuiLink
-                        component={NextLink}
-                        href={getLanguageLink(lang)}
-                        underline="none"
+                      <Box
+                        component="button"
+                        onClick={() => handleLanguageSwitch(lang)}
                         sx={{
+                          background: "none",
+                          border: "none",
                           fontWeight: language === lang ? 700 : 400,
                           color: language === lang ? "primary.contrastText" : "rgba(255, 255, 255, 0.7)",
                           cursor: "pointer",
                           fontSize: "0.875rem",
+                          fontFamily: "inherit",
+                          padding: 0,
                           "&:hover": {
                             color: "primary.contrastText",
                           },
                         }}
                       >
                         {lang.toUpperCase()}
-                      </MuiLink>
+                      </Box>
                       {index < languages.length - 1 && (
-                        <Divider orientation="vertical" flexItem sx={{ mx: 0.5, bgcolor: "rgba(255, 255, 255, 0.3)", height: "16px", alignSelf: "center" }} />
+                        <Divider orientation="vertical" flexItem sx={{ mx: 1.5, bgcolor: "rgba(255, 255, 255, 0.3)", height: "16px", alignSelf: "center" }} />
                       )}
                     </Box>
                   ))}
@@ -432,27 +435,30 @@ function ResponsiveAppBar() {
           ) : (
             <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" }, alignItems: "center", gap: 1 }}>
               {/* Language Switcher */}
-              <Box sx={{ display: "flex", gap: 0.5, alignItems: "center", mr: 1 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mr: 1 }}>
                 {languages.map((lang, index) => (
                   <Box key={lang} sx={{ display: "flex", alignItems: "center" }}>
-                    <MuiLink
-                      component={NextLink}
-                      href={getLanguageLink(lang)}
-                      underline="none"
+                    <Box
+                      component="button"
+                      onClick={() => handleLanguageSwitch(lang)}
                       sx={{
+                        background: "none",
+                        border: "none",
                         fontWeight: language === lang ? 700 : 400,
                         color: language === lang ? "primary.contrastText" : "rgba(255, 255, 255, 0.7)",
                         cursor: "pointer",
                         fontSize: "0.875rem",
+                        fontFamily: "inherit",
+                        padding: 0,
                         "&:hover": {
                           color: "primary.contrastText",
                         },
                       }}
                     >
                       {lang.toUpperCase()}
-                    </MuiLink>
+                    </Box>
                     {index < languages.length - 1 && (
-                      <Divider orientation="vertical" flexItem sx={{ mx: 0.5, bgcolor: "rgba(255, 255, 255, 0.3)", height: "16px", alignSelf: "center" }} />
+                      <Divider orientation="vertical" flexItem sx={{ mx: 1.5, bgcolor: "rgba(255, 255, 255, 0.3)", height: "16px", alignSelf: "center" }} />
                     )}
                   </Box>
                 ))}

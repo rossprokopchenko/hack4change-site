@@ -1,4 +1,3 @@
-import useLanguage from "@/services/i18n/use-language";
 import {
   LeavePageActionsContext,
   LeavePageContext,
@@ -8,23 +7,14 @@ import {
 import NextLink, { LinkProps } from "next/link";
 import { Ref, useContext } from "react";
 
+/**
+ * Custom Link component that handles leave-page confirmations.
+ * Language prefix logic has been removed since we now use cookie-based language detection.
+ */
 function Link(props: LinkProps & { ref?: Ref<HTMLAnchorElement> }) {
-  const language = useLanguage();
   const { isLeavePage } = useContext(LeavePageContext);
   const { setLeavePage, openModal } = useContext(LeavePageActionsContext);
-  let href = props.href;
-
-  if (typeof href === "string" && href.startsWith("/")) {
-    href = `/${language}${href}`;
-  } else if (typeof href === "object" && href !== null) {
-    const pathname = href.pathname
-      ? `/${language}${href.pathname}`
-      : href.pathname;
-    href = {
-      ...href,
-      pathname,
-    };
-  }
+  const href = props.href;
 
   return (
     <NextLink
@@ -47,3 +37,4 @@ function Link(props: LinkProps & { ref?: Ref<HTMLAnchorElement> }) {
 }
 
 export default Link;
+

@@ -1,16 +1,16 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import useStoreLanguage from "./use-store-language";
 import { fallbackLanguage } from "./config";
 
+/**
+ * Hook to get the current language from cookie-stored context.
+ * This replaces the old URL-based language detection.
+ */
 function useLanguage() {
-  const params = useParams();
-
-  return (
-    (Array.isArray(params?.language)
-      ? params?.language[0]
-      : params?.language) || fallbackLanguage
-  );
+  const { language } = useStoreLanguage();
+  return language || fallbackLanguage;
 }
 
 export default useLanguage;
+

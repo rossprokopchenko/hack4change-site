@@ -20,11 +20,16 @@ export function useUpdateRSVP() {
       if (!user?.id) throw new Error("User not authenticated");
 
       const { error } = await supabase
-        .from("profiles")
+        .from("profiles" as any)
         .update({ rsvp_status: status })
         .eq("id", user.id);
 
-      if (error) throw error;
+      if (error) {
+        if (error.message.includes("RSVP_FORM_REQUIRED")) {
+          throw new Error("FORM_REQUIRED");
+        }
+        throw error;
+      }
 
       return status;
     },

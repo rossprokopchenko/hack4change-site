@@ -102,6 +102,29 @@ export interface Database {
           joined_at?: string
         }
       }
+      event_form_submissions: {
+        Row: {
+          id: string
+          user_id: string
+          event_id: string
+          tally_submission_id: string
+          completed_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          event_id: string
+          tally_submission_id: string
+          completed_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          event_id?: string
+          tally_submission_id?: string
+          completed_at?: string
+        }
+      }
     }
   }
 }

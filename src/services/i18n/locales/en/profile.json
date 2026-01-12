@@ -86,7 +86,10 @@
       "confirmed": "Confirmed",
       "declined": "Declined",
       "waitlist": "Waitlist"
-    }
+    },
+    "formRequired": "Please complete the RSVP form below to enable the 'Confirmed' status.",
+    "completeForm": "Complete RSVP Form",
+    "formCompleted": "Thank you for completing the RSVP form!"
   },
   "team": {
     "loading": "Loading team information...",

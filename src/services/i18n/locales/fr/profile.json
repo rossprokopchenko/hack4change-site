@@ -86,7 +86,10 @@
       "confirmed": "Confirmé",
       "declined": "Refusé",
       "waitlist": "Liste d'attente"
-    }
+    },
+    "formRequired": "Veuillez remplir le formulaire RSVP ci-dessous pour activer le statut 'Confirmé'.",
+    "completeForm": "Remplir le formulaire RSVP",
+    "formCompleted": "Merci d'avoir rempli le formulaire RSVP !"
   },
   "team": {
     "loading": "Chargement des informations de l'équipe...",
