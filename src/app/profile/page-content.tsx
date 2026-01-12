@@ -190,8 +190,8 @@ function Profile() {
                   </Alert>
                 )}
 
-                {/* Tally Form Button */}
-                <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
+                {/* Tally Form Button / Success State */}
+                <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
                   {!isFormCompleted ? (
                     <Button
                       variant="outlined"
@@ -205,8 +205,10 @@ function Profile() {
                       {t("rsvp.completeForm")}
                     </Button>
                   ) : (
-                    <Alert severity="success" sx={{ width: '100%' }}>
-                      {t("rsvp.formCompleted")}
+                    <Alert severity="success" sx={{ width: '100%', alignItems: 'center' }}>
+                      <Typography variant="body1" fontWeight="bold">
+                        {t("rsvp.formCompleted")}
+                      </Typography>
                     </Alert>
                   )}
                 </Box>

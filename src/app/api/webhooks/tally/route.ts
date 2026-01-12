@@ -8,34 +8,43 @@ export async function POST(request: Request) {
     const secret = process.env.TALLY_WEBHOOK_SECRET;
 
     if (!secret) {
-      console.error("TALLY_WEBHOOK_SECRET is not defined");
+      console.error("TALLY_WEBHOOK_SECRET is not defined in environment variables");
       return NextResponse.json({ error: "Configuration error" }, { status: 500 });
     }
 
     const rawBody = await request.text();
     const hmac = createHmac("sha256", secret);
-    const calculatedSignature = hmac.update(rawBody).digest("hex");
+    const calculatedSignature = hmac.update(rawBody).digest("base64");
 
     if (calculatedSignature !== signature) {
-      console.error("Invalid Tally signature", { calculatedSignature, receivedSignature: signature });
+      console.error("Webhook Signature Mismatch:", { 
+        received: signature, 
+        calculated: calculatedSignature 
+      });
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const payload = JSON.parse(rawBody);
+    console.log("Full Tally Payload:", JSON.stringify(payload, null, 2));
     
-    // Tally sends data in a specific format
-    // Hidden fields are usually in payload.data.fields
     const fields = payload.data?.fields || [];
+    console.log("Found Fields:", JSON.stringify(fields.map((f: any) => ({ key: f.key, label: f.label })), null, 2));
     
-    const findField = (name: string) => fields.find((f: any) => f.key === name || f.label === name)?.value;
+    const findField = (name: string) => {
+      const field = fields.find((f: any) => f.key?.toLowerCase() === name.toLowerCase() || f.label?.toLowerCase() === name.toLowerCase());
+      return field?.value;
+    };
     
     const user_id = findField("user_id");
     const event_id = findField("event_id");
     const submission_id = payload.data?.submissionId;
 
     if (!user_id || !event_id || !submission_id) {
-      console.error("Missing required fields in Tally webhook", { user_id, event_id, submission_id });
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+      console.error("Missing required fields in Tally webhook. Detected:", { user_id, event_id, submission_id });
+      return NextResponse.json({ 
+        error: "Missing required fields", 
+        detected: { user_id: !!user_id, event_id: !!event_id, submission_id: !!submission_id } 
+      }, { status: 400 });
     }
 
     const { error } = await supabaseService
