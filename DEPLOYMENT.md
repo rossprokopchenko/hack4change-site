@@ -50,17 +50,20 @@ sudo docker compose up -d --build
 It is recommended to use Nginx as a reverse proxy to handle SSL termination and forward traffic from port 80/443 to port 3000.
 
 1.  **Install Nginx**:
+
     ```bash
     sudo apt install nginx certbot python3-certbot-nginx
     ```
 
 2.  **Configure Nginx**:
     Create a new configuration file:
+
     ```bash
     sudo nano /etc/nginx/sites-available/hack4change
     ```
 
     Add the following content (replace `yourdomain.com` with your actual domain):
+
     ```nginx
     server {
         server_name yourdomain.com;
@@ -77,6 +80,7 @@ It is recommended to use Nginx as a reverse proxy to handle SSL termination and 
     ```
 
 3. **Enable the Site**:
+
     ```bash
     sudo ln -s /etc/nginx/sites-available/hack4change /etc/nginx/sites-enabled/
     sudo nginx -t
@@ -84,6 +88,7 @@ It is recommended to use Nginx as a reverse proxy to handle SSL termination and 
     ```
 
 4. **Setup SSL**:
+
     ```bash
     sudo certbot --nginx -d yourdomain.com
     ```
@@ -123,3 +128,31 @@ Alternatively, if you are using `ufw`:
 ```bash
 sudo ufw deny from 1.2.3.4
 ```
+
+## 7. Automated Protection with Fail2Ban
+
+To automatically block bots that switch IPs, you can set up Fail2Ban on your VPS:
+
+1. **Install Fail2Ban**:
+   ```bash
+   sudo apt update
+   sudo apt install fail2ban
+   ```
+
+2. **Deploy Configuration**:
+   ```bash
+   # Copy the filter
+   sudo cp fail2ban/filter-hack4change.conf /etc/fail2ban/filter.d/
+   
+   # Copy the jail settings (and rename to avoid conflict)
+   sudo cp fail2ban/jail.local /etc/fail2ban/jail.d/hack4change.conf
+   ```
+
+3. **Verify Log Path**:
+   Ensure `logpath` in `/etc/fail2ban/jail.d/hack4change.conf` matches your actual deployment directory.
+
+4. **Restart Fail2Ban**:
+   ```bash
+   sudo systemctl restart fail2ban
+   sudo fail2ban-client status hack4change
+   ```

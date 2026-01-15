@@ -1,0 +1,10 @@
+[hack4change]
+enabled = true
+port = http,https,8080
+filter = filter-hack4change
+# Path to the mounted nginx logs on the VPS host
+logpath = /home/hack4change/hack4change-site/logs/nginx/access.log
+maxretry = 5
+findtime = 600
+bantime = 3600
+action = iptables-multiport[name=hack4change, port="http,https,8080"]
