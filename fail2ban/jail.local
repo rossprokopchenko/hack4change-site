@@ -1,3 +1,6 @@
+[sshd]
+enabled = false
+
 [hack4change]
 enabled = true
 port = http,https,8080
