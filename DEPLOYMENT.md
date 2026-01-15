@@ -75,14 +75,32 @@ It is recommended to use Nginx as a reverse proxy to handle SSL termination and 
     }
     ```
 
-3.  **Enable the Site**:
+3. **Enable the Site**:
     ```bash
     sudo ln -s /etc/nginx/sites-available/hack4change /etc/nginx/sites-enabled/
     sudo nginx -t
     sudo systemctl restart nginx
     ```
 
-4.  **Setup SSL**:
+4. **Setup SSL**:
     ```bash
     sudo certbot --nginx -d yourdomain.com
     ```
+
+## 5. Troubleshooting Performance
+
+If the site feels slow or unresponsive:
+
+1. **Run the Diagnostic Script**:
+    ```bash
+    chmod +x debug-vps.sh
+    ./debug-vps.sh
+    ```
+
+2. **Monitor Logs in Real-time**:
+    ```bash
+    sudo docker compose logs -f
+    ```
+
+3. **Check Resource Limits**:
+    The application is limited to 512MB RAM in `docker-compose.yml`. If `docker stats` shows memory consistently hitting this limit, monitor the logs for memory leaks.

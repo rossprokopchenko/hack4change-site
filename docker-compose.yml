@@ -23,11 +23,18 @@ services:
       - /tmp
       - /app/.next/cache
     healthcheck:
-      test: ["CMD-SHELL", "pgrep -f next-server || exit 1"]
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
       interval: 30s
-      timeout: 3s
+      timeout: 5s
       retries: 3
       start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          memory: 128M
 
   nginx:
     image: nginx:1.27.3-alpine
