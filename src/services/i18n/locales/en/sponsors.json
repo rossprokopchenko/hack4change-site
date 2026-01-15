@@ -1,7 +1,7 @@
 {
   "title": "Sponsors",
   "subtitle": "Become a founding sponsor of Moncton's inaugural civic tech hackathon. Your support enables exceptional participant experiences while addressing critical community challenges.",
-  "unitedWayNote": "Hack4Change is organized in partnership with United Way, who serves as our fiscal sponsor managing all prize money and sponsor contributions. This ensures professional fund management and transparent financial stewardship, giving sponsors confidence their investment is handled by a registered charitable organization with established processes.",
+  "unitedWayNote": "Hack4Change is supported by our charitable partner United Way. This ensures professional fund management and transparent financial stewardship, giving sponsors confidence their investment is handled with established processes.",
   
   "whySponsor": {
     "title": "Why Sponsor Hack4Change?",
@@ -52,14 +52,14 @@
           "items": [
             "Perfect fit for CSR initiatives focused on housing, poverty, or innovation",
             "Concrete, verifiable impact you can report to stakeholders",
-            "Partnership with respected community organizations (GMHSC, Civic Tech Moncton)"
+            "Visibility with respected community organizations (Venn Innovation, United Way, GMHSC and Civic Tech Moncton)"
           ]
         },
         {
           "title": "Brand Visibility & Recognition",
           "items": [
             "Anticipated local and regional media coverage",
-            "Recognition at event with 20-40 participants, mentors, judges, and guests",
+            "Recognition at the event with up to 50 participants, mentors, judges, and guests",
             "Named in all ongoing communications about the deployed solution",
             "Logo placement across website, social media, and event materials"
           ]
@@ -68,7 +68,7 @@
     },
     "local": {
       "title": "For Local Businesses:",
-      "description": "Bronze ($2,000) and Community Supporter ($500) tiers fit any budget. Show Moncton you care about solving real community challenges. Connect with local tech community and young professionals. Be part of something historic, Moncton's first civic tech hackathon."
+      "description": "Bronze ($2,000) and Community Supporter ($250) tiers fit any budget. Show Moncton you care about solving real community challenges. Connect with local tech community and young professionals. Be part of something historic, Civic Tech Moncton's first hackathon."
     }
   },
 
@@ -77,7 +77,7 @@
     "subtitle": "Unlike typical hackathons, your sponsorship doesn't fund a weekend prototype that gets abandoned.",
     "benefits": [
       "A solution that WILL be fully developed",
-      "Deployment to real organizations serving 500+ individuals",
+      "Deployment to real organizations serving our most vulnerable population",
       "Measurable, lasting community impact",
       "Open-source code benefiting communities beyond Moncton"
     ],
@@ -145,7 +145,7 @@
       },
       "community": {
         "tier": "COMMUNITY SUPPORTER",
-        "price": "$500",
+        "price": "$250",
         "idealFor": "Perfect for: Startups, small businesses, sole proprietors who want to support civic innovation",
         "benefits": [
           "Logo on event website",
@@ -196,12 +196,12 @@
     "title": "Our Partners",
     "intro": "Hack4Change brings together established organizations to ensure credibility, impact, and professional execution:",
     "unitedWay": {
-      "title": "United Way — Fiscal Sponsor",
+      "title": "United Way — Charitable Partner",
       "description": "Manages all sponsor contributions and prize distribution, ensuring transparent financial stewardship through their established processes as a registered charitable organization."
     },
     "gmhsc": {
       "title": "Greater Moncton Homelessness Steering Committee — Challenge Partner",
-      "description": "Defines the community challenge and will implement the winning solution across their member organizations serving 511+ individuals experiencing homelessness in Greater Moncton."
+      "description": "As the Community Advisory Board for Greater Moncton, GMHSC supports local partners and works with the community to raise awareness and coordinate donations for people experiencing homelessness. Limited tools make information sharing and regional coordination challenging. \n\nGMHSC is providing the real-world operational challenge for teams to solve. Their participation is advisory only and is not connected to any fundraising or sponsorship activities."
     },
     "venn": {
       "title": "Venn Innovation — Venue Sponsor",

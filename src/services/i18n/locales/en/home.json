@@ -4,12 +4,12 @@
   "tagline": "Build Technology That Actually Gets Deployed",
   "dateLocation": "March 13-15, 2026 | Venn Innovation, Moncton, NB",
   
-  "subheadline": "Join developers, designers, and problem-solvers for a three-day hackathon addressing a real challenge from the Greater Moncton Homelessness Steering Committee. Unlike typical hackathons where projects die after the weekend, the winning solution will be fully developed and deployed to serve community organizations across Southeast New Brunswick.",
-
+  "subheadline": "Join developers, designers, and problem-solvers for a three-day hackathon addressing a real challenge hosted by Civic Tech Moncton with support from our charitable partner United Way. Unlike typical hackathons where projects die after the weekend, the winning solution will be fully developed and deployed to serve community organizations across Southeast New Brunswick.",
+  
   "valueProps": {
     "realWorldImpact": {
       "title": "REAL-WORLD IMPACT",
-      "description": "Partner with the Greater Moncton Homelessness Steering Committee to solve an actual resource coordination challenge. Your solution addresses a crisis affecting 511+ individuals in our community."
+      "description": "Service providers are overwhelmed trying to help everyone. This year, more than 10,000 neighbors will need food banks, while 500 people are experiencing chronic homelessness and 50 more become homeless every month. Your solution will have measurable impact on real lives."
     },
     "codeGoesLive": {
       "title": "YOUR CODE GOES LIVE",

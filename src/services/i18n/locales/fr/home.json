@@ -4,12 +4,12 @@
   "tagline": "Créez une technologie qui sera réellement déployée",
   "dateLocation": "13-15 mars 2026 | Venn Innovation, Moncton, N.-B.",
   
-  "subheadline": "Rejoignez développeurs, concepteurs et résolveurs de problèmes pour un hackathon de trois jours abordant un défi réel du Comité directeur sur l'itinérance du Grand Moncton. Contrairement aux hackathons typiques où les projets meurent après le week-end, la solution gagnante sera entièrement développée et déployée pour servir les organisations communautaires du sud-est du Nouveau-Brunswick.",
-
+  "subheadline": "Rejoignez développeurs, concepteurs et résolveurs de problèmes pour un hackathon de trois jours portant sur un défi réel, organisé par Civic Tech Moncton avec le soutien de notre partenaire de bienfaisance Centraide (United Way). Contrairement aux hackathons typiques où les projets s'arrêtent après le week-end, la solution gagnante sera entièrement développée et déployée pour servir les organismes communautaires du sud-est du Nouveau-Brunswick.",
+  
   "valueProps": {
     "realWorldImpact": {
       "title": "IMPACT CONCRET",
-      "description": "Collaborez avec le Comité directeur sur l'itinérance du Grand Moncton pour résoudre un véritable défi de coordination des ressources. Votre solution répond à une crise touchant plus de 511 personnes dans notre communauté."
+      "description": "Les prestataires de services sont débordés en essayant d'aider tout le monde. Cette année, plus de 10 000 voisins auront besoin de banques alimentaires, plus de 500 personnes vivent l'itinérance chronique et 50 personnes de plus deviennent sans-abri chaque mois. Votre solution aura un impact mesurable sur de vraies vies."
     },
     "codeGoesLive": {
       "title": "VOTRE CODE SERA DÉPLOYÉ",

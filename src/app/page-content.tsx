@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', pt: 8, pb: 16 }}>
       {/* Hero Section */}
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <HeroMotion 
           subtitle={t("subtitle")}
           subheadline={t("subheadline")}

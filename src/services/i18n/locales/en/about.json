@@ -1,12 +1,12 @@
 {
   "title": "About",
   
-  "opening": "Hack4Change is Moncton's inaugural civic tech hackathon, organized by Civic Tech Moncton in partnership with United Way and the Greater Moncton Homelessness Steering Committee. This three-day intensive event brings together developers, designers, students, and community advocates to build technology solutions that create lasting community impact.",
+  "opening": "Hack4Change is Moncton's inaugural civic tech hackathon, organized by Civic Tech Moncton with support from charitable partner United Way. This three-day intensive event brings together developers, designers, students, and community advocates to build technology solutions that create lasting community impact through social change. The winning prototype will be built and deployed.",
 
   "whatMakesDifferent": {
     "title": "What Makes This Different",
     "subtitle": "Most hackathons end with abandoned prototypes. Not this one.",
-    "description": "The winning solution will be fully developed and deployed through a committed partnership between Civic Tech Moncton volunteers, the winning team, and the Greater Moncton Homelessness Steering Committee (GMHSC).",
+    "description": "The winning solution will be fully developed and deployed by Civic Tech Moncton volunteers and the winning team.",
     "benefits": [
       "Be developed into a production-ready application",
       "Be deployed to GMHSC member organizations across Southeast New Brunswick",
@@ -18,8 +18,8 @@
 
   "challenge": {
     "title": "The Challenge",
-    "partner": "Partner: Greater Moncton Homelessness Steering Committee (GMHSC)",
-    "description": "GMHSC coordinates multiple service locations across Southeast New Brunswick serving individuals experiencing homelessness. Currently, these organizations lack efficient tools for real-time resource sharing and coordination across locations.",
+    "partner": "Greater Moncton Homelessness Steering Committee (GMHSC)",
+    "description": "As the Community Advisory Board for Greater Moncton, GMHSC supports local partners and works with the community to raise awareness and coordinate donations for people experiencing homelessness. Limited tools make information sharing and regional coordination challenging. \n\nGMHSC is providing the real-world operational challenge for teams to solve. Their participation is advisory only and is not connected to any fundraising or sponsorship activities.",
     "mission": "Your Mission: Design and prototype innovative technology solutions that enable community organizations to:",
     "objectives": [
       "Coordinate resources across multiple locations",
@@ -32,7 +32,7 @@
 
   "whyMatters": {
     "title": "Why This Matters",
-    "description": "Greater Moncton faces a visible homelessness crisis disproportionately severe compared to major Canadian cities. As of August 2024, 511 individuals are experiencing chronic homelessness in our community.\n\nGMHSC works tirelessly to coordinate services, but lacks the technology infrastructure to maximize their impact. Every improvement in coordination means faster, more effective support for vulnerable community members.\n\nYour solution will have measurable impact on real lives."
+    "description": "This year, more than 10,000 neighbors will need food banks, 500 people are experiencing chronic homelessness, and 50 more become homeless every month.\n\nGreater Moncton faces a visible homelessness crisis disproportionately severe compared to major Canadian cities. Service providers are overwhelmed trying to help everyone. They work tirelessly to coordinate services, but lacks the technology infrastructure to maximize their impact. Every improvement in coordination means faster, more effective support for vulnerable community members.\n\nYour solution will have measurable impact on real lives."
   },
 
   "event": {
@@ -96,7 +96,7 @@
 
   "prizes": {
     "title": "Prizes & Recognition",
-    "prizePool": "A prize pool will be awarded to winning teams and managed by United Way as fiscal sponsor, with exact amounts to be announced as sponsorship is finalized.",
+    "prizePool": "A prize pool will be awarded to winning teams, with exact amounts to be announced as sponsorship is finalized.",
     "beyond": "Beyond cash prizes, winning teams receive:",
     "benefits": [
       "Partnership with Civic Tech Moncton to develop the full solution",
@@ -109,19 +109,6 @@
 
   "partners": {
     "title": "About Our Partners",
-    "unitedWay": {
-      "title": "Fiscal Partner: United Way",
-      "description": "United Way serves as our fiscal sponsor, managing all prize money collection and distribution. As a registered charitable organization, United Way brings institutional credibility and ensures professional financial stewardship for this inaugural event, giving sponsors confidence in transparent fund management."
-    },
-    "gmhsc": {
-      "title": "Challenge Partner: Greater Moncton Homelessness Steering Committee",
-      "description": "The Greater Moncton Homelessness Steering Committee (GMHSC) is a multi-stakeholder network of professionals from community organizations and all levels of government, working collaboratively to prevent and reduce homelessness by increasing access to safe, adequate, and supportive housing.\n\nUsing a data-informed systems approach, GMHSC drives lasting change through education, advocacy, and targeted support, ensuring affordable housing and essential services are available to those in need.",
-      "link": "Learn more: monctonhomelessness.org"
-    },
-    "venn": {
-      "title": "Venue Sponsor: Venn Innovation",
-      "description": "Venn Innovation provides our event venue and serves as the community hub where Civic Tech Moncton meets weekly. Their support makes this event possible by providing accessible, professional event space in downtown Moncton."
-    },
     "civicTech": {
       "title": "Organizing Team: Civic Tech Moncton",
       "description": "Launched in September 2024, Civic Tech Moncton is a volunteer-driven initiative that harnesses technology and collaboration to solve real-world challenges in Greater Moncton. We meet weekly at Venn Innovation, bringing together developers, designers, students, professionals, and community advocates.",
@@ -162,6 +149,14 @@
       {
         "name": "Shannon McMackin",
         "role": "Civic Tech Moncton Leader"
+      },
+      {
+        "name": "Ross Prokopchenko",
+        "role": "Tech"
+      },
+      {
+        "name": "Gavanjeet Singh",
+        "role": "Tech"
       }
     ]
   },

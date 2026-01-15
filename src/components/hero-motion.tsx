@@ -34,9 +34,25 @@ export default function HeroMotion({
 
   // Renderer for Countdown display
   const countdownRenderer = ({ days, hours, minutes, seconds, completed }: any) => {
+    const countdownStyle = {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: '9999px',
+      backgroundColor: 'transparent',
+      backdropFilter: 'blur(4px)',
+      padding: '0.5rem 1.5rem',
+      color: 'var(--mui-palette-primary-main)',
+      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+      fontSize: '1.125rem',
+      letterSpacing: '0.05em',
+      boxShadow: '0 0 12px var(--mui-palette-primary-main)',
+      border: '1px solid var(--mui-palette-primary-main)'
+    };
+
     if (completed) {
       return (
-        <div className="inline-flex items-center justify-center rounded-full bg-cyan-900/40 backdrop-blur-sm px-6 py-2 text-cyan-300 font-mono text-lg tracking-wider shadow-[0_0_12px_#00ffff] border border-cyan-400/30">
+        <div style={countdownStyle}>
           {t("home:countdown.completed")}
         </div>
       );
@@ -59,7 +75,7 @@ export default function HeroMotion({
     }
 
     return (
-      <div className="inline-flex items-center justify-center rounded-full bg-cyan-900/40 backdrop-blur-sm px-6 py-2 text-cyan-300 font-mono text-lg tracking-wider shadow-[0_0_12px_#00ffff] border border-cyan-400/30">
+      <div style={countdownStyle}>
         {text}
       </div>
     );
@@ -67,24 +83,31 @@ export default function HeroMotion({
   
 
   return (
-    <div className="relative w-full min-h-[80vh] rounded-2xl overflow-hidden bg-black text-white flex flex-col justify-center items-center px-4 py-12">
-
-      {/* Background gradient */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        style={{
-          background:
-            "linear-gradient(120deg, #001f3f 0%, #004f8c 40%, #00a9ff 80%)",
-          backgroundSize: "100% 100%",
-          opacity: 0.55,
-          filter: "blur(2px)",
-        }}
-      />
+    <div style={{
+      position: 'relative',
+      width: '100%',
+      minHeight: '80vh',
+      borderRadius: '1rem',
+      overflow: 'hidden',
+      // border: '1px solid var(--mui-palette-primary-main)',
+      color: 'var(--mui-palette-text-primary)',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '3rem 1rem'
+    }}>
 
       {/* Main content container - centered */}
-      <div className="z-20 flex flex-col items-center justify-center flex-1 w-full">
+      <div style={{
+        zIndex: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        width: '100%'
+      }}>
         
         {/* Partner Logos at top-right */}
         <motion.div
@@ -99,7 +122,7 @@ export default function HeroMotion({
             alignItems: "center",
             justifyContent: "flex-end",
             width: "100%",
-            marginBottom: "2rem",
+            marginBottom: "0rem",
             paddingRight: "1rem",
           }}
         >
@@ -110,7 +133,7 @@ export default function HeroMotion({
             rel="noopener noreferrer"
           >
             <Image
-              src="/Logos/UnitedWay_light.png"
+              src="/Logos/Partners/UnitedWay_light.png"
               alt="United Way"
               width={180}
               height={60}
@@ -122,7 +145,7 @@ export default function HeroMotion({
               }}
             />
             <Image
-              src="/Logos/UnitedWay_dark.png"
+              src="/Logos/Partners/UnitedWay_dark.png"
               alt="United Way"
               width={180}
               height={60}
@@ -142,7 +165,7 @@ export default function HeroMotion({
             rel="noopener noreferrer"
           >
             <Image
-              src="/Logos/gmhsc_light.png"
+              src="/Logos/Partners/gmhsc_light.png"
               alt="Greater Moncton Homelessness Steering Committee"
               width={220}
               height={60}
@@ -154,7 +177,7 @@ export default function HeroMotion({
               }}
             />
             <Image
-              src="/Logos/gmhsc_dark.png"
+              src="/Logos/Partners/gmhsc_dark.png"
               alt="Greater Moncton Homelessness Steering Committee"
               width={220}
               height={60}
@@ -170,7 +193,12 @@ export default function HeroMotion({
 
         {/* Title - Main Focus (Logo) */}
         <motion.div
-          className="flex justify-center items-center w-full"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%'
+          }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -213,16 +241,24 @@ export default function HeroMotion({
           />
         </motion.div>
 
-        {/* Subtitle with CTM Logo */}
+        {/* Subtitle with CTM Logo - Horizontally Aligned */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.3, ease: "easeOut", delay: 0.2 }}
+          style={{ 
+            display: 'flex', 
+            flexDirection: 'row',
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '0.75rem',
+            marginTop: '1rem'
+          }}
         >
           {subtitle && (                                           
             <span
               style={{ 
-                color: "var(--mui-palette-text-main)",
+                color: "var(--mui-palette-text-primary)",
                 fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
                 fontWeight: 600,
               }}
@@ -234,8 +270,10 @@ export default function HeroMotion({
             href="https://civictechmoncton.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center"
-            style={{ lineHeight: 0, marginLeft: "6px", position: "relative", top: "-3px" }}
+            style={{ 
+              display: 'inline-flex',
+              alignItems: 'center'
+            }}
           >
             <Image
               src="/Logos/CTM SVG/Logo With Sign/CTM_Logotype_horizontal_4.svg"
@@ -244,10 +282,9 @@ export default function HeroMotion({
               height={50}
               className="logo-light"
               style={{ 
-                height: "clamp(28px, 5vw, 36px)", 
+                height: "clamp(32px, 5vw, 44px)", 
                 width: "auto",
-                cursor: "pointer",
-                verticalAlign: "middle"
+                cursor: "pointer"
               }}
             />
             <Image
@@ -257,10 +294,9 @@ export default function HeroMotion({
               height={50}
               className="logo-dark"
               style={{ 
-                height: "clamp(28px, 5vw, 36px)", 
+                height: "clamp(32px, 5vw, 44px)", 
                 width: "auto",
-                cursor: "pointer",
-                verticalAlign: "middle"
+                cursor: "pointer"
               }}
             />
           </a>
@@ -269,28 +305,50 @@ export default function HeroMotion({
         {/* Subheadline */}
         {subheadline && (
           <motion.p
-            className="text-base md:text-lg max-w-3xl leading-relaxed mx-auto text-center"
+            style={{ 
+              color: "var(--mui-palette-text-primary)",
+              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              maxWidth: "48rem",
+              lineHeight: 1.625,
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "center"
+            }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, ease: "easeOut", delay: 0.4 }}
-            style={{ color: "var(--mui-palette-text-main)" }}
           >
             {subheadline}
           </motion.p>
         )}
       </div>
 
-      {/* Countdown at bottom */}
-      <motion.div
-        className="z-20 mt-auto"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
-        style={{ fontSize: "1.2rem", color: "var(--mui-palette-text-main)" }}
-        
-      >
-        <Countdown date={eventDate} renderer={countdownRenderer} />
-      </motion.div>
+      {/* Spacer to help balance middle content */}
+      <div style={{ flex: 0.5 }} />
+
+      {/* Countdown - Centered in bottom space */}
+      <div style={{
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 20,
+        width: '100%',
+        paddingTop: '2rem',
+        paddingBottom: '2rem'
+      }}>
+        <motion.div
+          style={{ 
+            fontSize: "1.2rem", 
+            color: "var(--mui-palette-text-primary)" 
+          }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+        >
+          <Countdown date={eventDate} renderer={countdownRenderer} />
+        </motion.div>
+      </div>
     </div>
   );
 }

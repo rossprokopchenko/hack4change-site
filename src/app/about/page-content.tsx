@@ -254,11 +254,11 @@ export default function About() {
 
           {/* Partners */}
           <Box>
-            <Typography variant="h4" gutterBottom fontWeight="bold">
+            {/* <Typography variant="h4" gutterBottom fontWeight="bold">
               {t("partners.title")}
-            </Typography>
+            </Typography> */}
             <Stack spacing={4} sx={{ mt: 3 }}>
-              <Box>
+              {/* <Box>
                 <Typography variant="h5" gutterBottom fontWeight="bold">
                   {t("partners.gmhsc.title")}
                 </Typography>
@@ -268,7 +268,7 @@ export default function About() {
                 <MuiLink href="https://www.monctonhomelessness.org/" target="_blank">
                   {t("partners.gmhsc.link")}
                 </MuiLink>
-              </Box>
+              </Box> */}
               
               <Box>
                 <Typography variant="h5" gutterBottom fontWeight="bold">
@@ -299,13 +299,13 @@ export default function About() {
             </Stack>
           </Box>
 
-          <Divider />
+          {/* <Divider /> */}
 
           {/* Organizing Team */}
           <Box>
-            <Typography variant="h4" gutterBottom fontWeight="bold">
+            {/* <Typography variant="h4" gutterBottom fontWeight="bold">
               {t("team.title")}
-            </Typography>
+            </Typography> */}
             <Typography variant="body1" paragraph>
               {t("team.intro")}
             </Typography>
@@ -335,7 +335,9 @@ export default function About() {
               {t("accessibility.title")}
             </Typography>
             <Typography variant="body1">
-              {t("accessibility.description")}
+              {t("accessibility.description").split("contact@hack4change.ca")[0]}
+              <MuiLink href="mailto:contact@hack4change.ca">contact@hack4change.ca</MuiLink>
+              {t("accessibility.description").split("contact@hack4change.ca")[1]}
             </Typography>
           </Box>
 

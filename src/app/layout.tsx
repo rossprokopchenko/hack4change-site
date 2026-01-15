@@ -33,11 +33,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const { baseUrl, defaultOgImage, siteName } = seoConfig;
 
   const title = "Hack4Change Moncton";
+  const { t: tHome } = await getServerTranslation(language, "home");
   const description = t("seo.description");
 
   return {
     title: {
-      default: title,
+      default: `${title} - ${tHome("title")}`,
       template: `${title} - %s`,
     },
     description,

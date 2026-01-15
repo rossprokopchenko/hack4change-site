@@ -220,6 +220,8 @@ export default function Sponsors() {
           ))}
         </Box>
       </Box>
+      
+      <Divider sx={{ my: 6 }} />
 
       {/* Our Partners Section */}
       <Box sx={{ my: 8 }}>
@@ -231,140 +233,144 @@ export default function Sponsors() {
         </Typography>
         
         <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          {["unitedWay", "gmhsc", "venn", "civicTech"].map((partner) => (
-            <Card key={partner} variant="outlined">
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  {t(`partners.${partner}.title`)}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {t(`partners.${partner}.description`)}
-                </Typography>
+          {[
+            { id: "unitedWay", href: "https://gmsenbunitedway.ca/", logos: { light: "/Logos/Partners/UnitedWay_light.png", dark: "/Logos/Partners/UnitedWay_dark.png" }, maxWidth: "200px" },
+            { id: "gmhsc", href: "https://www.monctonhomelessness.org/", logos: { light: "/Logos/Partners/gmhsc_light.png", dark: "/Logos/Partners/gmhsc_dark.png" }, maxWidth: "250px" },
+            { id: "civicTech", href: "https://civictechmoncton.org/", logos: { light: "/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_4.svg", dark: "/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_5.svg" }, maxWidth: "200px" }
+          ].map((partner) => (
+            <Card key={partner.id} variant="outlined">
+              <CardContent sx={{ 
+                display: "flex", 
+                alignItems: "stretch", 
+                gap: 4, 
+                flexWrap: { xs: "wrap", md: "nowrap" }, 
+                minHeight: { md: '160px' },
+                p: 4,
+                '&:last-child': { pb: 4 }
+              }}>
+                <Box sx={{ flex: { xs: "1 1 100%", md: "4 1 0" }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <Typography variant="h6" gutterBottom>
+                    {t(`partners.${partner.id}.title`)}
+                  </Typography>
+                  {partner.id === "gmhsc" ? (
+                    <>
+                      <Typography variant="body2" color="text.secondary">
+                        {t(`partners.${partner.id}.description`).split("\n\n")[0]}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" sx={{ mt: 1, fontStyle: "italic" }}>
+                        {t(`partners.${partner.id}.description`).split("\n\n")[1]}
+                      </Typography>
+                    </>
+                  ) : (
+                    <Typography variant="body2" color="text.secondary">
+                      {t(`partners.${partner.id}.description`)}
+                    </Typography>
+                  )}
+                </Box>
+                <Box sx={{ 
+                  flex: { xs: "1 1 100%", md: "1 1 0" },
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}>
+                  <MuiLink href={partner.href} target="_blank" rel="noopener noreferrer">
+                    <Box 
+                      component="img"
+                      src={partner.logos.light}
+                      alt={partner.id}
+                      className="logo-light"
+                      sx={{
+                        maxWidth: partner.maxWidth,
+                        width: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                    <Box 
+                      component="img"
+                      src={partner.logos.dark}
+                      alt={partner.id}
+                      className="logo-dark"
+                      sx={{
+                        maxWidth: partner.maxWidth,
+                        width: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                  </MuiLink>
+                </Box>
               </CardContent>
             </Card>
           ))}
         </Box>
       </Box>
 
-      <Divider sx={{ my: 4 }} />
-
       {/* Current Sponsors */}
-      <Box sx={{ bgcolor: "background.paper", p: 4, borderRadius: 2 }}>
+      <Box sx={{ my: 8 }}>
         <Typography variant="h4" gutterBottom textAlign="center">
           {t("currentSponsors.title")}
         </Typography>
-        <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 3 }}>
+        <Typography variant="body1" textAlign="center" color="text.secondary" sx={{ mb: 6, maxWidth: "800px", mx: "auto" }}>
           {t("currentSponsors.description")}
         </Typography>
-        
-        {/* Sponsor Logos */}
+
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+          {/* Venn Innovation - Venue Sponsor moved from Partners */}
+          <Card variant="outlined">
+            <CardContent sx={{ 
+              display: "flex", 
+              alignItems: "stretch", 
+              gap: 4, 
+              flexWrap: { xs: "wrap", md: "nowrap" }, 
+              minHeight: { md: '160px' },
+              p: 4,
+              '&:last-child': { pb: 4 }
+            }}>
+              <Box sx={{ flex: { xs: "1 1 100%", md: "4 1 0" }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Typography variant="h6" gutterBottom>
+                  {t("partners.venn.title")}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {t("partners.venn.description")}
+                </Typography>
+              </Box>
+              <Box sx={{ 
+                flex: { xs: "1 1 100%", md: "1 1 0" },
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}>
+                <MuiLink href="https://venninnovation.ca/" target="_blank" rel="noopener noreferrer">
+                  <Box 
+                    component="img"
+                    src="/Logos/Partners/Venn_NoTag_CMYK.jpg"
+                    alt="Venn Innovation"
+                    sx={{
+                      maxWidth: "150px",
+                      width: '100%',
+                      height: 'auto'
+                    }}
+                  />
+                </MuiLink>
+              </Box>
+            </CardContent>
+          </Card>
+        </Box>
+
+        {/* Sponsor Logos Container - Ready for confirmed sponsors */}
         <Box sx={{ 
+          bgcolor: "background.paper", 
+          p: 4, 
+          borderRadius: 2,
           display: 'flex', 
           flexDirection: 'row',
           flexWrap: 'wrap',
           gap: 16,
           alignItems: 'center',
           justifyContent: 'center',
-          mt: 8 
+          mt: 6 
         }}>
-          
-          
-          {/* GMHSC Logo */}
-          <MuiLink href="https://www.monctonhomelessness.org/" target="_blank" rel="noopener noreferrer">
-            <Box 
-              component="img"
-              src="/Logos/gmhsc_light.png"
-              alt="Greater Moncton Homelessness Steering Committee"
-              className="logo-light"
-              sx={{
-                maxWidth: '350px',
-                width: '100%',
-                height: 'auto'
-              }}
-            />
-            <Box 
-              component="img"
-              src="/Logos/gmhsc_dark.png"
-              alt="Greater Moncton Homelessness Steering Committee"
-              className="logo-dark"
-              sx={{
-                maxWidth: '350px',
-                width: '100%',
-                height: 'auto'
-              }}
-            />
-          </MuiLink>
-          
-          {/* UnitedWay Logo */}
-          <MuiLink href="https://gmsenbunitedway.ca/" target="_blank" rel="noopener noreferrer">
-            <Box 
-              component="img"
-              src="/Logos/UnitedWay_light.png"
-              alt="United Way"
-              className="logo-light"
-              sx={{
-                maxWidth: '300px',
-                width: '100%',
-                height: 'auto'
-              }}
-            />
-            <Box 
-              component="img"
-              src="/Logos/UnitedWay_dark.png"
-              alt="United Way"
-              className="logo-dark"
-              sx={{
-                maxWidth: '300px',
-                width: '100%',
-                height: 'auto'
-              }}
-            />
-          </MuiLink>
+          {/* Confirmed sponsor logos will be added here */}
         </Box>
-
-        {/* Partners Section - Commented out for now
-        <Typography variant="h4" gutterBottom textAlign="center" sx={{ mt: 16 }}>
-          {t("currentSponsors.partners")}
-        </Typography>
-        <Box sx={{ 
-          display: 'flex', 
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          gap: 8,
-          alignItems: 'center',
-          justifyContent: 'center',
-          mt: 4 
-        }}>
-          <MuiLink href="https://civictechmoncton.org/" target="_blank" rel="noopener noreferrer">
-            <Box 
-              component="img"
-              src="/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_4.svg"
-              alt="Civic Tech Moncton"
-              className="logo-light"
-              sx={{
-                maxWidth: '300px',
-                width: '100%',
-                height: 'auto'
-              }}
-            />
-            <Box 
-              component="img"
-              src="/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_5.svg"
-              alt="Civic Tech Moncton"
-              className="logo-dark"
-              sx={{
-                maxWidth: '300px',
-                width: '100%',
-                height: 'auto'
-              }}
-            />
-          </MuiLink>
-        </Box>
-        */}
-        
-        {/* <Typography variant="subtitle2" textAlign="center" sx={{ mt: 3 }}>
-          {t("currentSponsors.interested")}
-        </Typography> */}
       </Box>
     </Container>
   );

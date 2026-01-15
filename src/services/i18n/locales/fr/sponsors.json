@@ -1,7 +1,7 @@
 {
   "title": "Commanditaires",
   "subtitle": "Devenez un commanditaire fondateur du premier hackathon civic tech de Moncton. Votre soutien permet une expérience exceptionnelle aux participants tout en s’attaquant à des enjeux communautaires essentiels.",
-  "unitedWayNote": "Hack4Change est organisé en partenariat avec Centraide, qui agit comme notre parrain fiscal gérant tous les prix et les contributions des commanditaires. Cela assure une gestion professionnelle des fonds et une intendance financière transparente, donnant aux commanditaires confiance que leur investissement est géré par un organisme de bienfaisance enregistré avec des processus établis.",
+  "unitedWayNote": "Hack4Change soutenu par notre partenaire de bienfaisance Centraide (United Way). Cela assure une gestion professionnelle des fonds et une intendance financière transparente, donnant aux commanditaires confiance que leur investissement est géré avec des processus établis.",
 
   "whySponsor": {
     "title": "Pourquoi commanditer Hack4Change?",
@@ -52,14 +52,14 @@
           "items": [
             "Parfait pour les initiatives RSE axées sur le logement, la pauvreté ou l’innovation",
             "Impact concret et vérifiable que vous pouvez rapporter aux parties prenantes",
-            "Partenariat avec des organisations communautaires reconnues (GMHSC, Civic Tech Moncton)"
+            "Visibilité auprès d’organisations communautaires reconnues (Venn Innovation, Centraide, GMHSC et Civic Tech Moncton)"
           ]
         },
         {
           "title": "Visibilité et reconnaissance de la marque",
           "items": [
             "Couverture médiatique locale et régionale anticipée",
-            "Reconnaissance lors de l’événement avec 20 à 40 participants, mentors, juges et invités",
+            "Reconnaissance lors de l’événement avec jusqu'à 50 participants, mentors, juges et invités",
             "Mention dans toutes les communications continues au sujet de la solution déployée",
             "Placement du logo sur le site web, les médias sociaux et les matériels de l’événement"
           ]
@@ -68,7 +68,7 @@
     },
     "local": {
       "title": "Pour les entreprises locales :",
-      "description": "Les niveaux Bronze (2 000 $) et Soutien communautaire (500 $) conviennent à tous les budgets. Montrez à Moncton que vous vous souciez de résoudre de vrais défis communautaires. Connectez-vous à la communauté tech locale et aux jeunes professionnels. Participez à quelque chose d’historique : le premier hackathon civic tech de Moncton."
+      "description": "Les niveaux Bronze (2 000 $) et Soutien communautaire (250 $) conviennent à tous les budgets. Montrez à Moncton que vous vous souciez de résoudre de vrais défis communautaires. Connectez-vous à la communauté tech locale et aux jeunes professionnels. Participez à quelque chose d’historique : le premier hackathon de Civic Tech Moncton."
     }
   },
 
@@ -77,7 +77,7 @@
     "subtitle": "Contrairement aux hackathons typiques, votre commandite ne finance pas un prototype de fin de semaine qui sera abandonné.",
     "benefits": [
       "Une solution qui SERA entièrement développée",
-      "Déploiement auprès d’organisations réelles desservant plus de 500 personnes",
+      "Déploiement auprès d’organisations réelles desservant notre population la plus vulnérable",
       "Impact communautaire mesurable et durable",
       "Code open source profitant aux communautés au-delà de Moncton"
     ],
@@ -145,7 +145,7 @@
       },
       "community": {
         "tier": "SOUTIEN COMMUNAUTAIRE",
-        "price": "500 $",
+        "price": "250 $",
         "idealFor": "Parfait pour : startups, petites entreprises, travailleurs autonomes qui souhaitent soutenir l’innovation civique",
         "benefits": [
           "Logo sur le site web de l’événement",
@@ -196,12 +196,12 @@
     "title": "Nos partenaires",
     "intro": "Hack4Change rassemble des organisations établies pour assurer crédibilité, impact et exécution professionnelle :",
     "unitedWay": {
-      "title": "Centraide — Parrain fiscal",
+      "title": "Centraide — Partenaire de bienfaisance",
       "description": "Gère toutes les contributions des commanditaires et la distribution des prix, assurant une intendance financière transparente grâce à leurs processus établis en tant qu'organisme de bienfaisance enregistré."
     },
     "gmhsc": {
       "title": "Comité directeur sur l'itinérance du Grand Moncton — Partenaire du défi",
-      "description": "Définit le défi communautaire et mettra en œuvre la solution gagnante à travers ses organisations membres desservant plus de 511 personnes en situation d'itinérance dans le Grand Moncton."
+      "description": "En tant que conseil consultatif communautaire pour le Grand Moncton, le GMHSC soutient les partenaires locaux et travaille avec la communauté pour sensibiliser et coordonner les dons pour les personnes en situation d'itinérance. Des outils limités rendent le partage d'informations et la coordination régionale difficiles. \n\nLe GMHSC lance le défi opérationnel concret que les équipes devront résoudre. Sa participation est uniquement consultative et n'est liée à aucune activité de collecte de fonds ou de commandite."
     },
     "venn": {
       "title": "Venn Innovation — Commanditaire du lieu",
