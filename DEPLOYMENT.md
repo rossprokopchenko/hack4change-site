@@ -59,6 +59,7 @@ It is recommended to use Nginx as a reverse proxy to handle SSL termination and 
     ```bash
     sudo nano /etc/nginx/sites-available/hack4change
     ```
+
     Add the following content (replace `yourdomain.com` with your actual domain):
     ```nginx
     server {
@@ -104,3 +105,21 @@ If the site feels slow or unresponsive:
 
 3. **Check Resource Limits**:
     The application is limited to 512MB RAM in `docker-compose.yml`. If `docker stats` shows memory consistently hitting this limit, monitor the logs for memory leaks.
+
+## 6. Blocking Malicious IPs
+
+If you see a single IP hammering your server in `debug-vps.sh`, you can block it using `iptables` on your VPS:
+
+```bash
+# Block an IP (replace 1.2.3.4 with the actual IP)
+sudo iptables -A INPUT -s 1.2.3.4 -j DROP
+
+# View current blocks
+sudo iptables -L -n
+```
+
+Alternatively, if you are using `ufw`:
+
+```bash
+sudo ufw deny from 1.2.3.4
+```
