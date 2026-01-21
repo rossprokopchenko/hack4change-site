@@ -16,4 +16,6 @@ export type User = {
   socialId?: string;
   role?: Role;
   rsvpStatus?: string;
+  createdAt: string;
+  teamName?: string;
 };

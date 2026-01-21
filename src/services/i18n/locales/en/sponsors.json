@@ -210,6 +210,10 @@
     "civicTech": {
       "title": "Civic Tech Moncton — Organizing Team",
       "description": "Volunteer-driven organization coordinating the event and leading post-hackathon solution development."
+    },
+    "cityOfMoncton": {
+      "title": "City of Moncton — Municipal Sponsor",
+      "description": "The City of Moncton is the municipal government serving Greater Moncton, committed to fostering innovation, community development, and supporting initiatives that improve quality of life for all residents."
     }
   },
 

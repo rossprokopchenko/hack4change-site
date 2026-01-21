@@ -6,6 +6,7 @@ import { useTranslation } from "@/services/i18n/client";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import Popover from "@mui/material/Popover";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -22,6 +23,7 @@ function UserFilter() {
   const methods = useForm<UserFilterFormData>({
     defaultValues: {
       roles: [],
+      rsvpStatuses: [],
     },
   });
 
@@ -100,6 +102,34 @@ function UserFilter() {
                       .map((value) =>
                         t(
                           `admin-panel-users:filter.inputs.role.options.${value.id}`
+                        )
+                      )
+                      .join(", ")
+                  }
+                />
+              </Grid>
+              <Grid size={{ xs: 12 }}>
+                <FormMultipleSelectInput<UserFilterFormData, { id: string }>
+                  name="rsvpStatuses"
+                  testId="rsvpStatuses"
+                  label={t("admin-panel-users:filter.inputs.rsvpStatus.label")}
+                  options={[
+                    { id: "pending" },
+                    { id: "confirmed" },
+                    { id: "declined" },
+                    { id: "waitlist" },
+                  ]}
+                  keyValue="id"
+                  renderOption={(option) =>
+                    t(
+                      `admin-panel-users:filter.inputs.rsvpStatus.options.${option.id}`
+                    )
+                  }
+                  renderValue={(values) =>
+                    values
+                      .map((value) =>
+                        t(
+                          `admin-panel-users:filter.inputs.rsvpStatus.options.${value.id}`
                         )
                       )
                       .join(", ")

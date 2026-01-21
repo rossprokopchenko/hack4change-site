@@ -21,7 +21,9 @@
   "filter": {
     "actions": {
       "filter": "Filtrer",
-      "apply": "Appliquer"
+      "apply": "Appliquer",
+      "reset": "Réinitialiser",
+      "export": "Exporter"
     },
     "inputs": {
       "role": {
@@ -30,6 +32,27 @@
           "1": "Admin",
           "2": "Utilisateur"
         }
+      },
+      "rsvpStatus": {
+        "label": "Statut RSVP",
+        "options": {
+          "pending": "En attente",
+          "confirmed": "Confirmé",
+          "declined": "Refusé",
+          "waitlist": "Liste d'attente"
+        }
+      },
+      "searchField": {
+        "label": "Rechercher par",
+        "options": {
+          "firstName": "Prénom",
+          "lastName": "Nom",
+          "email": "Courriel",
+          "team": "Équipe"
+        }
+      },
+      "searchValue": {
+        "label": "Valeur de recherche"
       }
     }
   }
