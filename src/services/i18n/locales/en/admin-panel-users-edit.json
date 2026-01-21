@@ -3,7 +3,8 @@
   "title2": "Change password",
   "actions": {
     "submit": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "recover": "Recover Account"
   },
   "inputs": {
     "email": {
@@ -59,7 +60,12 @@
       "success": "Password has been updated successfully"
     },
     "user": {
-      "success": "User's profile has been updated successfully"
+      "success": "User's profile has been updated successfully",
+      "error": "Error updating user's profile"
+    },
+    "recover": {
+      "success": "Account recovery email has been sent successfully",
+      "error": "Error sending account recovery email"
     }
   }
 }

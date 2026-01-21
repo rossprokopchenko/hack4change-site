@@ -1,7 +1,7 @@
 import { useGetSupabaseUsersService } from "@/services/supabase/users";
 import HTTP_CODES_ENUM from "@/services/api/types/http-codes";
 import { createQueryKeys } from "@/services/react-query/query-key-factory";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { UserFilterType, UserSortType } from "../user-filter-types";
 
 export const usersQueryKeys = createQueryKeys(["users"], {
@@ -24,21 +24,29 @@ export const usersQueryKeys = createQueryKeys(["users"], {
 export const useGetUsersQuery = ({
   sort,
   filter,
+  page = 1,
+  limit = 15,
 }: {
   filter?: UserFilterType | undefined;
   sort?: UserSortType | undefined;
+  page?: number;
+  limit?: number;
 } = {}) => {
   const fetch = useGetSupabaseUsersService();
 
-  const query = useInfiniteQuery({
-    queryKey: usersQueryKeys.list().sub.by({ sort, filter }).key,
-    initialPageParam: 1,
-    queryFn: async ({ pageParam, signal }) => {
+  const query = useQuery({
+    queryKey: [...usersQueryKeys.list().sub.by({ sort, filter }).key, page, limit],
+    queryFn: async ({ signal }: { signal: AbortSignal }) => {
       const { status, data } = await fetch(
         {
-          page: pageParam,
-          limit: 10,
-          filters: filter,
+          page,
+          limit,
+          filters: {
+            ...filter,
+            search: filter?.searchField && filter?.searchValue 
+              ? { field: filter.searchField, value: filter.searchValue }
+              : undefined,
+          },
           sort: sort ? [sort] : undefined,
         },
         {
@@ -49,12 +57,9 @@ export const useGetUsersQuery = ({
       if (status === HTTP_CODES_ENUM.OK) {
         return {
           data: data.data,
-          nextPage: data.hasNextPage ? pageParam + 1 : undefined,
+          total: data.total,
         };
       }
-    },
-    getNextPageParam: (lastPage) => {
-      return lastPage?.nextPage;
     },
     gcTime: 0,
   });

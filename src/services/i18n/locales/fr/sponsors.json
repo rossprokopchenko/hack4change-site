@@ -210,6 +210,10 @@
     "civicTech": {
       "title": "Civic Tech Moncton — Équipe organisatrice",
       "description": "Organisation bénévole coordonnant l'événement et dirigeant le développement de la solution post-hackathon."
+    },
+    "cityOfMoncton": {
+      "title": "Ville de Moncton — Commanditaire municipal",
+      "description": "La Ville de Moncton est le gouvernement municipal au service du Grand Moncton, engagé à favoriser l'innovation, le développement communautaire et à soutenir les initiatives qui améliorent la qualité de vie de tous les résidents."
     }
   },
 

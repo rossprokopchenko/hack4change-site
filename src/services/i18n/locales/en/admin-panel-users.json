@@ -1,11 +1,15 @@
 {
   "title": "Users",
   "table": {
-    "column1": "ID",
-    "column2": "Name",
+    "column1": "First Name",
+    "column2": "Last Name",
     "column3": "Email",
-    "column4": "Role"
+    "column4": "RSVP Status",
+    "column5": "Created At",
+    "column6": "Team"
   },
+  "total_count": "Total Users: {{count}}",
+  "showing_count": "Showing {{current}} out of {{total}}",
   "actions": {
     "add": "Add User",
     "edit": "Edit",
@@ -21,7 +25,9 @@
   "filter": {
     "actions": {
       "filter": "Filter",
-      "apply": "Apply"
+      "apply": "Apply",
+      "reset": "Reset",
+      "export": "Export"
     },
     "inputs": {
       "role": {
@@ -30,6 +36,27 @@
           "1": "Admin",
           "2": "User"
         }
+      },
+      "rsvpStatus": {
+        "label": "RSVP Status",
+        "options": {
+          "pending": "Pending",
+          "confirmed": "Confirmed",
+          "declined": "Declined",
+          "waitlist": "Waitlist"
+        }
+      },
+      "searchField": {
+        "label": "Search By",
+        "options": {
+          "firstName": "First Name",
+          "lastName": "Last Name",
+          "email": "Email",
+          "team": "Team"
+        }
+      },
+      "searchValue": {
+        "label": "Search Value"
       }
     }
   }

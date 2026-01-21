@@ -236,6 +236,7 @@ export default function Sponsors() {
           {[
             { id: "unitedWay", href: "https://gmsenbunitedway.ca/", logos: { light: "/Logos/Partners/UnitedWay_light.png", dark: "/Logos/Partners/UnitedWay_dark.png" }, maxWidth: "200px" },
             { id: "gmhsc", href: "https://www.monctonhomelessness.org/", logos: { light: "/Logos/Partners/gmhsc_light.png", dark: "/Logos/Partners/gmhsc_dark.png" }, maxWidth: "250px" },
+            { id: "venn", href: "https://venninnovation.ca/", logos: { light: "/Logos/Partners/Venn_NoTag_CMYK.jpg", dark: "/Logos/Partners/Venn_NoTag_CMYK.jpg" }, maxWidth: "150px" },
             { id: "civicTech", href: "https://civictechmoncton.org/", logos: { light: "/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_4.svg", dark: "/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_5.svg" }, maxWidth: "200px" }
           ].map((partner) => (
             <Card key={partner.id} variant="outlined">
@@ -314,7 +315,7 @@ export default function Sponsors() {
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          {/* Venn Innovation - Venue Sponsor moved from Partners */}
+          {/* City of Moncton - Municipal Sponsor */}
           <Card variant="outlined">
             <CardContent sx={{ 
               display: "flex", 
@@ -327,10 +328,10 @@ export default function Sponsors() {
             }}>
               <Box sx={{ flex: { xs: "1 1 100%", md: "4 1 0" }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <Typography variant="h6" gutterBottom>
-                  {t("partners.venn.title")}
+                  {t("partners.cityOfMoncton.title")}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {t("partners.venn.description")}
+                  {t("partners.cityOfMoncton.description")}
                 </Typography>
               </Box>
               <Box sx={{ 
@@ -339,13 +340,13 @@ export default function Sponsors() {
                 justifyContent: "center",
                 alignItems: "center"
               }}>
-                <MuiLink href="https://venninnovation.ca/" target="_blank" rel="noopener noreferrer">
+                <MuiLink href="https://www.moncton.ca/language_select?destination=/node/143" target="_blank" rel="noopener noreferrer">
                   <Box 
                     component="img"
-                    src="/Logos/Partners/Venn_NoTag_CMYK.jpg"
-                    alt="Venn Innovation"
+                    src="/Logos/Partners/Moncton-Logo.png"
+                    alt="City of Moncton"
                     sx={{
-                      maxWidth: "150px",
+                      maxWidth: "200px",
                       width: '100%',
                       height: 'auto'
                     }}
