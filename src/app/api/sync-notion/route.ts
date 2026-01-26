@@ -70,13 +70,14 @@ export async function POST(request: Request) {
         const teamName = profile.team_members?.[0]?.teams?.name || "No Team";
 
         // Query Notion database using standard fetch
+        // NOTE: Email is expected to be of type 'email'
         const queryResponse = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
           method: "POST",
           headers: notionHeaders,
           body: JSON.stringify({
             filter: {
               property: "Email",
-              title: {
+              email: {
                 equals: profile.email,
               },
             },
@@ -89,15 +90,23 @@ export async function POST(request: Request) {
         }
 
         const queryData = await queryResponse.json();
+        
+        // Property Mapping based on Notion validation errors:
+        // - First Name: title
+        // - Email: email
+        // - RSVP Status: status
         const properties: any = {
           "First Name": {
-            rich_text: [{ text: { content: profile.first_name || "" } }],
+            title: [{ text: { content: profile.first_name || "" } }],
           },
           "Last Name": {
             rich_text: [{ text: { content: profile.last_name || "" } }],
           },
+          "Email": {
+            email: profile.email,
+          },
           "RSVP Status": {
-            select: { name: profile.rsvp_status },
+            status: { name: profile.rsvp_status },
           },
           "Team": {
             rich_text: [{ text: { content: teamName } }],
@@ -127,12 +136,7 @@ export async function POST(request: Request) {
             headers: notionHeaders,
             body: JSON.stringify({
               parent: { database_id: databaseId },
-              properties: {
-                Email: {
-                  title: [{ text: { content: profile.email } }],
-                },
-                ...properties,
-              },
+              properties: properties,
             }),
           });
 
