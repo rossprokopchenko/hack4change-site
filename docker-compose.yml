@@ -68,3 +68,24 @@ services:
       interval: 30s
       timeout: 3s
       retries: 3
+
+  cron:
+    image: alpine:3.18
+    container_name: hack4change-cron
+    restart: always
+    depends_on:
+      web:
+        condition: service_healthy
+    env_file:
+      - .env.local
+    command: >
+      sh -c "echo '0 0 * * * curl -X POST http://web:3000/api/sync-notion -H \"Authorization: Bearer $$CRON_SECRET\"' | crontab - && crond -f -l 2"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE # occasionally needed for some network tools, but cap_drop ALL is better if possible. 
+      # Actually, curl needs simple networking. 
+    # Let's keep it simple and safe
+
