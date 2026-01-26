@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { supabaseService } from "@/lib/supabase/service";
-import { Client } from "@notionhq/client";
 import type { Database } from "@/lib/supabase/types";
 
 type ProfileWithTeam = Database["public"]["Tables"]["profiles"]["Row"] & {
@@ -35,9 +34,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Initialize client
-    const notion = new Client({ auth: notionApiKey });
-
     // 1. Fetch profiles with team information
     const { data: profiles, error: supabaseError } = await supabaseService
       .from("profiles")
@@ -61,26 +57,38 @@ export async function POST(request: Request) {
     let errorCount = 0;
 
     const typedProfiles = (profiles || []) as unknown as ProfileWithTeam[];
-    console.log(`Starting sync for ${typedProfiles.length} users...`);
+    console.log(`Starting sync for ${typedProfiles.length} users via fetch...`);
+
+    const notionHeaders = {
+      "Authorization": `Bearer ${notionApiKey}`,
+      "Content-Type": "application/json",
+      "Notion-Version": "2022-06-28"
+    };
 
     for (const profile of typedProfiles) {
       try {
         const teamName = profile.team_members?.[0]?.teams?.name || "No Team";
 
-        // Query Notion database using low-level request to bypass missing helper method issue
-        const response: any = await notion.request({
-          path: `databases/${databaseId}/query`,
+        // Query Notion database using standard fetch
+        const queryResponse = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
           method: "POST",
-          body: {
+          headers: notionHeaders,
+          body: JSON.stringify({
             filter: {
               property: "Email",
               title: {
                 equals: profile.email,
               },
             },
-          },
+          }),
         });
 
+        if (!queryResponse.ok) {
+          const errorData = await queryResponse.json();
+          throw new Error(`Notion Query Error: ${JSON.stringify(errorData)}`);
+        }
+
+        const queryData = await queryResponse.json();
         const properties: any = {
           "First Name": {
             rich_text: [{ text: { content: profile.first_name || "" } }],
@@ -99,22 +107,39 @@ export async function POST(request: Request) {
           },
         };
 
-        if (response.results && response.results.length > 0) {
-          const pageId = response.results[0].id;
-          await notion.pages.update({
-            page_id: pageId,
-            properties: properties,
+        if (queryData.results && queryData.results.length > 0) {
+          // Update existing page
+          const pageId = queryData.results[0].id;
+          const updateResponse = await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
+            method: "PATCH",
+            headers: notionHeaders,
+            body: JSON.stringify({ properties }),
           });
+          
+          if (!updateResponse.ok) {
+            const errorData = await updateResponse.json();
+            throw new Error(`Notion Update Error: ${JSON.stringify(errorData)}`);
+          }
         } else {
-          await notion.pages.create({
-            parent: { database_id: databaseId },
-            properties: {
-              Email: {
-                title: [{ text: { content: profile.email } }],
+          // Create new page
+          const createResponse = await fetch(`https://api.notion.com/v1/pages`, {
+            method: "POST",
+            headers: notionHeaders,
+            body: JSON.stringify({
+              parent: { database_id: databaseId },
+              properties: {
+                Email: {
+                  title: [{ text: { content: profile.email } }],
+                },
+                ...properties,
               },
-              ...properties,
-            },
+            }),
           });
+
+          if (!createResponse.ok) {
+            const errorData = await createResponse.json();
+            throw new Error(`Notion Create Error: ${JSON.stringify(errorData)}`);
+          }
         }
         successCount++;
       } catch (err) {
