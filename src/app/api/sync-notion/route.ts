@@ -11,15 +11,8 @@ type ProfileWithTeam = Database["public"]["Tables"]["profiles"]["Row"] & {
   }>;
 };
 
-const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
-});
-
-const DATABASE_ID = process.env.NOTION_DATABASE_ID!;
-
 export async function POST(request: Request) {
   try {
-    // Basic security check: Validate CRON_SECRET if it exists
     const authHeader = request.headers.get("Authorization");
     const secret = process.env.CRON_SECRET;
     
@@ -28,14 +21,31 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
+    const notionApiKey = process.env.NOTION_API_KEY;
+    const databaseId = process.env.NOTION_DATABASE_ID;
+
+    if (!notionApiKey || !databaseId) {
+      console.error("Notion Configuration Missing:", { 
+        hasApiKey: !!notionApiKey, 
+        hasDatabaseId: !!databaseId 
+      });
       return NextResponse.json(
         { error: "Notion API key or Database ID is missing" },
         { status: 500 }
       );
     }
 
-    // 1. Fetch profiles with team information, filtering for "user" role only
+    // Initialize client inside the handler
+    const notion = new Client({ auth: notionApiKey });
+
+    // Debug: Check if databases.query exists
+    if (!notion.databases || typeof notion.databases.query !== "function") {
+      console.error("Notion Client Error: databases.query is not a function. Client structure:", Object.keys(notion));
+      if (notion.databases) console.error("Databases structure:", Object.keys(notion.databases));
+      return NextResponse.json({ error: "Internal Notion Client Error" }, { status: 500 });
+    }
+
+    // 1. Fetch profiles with team information
     const { data: profiles, error: supabaseError } = await supabaseService
       .from("profiles")
       .select(`
@@ -58,15 +68,15 @@ export async function POST(request: Request) {
     let errorCount = 0;
 
     const typedProfiles = (profiles || []) as unknown as ProfileWithTeam[];
+    console.log(`Starting sync for ${typedProfiles.length} users...`);
 
     for (const profile of typedProfiles) {
       try {
-        // Extract team name safely
         const teamName = profile.team_members?.[0]?.teams?.name || "No Team";
 
-        // Check if user already exists in Notion by email
+        // Query Notion database
         const response = await notion.databases.query({
-          database_id: DATABASE_ID,
+          database_id: databaseId,
           filter: {
             property: "Email",
             title: {
@@ -94,16 +104,14 @@ export async function POST(request: Request) {
         };
 
         if (response.results.length > 0) {
-          // Update existing page
           const pageId = response.results[0].id;
           await notion.pages.update({
             page_id: pageId,
             properties: properties,
           });
         } else {
-          // Create new page
           await notion.pages.create({
-            parent: { database_id: DATABASE_ID },
+            parent: { database_id: databaseId },
             properties: {
               Email: {
                 title: [{ text: { content: profile.email } }],
@@ -125,7 +133,7 @@ export async function POST(request: Request) {
       errorCount,
     });
   } catch (error) {
-    console.error("Sync Error:", error);
+    console.error("Global Sync Error:", error);
     return NextResponse.json({ error: "Sync failed" }, { status: 500 });
   }
 }
