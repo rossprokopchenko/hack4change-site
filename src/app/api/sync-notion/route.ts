@@ -35,15 +35,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Initialize client inside the handler
+    // Initialize client
     const notion = new Client({ auth: notionApiKey });
-
-    // Debug: Check if databases.query exists
-    if (!notion.databases || typeof notion.databases.query !== "function") {
-      console.error("Notion Client Error: databases.query is not a function. Client structure:", Object.keys(notion));
-      if (notion.databases) console.error("Databases structure:", Object.keys(notion.databases));
-      return NextResponse.json({ error: "Internal Notion Client Error" }, { status: 500 });
-    }
 
     // 1. Fetch profiles with team information
     const { data: profiles, error: supabaseError } = await supabaseService
@@ -74,13 +67,16 @@ export async function POST(request: Request) {
       try {
         const teamName = profile.team_members?.[0]?.teams?.name || "No Team";
 
-        // Query Notion database
-        const response = await notion.databases.query({
-          database_id: databaseId,
-          filter: {
-            property: "Email",
-            title: {
-              equals: profile.email,
+        // Query Notion database using low-level request to bypass missing helper method issue
+        const response: any = await notion.request({
+          path: `databases/${databaseId}/query`,
+          method: "POST",
+          body: {
+            filter: {
+              property: "Email",
+              title: {
+                equals: profile.email,
+              },
             },
           },
         });
@@ -103,7 +99,7 @@ export async function POST(request: Request) {
           },
         };
 
-        if (response.results.length > 0) {
+        if (response.results && response.results.length > 0) {
           const pageId = response.results[0].id;
           await notion.pages.update({
             page_id: pageId,
