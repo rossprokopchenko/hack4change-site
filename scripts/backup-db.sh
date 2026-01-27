@@ -22,27 +22,27 @@ if [ -z "$SUPABASE_DB_PASSWORD" ]; then
 fi
 
 DB_HOST_NAME="db.$SUPABASE_PROJECT_ID.supabase.co"
-echo "Debugging DNS resolution for $DB_HOST_NAME..."
+echo "Resolving $DB_HOST_NAME (forcing IPv4)..."
 
-# Try to find IPv4 address using nslookup
-# We use a pattern that matches either 'Address: 1.2.3.4' or 'Address 1: 1.2.3.4'
-DB_HOST=$(nslookup "$DB_HOST_NAME" 2>/dev/null | awk '/^Address [0-9]+: / { print $4 }; /^Address: / { print $2 }' | grep -E '^[0-9.]+$' | head -n 1)
+# Try to find IPv4 address using nslookup -query=A (specifically asks for IPv4)
+# We use a broad grep for IPv4 patterns to be safe across different nslookup versions
+DB_HOST=$(nslookup -query=A "$DB_HOST_NAME" 2>/dev/null | grep -v 'Server' | grep -v 'Address: 127.' | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
 
 if [ -z "$DB_HOST" ]; then
-  echo "Warning: nslookup parsing failed. Trying simpler grep..."
-  DB_HOST=$(nslookup "$DB_HOST_NAME" 2>/dev/null | grep -E 'Address' | grep -v '#' | sed 's/Address[ 0-9:]*//g' | tr -d ' ' | grep -E '^[0-9.]+$' | head -n 1)
+  echo "Warning: nslookup -query=A failed. Trying standard nslookup..."
+  DB_HOST=$(nslookup "$DB_HOST_NAME" 2>/dev/null | grep -v 'Server' | grep -v 'Address: 127.' | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
 fi
 
 if [ -z "$DB_HOST" ]; then
-  echo "Warning: nslookup failed. Trying ping resolution..."
-  DB_HOST=$(ping -c 1 "$DB_HOST_NAME" 2>&1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+  echo "Warning: DNS resolution failed to find an IPv4 address. Final attempt via ping..."
+  DB_HOST=$(ping -c 1 "$DB_HOST_NAME" 2>&1 | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | head -n 1)
 fi
 
 if [ -z "$DB_HOST" ]; then
   echo "Warning: Could not resolve $DB_HOST_NAME to an IPv4 address. Falling back to hostname."
   DB_HOST="$DB_HOST_NAME"
 else
-  echo "Successfully resolved to IPv4 address: $DB_HOST"
+  echo "Successfully resolved to IPv4: $DB_HOST"
 fi
 
 DB_PORT=5432
