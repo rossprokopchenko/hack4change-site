@@ -71,7 +71,7 @@ services:
       retries: 3
 
   cron:
-    image: alpine:3.18
+    image: alpine:3.21
     container_name: hack4change-cron
     restart: always
     depends_on:
@@ -86,7 +86,7 @@ services:
       - ./backups:/backups
       - ./scripts:/scripts:ro
     command: >
-      sh -c "apk add --no-cache curl postgresql-client bind-tools netcat-openbsd && 
+      sh -c "apk add --no-cache curl postgresql17-client bind-tools netcat-openbsd && 
              echo '0 3 * * * sh /scripts/backup-db.sh >> /var/log/backup.log 2>&1' > /etc/crontabs/root &&
              crond -f -l 2"
     security_opt:
