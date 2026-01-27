@@ -22,9 +22,17 @@ if [ -z "$SUPABASE_DB_PASSWORD" ]; then
 fi
 
 DB_HOST_NAME="db.$SUPABASE_PROJECT_ID.supabase.co"
-# Get IPv4 address explicitly to avoid IPv6 "Network unreachable" issues
-echo "Resolving $DB_HOST_NAME..."
-DB_HOST=$(getent hosts "$DB_HOST_NAME" | awk '{print $1}' | grep -E '^[0-9.]+$' | head -n 1)
+echo "Resolving $DB_HOST_NAME (IPv4 only)..."
+
+# Try nslookup to specifically find the A (IPv4) record
+# Alpine's nslookup output format: 
+# Address 1: 15.230.13.197 db.zjwtvhqgrmoasgriunbr.supabase.co
+DB_HOST=$(nslookup "$DB_HOST_NAME" 2>/dev/null | grep -E 'Address' | grep -v '#' | awk '{print $NF}' | grep -E '^[0-9.]+$' | head -n 1)
+
+if [ -z "$DB_HOST" ]; then
+  echo "Warning: nslookup failed to find an IPv4 address. Trying ping method..."
+  DB_HOST=$(ping -c 1 -4 "$DB_HOST_NAME" 2>/dev/null | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+fi
 
 if [ -z "$DB_HOST" ]; then
   echo "Warning: Could not resolve $DB_HOST_NAME to an IPv4 address. Falling back to hostname."
