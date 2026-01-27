@@ -24,28 +24,21 @@ fi
 DB_HOST_NAME="db.$SUPABASE_PROJECT_ID.supabase.co"
 echo "Resolving $DB_HOST_NAME (forcing IPv4)..."
 
-# Method 1: getent ahosts (usually very reliable on Linux)
-DB_HOST=$(getent ahosts "$DB_HOST_NAME" 2>/dev/null | grep STREAM | awk '{print $1}' | grep -E '^[0-9.]+$' | grep -v '^127\.' | head -n 1)
-
-if [ -z "$DB_HOST" ]; then
-  echo "Warning: getent ahosts failed. Trying nslookup..."
-  # Method 2: nslookup with strict parsing to ignore resolver (127.0.0.11)
-  # We look for the Address in the "Non-authoritative answer" or the answer section
-  DB_HOST=$(nslookup "$DB_HOST_NAME" 2>/dev/null | awk '
-    BEGIN { inside_answer=0 }
-    /Non-authoritative answer:|Name:/ { inside_answer=1 }
-    /Address:/ { 
-      if (inside_answer) {
-        split($2, a, "#") # Remove port if present
-        if (a[1] !~ /^127\./) print a[1]
-      }
-    }
-  ' | grep -E '^[0-9.]+$' | head -n 1)
+# Method 1: dig +short A (best for IPv4-only resolution)
+if command -v dig >/dev/null 2>&1; then
+  DB_HOST=$(dig +short A "$DB_HOST_NAME" | grep -E '^[0-9.]+$' | head -n 1)
 fi
 
 if [ -z "$DB_HOST" ]; then
-  echo "Warning: DNS resolution failed to find an external IPv4 address. Final attempt via ping..."
-  DB_HOST=$(ping -c 1 "$DB_HOST_NAME" 2>&1 | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | grep -v '^127\.' | head -n 1)
+  echo "Warning: dig failed or not available. Trying getent ahosts..."
+  # Method 2: getent ahosts
+  DB_HOST=$(getent ahosts "$DB_HOST_NAME" 2>/dev/null | grep STREAM | awk '{print $1}' | grep -E '^[0-9.]+$' | grep -v '^127\.' | head -n 1)
+fi
+
+if [ -z "$DB_HOST" ]; then
+  echo "Warning: getent ahosts failed. Trying nslookup..."
+  # Method 3: nslookup with simple grep -oE
+  DB_HOST=$(nslookup "$DB_HOST_NAME" 2>/dev/null | grep -oE '([0-9]{1,3}\.){3}[0-9]{1,3}' | grep -v '^127\.' | head -n 1)
 fi
 
 if [ -z "$DB_HOST" ]; then
