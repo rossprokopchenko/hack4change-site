@@ -33,19 +33,28 @@ docker cp ./backups/backup_YYYYMMDD_HHMMSS.sql hack4change-cron:/tmp/restore.sql
 ```
 
 ### 3. Run the Restore Command
-Use the **Connection Pooler Host** and port **6543**.
+Use the **Connection Pooler Host** and port **6543**. 
+
+> [!IMPORTANT]
+> When using the pooler, the username MUST be `postgres.[your-project-id]`.
 
 ```bash
 docker exec -it -e PGPASSWORD=your_db_password hack4change-cron psql \
   -h your-pooler-host.pooler.supabase.com \
   -p 6543 \
-  -U postgres \
+  -U postgres.your-project-id \
   -d postgres \
   -f /tmp/restore.sql
 ```
 
 ## 🔑 Required Credentials (.env.local)
 
-- `SUPABASE_POOLER_HOST`: Your Supabase Connection Pooler hostname (required for IPv4).
+- `SUPABASE_POOLER_HOST`: Your Supabase Connection Pooler hostname.
+  - **Where to find it**:
+    1. Open your **Supabase Dashboard**.
+    2. Click the green **Connect** button (top right).
+    3. Look for the **Transaction Mode** (or Session Mode) connection string.
+    4. The hostname is between the `@` and the `:6543`.
+    5. Example format: `aws-0-us-east-1.pooler.supabase.com`
 - `SUPABASE_DB_PASSWORD`: Your project's database password.
 - `NEXT_PUBLIC_SUPABASE_URL`: (Fallback) used to extract Project ID if pooler is missing.

@@ -22,11 +22,17 @@ if [ -z "$SUPABASE_PROJECT_ID" ] && [ -n "$NEXT_PUBLIC_SUPABASE_URL" ]; then
   echo "ℹ️ Extracted project ID: $SUPABASE_PROJECT_ID"
 fi
 
-# Determine Host and Port
+# Determine Host, Port, and User
 if [ -n "$SUPABASE_POOLER_HOST" ]; then
+  if [ -z "$SUPABASE_PROJECT_ID" ]; then
+    echo "❌ Error: SUPABASE_PROJECT_ID is required when using the Connection Pooler."
+    exit 1
+  fi
   echo "ℹ️ Using Supabase Connection Pooler: $SUPABASE_POOLER_HOST"
   DB_HOST_NAME="$SUPABASE_POOLER_HOST"
   DB_PORT=6543 # Supabase Pooler default
+  # IMPORTANT: Connection Pooler requires username in the format: postgres.[PROJECT_ID]
+  DB_USER="postgres.$SUPABASE_PROJECT_ID"
 else
   if [ -z "$SUPABASE_PROJECT_ID" ]; then
     echo "❌ Error: SUPABASE_PROJECT_ID or NEXT_PUBLIC_SUPABASE_URL must be set."
@@ -34,11 +40,11 @@ else
   fi
   DB_HOST_NAME="db.$SUPABASE_PROJECT_ID.supabase.co"
   DB_PORT=5432
+  DB_USER="postgres"
   echo "⚠️ Using direct connection (no pooler): $DB_HOST_NAME"
 fi
 
 DB_NAME="postgres"
-DB_USER="postgres"
 
 # 2. DNS Resolution
 echo "[2/6] Resolving database host: $DB_HOST_NAME"
