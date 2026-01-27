@@ -21,7 +21,18 @@ if [ -z "$SUPABASE_DB_PASSWORD" ]; then
   exit 1
 fi
 
-DB_HOST="db.$SUPABASE_PROJECT_ID.supabase.co"
+DB_HOST_NAME="db.$SUPABASE_PROJECT_ID.supabase.co"
+# Get IPv4 address explicitly to avoid IPv6 "Network unreachable" issues
+echo "Resolving $DB_HOST_NAME..."
+DB_HOST=$(getent hosts "$DB_HOST_NAME" | awk '{print $1}' | grep -E '^[0-9.]+$' | head -n 1)
+
+if [ -z "$DB_HOST" ]; then
+  echo "Warning: Could not resolve $DB_HOST_NAME to an IPv4 address. Falling back to hostname."
+  DB_HOST="$DB_HOST_NAME"
+else
+  echo "Resolved to IPv4: $DB_HOST"
+fi
+
 DB_PORT=5432
 DB_NAME="postgres"
 DB_USER="postgres"
