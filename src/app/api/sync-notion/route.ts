@@ -97,7 +97,10 @@ async function syncProfileToNotion(profile: ProfileWithTeam, notionHeaders: any,
 }
 
 async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: string) {
+  console.log("syncTeamToNotion started for team:", team.name);
   const leaderLabel = team.profiles ? `${team.profiles.first_name || ""} ${team.profiles.last_name || ""}`.trim() || team.profiles.email : "Unknown";
+
+  console.log("Computed Leader Label:", leaderLabel);
 
   // Query Notion database for existing entry by Team ID (stored in a property) or Name
   const queryResponse = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
@@ -115,10 +118,12 @@ async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: strin
 
   if (!queryResponse.ok) {
     const errorData = await queryResponse.json();
+    console.error("Notion Team Query Error Details:", JSON.stringify(errorData, null, 2));
     throw new Error(`Notion Query Error (Teams): ${JSON.stringify(errorData)}`);
   }
 
   const queryData = await queryResponse.json();
+  console.log(`Notion Query Results for "${team.name}":`, queryData.results.length);
   
   const properties: any = {
     "Team Name": {
@@ -142,6 +147,7 @@ async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: strin
   }
 
   if (queryData.results && queryData.results.length > 0) {
+    console.log(`Updating existing Notion page: ${queryData.results[0].id}`);
     const pageId = queryData.results[0].id;
     const updateResponse = await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
       method: "PATCH",
@@ -151,10 +157,12 @@ async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: strin
     
     if (!updateResponse.ok) {
       const errorData = await updateResponse.json();
+      console.error("Notion Team Update Error Details:", JSON.stringify(errorData, null, 2));
       throw new Error(`Notion Team Update Error: ${JSON.stringify(errorData)}`);
     }
     return "updated";
   } else {
+    console.log(`Creating new Notion page in DB: ${databaseId}`);
     const createResponse = await fetch(`https://api.notion.com/v1/pages`, {
       method: "POST",
       headers: notionHeaders,
@@ -166,6 +174,7 @@ async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: strin
 
     if (!createResponse.ok) {
       const errorData = await createResponse.json();
+      console.error("Notion Team Create Error Details:", JSON.stringify(errorData, null, 2));
       throw new Error(`Notion Team Create Error: ${JSON.stringify(errorData)}`);
     }
     return "created";
@@ -186,6 +195,13 @@ export async function POST(request: Request) {
     const profileDatabaseId = process.env.NOTION_DATABASE_ID;
     const teamsDatabaseId = process.env.NOTION_TEAMS_DATABASE_ID;
 
+    console.log("Notion Sync Config:", {
+      hasApiKey: !!notionApiKey,
+      profileDbId: profileDatabaseId,
+      teamsDbId: teamsDatabaseId,
+      hasCronSecret: !!secret
+    });
+
     if (!notionApiKey) {
       console.error("Notion API Key Missing");
       return NextResponse.json({ error: "Notion configuration missing" }, { status: 500 });
@@ -198,31 +214,42 @@ export async function POST(request: Request) {
     };
 
     const body = await request.json();
+    console.log("Sync request body received:", JSON.stringify(body, null, 2));
 
     // 1. Webhook trigger from Supabase
     if (body.record) {
+      console.log(`Webhook detected for table: ${body.table}`);
+      
       if (body.table === 'profiles' && profileDatabaseId) {
-        console.log(`Webhook trigger for profile: ${body.record.email}`);
+        console.log(`Syncing profile: ${body.record.email}`);
         const action = await syncProfileToNotion(body.record as ProfileWithTeam, notionHeaders, profileDatabaseId);
         return NextResponse.json({ message: "Profile webhook sync completed", action });
       }
       
       if (body.table === 'teams' && teamsDatabaseId) {
-        console.log(`Webhook trigger for team: ${body.record.name}`);
+        console.log(`Syncing team: ${body.record.name}`);
         // For webhooks, we might need more info (leader name)
-        const { data: teamWithLeader } = await supabaseService
+        const { data: teamWithLeader, error: leaderError } = await supabaseService
           .from("teams")
           .select("*, profiles!created_by(*)")
           .eq("id", body.record.id)
           .single();
           
+        if (leaderError) {
+          console.error("Error fetching team leader for sync:", leaderError);
+        } else {
+          console.log("Fetched team with leader details:", JSON.stringify(teamWithLeader, null, 2));
+        }
+          
         const action = await syncTeamToNotion(teamWithLeader || body.record, notionHeaders, teamsDatabaseId);
         return NextResponse.json({ message: "Team webhook sync completed", action });
       }
+
+      console.warn("Webhook received but no matching table/config found", { table: body.table, profileDb: !!profileDatabaseId, teamsDb: !!teamsDatabaseId });
     }
 
     // 2. Full Sync request
-    console.log("Full sync triggered via fetch...");
+    console.log("Full sync logic starting...");
     let results: any = {};
 
     // Sync Profiles
