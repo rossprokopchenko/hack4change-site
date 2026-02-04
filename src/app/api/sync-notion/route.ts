@@ -57,12 +57,6 @@ async function syncProfileToNotion(profile: ProfileWithTeam, notionHeaders: any,
     },
   };
 
-  if (profile.created_at) {
-    properties["Created at"] = {
-      date: { start: profile.created_at },
-    };
-  }
-
   if (queryData.results && queryData.results.length > 0) {
     // Update existing page
     const pageId = queryData.results[0].id;
@@ -140,12 +134,6 @@ async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: strin
     },
   };
 
-  if (team.created_at) {
-    properties["Created at"] = {
-      date: { start: team.created_at },
-    };
-  }
-
   if (queryData.results && queryData.results.length > 0) {
     console.log(`Updating existing Notion page: ${queryData.results[0].id}`);
     const pageId = queryData.results[0].id;
@@ -186,6 +174,12 @@ export async function POST(request: Request) {
     const authHeader = request.headers.get("Authorization");
     const secret = process.env.CRON_SECRET;
     
+    // Debug: Log the received header (masked)
+    const maskedHeader = authHeader 
+      ? (authHeader.length > 15 ? `${authHeader.substring(0, 15)}...` : authHeader)
+      : "null";
+    console.log(`Auth check - Received: "${maskedHeader}", Expected Secret: "${secret ? secret.substring(0, 5) + "..." : "not set"}"`);
+
     if (secret && authHeader !== `Bearer ${secret}`) {
       console.warn("Unauthorized sync attempt detected");
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -218,17 +212,37 @@ export async function POST(request: Request) {
 
     // 1. Webhook trigger from Supabase
     if (body.record) {
-      console.log(`Webhook detected for table: ${body.table}`);
+      console.log(`Webhook detected - Table: ${body.table}, Schema: ${body.schema}, Type: ${body.type}`);
       
-      if (body.table === 'profiles' && profileDatabaseId) {
-        console.log(`Syncing profile: ${body.record.email}`);
-        const action = await syncProfileToNotion(body.record as ProfileWithTeam, notionHeaders, profileDatabaseId);
-        return NextResponse.json({ message: "Profile webhook sync completed", action });
+      // Handle Profile sync (from public.profiles OR auth.users)
+      if ((body.table === 'profiles' || body.table === 'users') && profileDatabaseId) {
+        let profileToSync: ProfileWithTeam = body.record;
+
+        // If it's from auth.users, we need to fetch the full profile with team info
+        if (body.table === 'users' || body.schema === 'auth') {
+          console.log(`Fetching full profile for auth user: ${body.record.id}`);
+          const { data: pData, error: pError } = await supabaseService
+            .from("profiles")
+            .select("*, team_members(teams(name))")
+            .eq("id", body.record.id)
+            .single();
+          
+          if (pError || !pData) {
+            console.error("Error fetching profile for auth sync:", pError);
+          } else {
+            profileToSync = pData as any;
+          }
+        }
+
+        console.log(`Syncing profile to Notion: ${profileToSync.email}`);
+        const action = await syncProfileToNotion(profileToSync, notionHeaders, profileDatabaseId);
+        return NextResponse.json({ message: "Profile sync completed", action });
       }
       
+      // Handle Team sync
       if (body.table === 'teams' && teamsDatabaseId) {
-        console.log(`Syncing team: ${body.record.name}`);
-        // For webhooks, we might need more info (leader name)
+        console.log(`Syncing team to Notion: ${body.record.name}`);
+        // Fetch leader info
         const { data: teamWithLeader, error: leaderError } = await supabaseService
           .from("teams")
           .select("*, profiles!created_by(*)")
@@ -237,15 +251,18 @@ export async function POST(request: Request) {
           
         if (leaderError) {
           console.error("Error fetching team leader for sync:", leaderError);
-        } else {
-          console.log("Fetched team with leader details:", JSON.stringify(teamWithLeader, null, 2));
         }
           
         const action = await syncTeamToNotion(teamWithLeader || body.record, notionHeaders, teamsDatabaseId);
-        return NextResponse.json({ message: "Team webhook sync completed", action });
+        return NextResponse.json({ message: "Team sync completed", action });
       }
 
-      console.warn("Webhook received but no matching table/config found", { table: body.table, profileDb: !!profileDatabaseId, teamsDb: !!teamsDatabaseId });
+      console.warn("Webhook received but no matching table/config found", { 
+        table: body.table, 
+        schema: body.schema,
+        profileDb: !!profileDatabaseId, 
+        teamsDb: !!teamsDatabaseId 
+      });
     }
 
     // 2. Full Sync request
