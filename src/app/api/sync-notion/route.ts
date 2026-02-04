@@ -103,7 +103,7 @@ async function syncProfileToNotion(profile: any, notionHeaders: any, databaseId:
 
 async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: string) {
   console.log("syncTeamToNotion started for team:", team.name);
-  const leaderLabel = team.profiles ? `${team.profiles.first_name || ""} ${team.profiles.last_name || ""}`.trim() || team.profiles.email : "Unknown";
+  const leaderLabel = team.profiles?.email || "Unknown";
 
   console.log("Computed Leader Label:", leaderLabel);
 
