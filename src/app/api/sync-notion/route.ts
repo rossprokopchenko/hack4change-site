@@ -141,7 +141,7 @@ async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: strin
       rich_text: [{ text: { content: leaderLabel } }],
     },
     "Max Members": {
-      number: team.max_members || 5,
+      number: team.max_members || 4,
     },
   };
 

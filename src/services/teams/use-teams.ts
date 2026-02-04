@@ -133,7 +133,7 @@ export function useCreateTeam() {
         .insert({
           name: teamData.name,
           description: teamData.description || null,
-          max_members: 5,
+          max_members: 4,
           created_by: user.id,
         })
         .select()

@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS public.teams (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   name TEXT NOT NULL UNIQUE,
   description TEXT,
-  max_members INTEGER DEFAULT 5,
+  max_members INTEGER DEFAULT 4,
   created_by UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
   
   -- Timestamps
