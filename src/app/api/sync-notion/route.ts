@@ -15,8 +15,19 @@ interface ProfileWithTeam {
   }>;
 }
 
-async function syncProfileToNotion(profile: ProfileWithTeam, notionHeaders: any, databaseId: string) {
-  const teamName = profile.team_members?.[0]?.teams?.name || "No Team";
+async function syncProfileToNotion(profile: any, notionHeaders: any, databaseId: string) {
+  // Handle team association robustly (consistent with admin panel logic)
+  const teamMembersRaw = profile.team_members;
+  const teamMembers = Array.isArray(teamMembersRaw) ? teamMembersRaw : (teamMembersRaw ? [teamMembersRaw] : []);
+  
+  let teamName = "No Team";
+  if (teamMembers.length > 0) {
+    const rawTeam = teamMembers[0].teams || teamMembers[0].team;
+    const teamData = Array.isArray(rawTeam) ? rawTeam[0] : rawTeam;
+    teamName = teamData?.name || teamName;
+  }
+
+  console.log(`Syncing profile ${profile.email} with team: ${teamName}`);
 
   // Query Notion database for existing entry
   const queryResponse = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
@@ -216,26 +227,23 @@ export async function POST(request: Request) {
       
       // Handle Profile sync (from public.profiles OR auth.users)
       if ((body.table === 'profiles' || body.table === 'users') && profileDatabaseId) {
-        let profileToSync: ProfileWithTeam = body.record;
-
-        // If it's from auth.users, we need to fetch the full profile with team info
-        if (body.table === 'users' || body.schema === 'auth') {
-          console.log(`Fetching full profile for auth user: ${body.record.id}`);
-          const { data: pData, error: pError } = await supabaseService
-            .from("profiles")
-            .select("*, team_members(teams(name))")
-            .eq("id", body.record.id)
-            .single();
-          
-          if (pError || !pData) {
-            console.error("Error fetching profile for auth sync:", pError);
-          } else {
-            profileToSync = pData as any;
-          }
+        console.log(`Fetching full profile for sync: ${body.record.id} (${body.table})`);
+        
+        // Always fetch full profile info including teams to avoid partial records clearing data
+        const { data: pData, error: pError } = await supabaseService
+          .from("profiles")
+          .select("*, team_members(teams(name))")
+          .eq("id", body.record.id)
+          .single();
+        
+        if (pError || !pData) {
+          console.error("Error fetching full profile for sync:", pError);
+          // Fallback to record only if fetch fails, but warn
+          const action = await syncProfileToNotion(body.record, notionHeaders, profileDatabaseId);
+          return NextResponse.json({ message: "Profile sync completed (partial record)", action });
         }
 
-        console.log(`Syncing profile to Notion: ${profileToSync.email}`);
-        const action = await syncProfileToNotion(profileToSync, notionHeaders, profileDatabaseId);
+        const action = await syncProfileToNotion(pData, notionHeaders, profileDatabaseId);
         return NextResponse.json({ message: "Profile sync completed", action });
       }
       
@@ -271,10 +279,10 @@ export async function POST(request: Request) {
 
     // Sync Profiles
     if (profileDatabaseId) {
+      console.log("Fetching all profiles for full sync...");
       const { data: profiles, error: pError } = await supabaseService
         .from("profiles")
-        .select("*, team_members(teams(name))")
-        .eq("role", "user");
+        .select("*, team_members(teams(name))");
 
       if (!pError) {
         let pSuccess = 0;
