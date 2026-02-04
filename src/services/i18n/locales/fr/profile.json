@@ -130,6 +130,7 @@
       "cancel": "Annuler",
       "leave": "Quitter l'équipe",
       "leaving": "En cours..."
-    }
+    },
+    "rsvpRequired": "Vous devez confirmer votre présence (RSVP : Confirmé) pour rejoindre ou créer une équipe."
   }
 }

@@ -96,6 +96,82 @@ async function syncProfileToNotion(profile: ProfileWithTeam, notionHeaders: any,
   }
 }
 
+async function syncTeamToNotion(team: any, notionHeaders: any, databaseId: string) {
+  const leaderLabel = team.profiles ? `${team.profiles.first_name || ""} ${team.profiles.last_name || ""}`.trim() || team.profiles.email : "Unknown";
+
+  // Query Notion database for existing entry by Team ID (stored in a property) or Name
+  const queryResponse = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
+    method: "POST",
+    headers: notionHeaders,
+    body: JSON.stringify({
+      filter: {
+        property: "Team Name",
+        title: {
+          equals: team.name,
+        },
+      },
+    }),
+  });
+
+  if (!queryResponse.ok) {
+    const errorData = await queryResponse.json();
+    throw new Error(`Notion Query Error (Teams): ${JSON.stringify(errorData)}`);
+  }
+
+  const queryData = await queryResponse.json();
+  
+  const properties: any = {
+    "Team Name": {
+      title: [{ text: { content: team.name } }],
+    },
+    "Description": {
+      rich_text: [{ text: { content: team.description || "" } }],
+    },
+    "Leader": {
+      rich_text: [{ text: { content: leaderLabel } }],
+    },
+    "Max Members": {
+      number: team.max_members || 5,
+    },
+  };
+
+  if (team.created_at) {
+    properties["Created at"] = {
+      date: { start: team.created_at },
+    };
+  }
+
+  if (queryData.results && queryData.results.length > 0) {
+    const pageId = queryData.results[0].id;
+    const updateResponse = await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
+      method: "PATCH",
+      headers: notionHeaders,
+      body: JSON.stringify({ properties }),
+    });
+    
+    if (!updateResponse.ok) {
+      const errorData = await updateResponse.json();
+      throw new Error(`Notion Team Update Error: ${JSON.stringify(errorData)}`);
+    }
+    return "updated";
+  } else {
+    const createResponse = await fetch(`https://api.notion.com/v1/pages`, {
+      method: "POST",
+      headers: notionHeaders,
+      body: JSON.stringify({
+        parent: { database_id: databaseId },
+        properties: properties,
+      }),
+    });
+
+    if (!createResponse.ok) {
+      const errorData = await createResponse.json();
+      throw new Error(`Notion Team Create Error: ${JSON.stringify(errorData)}`);
+    }
+    return "created";
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const authHeader = request.headers.get("Authorization");
@@ -107,10 +183,11 @@ export async function POST(request: Request) {
     }
 
     const notionApiKey = process.env.NOTION_API_KEY;
-    const databaseId = process.env.NOTION_DATABASE_ID;
+    const profileDatabaseId = process.env.NOTION_DATABASE_ID;
+    const teamsDatabaseId = process.env.NOTION_TEAMS_DATABASE_ID;
 
-    if (!notionApiKey || !databaseId) {
-      console.error("Notion Configuration Missing");
+    if (!notionApiKey) {
+      console.error("Notion API Key Missing");
       return NextResponse.json({ error: "Notion configuration missing" }, { status: 500 });
     }
 
@@ -122,50 +199,78 @@ export async function POST(request: Request) {
 
     const body = await request.json();
 
-    // Check if this is a Supabase Webhook payload
-    // Supabase Webhook payload typically has 'record', 'table', 'type'
-    if (body.record && body.table === 'profiles') {
-      console.log(`Webhook trigger for profile: ${body.record.email}`);
-      const action = await syncProfileToNotion(body.record as ProfileWithTeam, notionHeaders, databaseId);
-      return NextResponse.json({ message: "Webhook sync completed", action });
+    // 1. Webhook trigger from Supabase
+    if (body.record) {
+      if (body.table === 'profiles' && profileDatabaseId) {
+        console.log(`Webhook trigger for profile: ${body.record.email}`);
+        const action = await syncProfileToNotion(body.record as ProfileWithTeam, notionHeaders, profileDatabaseId);
+        return NextResponse.json({ message: "Profile webhook sync completed", action });
+      }
+      
+      if (body.table === 'teams' && teamsDatabaseId) {
+        console.log(`Webhook trigger for team: ${body.record.name}`);
+        // For webhooks, we might need more info (leader name)
+        const { data: teamWithLeader } = await supabaseService
+          .from("teams")
+          .select("*, profiles!created_by(*)")
+          .eq("id", body.record.id)
+          .single();
+          
+        const action = await syncTeamToNotion(teamWithLeader || body.record, notionHeaders, teamsDatabaseId);
+        return NextResponse.json({ message: "Team webhook sync completed", action });
+      }
     }
 
-    // Otherwise, assume it's a full sync request
+    // 2. Full Sync request
     console.log("Full sync triggered via fetch...");
-    const { data: profiles, error: supabaseError } = await supabaseService
-      .from("profiles")
-      .select(`
-        *,
-        team_members (
-          teams (
-            name
-          )
-        )
-      `)
-      .eq("role", "user");
+    let results: any = {};
 
-    if (supabaseError) {
-      console.error("Supabase Error:", supabaseError);
-      return NextResponse.json({ error: "Failed to fetch profiles" }, { status: 500 });
+    // Sync Profiles
+    if (profileDatabaseId) {
+      const { data: profiles, error: pError } = await supabaseService
+        .from("profiles")
+        .select("*, team_members(teams(name))")
+        .eq("role", "user");
+
+      if (!pError) {
+        let pSuccess = 0;
+        let pErrorCount = 0;
+        for (const p of profiles || []) {
+          try {
+            await syncProfileToNotion(p as any, notionHeaders, profileDatabaseId);
+            pSuccess++;
+          } catch (e) {
+            pErrorCount++;
+          }
+        }
+        results.profiles = { success: pSuccess, errors: pErrorCount };
+      }
     }
 
-    let successCount = 0;
-    let errorCount = 0;
+    // Sync Teams
+    if (teamsDatabaseId) {
+      const { data: teams, error: tError } = await supabaseService
+        .from("teams")
+        .select("*, profiles!created_by(*)");
 
-    for (const profile of (profiles || []) as any) {
-      try {
-        await syncProfileToNotion(profile as ProfileWithTeam, notionHeaders, databaseId);
-        successCount++;
-      } catch (err) {
-        console.error(`Failed to sync user ${profile.email}:`, err);
-        errorCount++;
+      if (!tError) {
+        let tSuccess = 0;
+        let tErrorCount = 0;
+        for (const t of teams || []) {
+          try {
+            await syncTeamToNotion(t, notionHeaders, teamsDatabaseId);
+            tSuccess++;
+          } catch (e) {
+            tErrorCount++;
+          }
+        }
+        results.teams = { success: tSuccess, errors: tErrorCount };
       }
     }
 
     return NextResponse.json({
       message: "Full sync completed",
-      successCount,
-      errorCount,
+      results
     });
   } catch (error) {
     console.error("Global Sync Error:", error);

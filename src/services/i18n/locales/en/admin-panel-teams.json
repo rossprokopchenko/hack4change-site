@@ -1,0 +1,38 @@
+{
+  "title": "Teams",
+  "table": {
+    "column1": "Name",
+    "column2": "Description",
+    "column3": "Created By",
+    "column4": "Created At",
+    "actions": "Actions"
+  },
+  "filter": {
+    "inputs": {
+      "searchValue": {
+        "label": "Search"
+      },
+      "searchField": {
+        "label": "Search By",
+        "options": {
+          "name": "Name",
+          "description": "Description"
+        }
+      }
+    },
+    "actions": {
+      "reset": "Reset",
+      "export": "Export to Excel"
+    }
+  },
+  "total_count": "{{count}} teams in total",
+  "confirm": {
+    "delete": {
+      "title": "Delete Team",
+      "message": "Are you sure you want to delete this team?"
+    }
+  },
+  "actions": {
+    "delete": "Delete"
+  }
+}

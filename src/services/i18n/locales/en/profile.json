@@ -130,6 +130,7 @@
       "cancel": "Cancel",
       "leave": "Leave Team",
       "leaving": "Leaving..."
-    }
+    },
+    "rsvpRequired": "You must confirm your attendance (RSVP: Confirmed) to join or create a team."
   }
 }

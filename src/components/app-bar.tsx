@@ -222,6 +222,16 @@ function ResponsiveAppBar() {
                       {t("common:navigation.users")}
                     </Typography>
                   </MenuItem>,
+                  <MenuItem
+                    key="teams"
+                    onClick={handleCloseNavMenu}
+                    component={Link}
+                    href="/admin-panel/teams"
+                  >
+                    <Typography textAlign="center">
+                      {t("common:navigation.teams")}
+                    </Typography>
+                  </MenuItem>,
                   // mobile-menu-items
                 ]}
               {/*{isLoaded &&
@@ -352,22 +362,38 @@ function ResponsiveAppBar() {
                 <>
                   <Divider orientation="vertical" flexItem sx={{ my: 1, mx: 2, bgcolor: "primary.contrastText" }} />
                   <Box>
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ 
-                        color: "primary.contrastText", 
-                        px: 2, 
-                        py: 1.5,
-                        my: 0.5,
-                        "&:hover": {
-                          bgcolor: "rgba(255, 255, 255, 0.1)",
-                        }
-                      }}
-                      component={Link}
-                      href="/admin-panel/users"
-                    >
-                      {t("common:navigation.users")}
-                    </Button>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ 
+                          color: "primary.contrastText", 
+                          px: 2, 
+                          py: 1.5,
+                          my: 0.5,
+                          "&:hover": {
+                            bgcolor: "rgba(255, 255, 255, 0.1)",
+                          }
+                        }}
+                        component={Link}
+                        href="/admin-panel/users"
+                      >
+                        {t("common:navigation.users")}
+                      </Button>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ 
+                          color: "primary.contrastText", 
+                          px: 2, 
+                          py: 1.5,
+                          my: 0.5,
+                          "&:hover": {
+                            bgcolor: "rgba(255, 255, 255, 0.1)",
+                          }
+                        }}
+                        component={Link}
+                        href="/admin-panel/teams"
+                      >
+                        {t("common:navigation.teams")}
+                      </Button>
                   </Box>
                 </>
               )}

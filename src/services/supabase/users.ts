@@ -31,14 +31,30 @@ export type UsersResponse = {
 
 // Map Supabase profile to User type
 function mapProfileToUser(profile: any): User {
-  const teamMembers = profile.team_members || [];
-  const teamName = teamMembers.length > 0 ? teamMembers[0].team?.name : undefined;
+  // team_members can be an object (if 1:1 relationship detected by Supabase) or an array
+  const teamMembersRaw = profile.team_members;
+  const teamMembers = Array.isArray(teamMembersRaw) ? teamMembersRaw : (teamMembersRaw ? [teamMembersRaw] : []);
+  
+  let teamName: string | undefined = undefined;
+
+  if (teamMembers.length > 0) {
+    const rawTeam = teamMembers[0].team;
+    const teamData = Array.isArray(rawTeam) ? rawTeam[0] : rawTeam;
+    teamName = teamData?.name;
+  }
+
+  const firstName = profile.first_name || "";
+  const lastName = profile.last_name || "";
+  const fullName = `${firstName} ${lastName}`.trim();
+  
+  // If name is empty (common for Google users), use email part or full email
+  const displayFirstName = firstName || (fullName ? "" : profile.email.split('@')[0]);
 
   return {
     id: profile.id,
     email: profile.email,
-    firstName: profile.first_name || "",
-    lastName: profile.last_name || "",
+    firstName: displayFirstName,
+    lastName: lastName,
     photo: profile.avatar_url ? { id: "", path: profile.avatar_url } : undefined,
     role: {
       id: profile.role === 'admin' ? RoleEnum.ADMIN : RoleEnum.USER,

@@ -1,0 +1,38 @@
+{
+  "title": "Équipes",
+  "table": {
+    "column1": "Nom",
+    "column2": "Description",
+    "column3": "Créé Par",
+    "column4": "Créé Le",
+    "actions": "Actions"
+  },
+  "filter": {
+    "inputs": {
+      "searchValue": {
+        "label": "Rechercher"
+      },
+      "searchField": {
+        "label": "Rechercher Par",
+        "options": {
+          "name": "Nom",
+          "description": "Description"
+        }
+      }
+    },
+    "actions": {
+      "reset": "Réinitialiser",
+      "export": "Exporter vers Excel"
+    }
+  },
+  "total_count": "{{count}} équipes au total",
+  "confirm": {
+    "delete": {
+      "title": "Supprimer l'équipe",
+      "message": "Êtes-vous sûr de vouloir supprimer cette équipe ?"
+    }
+  },
+  "actions": {
+    "delete": "Supprimer"
+  }
+}

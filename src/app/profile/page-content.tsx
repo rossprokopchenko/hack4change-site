@@ -64,7 +64,9 @@ function Profile() {
   const updateRSVP = useUpdateRSVP();
   const leaveTeam = useLeaveTeam();
 
-  const isFormCompleted = !!formSubmission;
+  const isDevMode = process.env.NEXT_PUBLIC_TALLY_DEV_MODE === "true";
+  const isFormCompleted = !!formSubmission || isDevMode;
+
   const currentRSVP = (user as any)?.rsvpStatus || "pending";
 
   const handleRSVPChange = (
@@ -275,7 +277,7 @@ function Profile() {
             </Card>
           ) : (
             // Team Search & Create
-            <Card>
+            <Card sx={{ opacity: currentRSVP === "confirmed" ? 1 : 0.7 }}>
               <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
                   <GroupsIcon color="primary" />
@@ -284,34 +286,42 @@ function Profile() {
                   </Typography>
                 </Box>
 
-                {/* Search Teams */}
-                <Box sx={{ mb: 3 }}>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                    <SearchIcon fontSize="small" />
-                    <Typography variant="h6">{t("team.searchTitle")}</Typography>
-                  </Box>
-                  <TeamSearch />
-                </Box>
+                {currentRSVP !== "confirmed" ? (
+                  <Alert severity="info">
+                    {t("team.rsvpRequired")}
+                  </Alert>
+                ) : (
+                  <>
+                    {/* Search Teams */}
+                    <Box sx={{ mb: 3 }}>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+                        <SearchIcon fontSize="small" />
+                        <Typography variant="h6">{t("team.searchTitle")}</Typography>
+                      </Box>
+                      <TeamSearch />
+                    </Box>
 
-                <Divider sx={{ my: 3 }} />
+                    <Divider sx={{ my: 3 }} />
 
-                {/* Create Team */}
-                <Box>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                    <AddIcon fontSize="small" />
-                    <Typography variant="h6">{t("team.createTitle")}</Typography>
-                  </Box>
-                  <Typography variant="body2" color="text.secondary" paragraph>
-                    {t("team.createDescription")}
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    startIcon={<AddIcon />}
-                    onClick={() => setCreateTeamOpen(true)}
-                  >
-                    {t("team.createButton")}
-                  </Button>
-                </Box>
+                    {/* Create Team */}
+                    <Box>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+                        <AddIcon fontSize="small" />
+                        <Typography variant="h6">{t("team.createTitle")}</Typography>
+                      </Box>
+                      <Typography variant="body2" color="text.secondary" paragraph>
+                        {t("team.createDescription")}
+                      </Typography>
+                      <Button
+                        variant="contained"
+                        startIcon={<AddIcon />}
+                        onClick={() => setCreateTeamOpen(true)}
+                      >
+                        {t("team.createButton")}
+                      </Button>
+                    </Box>
+                  </>
+                )}
               </CardContent>
             </Card>
           )}
