@@ -27,13 +27,11 @@ import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import LinearProgress from "@mui/material/LinearProgress";
-import { TeamAdmin, useDeleteSupabaseTeamService } from "@/services/supabase/teams-admin";
-import useConfirmDialog from "@/components/confirm-dialog/use-confirm-dialog";
+import { TeamAdmin } from "@/services/supabase/teams-admin";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from "next/navigation";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { SortEnum } from "@/services/api/types/sort-type";
-import DeleteIcon from "@mui/icons-material/Delete";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import { utils, writeFile } from "xlsx";
@@ -72,8 +70,6 @@ function Teams() {
   const { t: tTeams } = useTranslation("admin-panel-teams");
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { confirmDialog } = useConfirmDialog();
-  const deleteTeam = useDeleteSupabaseTeamService();
   const queryClient = useQueryClient();
   
   const [page, setPage] = useState(0);
@@ -136,17 +132,6 @@ function Teams() {
     sort: [{ order, orderBy }],
   });
 
-  const handleDelete = async (id: string) => {
-    const isConfirmed = await confirmDialog({
-      title: tTeams("admin-panel-teams:confirm.delete.title"),
-      message: tTeams("admin-panel-teams:confirm.delete.message"),
-    });
-
-    if (isConfirmed) {
-      await deleteTeam(id);
-      queryClient.invalidateQueries({ queryKey: teamsQueryKeys.list() });
-    }
-  };
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -234,7 +219,6 @@ function Teams() {
                   <TableSortCellWrapper orderBy={orderBy} order={order} column="createdAt" handleRequestSort={handleRequestSort}>
                     {tTeams("admin-panel-teams:table.column4")}
                   </TableSortCellWrapper>
-                  <TableCell align="right">{tTeams("admin-panel-teams:table.actions")}</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -247,9 +231,6 @@ function Teams() {
                       <TableCell>{team.description}</TableCell>
                       <TableCell>{team.createdByName}</TableCell>
                       <TableCell>{new Date(team.createdAt).toLocaleDateString()}</TableCell>
-                      <TableCell align="right">
-                        <IconButton onClick={() => handleDelete(team.id)} color="error"><DeleteIcon /></IconButton>
-                      </TableCell>
                     </TableRow>
                   ))
                 )}
