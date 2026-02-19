@@ -32,6 +32,19 @@ function AuthProvider(props: PropsWithChildren) {
   }, []);
 
   const loadUser = useCallback(async () => {
+    // Check if we are in a recovery flow (hash or search)
+    const isRecovery = typeof window !== 'undefined' && (
+      window.location.hash.includes('type=recovery') || 
+      window.location.search.includes('type=recovery') ||
+      window.location.hash.includes('access_token=') // Supabase often puts it in hash
+    );
+
+    if (isRecovery) {
+      setUser(null);
+      setIsLoaded(true);
+      return;
+    }
+
     try {
       const profile = await getCurrentProfile();
       if (profile) {
@@ -49,6 +62,7 @@ function AuthProvider(props: PropsWithChildren) {
           provider: undefined,
           socialId: undefined,
           rsvpStatus: (profile as any).rsvp_status,
+          createdAt: profile.created_at || new Date().toISOString(), // Fix lint error while at it
         };
         setUser(mappedUser); 
       } else {
@@ -73,6 +87,11 @@ function AuthProvider(props: PropsWithChildren) {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         loadUser();
       } else if (event === 'SIGNED_OUT') {
+        setUser(null);
+        setIsLoaded(true);
+      } else if (event === 'PASSWORD_RECOVERY') {
+        // When in password recovery mode, we don't want to log the user in automatically
+        // to the app's UI state, as they should only be allowed to change their password.
         setUser(null);
         setIsLoaded(true);
       }

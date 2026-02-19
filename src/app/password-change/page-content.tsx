@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import withPageRequiredGuest from "@/services/auth/with-page-required-guest";
 import { useForm, FormProvider, useFormState } from "react-hook-form";
-import { useAuthResetPasswordService } from "@/services/api/services/auth";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -59,45 +58,9 @@ function FormActions() {
   );
 }
 
-function ExpiresAlert() {
-  const { t } = useTranslation("password-change");
-  const [currentTime, setCurrentTime] = useState(() => Date.now());
 
-  const expires = useMemo(() => {
-    const params = new URLSearchParams(window.location.search);
-
-    return Number(params.get("expires"));
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = Date.now();
-      setCurrentTime(now);
-
-      if (expires < now) {
-        clearInterval(interval);
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [expires]);
-
-  const isExpired = expires < currentTime;
-
-  return (
-    isExpired && (
-      <Grid size={{ xs: 12 }}>
-        <Alert severity="error" data-testid="reset-link-expired-alert">
-          {t("password-change:alerts.expired")}
-        </Alert>
-      </Grid>
-    )
-  );
-}
-
-function Form() {
+function PasswordChange() {
   const { enqueueSnackbar } = useSnackbar();
-  const fetchAuthResetPassword = useAuthResetPasswordService();
   const { t } = useTranslation("password-change");
   const validationSchema = useValidationSchema();
   const router = useRouter();
@@ -113,36 +76,25 @@ function Form() {
   const { handleSubmit, setError } = methods;
 
   const onSubmit = handleSubmit(async (formData) => {
-    const params = new URLSearchParams(window.location.search);
-    const hash = params.get("hash");
-    if (!hash) return;
+    try {
+      const { updatePassword } = await import("@/services/supabase/auth");
+      const { supabase } = await import("@/lib/supabase/client");
 
-    const { data, status } = await fetchAuthResetPassword({
-      password: formData.password,
-      hash,
-    });
+      await updatePassword(formData.password);
 
-    if (status === HTTP_CODES_ENUM.UNPROCESSABLE_ENTITY) {
-      (Object.keys(data.errors) as Array<keyof PasswordChangeFormData>).forEach(
-        (key) => {
-          setError(key, {
-            type: "manual",
-            message: t(
-              `password-change:inputs.${key}.validation.server.${data.errors[key]}`
-            ),
-          });
-        }
-      );
+      // Sign out to ensure the user has to login with their new password
+      await supabase.auth.signOut();
 
-      return;
-    }
-
-    if (status === HTTP_CODES_ENUM.NO_CONTENT) {
       enqueueSnackbar(t("password-change:alerts.success"), {
         variant: "success",
       });
 
       router.replace("/sign-in");
+    } catch (err) {
+      console.error("Password reset error:", err);
+      enqueueSnackbar(t("password-change:alerts.error"), {
+        variant: "error",
+      });
     }
   });
 
@@ -155,7 +107,6 @@ function Form() {
               <Grid size={{ xs: 12 }} mt={3}>
                 <Typography variant="h6">{t("password-change:title")}</Typography>
               </Grid>
-              <ExpiresAlert />
               <Grid size={{ xs: 12 }}>
                 <FormTextInput<PasswordChangeFormData>
                   name="password"
@@ -184,8 +135,5 @@ function Form() {
   );
 }
 
-function PasswordChange() {
-  return <Form />;
-}
-
-export default withPageRequiredGuest(PasswordChange);
+// Export directly without withPageRequiredGuest to allow access during recovery session
+export default PasswordChange;
