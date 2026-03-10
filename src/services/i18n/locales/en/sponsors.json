@@ -194,7 +194,7 @@
 
   "partners": {
     "title": "Our Partners",
-    "intro": "Hack4Change brings together established organizations to ensure credibility, impact, and professional execution:",
+    "intro": "Thank you to our Partners!",
     "unitedWay": {
       "title": "United Way — Charitable Partner",
       "description": "Manages all sponsor contributions and prize distribution, ensuring transparent financial stewardship through their established processes as a registered charitable organization."
@@ -214,12 +214,28 @@
     "cityOfMoncton": {
       "title": "City of Moncton — Municipal Sponsor",
       "description": "The City of Moncton is the municipal government serving Greater Moncton, committed to fostering innovation, community development, and supporting initiatives that improve quality of life for all residents."
+    },
+    "ccnb": {
+      "title": "CCNB — Partner",
+      "description": "Collège communautaire du Nouveau-Brunswick (CCNB) is a first-rate francophone post-secondary institution. It serves all of New Brunswick as well as francophone and Acadian communities."
     }
   },
 
   "currentSponsors": {
     "title": "Our Sponsors",
     "description": "Sponsor logos and recognition will be displayed here as partnerships are confirmed.",
+    "atlanticSuperstore": {
+      "title": "Atlantic Superstore",
+      "description": "Atlantic Superstore is a major Canadian supermarket chain operating in the Maritime provinces, owned by Loblaw Companies Limited."
+    },
+    "indomie": {
+      "title": "Indomie",
+      "description": "Indomie is a world-leading brand of instant noodles produced by Indofood, known for its unique flavors and global popularity."
+    },
+    "midland": {
+      "title": "Midland",
+      "description": "Midland is a leading transportation and logistics provider in Atlantic Canada, offering high-quality shipping solutions across North America."
+    },
     "cta": "Ready to become a founding sponsor?",
     "contact": "Email: contact@hack4change.ca",
     "meetingNote": "We're happy to meet in person or by video call to discuss sponsorship opportunities."

@@ -236,6 +236,7 @@ export default function Sponsors() {
           {[
             { id: "unitedWay", href: "https://gmsenbunitedway.ca/", logos: { light: "/Logos/Partners/UnitedWay_light.png", dark: "/Logos/Partners/UnitedWay_dark.png" }, maxWidth: "200px" },
             { id: "gmhsc", href: "https://www.monctonhomelessness.org/", logos: { light: "/Logos/Partners/gmhsc_light.png", dark: "/Logos/Partners/gmhsc_dark.png" }, maxWidth: "250px" },
+            { id: "ccnb", href: "https://ccnb.ca/", logos: { light: "/Logos/Partners/CCNB_Logo-orange.png", dark: "/Logos/Partners/CCNB_Logo-orange.png" }, maxWidth: "150px" },
             { id: "venn", href: "https://venninnovation.ca/", logos: { light: "/Logos/Partners/Venn_NoTag_CMYK.jpg", dark: "/Logos/Partners/Venn_NoTag_CMYK.jpg" }, maxWidth: "150px" },
             { id: "civicTech", href: "https://civictechmoncton.org/", logos: { light: "/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_4.svg", dark: "/Logos/CTM SVG/Logo With Sign/CTM_Logotype_2clr_5.svg" }, maxWidth: "200px" }
           ].map((partner) => (
@@ -315,62 +316,88 @@ export default function Sponsors() {
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          {/* City of Moncton - Municipal Sponsor */}
-          <Card variant="outlined">
-            <CardContent sx={{ 
-              display: "flex", 
-              alignItems: "stretch", 
-              gap: 4, 
-              flexWrap: { xs: "wrap", md: "nowrap" }, 
-              minHeight: { md: '160px' },
-              p: 4,
-              '&:last-child': { pb: 4 }
-            }}>
-              <Box sx={{ flex: { xs: "1 1 100%", md: "4 1 0" }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Typography variant="h6" gutterBottom>
-                  {t("partners.cityOfMoncton.title")}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {t("partners.cityOfMoncton.description")}
-                </Typography>
-              </Box>
-              <Box sx={{ 
-                flex: { xs: "1 1 100%", md: "1 1 0" },
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
+          {[
+            { 
+              id: "cityOfMoncton", 
+              href: "https://www.moncton.ca/language_select?destination=/node/143", 
+              logos: { light: "/Logos/Partners/Moncton-Logo.png", dark: "/Logos/Partners/Moncton-Logo.png" }, 
+              maxWidth: "200px",
+              translationKey: "partners.cityOfMoncton"
+            },
+            { 
+              id: "atlanticSuperstore", 
+              href: "https://www.atlanticsuperstore.ca/", 
+              logos: { light: "/Logos/Partners/Superstore_Logo.png", dark: "/Logos/Partners/Superstore_Logo.png" }, 
+              maxWidth: "200px",
+              translationKey: "currentSponsors.atlanticSuperstore"
+            },
+            { 
+              id: "indomie", 
+              href: "https://indomie.ca/", 
+              logos: { light: "/Logos/Partners/Logo Indomie1.png", dark: "/Logos/Partners/Logo Indomie1.png" }, 
+              maxWidth: "150px",
+              translationKey: "currentSponsors.indomie"
+            },
+            { 
+              id: "midland", 
+              href: "https://midlandtransport.com/", 
+              logos: { light: "/Logos/Partners/Midland_Logo.png", dark: "/Logos/Partners/Midland_Logo.png" }, 
+              maxWidth: "200px",
+              translationKey: "currentSponsors.midland"
+            }
+          ].map((sponsor) => (
+            <Card key={sponsor.id} variant="outlined">
+              <CardContent sx={{ 
+                display: "flex", 
+                alignItems: "stretch", 
+                gap: 4, 
+                flexWrap: { xs: "wrap", md: "nowrap" }, 
+                minHeight: { md: '160px' },
+                p: 4,
+                '&:last-child': { pb: 4 }
               }}>
-                <MuiLink href="https://www.moncton.ca/language_select?destination=/node/143" target="_blank" rel="noopener noreferrer">
-                  <Box 
-                    component="img"
-                    src="/Logos/Partners/Moncton-Logo.png"
-                    alt="City of Moncton"
-                    sx={{
-                      maxWidth: "200px",
-                      width: '100%',
-                      height: 'auto'
-                    }}
-                  />
-                </MuiLink>
-              </Box>
-            </CardContent>
-          </Card>
-        </Box>
-
-        {/* Sponsor Logos Container - Ready for confirmed sponsors */}
-        <Box sx={{ 
-          bgcolor: "background.paper", 
-          p: 4, 
-          borderRadius: 2,
-          display: 'flex', 
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          gap: 16,
-          alignItems: 'center',
-          justifyContent: 'center',
-          mt: 6 
-        }}>
-          {/* Confirmed sponsor logos will be added here */}
+                <Box sx={{ flex: { xs: "1 1 100%", md: "4 1 0" }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <Typography variant="h6" gutterBottom>
+                    {t(`${sponsor.translationKey}.title`)}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {t(`${sponsor.translationKey}.description`)}
+                  </Typography>
+                </Box>
+                <Box sx={{ 
+                  flex: { xs: "1 1 100%", md: "1 1 0" },
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}>
+                  <MuiLink href={sponsor.href} target="_blank" rel="noopener noreferrer">
+                    <Box 
+                      component="img"
+                      src={sponsor.logos.light}
+                      alt={sponsor.id}
+                      className="logo-light"
+                      sx={{
+                        maxWidth: sponsor.maxWidth,
+                        width: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                    <Box 
+                      component="img"
+                      src={sponsor.logos.dark}
+                      alt={sponsor.id}
+                      className="logo-dark"
+                      sx={{
+                        maxWidth: sponsor.maxWidth,
+                        width: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                  </MuiLink>
+                </Box>
+              </CardContent>
+            </Card>
+          ))}
         </Box>
       </Box>
     </Container>

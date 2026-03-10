@@ -194,7 +194,7 @@
 
   "partners": {
     "title": "Nos partenaires",
-    "intro": "Hack4Change rassemble des organisations établies pour assurer crédibilité, impact et exécution professionnelle :",
+    "intro": "Merci à nos partenaires !",
     "unitedWay": {
       "title": "Centraide — Partenaire de bienfaisance",
       "description": "Gère toutes les contributions des commanditaires et la distribution des prix, assurant une intendance financière transparente grâce à leurs processus établis en tant qu'organisme de bienfaisance enregistré."
@@ -214,12 +214,28 @@
     "cityOfMoncton": {
       "title": "Ville de Moncton — Commanditaire municipal",
       "description": "La Ville de Moncton est le gouvernement municipal au service du Grand Moncton, engagé à favoriser l'innovation, le développement communautaire et à soutenir les initiatives qui améliorent la qualité de vie de tous les résidents."
+    },
+    "ccnb": {
+      "title": "CCNB — Partenaire",
+      "description": "Le Collège communautaire du Nouveau-Brunswick (CCNB) est un établissement postsecondaire francophone de premier ordre. Il dessert tout le Nouveau-Brunswick ainsi que les communautés francophones et acadiennes."
     }
   },
 
   "currentSponsors": {
     "title": "Nos commanditaires",
     "description": "Les logos et la reconnaissance des commanditaires seront affichés ici au fur et à mesure que les partenariats sont confirmés.",
+    "atlanticSuperstore": {
+      "title": "Atlantic Superstore",
+      "description": "Atlantic Superstore est une importante chaîne de supermarchés canadienne opérant dans les provinces Maritimes, propriété de Les Compagnies Loblaw Limitée."
+    },
+    "indomie": {
+      "title": "Indomie",
+      "description": "Indomie est une marque mondiale de nouilles instantanées produite par Indofood, reconnue pour ses saveurs uniques et sa popularité internationale."
+    },
+    "midland": {
+      "title": "Midland",
+      "description": "Midland est un chef de file des services de transport et de logistique dans le Canada atlantique, offrant des solutions d'expédition de haute qualité partout en Amérique du Nord."
+    },
     "cta": "Prêt à devenir un commanditaire fondateur?",
     "contact": "Courriel : contact@hack4change.ca",
     "meetingNote": "Nous sommes heureux de nous rencontrer en personne ou par appel vidéo pour discuter des opportunités de commandite."
