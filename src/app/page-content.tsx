@@ -120,28 +120,8 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* Call-to-Action Buttons */}
       <Container maxWidth="md" sx={{ py: 8 }}>
         <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", justifyContent: "center" }}>
-          <Button 
-            variant="contained" 
-            size="large"
-            component={Link}
-            href={user ? "/profile" : "/sign-up"}
-            sx={{ px: 4, py: 1.5, bgcolor: "primary.main", color: "primary.contrastText" }}
-            
-          >
-            {user ? "I'M IN!" : t("cta.registerInterest")}
-          </Button>
-          <Button 
-            variant="outlined" 
-            size="large"
-            component={Link}
-            href="/sponsors"
-            sx={{ px: 4, py: 1.5, borderColor: "primary.main", color: "text.secondary" }}
-          >
-            {t("cta.sponsorshipOpportunities")}
-          </Button>
           <Button 
             variant="outlined" 
             size="large"
