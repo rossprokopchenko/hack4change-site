@@ -62,6 +62,7 @@ function AuthProvider(props: PropsWithChildren) {
           provider: undefined,
           socialId: undefined,
           rsvpStatus: (profile as any).rsvp_status,
+          participant: (profile as any).participant,
           createdAt: profile.created_at || new Date().toISOString(), // Fix lint error while at it
         };
         setUser(mappedUser); 

@@ -19,6 +19,7 @@ export interface Database {
           dietary_restrictions: string | null
           tshirt_size: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | null
           rsvp_status: 'pending' | 'confirmed' | 'declined' | 'waitlist'
+          participant: boolean
           registration_notes: string | null
           created_at: string
           updated_at: string
@@ -32,6 +33,7 @@ export interface Database {
           dietary_restrictions?: string | null
           tshirt_size?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | null
           rsvp_status?: 'pending' | 'confirmed' | 'declined' | 'waitlist'
+          participant?: boolean
           registration_notes?: string | null
           created_at?: string
           updated_at?: string
@@ -45,6 +47,7 @@ export interface Database {
           dietary_restrictions?: string | null
           tshirt_size?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | null
           rsvp_status?: 'pending' | 'confirmed' | 'declined' | 'waitlist'
+          participant?: boolean
           registration_notes?: string | null
           created_at?: string
           updated_at?: string

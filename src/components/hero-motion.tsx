@@ -31,6 +31,8 @@ export default function HeroMotion({
   const glowColor = "#c8da2c";
 
   const eventDate = new Date("2026-03-13T17:00:00");
+  const eventEndDate = new Date("2026-03-15T16:00:00");
+  const now = new Date();
 
   // Renderer for Countdown display
   const countdownRenderer = ({ days, hours, minutes, seconds, completed }: any) => {
@@ -53,7 +55,7 @@ export default function HeroMotion({
     if (completed) {
       return (
         <div style={countdownStyle}>
-          {t("home:countdown.completed")}
+          {t("home:countdown.happyHacking")}
         </div>
       );
     }
@@ -327,28 +329,30 @@ export default function HeroMotion({
       <div style={{ flex: 0.5 }} />
 
       {/* Countdown - Centered in bottom space */}
-      <div style={{
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 20,
-        width: '100%',
-        paddingTop: '2rem',
-        paddingBottom: '2rem'
-      }}>
-        <motion.div
-          style={{ 
-            fontSize: "1.2rem", 
-            color: "var(--mui-palette-text-primary)" 
-          }}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
-        >
-          <Countdown date={eventDate} renderer={countdownRenderer} />
-        </motion.div>
-      </div>
+      {now < eventEndDate && (
+        <div style={{
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 20,
+          width: '100%',
+          paddingTop: '2rem',
+          paddingBottom: '2rem'
+        }}>
+          <motion.div
+            style={{ 
+              fontSize: "1.2rem", 
+              color: "var(--mui-palette-text-primary)" 
+            }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+          >
+            <Countdown date={eventDate} renderer={countdownRenderer} />
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }

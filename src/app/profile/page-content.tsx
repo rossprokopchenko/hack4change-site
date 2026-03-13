@@ -27,6 +27,8 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
+import ScoreboardIcon from "@mui/icons-material/Scoreboard";
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { useUserTeam, useLeaveTeam } from "@/services/teams/use-teams";
 import { useUpdateRSVP, type RSVPStatus } from "@/services/profile/use-rsvp";
 import CreateTeamDialog from "@/components/create-team-dialog";
@@ -125,98 +127,46 @@ function Profile() {
 
           <Divider />
 
-          {/* RSVP Status Section */}
+          {/* Evaluation Section */}
           <Card>
             <CardContent>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                <EventAvailableIcon color="primary" />
+                <ScoreboardIcon color="primary" />
                 <Typography variant="h5" fontWeight="bold">
-                  {t("rsvp.title")}
+                  {t("evaluation.title")}
                 </Typography>
               </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 2,
-                }}
-              >
-                {/* <Box>
-                  <Typography variant="body1" gutterBottom>
-                    {t("rsvp.currentStatus")}:{" "}
-                    <Chip
-                      label={t(`rsvp.status.${currentRSVP}`)}
-                      color={getRSVPColor(currentRSVP) as any}
-                      size="small"
-                    />
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {t("rsvp.description")}
-                  </Typography>
-                </Box> */}
-                <Box>
-                  <ToggleButtonGroup
-                    value={currentRSVP}
-                    exclusive
-                    onChange={handleRSVPChange}
-                    disabled={updateRSVP.isPending}
-                    fullWidth
-                    sx={{
-                      '& .MuiToggleButton-root': {
-                        py: 1.5,
-                      },
-                      '& .MuiToggleButton-root.Mui-selected': {
-                        fontWeight: 'bold',
-                      },
-                    }}
-                  >
-                    <ToggleButton value="pending" color="standard">
-                      {t("rsvp.status.pending")}
-                    </ToggleButton>
-                    <ToggleButton 
-                      value="confirmed" 
-                      color="success"
-                      disabled={!isFormCompleted}
-                    >
-                      {t("rsvp.status.confirmed")}
-                    </ToggleButton>
-                    <ToggleButton value="declined" color="error">
-                      {t("rsvp.status.declined")}
-                    </ToggleButton>
-                  </ToggleButtonGroup>
-                </Box>
-                
-                {!isFormCompleted && (
-                  <Alert severity="warning">
-                    {t("rsvp.formRequired")}
-                  </Alert>
-                )}
-
-                {/* Tally Form Button / Success State */}
-                <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {!isFormCompleted ? (
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      href={`https://tally.so/r/xXDMa5?user_id=${user?.id}&event_id=hack4change-2026`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      fullWidth
-                      sx={{ py: 1.5 }}
-                    >
-                      {t("rsvp.completeForm")}
-                    </Button>
-                  ) : (
-                    <Alert severity="success" sx={{ width: '100%', alignItems: 'center' }}>
-                      <Typography variant="body1" fontWeight="bold">
-                        {t("rsvp.formCompleted")}
-                      </Typography>
-                    </Alert>
-                  )}
-                </Box>
-              </Box>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mb: 2 }}>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  fullWidth
+                  startIcon={<ScoreboardIcon />}
+                  href="/Docs/Hack4Change_Hacker_Scoring_Guide 2-1.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t("evaluation.scoringGuide")}
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  fullWidth
+                  startIcon={<AssignmentTurnedInIcon />}
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScCE84buWCO5yPYaosoMkT9mwn5D79gdFQZ11LueBNlnIg0lQ/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  disabled={!user?.participant}
+                >
+                  {t("evaluation.submitSolution")}
+                </Button>
+              </Stack>
+              <Alert severity="warning">
+                {t("evaluation.submissionWarning")}
+              </Alert>
             </CardContent>
           </Card>
+
 
           {/* Team Section */}
           {teamLoading ? (
@@ -325,6 +275,99 @@ function Profile() {
               </CardContent>
             </Card>
           )}
+
+          {/* RSVP Status Section moved to bottom */}
+          <Card>
+            <CardContent>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+                <EventAvailableIcon color="primary" />
+                <Typography variant="h5" fontWeight="bold">
+                  {t("rsvp.title")}
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                }}
+              >
+                {/* <Box>
+                  <Typography variant="body1" gutterBottom>
+                    {t("rsvp.currentStatus")}:{" "}
+                    <Chip
+                      label={t(`rsvp.status.${currentRSVP}`)}
+                      color={getRSVPColor(currentRSVP) as any}
+                      size="small"
+                    />
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {t("rsvp.description")}
+                  </Typography>
+                </Box> */}
+                <Box>
+                  <ToggleButtonGroup
+                    value={currentRSVP}
+                    exclusive
+                    onChange={handleRSVPChange}
+                    disabled={updateRSVP.isPending}
+                    fullWidth
+                    sx={{
+                      '& .MuiToggleButton-root': {
+                        py: 1.5,
+                      },
+                      '& .MuiToggleButton-root.Mui-selected': {
+                        fontWeight: 'bold',
+                      },
+                    }}
+                  >
+                    <ToggleButton value="pending" color="standard">
+                      {t("rsvp.status.pending")}
+                    </ToggleButton>
+                    <ToggleButton 
+                      value="confirmed" 
+                      color="success"
+                      disabled={!isFormCompleted}
+                    >
+                      {t("rsvp.status.confirmed")}
+                    </ToggleButton>
+                    <ToggleButton value="declined" color="error">
+                      {t("rsvp.status.declined")}
+                    </ToggleButton>
+                  </ToggleButtonGroup>
+                </Box>
+                
+                {!isFormCompleted && (
+                  <Alert severity="warning">
+                    {t("rsvp.formRequired")}
+                  </Alert>
+                )}
+
+                {/* Tally Form Button / Success State */}
+                <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {!isFormCompleted ? (
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      href={`https://tally.so/r/xXDMa5?user_id=${user?.id}&event_id=hack4change-2026`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      fullWidth
+                      sx={{ py: 1.5 }}
+                    >
+                      {t("rsvp.completeForm")}
+                    </Button>
+                  ) : (
+                    <Alert severity="success" sx={{ width: '100%', alignItems: 'center' }}>
+                      <Typography variant="body1" fontWeight="bold">
+                        {t("rsvp.formCompleted")}
+                      </Typography>
+                    </Alert>
+                  )}
+                </Box>
+              </Box>
+            </CardContent>
+          </Card>
       </Stack>
 
     </Container>

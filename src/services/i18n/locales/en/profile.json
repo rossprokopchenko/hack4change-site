@@ -132,5 +132,11 @@
       "leaving": "Leaving..."
     },
     "rsvpRequired": "You must confirm your attendance (RSVP: Confirmed) to join or create a team."
+  },
+  "evaluation": {
+    "title": "Scoring & Submission",
+    "scoringGuide": "Scoring Guide",
+    "submitSolution": "Submit Solution",
+    "submissionWarning": "Please allow only one person on your team to submit a solution."
   }
 }

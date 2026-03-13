@@ -132,5 +132,11 @@
       "leaving": "En cours..."
     },
     "rsvpRequired": "Vous devez confirmer votre présence (RSVP : Confirmé) pour rejoindre ou créer une équipe."
+  },
+  "evaluation": {
+    "title": "Évaluation et Soumission",
+    "scoringGuide": "Guide de pointage",
+    "submitSolution": "Soumettre la solution",
+    "submissionWarning": "Veuillez autoriser une seule personne de votre équipe à soumettre une solution."
   }
 }
